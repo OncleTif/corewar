@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/04/27 20:17:54 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/04/27 20:19:43 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ struct						s_label
 
 struct						s_champ
 {
-char						name[PROG_NAME_LENGTH];
-char						comment[COMMENT_LENGTH];
-int							pos;
+	char					name[PROG_NAME_LENGTH];
+	char					comment[COMMENT_LENGTH];
+	int						pos;
+	t_list					*labels;
+	t_list					*miss;
 };
 
 
