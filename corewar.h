@@ -6,7 +6,7 @@
 /*   By: djoly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/27 17:46:28 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/27 17:48:28 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_base_process	t_base_process;
 struct s_base_process
 {
 	int		nb_process;
-	t_list_process 	*beg_list; // liste des processs
+	t_list_process 	**beg_list; // liste des processs
 };
 
 typedef struct s_base_core	t_base_core;
