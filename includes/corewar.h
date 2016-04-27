@@ -6,13 +6,15 @@
 /*   By: djoly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/27 18:36:13 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/04/27 20:37:20 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "op.h"
 #include <stdio.h>
+
+void print(void);
 
 typedef struct s_process	t_process;
 struct s_process
@@ -46,6 +48,14 @@ struct s_cpu
 
 };
 
+typedef struct s_octet	t_octet;
+struct s_octet
+{
+	char	val;
+	int		plyr; // numero du player
+	int		pc; // bool
+};
+
 typedef struct s_base_core	t_base_core;
 struct s_base_core
 {
@@ -53,9 +63,4 @@ struct s_base_core
 	t_octet	core[MEM_SIZE];
 };
 
-struct s_octet
-{
-	char	val;
-	int		plyr; // numero du player
-	int		pc; // bool
-};
+
