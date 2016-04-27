@@ -6,11 +6,13 @@
 /*   By: djoly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/27 18:02:20 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/27 18:19:48 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../libft/libft.h"
 #include "op.h"
+#include <stdio.h>
 
 typedef struct s_process	t_process;
 struct s_process
@@ -49,3 +51,5 @@ struct s_base_core
 	int		nb_joueur;
 	char	core[MEM_SIZE];
 };
+
+void	print(void);
