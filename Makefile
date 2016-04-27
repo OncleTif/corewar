@@ -6,47 +6,43 @@
 #    By: ssicard <ssicard@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/04/27 18:03:55 by ssicard          ###   ########.fr        #
+#    Updated: 2016/04/27 20:32:05 by djoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = corewar
 
-LIB = corewar.a
-
-INC_DIR = includes
-
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -I$(INC_DIR)
+FLAGS = -Wall -Wextra -Werror
 
-SOURCES = test.c
+HEAD = libft/
 
-SRC = $(addprefix sources/,$(SOURCES))
+LIB = libft/libft.a
+
+SRC = main.c sources/test.c 
 
 OBJ = $(SRC:.c=.o)
 
-all : $(NAME) $(LIB)
+all: $(NAME)
 
-$(NAME) : $(LIB)
-	@$(CC) -o $(NAME) main.c $(LIB) $(CFLAGS) libft/libft.a
-	@echo "MiniOns Arrived!"
-	@echo "A New Challenger!"
+$(LIB):
+	make -C libft/ fclean
+	make -C libft/
 
-$(LIB) : $(OBJ)
-	@ar -r $(LIB) $(OBJ)
-	@ranlib $(LIB)
-	@echo "Cpt. corewar Lib. Arrived."
+$(NAME): $(LIB) $(OBJ)
+	$(CC) $(FLAGS) -o $@ $(OBJ) $(LIB)
 
-clean :
-	@rm -rf $(OBJ)
-	@echo "MiniOns Died!"
+%.o: %.c
+	$(CC) $(FLAGS) -I $(HEAD) -o $@ -c $<
 
-fclean : clean
-	@rm -rf $(NAME) $(LIB)
-	@echo "All's Destroyed! R.I.P :'("
+clean:
+	/bin/rm -f $(OBJ)
+	make -C libft/ clean
 
-re : fclean all
-	@echo "And The Rain Against! ^^"
+fclean: clean
+	/bin/rm -f $(NAME)
+
+re: fclean all
 
 .PHONY: all clean fclean re
