@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 17:06:26 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 17:23:48 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 18:47:11 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "corewar.h"
 
 typedef struct s_vm	t_vm;
+
 void		vm_init(t_vm *vm);
 
 #endif

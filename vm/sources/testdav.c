@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 10:18:48 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 17:32:21 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 17:57:56 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ void	print_core(t_base_core *core)
 int main()
 {
 	t_vm	vm;
+	
 	vm_init(&vm);
 	print_core(&vm.core);
+
 	//test_r2o();
 
 

@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 17:02:52 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 17:16:03 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 18:48:38 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,17 @@ static void	core_zero(t_base_core core)
 	}
 }
 
-void	vm_init(t_vm *vm)
+static void	cpu_init(t_cpu)
 {
+	current_cycle = 0;
+	cycle2die = CYCLE_TO_DIE;
+}
+
+void		vm_init(t_vm *vm)
+{
+	cpu_init(vm->cpu);
 	core_zero(vm->core);
+	core_posplyer(vm);
 
 
 }
