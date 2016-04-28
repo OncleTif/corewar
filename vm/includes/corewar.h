@@ -6,18 +6,19 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 15:17:45 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 17:08:08 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
-# include "../libft/libft.h"
+# include "../../libft/libft.h"
 # include "op.h"
 # include "process.h"
 # include "reverse_octet.h"
 # include "player.h"
 # include "ir.h"
+# include "vm_init.h"
 # include <stdio.h>
 
 void print(void);
@@ -57,6 +58,8 @@ struct s_vm
 	int				last_live; // numero du dernier player qui a dit LIVE
 
 };
+
+
 /*
 typedef struct s_octet	t_octet;
 struct s_octet

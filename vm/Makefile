@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ssicard <ssicard@42.fr>                    +#+  +:+       +#+         #
+#    By: djoly <djoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/04/28 10:18:25 by tmanet           ###   ########.fr        #
+#    Updated: 2016/04/28 17:25:20 by djoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,12 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-HEAD = libft/
+HEAD = ../libft/
 
-LIB = libft/libft.a
+LIB = ../libft/libft.a
 
-SRC = asm.c \
-	  sources/test.c \
-	  sources/get_s_file.c \
-	  sources/ft_print_champ.c \
+SRC = sources/testdav.c \
+		sources/reverse_octet.c sources/vm_init.c \
 
 
 OBJ = $(SRC:.c=.o)
@@ -31,8 +29,8 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(LIB):
-	make -C libft/ fclean
-	make -C libft/
+	make -C ../libft/ fclean
+	make -C ../libft/
 
 $(NAME): $(LIB) $(OBJ)
 	$(CC) $(FLAGS) -o $@ $(OBJ) $(LIB)
@@ -42,7 +40,7 @@ $(NAME): $(LIB) $(OBJ)
 
 clean:
 	/bin/rm -f $(OBJ)
-	make -C libft/ clean
+	make -C ../libft/ clean
 
 fclean: clean
 	/bin/rm -f $(NAME)

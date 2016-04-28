@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ir.h                                               :+:      :+:    :+:   */
+/*   vm_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/28 13:59:35 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 16:45:03 by djoly            ###   ########.fr       */
+/*   Created: 2016/04/28 17:02:52 by djoly             #+#    #+#             */
+/*   Updated: 2016/04/28 17:16:03 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IR_H
-# define IR_H
-# include	"corewar.h"
+#include "../includes/corewar.h"
 
-typedef struct s_ir	t_ir;
-struct s_ir
+static void	core_zero(t_base_core core)
 {
-	char	*ir; // ou char ir[14]  14 octet max
-	int		opcode;
-	int		ocp;
-	int		nb_arg;
-	char	types_args[3]; //decalage bin sur ocp pour definir 01 10 11 ou 00
-};
+	int		i;
 
-#endif
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		core.core[i] = 0;
+		core.data[i].plyr = 0; // ou -1 si un player est le numero 0
+		core.data[i].pc = 0;
+		i++;
+	}
+}
+
+void	vm_init(t_vm *vm)
+{
+	core_zero(vm->core);
+
+
+}

@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:26:12 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 15:02:46 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 16:45:07 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_list_process	t_list_process;
 struct s_list_process
 {
 	t_process	*proc;
-	t_list_process *next;
+	t_list_process *next;	//
 };
 
 typedef struct s_base_process	t_base_process;
