@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/04/28 17:45:35 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/04/28 18:13:04 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>
-# define COMMENT_CHARS "abcdefghijklmnopqrstuvwxyz_0123*456789"
+# define COMMENT_CHARS "ABCDEFGHIJKLMNOPQRSTUVWXY Zabcdefghijklmnopqrstuv'wx*yz_0123456789"
 
 typedef struct s_label		t_label;
 typedef struct s_champ		t_champ;
