@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/04/28 09:43:39 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/04/28 10:06:32 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ASM_H
 # include "libft/libft.h"
 # include "includes/op.h"
+# include <fcntl.h>
+# include <stdio.h>
 
 typedef struct s_label		t_label;
 typedef struct s_champ		t_champ;
@@ -37,5 +39,6 @@ struct						s_champ
 };
 
 void	ft_print_champ(t_champ *chp);
+void	read_s_file(t_champ *c, char *file);
 
 #endif
