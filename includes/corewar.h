@@ -6,7 +6,7 @@
 /*   By: djoly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 09:52:17 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 09:54:25 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ struct s_cpu
 };
 
 
-
+/*
 typedef struct s_octet	t_octet;
 struct s_octet
 {
@@ -63,7 +63,7 @@ struct s_base_core
 {
 	t_octet	core[MEM_SIZE];
 };
-
+*/
 
 
 typedef struct s_octet	t_octet;
