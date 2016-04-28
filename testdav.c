@@ -6,12 +6,12 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 10:18:48 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 11:41:31 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 15:20:20 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "includes/reverse_octet.h"
+#include "reverse_octet.h"
 
 int main()
 {
@@ -28,8 +28,8 @@ int main()
 	v4.c[2] =	core[2];
 	v4.c[3] =	core[3];
 	printf("|%d|%d|\n", v2.i, v4.i);
-	r2oo(&v2);
-	r4oo(&v4);
+	r2o(&v2);
+	r4o(&v4);
 	printf("|%d|%d|", v2.i, v4.i);
 
 	return (0);
