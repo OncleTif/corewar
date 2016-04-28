@@ -6,19 +6,21 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:26:12 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 13:31:54 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 14:25:37 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "corewar.h"
 
 typedef struct s_process	t_process;
 struct s_process
 {
-	int		plyr;
+	int		num;  // numero du processus
+	int		plyr; // num du plyr
 	int		pc;
 	int		reg[16];
 	int		carry;
-	int		num;  // numero du processus
+	t_ir	ir;
 };
 
 typedef struct s_list_process	t_list_process;
