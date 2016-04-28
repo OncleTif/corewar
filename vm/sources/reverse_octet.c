@@ -6,12 +6,12 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:59:27 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 11:52:36 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 15:52:09 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "corewar.h"
-#include "includes/reverse_octet.h"
+#include "../includes/reverse_octet.h"
 
 char *r2oc(char *val)
 {

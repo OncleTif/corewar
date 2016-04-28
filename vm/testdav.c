@@ -6,11 +6,12 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 10:18:48 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 15:20:51 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 15:30:03 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "reverse_octet.h"
+#include "includes/reverse_octet.h"
+#include <stdio.h>
 
 int main()
 {
