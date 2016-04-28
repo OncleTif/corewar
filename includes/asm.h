@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/04/28 10:24:29 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/04/28 10:27:08 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "libft.h"
 # include "op.h"
 # include <fcntl.h>
+# include <unistd.h>
 
 typedef struct s_label		t_label;
 typedef struct s_champ		t_champ;
