@@ -6,11 +6,13 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:31:38 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 13:57:33 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 14:58:09 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#ifndef PLAYER_H
+# define PLAYER_H
+# include "corewar.h"
 
 typedef struct s_player	t_player;
 struct s_player
@@ -34,3 +36,5 @@ struct s_base_player
 	int				nb_plyr; //nombre de player
 	t_list_player	**lst_plyr;
 };
+
+#endif

@@ -6,16 +6,18 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 14:34:15 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 14:56:40 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "op.h"
-#include "process.h"
-#include "player.h"
-#include "ir.h"
-#include <stdio.h>
+#ifndef COREWAR_H
+# define COREWAR_H
+# include "../libft/libft.h"
+# include "op.h"
+# include "process.h"
+# include "player.h"
+# include "ir.h"
+# include <stdio.h>
 
 void print(void);
 
@@ -69,3 +71,4 @@ struct s_base_core
 	t_octet	core[MEM_SIZE];
 };
 */
+#endif

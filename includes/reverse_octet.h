@@ -6,12 +6,13 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:59:24 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 11:46:15 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 14:59:27 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "corewar.h"
+#ifndef REVERSE_OCTET_H
+# define REVERSE_OCTET_H
+# include "corewar.h"
 
 union	u_2o
 {
@@ -32,3 +33,4 @@ union u_4o *r4o(union u_4o *val); // reverse 4 octet
 // reverse octet avec arg et return en char*
 char *r2oc(char *val);// reverse 2 octet
 char *r4oc(char *val); // reverse 4 octet
+#endif
