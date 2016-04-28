@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/04/28 09:03:05 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/04/28 09:39:46 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ struct						s_champ
 	t_list					*miss;
 };
 
-
+void	ft_print_champ(t_champ *chp);
 
 #endif
