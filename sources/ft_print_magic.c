@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 10:21:35 by tmanet            #+#    #+#             */
-/*   Updated: 2016/04/28 10:48:24 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/04/28 11:55:27 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void	ft_print_magic(int fd)
 {
-	int	i;
+	char	magic[4];
 
-	i = COREWAR_EXEC_MAGIC;
-	write(fd, &i, sizeof(COREWAR_EXEC_MAGIC));
+	magic[0] = COREWAR_EXEC_MAGIC /256 /256 /256 % 256;
+	magic[1] = COREWAR_EXEC_MAGIC /256 /256 % 256;
+	magic[2] = COREWAR_EXEC_MAGIC /256 % 256;
+	magic[3] = COREWAR_EXEC_MAGIC % 256;
+	write(fd, magic, sizeof(COREWAR_EXEC_MAGIC));
 }
