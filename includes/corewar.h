@@ -6,7 +6,7 @@
 /*   By: djoly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/27 20:37:20 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 09:54:25 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ struct s_cpu
 
 };
 
+
+/*
 typedef struct s_octet	t_octet;
 struct s_octet
 {
@@ -59,8 +61,21 @@ struct s_octet
 typedef struct s_base_core	t_base_core;
 struct s_base_core
 {
-	int		nb_player;
 	t_octet	core[MEM_SIZE];
 };
+*/
 
 
+typedef struct s_octet	t_octet;
+struct s_octet
+{
+	int		plyr; // numero du player
+	int		pc; // bool
+};
+
+typedef struct s_base_core	t_base_core;
+struct s_base_core
+{
+	char	core[MEM_SIZE];
+	t_octet data[MEM_SIZE];
+};
