@@ -6,7 +6,7 @@
 #    By: ssicard <ssicard@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/04/27 20:32:05 by djoly            ###   ########.fr        #
+#    Updated: 2016/04/28 10:18:25 by tmanet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,11 @@ HEAD = libft/
 
 LIB = libft/libft.a
 
-SRC = main.c sources/test.c 
+SRC = asm.c \
+	  sources/test.c \
+	  sources/get_s_file.c \
+	  sources/ft_print_champ.c \
+
 
 OBJ = $(SRC:.c=.o)
 
