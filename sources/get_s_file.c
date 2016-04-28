@@ -6,13 +6,29 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/04/28 14:44:19 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 17:45:31 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-static	void	get_str(t_champ *c, char *tmp, char *str)
+int			check_str(t_champ *c)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (LABEL_CHARS[i])
+	{
+		if (ft_strchr(c->name, LABEL_CHARS[j]) != NULL)
+			return (0);
+		// donc la ca retourne zero c'est pas bon ca veut dire
+		i++;
+	}
+	return (1);
+}
+
+void		get_str(t_champ *c, char *tmp, char *str)
 {
 	char	*line;
 	int		indic;
@@ -68,6 +84,8 @@ void		read_s_file(t_champ *c, char *file)
 				get_str(c, tmp, c->comment);
 			// suite lecture
 		}
+		if (check_str(c) != 1)
+			printf("Erreur dans le nom ou le commentaire\n.");
 	}
 	printf("C_NAME = -->%s<--\n", c->name);
 	printf("C_COMMENT = -->%s<--\n", c->comment);
