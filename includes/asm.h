@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/04/28 10:22:31 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/04/28 10:24:29 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ struct						s_champ
 	int						fd;
 };
 
+void	read_s_file(t_champ *chp, char *str);
 void	ft_print_champ(t_champ *chp);
 void	ft_print_magic(int fd);
 void	ft_print_name(t_champ *chp, int fd);
