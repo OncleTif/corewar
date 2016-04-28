@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:59:35 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 14:57:22 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 15:03:51 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include	"corewar.h"
 
 typedef struct s_ir	t_ir;
-struct ir
+struct s_ir
 {
 	char	*ir; // ou char ir[14]  14 octet max
 	int		opcode;

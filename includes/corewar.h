@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 14:56:40 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 15:03:25 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,6 @@
 
 void print(void);
 
-typedef struct s_vm	t_vm;
-struct s_vm
-{
-	t_cpu			cpu;
-	t_base_process	proc;
-	t_base_core		core;
-	t_base_player	plyr;
-	int				last_live; // numero du dernier player qui a dit LIVE
-
-};
 
 typedef struct s_cpu	t_cpu;
 struct s_cpu
@@ -56,6 +46,16 @@ struct s_base_core
 	t_octet data[MEM_SIZE];
 };
 
+typedef struct s_vm	t_vm;
+struct s_vm
+{
+	t_cpu			cpu;
+	t_base_process	proc;
+	t_base_core		core;
+	t_base_player	plyr;
+	int				last_live; // numero du dernier player qui a dit LIVE
+
+};
 /*
 typedef struct s_octet	t_octet;
 struct s_octet

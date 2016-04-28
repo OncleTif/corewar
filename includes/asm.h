@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/04/28 15:00:25 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 15:04:45 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "op.h"
 # include <fcntl.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct s_label		t_label;
 typedef struct s_champ		t_champ;
