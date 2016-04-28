@@ -1,49 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draft.h                                          :+:      :+:    :+:   */
+/*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 09:54:25 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/28 13:31:18 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "op.h"
+#include "process.h"
 #include <stdio.h>
 
 void print(void);
 
-typedef struct s_process	t_process;
-struct s_process
+
+typedef struct s_vm	t_vm;
+struct s_vm
 {
-	int		plyr;
-	int		pc;
-	int		reg[16];
-	int		carry;
-	int		num;  // numero du processus
+	t_cpu			cpu;
+	t_base_process	proc;
+	t_base_core		core;
+	int				nb_plyr; //nombre de player
+	
+
+
 };
 
-typedef struct s_list_process	t_list_process;
-struct s_list_process
-{
-	t_process	*proc;
-	t_list_process *next;
-};
-
-typedef struct s_base_process	t_base_process;
-struct s_base_process
-{
-	int		nb_proc;
-	t_list_process	**beg_list; // liste des processs
-};
 
 typedef struct s_cpu	t_cpu;
 struct s_cpu
 {
-	int		ir; //instruction registre
+	//int		ir; //instruction registre
 	int		current_cycle; // cycle en cours
 
 };
