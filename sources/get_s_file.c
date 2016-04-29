@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/04/29 18:25:55 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/04/29 18:52:03 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void		get_instr(t_champ *c, char *tmp)
 	int		i;
 	size_t	len;
 
-	tab = ft_strsplit(tmp, ' ');
+	tab = ft_strsplit(ft_strreplace_char(tmp, 9, ' '), ' ');
 	len = ft_strlen(tab[0]);
 	i = 0;
 	tab = ft_get_lbl(tab, c);
