@@ -6,11 +6,11 @@
 #    By: ssicard <ssicard@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/04/28 17:26:17 by ssicard          ###   ########.fr        #
+#    Updated: 2016/04/29 09:37:59 by tmanet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = corewar
+NAME = asm
 
 CC = gcc
 
@@ -49,4 +49,7 @@ fclean: clean
 
 re: fclean all
 
+test: all
+	./asm goinfre/champions/examples/zork.s
+	hexdump -vC goinfre/champions/examples/zork.s.cor
 .PHONY: all clean fclean re
