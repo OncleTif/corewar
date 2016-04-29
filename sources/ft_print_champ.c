@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:50:09 by tmanet            #+#    #+#             */
-/*   Updated: 2016/04/29 15:36:36 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/04/29 16:06:32 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	ft_print_champ(t_champ *chp)
 {
 	int	fd;
 
-	if ((fd = open(chp->file_n, O_RDWR | O_CREAT | O_TRUNC, 644)) < 0)
+	if ((fd = open(chp->file_n, O_RDWR | O_CREAT | O_TRUNC,
+					S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)) < 0)
 		ft_error(ft_strjoin("error while opening file ", chp->file_n));
 	ft_print_magic(fd);
 	ft_print_name(chp, fd);
