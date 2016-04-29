@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/04/28 18:13:04 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/04/29 08:50:20 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ struct						s_label
 struct						s_champ
 {
 	char					*file_n;
-	char					name[PROG_NAME_LENGTH + 1];
-	char					comment[COMMENT_LENGTH + 1];
-	char					bin[CHAMP_MAX_SIZE + 1];
+	char					name[PROG_NAME_LENGTH];
+	char					comment[COMMENT_LENGTH];
+	char					bin[CHAMP_MAX_SIZE];
 	int						pos;
 	t_list					*labels;
 	t_list					*miss;
