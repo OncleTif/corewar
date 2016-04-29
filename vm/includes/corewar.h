@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/29 18:43:47 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/04/29 19:42:26 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void	ft_stock_magic(int fd, char *buff, t_bin *plr);
 void	ft_handle_args(int ac, char **av);
 int		ft_check_args(char *av);
 void	ft_handle_bonus(char *av);
+void	ft_mem_champs(t_base_player *player, char *av);
 
 /*
 	ft_memrev.c
