@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/04/29 15:24:29 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/04/29 16:52:09 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,23 @@
 
 char		**ft_get_lbl(char **tab, t_champ *cmp)
 {
-	int	i;
+	int		i;
+	char	*end;
 
 	i = 1;
-	if (ft_strchr(tab[0], ':'))
+	if ((end = ft_strchr(tab[0], ':')))
 	{
-		while (tab[i])
+		ft_add_label(cmp, ft_strsub(tab[0], 0, end - tab[0]));
+		if (!tab[0][(int)end - (int)tab[0] + 1])
 		{
-			tab[i - 1] = tab[i];
-			i++;
+			while (tab[i])
+			{
+				tab[i - 1] = tab[i];
+				i++;
+			}
 		}
+		else
+			tab[0] = ft_strtrim(end + 1);
 	}
 	cmp++;
 	return (tab);
@@ -57,8 +64,8 @@ void		get_instr(t_champ *c, char *tmp)
 		check_mask(i, tmp, c);
 
 	}
-//	else if (tab[0][0])
-//		ft_error("wrong format line");
+	//	else if (tab[0][0])
+	//		ft_error("wrong format line");
 	c++;
 }
 
