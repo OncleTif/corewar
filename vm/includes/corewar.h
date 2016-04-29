@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 17:08:08 by djoly            ###   ########.fr       */
+/*   Updated: 2016/04/29 12:08:35 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,20 @@ struct s_base_core
 	t_octet	core[MEM_SIZE];
 };
 */
+
+/*
+	ft_check_champion.c
+*/
+void	ft_open_champion(char *line, bin_t *plr);
+
+/*
+	ft_stock_champion.c
+*/
+
+void	ft_stock_program(int fd, bin_t *plr);
+void	ft_stock_comment(int fd, char *buff, bin_t *plr);
+void	ft_stock_prog_size(int fd, char *buff, bin_t *plr);
+void	ft_stock_name(int fd, char *buff, bin_t *plr);
+void	ft_stock_magic(int fd, char *buff, bin_t *plr);
+
 #endif
