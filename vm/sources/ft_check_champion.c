@@ -8,14 +8,16 @@ static void	ft_read_champion(int fd, t_bin *plr)
 	buff = malloc(sizeof(char) * 4 + 1);
 	ft_stock_magic(fd, buff, plr);
 	ft_stock_name(fd, plr);
-	ret = read(fd, buff, 4);
-	if ((*((int *)buff)) || !ret)
-		printf("error wrong first SEPARATOR");
+	if (!(ret = read(fd, buff, 4))
+		ft_error("read error at first SEPARATOR");
+	if (*((int *)buff))
+		ft_error("error wrong first SEPARATOR");
 	ft_stock_prog_size(fd, buff, plr);
 	ft_stock_comment(fd, plr);
-	ret = read(fd, buff, 4);
-	if ((*((int *)buff)) || !ret)
-		printf("error wrong second SEPARATOR");
+	if (!(ret = read(fd, buff, 4)))
+		ft_error("read error at second SEPARATOR")
+	if (*((int *)buff))
+		ft_error("error wrong second SEPARATOR");
 	ft_stock_program(fd, plr);
 }
 
