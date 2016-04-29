@@ -6,11 +6,39 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/04/29 09:38:54 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/04/29 13:26:37 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
+
+void		check_mask(int i, char *tmp)
+{
+
+
+
+}
+
+void		get_instr(t_champ *c, char *tmp)
+{
+	char	**tab;
+	int		i;
+	size_t	len;
+
+	tab = ft_strsplit(tmp, ' ');
+	len = ft_strlen(tab[0]);
+	i = 0;
+	while (i < 17 && !ft_strncmp(g_op_tab[i].name, tab[0], len))
+		i++;
+	if (i < 17)
+	{
+		check_mask(i, tmp);
+
+
+	}
+	else if (tab[0][0])
+		ft_error("wrong format line");
+}
 
 int			check_str(t_champ *c)
 {
@@ -89,6 +117,7 @@ void		read_s_file(t_champ *c, char *file)
 				get_str(c, tmp, c->name);
 			else if (ft_strncmp(".comment", tmp, 8) == 0)
 				get_str(c, tmp, c->comment);
+			get_instr(c, tmp);
 			// suite lecture
 		}
 		if (!check_str(c))
