@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/29 12:08:35 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/04/29 14:42:45 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include "ir.h"
 # include "vm_init.h"
 # include <stdio.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
 
 void print(void);
 
@@ -79,16 +83,32 @@ struct s_base_core
 /*
 	ft_check_champion.c
 */
-void	ft_open_champion(char *line, bin_t *plr);
+void	ft_open_champion(char *line, t_bin *plr);
 
 /*
 	ft_stock_champion.c
 */
 
-void	ft_stock_program(int fd, bin_t *plr);
-void	ft_stock_comment(int fd, char *buff, bin_t *plr);
-void	ft_stock_prog_size(int fd, char *buff, bin_t *plr);
-void	ft_stock_name(int fd, char *buff, bin_t *plr);
-void	ft_stock_magic(int fd, char *buff, bin_t *plr);
+void	ft_stock_program(int fd, t_bin *plr);
+void	ft_stock_comment(int fd, t_bin *plr);
+void	ft_stock_prog_size(int fd, char *buff, t_bin *plr);
+void	ft_stock_name(int fd, t_bin *plr);
+void	ft_stock_magic(int fd, char *buff, t_bin *plr);
+
+/*
+	ft_memrev.c
+*/
+
+void	memrev(char  *buf, size_t count);
+
+/*
+ft_print_champion.c
+*/
+
+void print_prog(t_bin plr);
+void print_magic(t_bin plr, char *buff);
+void print_prog_name(t_bin plr);
+void print_prog_size(t_bin plr, char *buff);
+void print_comment(t_bin plr);
 
 #endif

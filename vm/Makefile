@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: djoly <djoly@student.42.fr>                +#+  +:+       +#+         #
+#    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/04/28 17:25:20 by djoly            ###   ########.fr        #
+#    Updated: 2016/04/29 13:08:36 by eozdek           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,10 @@ HEAD = ../libft/
 
 LIB = ../libft/libft.a
 
-SRC = sources/testdav.c \
-		sources/reverse_octet.c sources/vm_init.c \
-
+SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
+		sources/ft_memrev.c sources/ft_print_champion.c \
+# sources/testdav.c \
+#		sources/reverse_octet.c sources/vm_init.c \
 
 OBJ = $(SRC:.c=.o)
 
