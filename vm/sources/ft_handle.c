@@ -1,6 +1,22 @@
 #include "../includes/corewar.h"
 
 /*
+checker si cest un ".cor" return 1, sinon 0
+*/
+
+int		ft_check_args(char *av)
+{
+	if (ft_strcmp(ft_strstr(av, ".cor"), ".cor\0") == 0)
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
+}
+
+/*
 fonction pour gerer les bonus
 */
 
