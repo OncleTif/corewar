@@ -6,17 +6,35 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/04/29 13:26:37 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/04/29 15:24:29 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-void		check_mask(int i, char *tmp)
+char		**ft_get_lbl(char **tab, t_champ *cmp)
 {
+	int	i;
 
+	i = 1;
+	if (ft_strchr(tab[0], ':'))
+	{
+		while (tab[i])
+		{
+			tab[i - 1] = tab[i];
+			i++;
+		}
+	}
+	cmp++;
+	return (tab);
+}
 
-
+void		check_mask(int i, char *tmp, t_champ *cmp)
+{
+	ft_putnbrendl(g_op_tab[i].opcode);
+	cmp->bin[cmp->pos] = (char)g_op_tab[i].opcode;
+	cmp->pos++;
+	tmp++;
 }
 
 void		get_instr(t_champ *c, char *tmp)
@@ -28,16 +46,20 @@ void		get_instr(t_champ *c, char *tmp)
 	tab = ft_strsplit(tmp, ' ');
 	len = ft_strlen(tab[0]);
 	i = 0;
-	while (i < 17 && !ft_strncmp(g_op_tab[i].name, tab[0], len))
+	ft_putendl(tab[0]);
+	tab = ft_get_lbl(tab, c);
+	while (i < 16 && ft_strncmp(g_op_tab[i].name, tab[0], len))
 		i++;
-	if (i < 17)
+	ft_putendl(tab[0]);
+	ft_putnbrendl(i);
+	if (i < 16)
 	{
-		check_mask(i, tmp);
-
+		check_mask(i, tmp, c);
 
 	}
-	else if (tab[0][0])
-		ft_error("wrong format line");
+//	else if (tab[0][0])
+//		ft_error("wrong format line");
+	c++;
 }
 
 int			check_str(t_champ *c)
@@ -53,12 +75,12 @@ int			check_str(t_champ *c)
 		i++;
 	}
 	i = 0;
-/*	while (c->comment[i])
-	{
+	/*	while (c->comment[i])
+		{
 		if (ft_strchr(COMMENT_CHARS, c->comment[i]) == NULL)
-			return (0);
-		// donc la ca retourne zero c'est pas bon ca veut dire
-		i++;
+		return (0);
+	// donc la ca retourne zero c'est pas bon ca veut dire
+	i++;
 	}*/
 	return (1);
 }
@@ -72,7 +94,7 @@ void		get_str(t_champ *c, char *tmp, char *str)
 	i = 0;
 	indic = 0;
 	tmp = ft_strchr(tmp, '"');
-		tmp++;
+	tmp++;
 	while (*tmp)
 	{
 		if (*tmp == '"')
@@ -117,7 +139,11 @@ void		read_s_file(t_champ *c, char *file)
 				get_str(c, tmp, c->name);
 			else if (ft_strncmp(".comment", tmp, 8) == 0)
 				get_str(c, tmp, c->comment);
-			get_instr(c, tmp);
+			else if (line[0])
+			{
+				ft_putendl(ft_strjoin("lecture ligne instruc", line));
+				get_instr(c, tmp);
+			}
 			// suite lecture
 		}
 		if (!check_str(c))

@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/04/29 11:28:37 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/04/29 12:25:39 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ struct						s_champ
 struct						s_instr
 {
 char						*name;
-unsigned char				opcode;
-unsigned char				*tab;
+char						opcode;
+int						*tab;
 };
 
 /*
