@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:55:31 by tmanet            #+#    #+#             */
-/*   Updated: 2016/04/28 17:45:34 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/04/29 08:38:15 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int		main(int argc, char **argv)
 	if (argc == 2 && argv[1])
 	{
 		read_s_file(&chp, argv[1]);
-	//	ft_print_champ(&chp);
+		chp.file_n = ft_strjoin(argv[1], ".cor");
+		ft_print_champ(&chp);
 	}
 	else
 		ft_putendl("Bad parameters");
