@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/04/29 16:52:09 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/04/29 18:25:55 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,16 @@ char		**ft_get_lbl(char **tab, t_champ *cmp)
 	i = 1;
 	if ((end = ft_strchr(tab[0], ':')))
 	{
+		ft_putstr("**");
+		ft_putstr(tab[0]);
+		ft_putstr("**");
+				ft_putendl("label!!");
 		ft_add_label(cmp, ft_strsub(tab[0], 0, end - tab[0]));
 		if (!tab[0][(int)end - (int)tab[0] + 1])
 		{
+			ft_putchar(tab[0][(int)end - (int)tab[0] + 1]);
+				ft_putendl("decal!!");
+				tab[0][0] = 0;
 			while (tab[i])
 			{
 				tab[i - 1] = tab[i];
@@ -32,13 +39,11 @@ char		**ft_get_lbl(char **tab, t_champ *cmp)
 		else
 			tab[0] = ft_strtrim(end + 1);
 	}
-	cmp++;
 	return (tab);
 }
 
-void		check_mask(int i, char *tmp, t_champ *cmp)
+void		check_mask(int i, char **tmp, t_champ *cmp)
 {
-	ft_putnbrendl(g_op_tab[i].opcode);
 	cmp->bin[cmp->pos] = (char)g_op_tab[i].opcode;
 	cmp->pos++;
 	tmp++;
@@ -53,20 +58,14 @@ void		get_instr(t_champ *c, char *tmp)
 	tab = ft_strsplit(tmp, ' ');
 	len = ft_strlen(tab[0]);
 	i = 0;
-	ft_putendl(tab[0]);
 	tab = ft_get_lbl(tab, c);
+	//ft_putendl(ft_strjoin("lecture attr", tab[0]));
 	while (i < 16 && ft_strncmp(g_op_tab[i].name, tab[0], len))
 		i++;
-	ft_putendl(tab[0]);
-	ft_putnbrendl(i);
 	if (i < 16)
-	{
-		check_mask(i, tmp, c);
-
-	}
-	//	else if (tab[0][0])
-	//		ft_error("wrong format line");
-	c++;
+		check_mask(i, tab, c);
+	//else if (tab[0][0] && tab[0][0] != '#' && tab[0][0] != ' ' )
+	//	ft_error("wrong format line");
 }
 
 int			check_str(t_champ *c)
