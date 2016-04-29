@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2016/04/28 17:45:36 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/04/29 12:50:18 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,17 @@ typedef struct		header_s
   unsigned int		prog_size;
   char				comment[COMMENT_LENGTH + 1];
 }					header_t;
+
+typedef struct		s_op
+{
+char	*name;
+int		att_num;
+int		att[3];
+int		opcode;
+int		cost;
+char	*l_name;
+int		carry;
+int		index;
+}					t_op;
 
 #endif
