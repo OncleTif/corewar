@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/29 14:42:45 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/04/29 18:43:47 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ struct s_vm
 
 };
 
-
 /*
 typedef struct s_octet	t_octet;
 struct s_octet
@@ -83,6 +82,7 @@ struct s_base_core
 /*
 	ft_check_champion.c
 */
+
 void	ft_open_champion(char *line, t_bin *plr);
 
 /*
@@ -94,6 +94,9 @@ void	ft_stock_comment(int fd, t_bin *plr);
 void	ft_stock_prog_size(int fd, char *buff, t_bin *plr);
 void	ft_stock_name(int fd, t_bin *plr);
 void	ft_stock_magic(int fd, char *buff, t_bin *plr);
+void	ft_handle_args(int ac, char **av);
+int		ft_check_args(char *av);
+void	ft_handle_bonus(char *av);
 
 /*
 	ft_memrev.c

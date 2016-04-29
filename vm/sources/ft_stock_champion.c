@@ -9,6 +9,7 @@ void	ft_stock_magic(int fd, char *buff, t_bin *plr)
 	buff[ret] = '\0';
 	memrev(buff, 4);
 	plr->magic = (*((int *)buff));
+	print_magic(*plr, buff);
 	if (plr->magic ^ COREWAR_EXEC_MAGIC)
 		ft_error("error wrong magic\n");
 }
@@ -20,6 +21,7 @@ void	ft_stock_name(int fd, t_bin *plr)
 	if (!(ret = read(fd, plr->prog_name, PROG_NAME_LENGTH)))
 		ft_error("error READ name\n");
 	plr->prog_name[ret] = '\0';
+	print_prog_name(*plr);
 }
 
 void	ft_stock_prog_size(int fd, char *buff, t_bin *plr)
@@ -31,6 +33,7 @@ void	ft_stock_prog_size(int fd, char *buff, t_bin *plr)
 	buff[ret] = '\0';
 	memrev(buff, 4);
 	plr->prog_size = (*((int *)buff));
+	print_prog_size(*plr, buff);
 }
 
 void	ft_stock_comment(int fd, t_bin *plr)
@@ -40,6 +43,7 @@ void	ft_stock_comment(int fd, t_bin *plr)
 	if (!(ret = read(fd, plr->comment, COMMENT_LENGTH)))
 		ft_error("error READ comment\n");
 	plr->comment[ret] = '\0';
+	print_comment(*plr);
 }
 
 void	ft_stock_program(int fd, t_bin *plr)
@@ -51,4 +55,5 @@ void	ft_stock_program(int fd, t_bin *plr)
 	if (ret ^ plr->prog_size)
 		ft_error("Wrong prog");
 	plr->program[ret] = '\0';
+	print_prog(*plr);
 }
