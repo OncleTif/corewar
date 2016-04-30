@@ -26,7 +26,7 @@ union	u_4o
 	char	c[4];
 };
 
-int	r2oi(int val);
+short int	r2oi(short int val);
 int	r4oi(int val);
 
 // reverse octet avec arg et return en union*
