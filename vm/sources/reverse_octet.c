@@ -58,3 +58,30 @@ union u_4o *r4o(union u_4o *val)
 	val->c[1] = tmp;
 	return (val);
 }
+
+int	r2oi(int val)
+{
+	union u_2o	u;
+	char	tmp;
+
+	u.i = val;
+	tmp = u.c[0];
+	u.c[0] = u.c[1];
+	u.c[1] = tmp;
+	return (u.i);
+}
+
+int	r4oi(int val)
+{
+	union u_4o	u;
+	char	tmp;
+
+	u.i = val;
+	tmp = u.c[0];
+	u.c[0] = u.c[3];
+	u.c[3] = tmp;
+	tmp = u.c[1];
+	u.c[1] = u.c[2];
+	u.c[2] = tmp;
+	return (u.i);
+}
