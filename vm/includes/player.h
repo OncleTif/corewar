@@ -13,7 +13,7 @@
 #ifndef PLAYER_H
 # define PLAYER_H
 # include "corewar.h"
-
+/*
 typedef struct s_player	t_player;
 struct s_player
 {
@@ -22,9 +22,10 @@ struct s_player
 	char	comment[COMMENT_LENGTH];
 	char	program[CHAMP_MAX_SIZE];
 };
-
+*/
 typedef struct      s_bin
 {
+	int		num_plyr; // la VM ou -n attribut un numero au joueur 
 	unsigned int		magic;
 	char				prog_name[PROG_NAME_LENGTH + 1];
 	unsigned int		prog_size;
