@@ -26,6 +26,9 @@ union	u_4o
 	char	c[4];
 };
 
+int	r2oi(int val);
+int	r4oi(int val);
+
 // reverse octet avec arg et return en union*
 union u_2o *r2o(union u_2o *val); // reverse 2 octet
 union u_4o *r4o(union u_4o *val); // reverse 4 octet
@@ -33,4 +36,6 @@ union u_4o *r4o(union u_4o *val); // reverse 4 octet
 // reverse octet avec arg et return en char*
 char *r2oc(char *val);// reverse 2 octet
 char *r4oc(char *val); // reverse 4 octet
+
+
 #endif
