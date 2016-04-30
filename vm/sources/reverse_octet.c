@@ -59,7 +59,7 @@ union u_4o *r4o(union u_4o *val)
 	return (val);
 }
 
-int	r2oi(int val)
+short int	r2oi(short int val)
 {
 	union u_2o	u;
 	char	tmp;
