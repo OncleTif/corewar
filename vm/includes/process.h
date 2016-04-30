@@ -19,7 +19,10 @@ typedef struct s_process	t_process;
 struct s_process
 {
 	int		num;  // numero du processus
-	int		plyr; // num du plyr
+	
+	int		plr; // num du plyr ou
+	t_bin		*plr; // pointeur sur son player, num du plr dedans
+	
 	int		pc;
 	int		reg[16];
 	int		carry;
