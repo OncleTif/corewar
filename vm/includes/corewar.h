@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/29 19:53:32 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/01 11:36:07 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
 # include "../../libft/libft.h"
+//# include "struct_types.h"
 # include "op.h"
 # include "process.h"
 # include "reverse_octet.h"
@@ -55,10 +56,11 @@ struct s_base_core
 typedef struct s_vm	t_vm;
 struct s_vm
 {
+	int				dump; //  -dump aff et exit apres nbr cycles
 	t_cpu			cpu;
 	t_base_process	proc;
 	t_base_core		core;
-	t_base_player	plyr;
+	t_base_player	bplr;
 	int				last_live; // numero du dernier player qui a dit LIVE
 
 };
@@ -99,9 +101,9 @@ void	ft_stock_magic(int fd, char *buff, t_bin *plr);
 	ft_handle.c
 */
 
-void	ft_handle_args(int ac, char **av);
+void	ft_handle_args(int ac, char **av, t_vm *vm);
 int		ft_check_args(char *av);
-void	ft_handle_bonus(char *av);
+void	ft_handle_bonus(char *av, int *i, t_vm *vm);
 void	ft_mem_champs(t_base_player *player, char *av);
 
 /*

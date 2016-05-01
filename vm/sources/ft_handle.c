@@ -17,12 +17,61 @@ int		ft_check_args(char *av)
 }
 
 /*
+fonction check si le dump et num_plr est bien un nombre
+*/
+
+int		ft_is_number(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+/*
+fonction recupere le dump et stock dans la T_vm
+*/
+
+int		ft_stock_dump(char **av, int *i, t_vm *vm)
+{
+	(*i)++;
+	if (ft_is_number(av[*i]) == 0)
+		ft_error("ARG is not a number");
+	vm->dump = ft_itoa(av[*i]);
+	return (1);
+}
+
+int		ft_stock_num_plr(char **av, int *i, t_vm *vm)
+{
+
+	(*i)++;
+	if (ft_is_number(av[*i]) == 0)
+		ft_error("ARG is not a number");
+	vm->bplr.tab[i_plr] = ft_itoa(av[*i]);
+	vm->bplr.i_plr += vm->i_plr + 1;
+
+}
+
+/*
 fonction pour gerer les bonus
 */
 
-void	ft_handle_bonus(char *av)
+void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 {
-	(void)av;
+	if (ft_strcmp("-d", av[*i]) == 0)
+		ft_stock_dump(av, i, vm);
+	if (ft_strcmp("-n", av[*i]) == 0)
+		ft_stock_num_plr(av, i, vm);
+
+
+
+
 }
 /*
 alloue de la memoire pour une nouvelle cellule et met de l'information dedans,
@@ -40,7 +89,7 @@ void	ft_mem_champs(t_base_player *player, char *av)
 gerer chaque arguments, voir si cest un ".cor" (rentre dans les verifs des champions), sinon dans ceux des bonus
 */
 
-void	ft_handle_args(int ac, char **av)
+void	ft_handle_args(int ac, char **av, t_vm *vm)
 {
 	int				i;
 	t_base_player	*player;
@@ -56,24 +105,11 @@ void	ft_handle_args(int ac, char **av)
 		}
 		else
 		{
-			ft_handle_bonus(av[i]);
+			ft_handle_bonus(av, &i, vm);
 		}
 		i++;
 	}
 	printf("nombre de joueurs : %d\n", player->nb_plyr);
 	if (!(player->nb_plyr > 0 && player->nb_plyr < 5))
 		ft_error("Wrong number of players");
-}
-
-int		main(int argc, char **argv)
-{
-	if (argc > 1)
-	{
-		ft_handle_args(argc, argv);
-	}
-	else
-	{
-		ft_error("Not enough arguments");
-	}
-	return (0);
 }

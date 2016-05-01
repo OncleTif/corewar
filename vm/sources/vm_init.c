@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 17:02:52 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/29 12:34:20 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/01 11:37:54 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ static void	cpu_init(t_cpu)
 
 void		vm_init(t_vm *vm)
 {
+
+	vm->bplr.i_plr = 0;
+	vm->bplr.tab[0] = 1;
+	vm->bplr.tab[1] = 2;
+	vm->bplr.tab[2] = 3;
+	vm->bplr.tab[3] = 4;
+
+
 	cpu_init(vm->cpu);
 	core_zero(vm->core);
 	core_posplyer(vm);

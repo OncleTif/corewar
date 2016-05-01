@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:59:24 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 15:52:39 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 10:53:24 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ union	u_4o
 };
 
 short int	r2oi(short int val);
-int	r4oi(int val);
+int			r4oi(int val);
 
 // reverse octet avec arg et return en union*
 union u_2o *r2o(union u_2o *val); // reverse 2 octet

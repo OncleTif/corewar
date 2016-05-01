@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:31:38 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/29 17:58:23 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/01 11:38:10 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ struct s_player
 */
 typedef struct      s_bin
 {
-	int		num_plyr; // la VM ou -n attribut un numero au joueur 
+	int		num_plyr; // la VM ou -n attribut un numero au joueur
 	unsigned int		magic;
 	char				prog_name[PROG_NAME_LENGTH + 1];
 	unsigned int		prog_size;
@@ -36,6 +36,7 @@ typedef struct      s_bin
 typedef struct s_list_player	t_list_player;
 struct s_list_player
 {
+
 	t_bin			*plr;
 	t_list_player	*next;
 };
@@ -43,6 +44,9 @@ struct s_list_player
 typedef struct s_base_player	t_base_player;
 struct s_base_player
 {
+	int		i_plr;
+	int 			tab_num[4]; // stock les num des champs par defaut
+								// peut etre modif par -n ***
 	int				nb_plyr; //nombre de player
 	t_list_player	*lst_plyr;
 };
