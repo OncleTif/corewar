@@ -5,12 +5,13 @@ void print_magic(t_bin plr, char *buff)
 	int i;
 
 	i = 0;
-	putchar('\n');
-	while (i < 4)
-	{
-		printf("|%x|", buff[i]);
-		i++;
-	}
+	(void)buff;
+	// putchar('\n');
+	// while (i < 4)
+	// {
+	// 	printf("|%x|", buff[i]);
+	// 	i++;
+	// }
 	printf("\n%x\n", plr.magic);
 }
 
@@ -32,11 +33,12 @@ void print_prog_size(t_bin plr, char *buff)
 	int i;
 
 	i = 0;
-	while (i < 4)
-	{
-		printf("[%x]", buff[i]);
-		i++;
-	}
+	(void)buff;
+	// while (i < 4)
+	// {
+	// 	printf("[%x]", buff[i]);
+	// 	i++;
+	// }
 	printf("\n%x\n", plr.prog_size);
 }
 

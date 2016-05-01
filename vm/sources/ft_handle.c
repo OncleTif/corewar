@@ -6,7 +6,13 @@ checker si cest un ".cor" return 1, sinon 0
 
 int		ft_check_args(char *av)
 {
-	if (ft_strcmp(ft_strstr(av, ".cor"), ".cor") == 0)
+	char *str;
+
+	ft_putstr(av);
+	str = ft_strstr(av, ".cor");
+	if (!str)
+		return (0);
+	if (ft_strcmp(str, ".cor\0") == 0)
 	{
 		return (1);
 	}
@@ -43,7 +49,7 @@ int		ft_stock_dump(char **av, int *i, t_vm *vm)
 	(*i)++;
 	if (ft_is_number(av[*i]) == 0)
 		ft_error("ARG is not a number");
-	vm->dump = ft_itoa(av[*i]);
+	vm->dump = ft_atoi(av[*i]);
 	return (1);
 }
 /*
@@ -55,7 +61,7 @@ int		ft_stock_verbose(char **av, int *i, t_vm *vm)
 	(*i)++;
 	if (ft_is_number(av[*i]) == 0)
 		ft_error("ARG is not a number");
-	vm->verbose = ft_itoa(av[*i]);
+	vm->verbose = ft_atoi(av[*i]);
 	return (1);
 }
 /*
@@ -68,7 +74,7 @@ void	ft_check_other_num(t_base_player bplr)
 	i = 0;
 	while (i < 4)
 	{
-		if ((i != bplr.i_plr) && (bplr.tab[bplr.iplr] == bplr.tab[i]))
+		if ((i != bplr.i_plr) && (bplr.tab[bplr.i_plr] == bplr.tab[i]))
 			bplr.tab[i] = bplr.tmpnum;
 		i++;
 	}
@@ -79,14 +85,14 @@ fonction recupere le num du plr et stock dans la T_vm
 */
 int		ft_stock_num_plr(char **av, int *i, t_vm *vm)
 {
-
 	(*i)++;
 	if (ft_is_number(av[*i]) == 0)
 		ft_error("ARG is not a number");
 	BPLR.tmpnum = BPLR.tab[BPLR.i_plr];
-	BPLR.tab[BPLR.i_plr] = ft_itoa(av[*i]);
+	BPLR.tab[BPLR.i_plr] = ft_atoi(av[*i]);
 	BPLR.i_plr += BPLR.i_plr + 1;
 	ft_check_other_num(BPLR);
+	return (0);
 }
 
 /*
@@ -95,19 +101,29 @@ fonction pour gerer les bonus et ARGS
 
 void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 {
-	if (ft_strcmp("-d", av[*i]) == 0)
+	if (ft_strcmp("-d", av[*i]) == 0){
+		ft_putstr(">>DANS -D<<");
 		ft_stock_dump(av, i, vm);
+	}
 	if (ft_strcmp("-n", av[*i]) == 0)
+	{
+		ft_putstr(">>DANS -N<<");
+
+
 		ft_stock_num_plr(av, i, vm);
+	}
 	if (ft_strcmp("-v", av[*i]) == 0)
+	{
+		ft_putstr(">>DANS -V<<");
 		ft_stock_verbose(av, i, vm);
-}
+}}
+
 /*
 INIT numero du plr
 */
-void	ft_init_num_plr(t_base_player *player)
+void	ft_init_num_plr(t_base_player *player, t_list_player *tmp)
 {
-	player->lst_plyr->num_plyr = player->tab_num[nb_plyr];
+	tmp->plr->num_plyr = player->tab[player->nb_plyr];
 }
 
 /*
@@ -128,12 +144,11 @@ void	ft_mem_champs(t_base_player *player, char *av)
 	else
 	{
 		tmp2 = player->lst_plyr;
-		while (tmp2)
-			tmp2 = tmp2->next;
-		tmp2 = tmp;
+		player->lst_plyr = tmp;
+		tmp->next = tmp2;
 	}
-	ft_init_num_plr(player);
-	player->nb_plyr++;
+	ft_init_num_plr(player, tmp);
+//	player->nb_plyr = player->nb_plyr + 1;
 }
 
 /*
@@ -143,24 +158,31 @@ gerer chaque arguments, voir si cest un ".cor" (rentre dans les verifs des champ
 void	ft_handle_args(int ac, char **av, t_vm *vm)
 {
 	int				i;
-	t_base_player	*player;
+//	t_base_player	*player;
 
 	i = 1;
-	player = (t_base_player*)ft_memalloc(sizeof(t_base_player));
-	player->nb_plyr = 0;
+//	player = (t_base_player*)ft_memalloc(sizeof(t_base_player));
+	BPLR.nb_plyr = 0;
+			ft_putstr(">>WTF<<\n");
 	while (i < ac)
 	{
 		if (ft_check_args(av[i]))
 		{
-			ft_mem_champs(player, av[i]);
+			ft_putstr(">>WTF<<\n");
+			ft_mem_champs(&(BPLR), av[i]);
+			vm->bplr.nb_plyr += 1;
+			printf("nombre de joueurs : %d\n", vm->bplr.nb_plyr);
+			if (BPLR.nb_plyr > 4)
+				ft_error("Wrong number of players");
 		}
 		else
 		{
+			ft_putstr(">>GO IN HANDE BONUS<<\n");
 			ft_handle_bonus(av, &i, vm);
 		}
 		i++;
 	}
-	printf("nombre de joueurs : %d\n", player->nb_plyr);
-	if (!(player->nb_plyr > 0 && player->nb_plyr < 5))
+	if (BPLR.nb_plyr <= 0)
 		ft_error("Wrong number of players");
+			ft_putstr(">>FIN<<\n");
 }

@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:59:35 by djoly             #+#    #+#             */
-/*   Updated: 2016/04/28 16:45:03 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 14:52:30 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define IR_H
 # include	"corewar.h"
 
-typedef struct s_ir	t_ir;
 struct s_ir
 {
 	char	*ir; // ou char ir[14]  14 octet max

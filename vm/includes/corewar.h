@@ -6,14 +6,14 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 13:01:21 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 14:54:07 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
 # include "../../libft/libft.h"
-//# include "struct_types.h"
+# include "struct_types.h"
 # include "op.h"
 # include "process.h"
 # include "reverse_octet.h"
@@ -29,8 +29,6 @@
 
 void print(void);
 
-
-typedef struct s_cpu	t_cpu;
 struct s_cpu
 {
 	//int		ir; //instruction registre
@@ -40,21 +38,18 @@ struct s_cpu
 						//
 };
 
-typedef struct s_octet	t_octet;
 struct s_octet
 {
 	int		plyr; // numero du dernier player a ecrire
 	int		pc; // bool, pc sur loctet ou non
 };
 
-typedef struct s_base_core	t_base_core;
 struct s_base_core
 {
 	char	core[MEM_SIZE];
 	t_octet data[MEM_SIZE];
 };
 
-typedef struct s_vm	t_vm;
 struct s_vm
 {
 	int				dump; //  -dump aff et exit apres nbr cycles
@@ -105,7 +100,7 @@ void	ft_stock_magic(int fd, char *buff, t_bin *plr);
 
 void	ft_handle_args(int ac, char **av, t_vm *vm);
 int		ft_check_args(char *av);
-void	ft_handle_bonus(char *av, int *i, t_vm *vm);
+void	ft_handle_bonus(char **av, int *i, t_vm *vm);
 void	ft_mem_champs(t_base_player *player, char *av);
 
 /*
