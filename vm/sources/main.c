@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 15:45:26 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 16:28:53 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		main(int argc, char **argv)
 {
 	t_vm	vm;
 
+	vm_init(&vm);
 	if (argc > 1)
 	{
 		ft_handle_args(argc, argv, &vm);
