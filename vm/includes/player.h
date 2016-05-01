@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:31:38 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 15:33:43 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 16:33:34 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ struct s_base_player
 {
 	int				tmpnum;	// stock le numero du plr qui a etait modifier
 	int				i_plr;//tmp
-	int 			tab[4]; // stock les num des champs par defaut
+	unsigned int 	tab[4]; // stock les num des champs par defaut
 								// peut etre modif par -n ***
 	int				nb_plyr; //nombre de player
 	t_list_player	*lst_plyr;
