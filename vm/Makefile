@@ -6,7 +6,7 @@
 #    By: djoly <djoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/01 17:59:33 by djoly            ###   ########.fr        #
+#    Updated: 2016/05/01 19:22:56 by djoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIB = ../libft/libft.a
 SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/ft_memrev.c sources/ft_print_champion.c \
 		sources/ft_handle.c sources/ft_init_arena.c \
-		sources/main.c \
+		sources/ft_init_proc.c sources/main.c \
 		sources/reverse_octet.c sources/vm_init.c \
 # sources/testdav.c \
 

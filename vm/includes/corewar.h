@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 18:11:43 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 19:23:49 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # define BPLR vm->bplr
+# define BPROC vm->bproc
 
 void print(void);
 
@@ -55,7 +56,7 @@ struct s_vm
 	int				dump; //  -dump aff et exit apres nbr cycles
 	int				verbose; //  -v affiche les action
 	t_cpu			cpu;
-	t_base_process	proc;
+	t_base_process	bproc;
 	t_base_core		bcore;
 	t_base_player	bplr;
 	int				last_live; // numero du dernier player qui a dit LIVE
@@ -77,6 +78,11 @@ struct s_base_core
 	t_octet	core[MEM_SIZE];
 };
 */
+
+/*
+	ft_init_proc.c
+*/
+int		ft_init_lst_proc(t_vm *vm);
 
 /*
 	ft_init_arena

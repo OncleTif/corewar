@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:31:38 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 18:40:26 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 19:15:17 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ struct s_player
 */
 struct      s_bin
 {
-	int		num_plyr; // la VM ou -n attribut un numero au joueur
+	int					pc_tmp;
+	int					num_plyr; // la VM ou -n attribut un numero au joueur
 	unsigned int		magic;
 	char				prog_name[PROG_NAME_LENGTH + 1];
 	unsigned int		prog_size;

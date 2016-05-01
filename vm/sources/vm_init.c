@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 17:02:52 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 18:01:25 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 19:06:29 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		vm_init(t_vm *vm)
 	vm->bplr.tab[1] = 0xfffffffe;
 	vm->bplr.tab[2] = 0xfffffffd;
 	vm->bplr.tab[3] = 0xfffffffc;
-
+	vm->bproc.lst_proc = NULL;
 
 	// cpu_init(vm->cpu);
 	core_zero(vm->bcore);

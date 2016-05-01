@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 17:41:05 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 18:41:12 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 19:15:45 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	copy_plr(t_vm *vm, t_bin *plr, int i)
 
 	size = r4oi(plr->prog_size);
 	j = 0;
+	plr->pc_tmp = i;
 	while (j < size)
 	{
 		vm->bcore.core[i] = plr->program[j];

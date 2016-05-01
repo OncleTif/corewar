@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:26:12 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 14:48:46 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 19:17:55 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ struct s_process
 {
 	int		num;  // numero du processus
 
-	int		plr; // num du plyr ou
+	int		num_plr; // num du plyr ou
 //	t_bin		*plr; // pointeur sur son player, num du plr dedans
 
 	int		pc;
@@ -30,13 +30,13 @@ struct s_process
 
 struct s_list_process
 {
-	t_process	*proc;
+	t_process	proc;
 	t_list_process *next;	//
 };
 
 struct s_base_process
 {
 	int		nb_proc;
-	t_list_process	**beg_list; // liste des processs
+	t_list_process	*lst_proc; // liste des processs
 };
 #endif
