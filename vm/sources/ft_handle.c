@@ -64,9 +64,11 @@ int		ft_stock_verbose(char **av, int *i, t_vm *vm)
 	vm->verbose = ft_atoi(av[*i]);
 	return (1);
 }
+
 /*
 Change les autre num de plr en cas de doublon
 */
+
 void	ft_check_other_num(t_base_player bplr)
 {
 	int		i;
@@ -83,14 +85,15 @@ void	ft_check_other_num(t_base_player bplr)
 /*
 fonction recupere le num du plr et stock dans la T_vm
 */
+
 int		ft_stock_num_plr(char **av, int *i, t_vm *vm)
 {
 	(*i)++;
 	if (ft_is_number(av[*i]) == 0)
 		ft_error("ARG is not a number");
-	BPLR.tmpnum = BPLR.tab[BPLR.i_plr];
-	BPLR.tab[BPLR.i_plr] = ft_atoi(av[*i]);
-	BPLR.i_plr += BPLR.i_plr + 1;
+	BPLR.tmpnum = BPLR.tab[BPLR.nb_plyr];
+	BPLR.tab[BPLR.nb_plyr] = ft_atoi(av[*i]);
+	BPLR.i_plr += 1;
 	ft_check_other_num(BPLR);
 	return (0);
 }

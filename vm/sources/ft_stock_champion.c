@@ -31,8 +31,11 @@ void	ft_stock_prog_size(int fd, char *buff, t_bin *plr)
 	if ((ret = read(fd, buff, 4) == -1))
 		ft_error("error READ prog_size");
 	buff[ret] = '\0';
-	memrev(buff, 4);
+	//memrev(buff, 4);
 	plr->prog_size = (*((int *)buff));
+	//printf("prof %d", plr->prog_size);
+	if (r4oi(plr->prog_size) >= CHAMP_MAX_SIZE)
+		ft_error("Champs exceeded CHAMP_MAX_SIZE");
 	// print_prog_size(*plr, buff);
 }
 
@@ -52,7 +55,7 @@ void	ft_stock_program(int fd, t_bin *plr)
 
 	if (!(ret = read(fd, plr->program, plr->prog_size)))
 		ft_error("error READ program");
-	if (ret ^ plr->prog_size)
+	if (ret ^ r4oi(plr->prog_size))
 		ft_error("Wrong prog");
 	plr->program[ret] = '\0';
 	// print_prog(*plr);

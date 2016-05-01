@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 17:02:52 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 11:58:33 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 16:31:24 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ static void	core_zero(t_base_core core)
 		i++;
 	}
 }
-
-static void	cpu_init(t_cpu)
-{
-	current_cycle = 0;
-	cycle2die = CYCLE_TO_DIE;
-}
+//
+// static void	cpu_init(t_cpu *)
+// {
+// 	current_cycle = 0;
+// 	cycle2die = CYCLE_TO_DIE;
+// }
 
 void		vm_init(t_vm *vm)
 {
@@ -42,9 +42,9 @@ void		vm_init(t_vm *vm)
 	vm->bplr.tab[3] = 0xfffffffc;
 
 
-	cpu_init(vm->cpu);
+	// cpu_init(vm->cpu);
 	core_zero(vm->core);
-	core_posplyer(vm);
+	// core_posplyer(vm);
 
 
 }
