@@ -6,12 +6,26 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 17:26:56 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 17:32:03 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
+void	print_core(t_base_core *core)
+{
+	int i;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		if (i % 64 == 0)
+			printf("\n");
+		//printf(" %.2d", core->core[i]);
+		printf(" %.2x", core->core[i]);
+		i++;
+	}
+}
 void	ft_print(t_vm *vm)
 {
 	t_list_player *tmp;
@@ -52,5 +66,6 @@ int		main(int argc, char **argv)
 		ft_error("Not enough arguments");
 	}
 	ft_print(&vm);
+	print_core(&vm.core);
 	return (0);
 }
