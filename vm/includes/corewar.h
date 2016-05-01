@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 16:32:43 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/01 18:11:43 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ struct s_octet
 
 struct s_base_core
 {
-	char	core[MEM_SIZE];
+	unsigned char	core[MEM_SIZE];
 	t_octet data[MEM_SIZE];
 };
 
@@ -56,7 +56,7 @@ struct s_vm
 	int				verbose; //  -v affiche les action
 	t_cpu			cpu;
 	t_base_process	proc;
-	t_base_core		core;
+	t_base_core		bcore;
 	t_base_player	bplr;
 	int				last_live; // numero du dernier player qui a dit LIVE
 
@@ -77,6 +77,11 @@ struct s_base_core
 	t_octet	core[MEM_SIZE];
 };
 */
+
+/*
+	ft_init_arena
+*/
+int		ft_init_arena(t_vm *vm);
 
 /*
 	ft_check_champion.c

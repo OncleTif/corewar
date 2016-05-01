@@ -6,13 +6,13 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 17:32:03 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 18:07:11 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	print_core(t_base_core *core)
+void	print_core(t_base_core *bcore)
 {
 	int i;
 
@@ -22,7 +22,7 @@ void	print_core(t_base_core *core)
 		if (i % 64 == 0)
 			printf("\n");
 		//printf(" %.2d", core->core[i]);
-		printf(" %.2x", core->core[i]);
+		printf(" %.2x", bcore->core[i]);
 		i++;
 	}
 }
@@ -66,6 +66,7 @@ int		main(int argc, char **argv)
 		ft_error("Not enough arguments");
 	}
 	ft_print(&vm);
-	print_core(&vm.core);
+	ft_init_arena(&vm);
+	print_core(&vm.bcore);
 	return (0);
 }
