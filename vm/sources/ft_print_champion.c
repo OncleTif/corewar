@@ -63,7 +63,7 @@ void print_prog(t_bin plr)
 
 	i = 0;
 	printf("programme\n");
-	while (i < (int)plr.prog_size)
+	while (i < r4oi(plr.prog_size))
 	{
 		printf("%0x", plr.program[i]);
 		i++;
