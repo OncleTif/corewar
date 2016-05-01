@@ -6,7 +6,7 @@ checker si cest un ".cor" return 1, sinon 0
 
 int		ft_check_args(char *av)
 {
-	if (ft_strcmp(ft_strstr(av, ".cor"), ".cor\0") == 0)
+	if (ft_strcmp(ft_strstr(av, ".cor"), ".cor") == 0)
 	{
 		return (1);
 	}
@@ -46,7 +46,18 @@ int		ft_stock_dump(char **av, int *i, t_vm *vm)
 	vm->dump = ft_itoa(av[*i]);
 	return (1);
 }
+/*
+fonction recupere le verbose et stock dans la T_vm
+*/
 
+int		ft_stock_verbose(char **av, int *i, t_vm *vm)
+{
+	(*i)++;
+	if (ft_is_number(av[*i]) == 0)
+		ft_error("ARG is not a number");
+	vm->verbose = ft_itoa(av[*i]);
+	return (1);
+}
 /*
 Change les autre num de plr en cas de doublon
 */
@@ -79,7 +90,7 @@ int		ft_stock_num_plr(char **av, int *i, t_vm *vm)
 }
 
 /*
-fonction pour gerer les bonus
+fonction pour gerer les bonus et ARGS
 */
 
 void	ft_handle_bonus(char **av, int *i, t_vm *vm)
@@ -88,20 +99,40 @@ void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 		ft_stock_dump(av, i, vm);
 	if (ft_strcmp("-n", av[*i]) == 0)
 		ft_stock_num_plr(av, i, vm);
-
-
-
-
+	if (ft_strcmp("-v", av[*i]) == 0)
+		ft_stock_verbose(av, i, vm);
 }
+/*
+INIT numero du plr
+*/
+void	ft_init_num_plr(t_base_player *player)
+{
+	player->lst_plyr->num_plyr = player->tab_num[nb_plyr];
+}
+
 /*
 alloue de la memoire pour une nouvelle cellule et met de l'information dedans,
 */
 void	ft_mem_champs(t_base_player *player, char *av)
 {
-	player->lst_plyr = (t_list_player*)ft_memalloc(sizeof(t_list_player));
-	player->lst_plyr->plr = (t_bin *)ft_memalloc(sizeof(t_bin));
-	ft_open_champion(av, player->lst_plyr->plr);
-	player->lst_plyr = player->lst_plyr->next;
+	t_list_player	*tmp;
+	t_list_player	*tmp2;
+
+	tmp = (t_list_player*)ft_memalloc(sizeof(t_list_player));
+	tmp->plr = (t_bin *)ft_memalloc(sizeof(t_bin));
+	ft_open_champion(av, tmp->plr);
+	if (!player->lst_plyr)
+	{
+		player->lst_plyr = tmp;
+	}
+	else
+	{
+		tmp2 = player->lst_plyr;
+		while (tmp2)
+			tmp2 = tmp2->next;
+		tmp2 = tmp;
+	}
+	ft_init_num_plr(player);
 	player->nb_plyr++;
 }
 

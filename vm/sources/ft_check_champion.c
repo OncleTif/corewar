@@ -5,7 +5,7 @@ static void	ft_read_champion(int fd, t_bin *plr)
 	char	*buff;
 	int		ret;
 
-	buff = malloc(sizeof(char) * 4 + 1);
+	buff = ft_memalloc(sizeof(char) * 4 + 1);
 	ft_stock_magic(fd, buff, plr);
 	ft_stock_name(fd, plr);
 	if (!(ret = read(fd, buff, 4))
