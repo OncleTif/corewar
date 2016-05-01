@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 17:02:52 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 11:37:54 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 11:58:33 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void		vm_init(t_vm *vm)
 {
 
 	vm->bplr.i_plr = 0;
-	vm->bplr.tab[0] = 1;
-	vm->bplr.tab[1] = 2;
-	vm->bplr.tab[2] = 3;
-	vm->bplr.tab[3] = 4;
+	vm->bplr.tab[0] = 0xffffffff;
+	vm->bplr.tab[1] = 0xfffffffe;
+	vm->bplr.tab[2] = 0xfffffffd;
+	vm->bplr.tab[3] = 0xfffffffc;
 
 
 	cpu_init(vm->cpu);

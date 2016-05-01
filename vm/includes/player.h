@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:31:38 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 11:38:10 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/01 12:12:43 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ struct s_list_player
 typedef struct s_base_player	t_base_player;
 struct s_base_player
 {
-	int		i_plr;
+	int				tmpnum;	// stock le numero du plr qui a etait modifier
+	int				i_plr;
 	int 			tab_num[4]; // stock les num des champs par defaut
 								// peut etre modif par -n ***
 	int				nb_plyr; //nombre de player

@@ -47,15 +47,35 @@ int		ft_stock_dump(char **av, int *i, t_vm *vm)
 	return (1);
 }
 
+/*
+Change les autre num de plr en cas de doublon
+*/
+void	ft_check_other_num(t_base_player bplr)
+{
+	int		i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if ((i != bplr.i_plr) && (bplr.tab[bplr.iplr] == bplr.tab[i]))
+			bplr.tab[i] = bplr.tmpnum;
+		i++;
+	}
+}
+
+/*
+fonction recupere le num du plr et stock dans la T_vm
+*/
 int		ft_stock_num_plr(char **av, int *i, t_vm *vm)
 {
 
 	(*i)++;
 	if (ft_is_number(av[*i]) == 0)
 		ft_error("ARG is not a number");
-	vm->bplr.tab[i_plr] = ft_itoa(av[*i]);
-	vm->bplr.i_plr += vm->i_plr + 1;
-
+	BPLR.tmpnum = BPLR.tab[BPLR.i_plr];
+	BPLR.tab[BPLR.i_plr] = ft_itoa(av[*i]);
+	BPLR.i_plr += BPLR.i_plr + 1;
+	ft_check_other_num(BPLR);
 }
 
 /*
