@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/04/29 16:50:32 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/02 12:01:39 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ struct						s_label
 	char					*name;
 	int						pos;
 	int						inst_pos;
+	int						att_type;
 };
 
 struct						s_champ

@@ -6,11 +6,12 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/02 11:39:17 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/02 13:02:27 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
+#include "../vm/includes/reverse_octet.h"
 
 char		**ft_get_lbl(char **tab, t_champ *cmp)
 {
@@ -23,13 +24,13 @@ char		**ft_get_lbl(char **tab, t_champ *cmp)
 		ft_putstr("**");
 		ft_putstr(tab[0]);
 		ft_putstr("**");
-				ft_putendl("label!!");
+		ft_putendl("label!!");
 		ft_add_label(cmp, ft_strsub(tab[0], 0, end - tab[0]));
 		if (!tab[0][(int)end - (int)tab[0] + 1])
 		{
 			ft_putchar(tab[0][(int)end - (int)tab[0] + 1]);
-				ft_putendl("decal!!");
-				tab[0][0] = 0;
+			ft_putendl("decal!!");
+			tab[0][0] = 0;
 			while (tab[i])
 			{
 				tab[i - 1] = tab[i];
@@ -59,6 +60,90 @@ int			ret_type(char *str)
 	return (T_IND);
 }
 
+void			get_dir(t_champ *c, char *str, int i)
+{
+	union u_4o	dir;
+	int			j;
+
+	j = 0;
+	if (g_op_tab[i].index)
+		j = 2;
+	if (str[0] == LABEL_CHAR)
+	{
+
+
+		c->pos = c->pos + 4 - j;
+	}
+	else
+	{
+		dir.i = ft_atoi(str);
+		while (j < 4)
+		{
+			c->bin[c->pos] = dir.c[j];
+			j++;
+			c->pos++;
+		}
+	}
+}
+
+void			get_reg(t_champ *c, char *str)
+{
+	int			reg;
+
+	reg = ft_atoi(str);
+	printf("reg = %d\n", reg);
+	printf("str = %s\n", str);
+	if (reg <= 0 || reg > 16)
+		ft_error("Reg does not exist.");
+	c->bin[c->pos] = (char)reg;
+	c->pos++;
+}
+
+void			get_ind(t_champ *c, char *str)
+{
+	union u_2o	ind;
+	int			i;
+	int			prov;
+
+	if (str[0] == LABEL_CHAR)
+	{
+
+
+		c->pos = c->pos + IND_SIZE;
+	}
+	else
+	{
+		prov = ft_atoi(str);
+		ind.i = (short int)(c->inst_pos - prov);
+		i = 0;
+		while (i < IND_SIZE)
+		{
+			c->bin[c->pos] = ind.c[i];
+			i++;
+			c->pos++;
+		}
+	}
+}
+
+void		get_attr(int i, char **tab, t_champ *c)
+{
+	int		j;
+	int		ret;
+
+	j = 1;
+	while (tab[j])
+	{
+		ret = ret_type(tab[j]);
+		if (ret == T_DIR)
+			get_dir(c, tab[j] + 1, i);
+		else if (ret == T_IND)
+			get_ind(c, tab[j]);
+		else if (ret == T_REG)
+			get_reg(c, tab[j] + 1);
+		j++;
+	}
+}
+
 void		op_types_read(int i, char **tab, t_champ *c)
 {
 	int		j;
@@ -71,10 +156,10 @@ void		op_types_read(int i, char **tab, t_champ *c)
 	while (tab[j])
 	{
 		ret = ret_type(tab[j]);
-//		printf("tab[j] = %s\n", tab[j]);
+		//		printf("tab[j] = %s\n", tab[j]);
 		if (!(g_op_tab[i].att[j - 1] & ret))
 		{
-//			printf("g_op_tab[%d] = %d, j = %d, ret = %d\n", i, g_op_tab[i].att[j-1], j, ret);
+			//			printf("g_op_tab[%d] = %d, j = %d, ret = %d\n", i, g_op_tab[i].att[j-1], j, ret);
 			ft_error("Wrong attribute type.");
 		}
 		ocp = (ret == T_IND) ? (ocp | (3 << (8 - j * 2))) :
@@ -86,6 +171,7 @@ void		op_types_read(int i, char **tab, t_champ *c)
 		c->bin[c->pos] = ocp;
 		c->pos++;
 	}
+	get_attr(i, tab, c);
 }
 
 void		find_instr(t_champ *c, char *tmp)
