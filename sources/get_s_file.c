@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/04/29 18:52:03 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/02 10:14:49 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		check_mask(int i, char **tmp, t_champ *cmp)
 	tmp++;
 }
 
-void		get_instr(t_champ *c, char *tmp)
+void		find_instr(t_champ *c, char *tmp)
 {
 	char	**tab;
 	int		i;
@@ -148,7 +148,7 @@ void		read_s_file(t_champ *c, char *file)
 			else if (line[0])
 			{
 				ft_putendl(ft_strjoin("lecture ligne instruc", line));
-				get_instr(c, tmp);
+				find_instr(c, tmp);
 			}
 			// suite lecture
 		}
