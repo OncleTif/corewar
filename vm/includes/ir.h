@@ -20,6 +20,7 @@ struct s_ir
 	int		opcode;
 	int		ocp;
 	int		nb_arg;
+	int		cycle_to_wait;
 	char	types_args[3]; //decalage bin sur ocp pour definir 01 10 11 ou 00
 };
 
