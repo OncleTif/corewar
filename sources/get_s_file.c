@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/02 10:14:49 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/02 11:39:17 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char		**ft_get_lbl(char **tab, t_champ *cmp)
 			while (tab[i])
 			{
 				tab[i - 1] = tab[i];
+				tab[i] = 0;
 				i++;
 			}
 		}
@@ -49,6 +50,44 @@ void		check_mask(int i, char **tmp, t_champ *cmp)
 	tmp++;
 }
 
+int			ret_type(char *str)
+{
+	if (str[0] == DIRECT_CHAR)
+		return (T_DIR);
+	else if (str[0] == 'r')
+		return (T_REG);
+	return (T_IND);
+}
+
+void		op_types_read(int i, char **tab, t_champ *c)
+{
+	int		j;
+	int		ret;
+	char	ocp;
+
+	ocp = 0;
+	j = 1;
+	check_mask(i, tab, c);
+	while (tab[j])
+	{
+		ret = ret_type(tab[j]);
+//		printf("tab[j] = %s\n", tab[j]);
+		if (!(g_op_tab[i].att[j - 1] & ret))
+		{
+//			printf("g_op_tab[%d] = %d, j = %d, ret = %d\n", i, g_op_tab[i].att[j-1], j, ret);
+			ft_error("Wrong attribute type.");
+		}
+		ocp = (ret == T_IND) ? (ocp | (3 << (8 - j * 2))) :
+			(ocp | ((char)ret << (8 - j * 2)));
+		j++;
+	}
+	if (g_op_tab[i].carry)
+	{
+		c->bin[c->pos] = ocp;
+		c->pos++;
+	}
+}
+
 void		find_instr(t_champ *c, char *tmp)
 {
 	char	**tab;
@@ -63,7 +102,10 @@ void		find_instr(t_champ *c, char *tmp)
 	while (i < 16 && ft_strncmp(g_op_tab[i].name, tab[0], len))
 		i++;
 	if (i < 16)
-		check_mask(i, tab, c);
+	{
+		op_types_read(i, tab, c);
+		//check_mask(i, tab, c);
+	}
 	//else if (tab[0][0] && tab[0][0] != '#' && tab[0][0] != ' ' )
 	//	ft_error("wrong format line");
 }
