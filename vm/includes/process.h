@@ -21,7 +21,7 @@ struct s_process
 
 	int		num_plr; // num du plyr ou
 //	t_bin		*plr; // pointeur sur son player, num du plr dedans
-
+	int		cycle_to_wait;
 	int		pc;
 	int		reg[16];
 	int		carry;
