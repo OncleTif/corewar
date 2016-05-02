@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/02 13:02:27 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/02 18:24:46 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,24 +63,23 @@ int			ret_type(char *str)
 void			get_dir(t_champ *c, char *str, int i)
 {
 	union u_4o	dir;
-	int			j;
+	int			k;
 
-	j = 0;
+	k = 3;
 	if (g_op_tab[i].index)
-		j = 2;
+		k = 1;
 	if (str[0] == LABEL_CHAR)
 	{
-
-
-		c->pos = c->pos + 4 - j;
+		ft_add_miss(c, str + 1, k + 1);
+		c->pos = c->pos + k + 1;
 	}
 	else
 	{
 		dir.i = ft_atoi(str);
-		while (j < 4)
+		while (k >= 0)
 		{
-			c->bin[c->pos] = dir.c[j];
-			j++;
+			c->bin[c->pos] = dir.c[k];
+			k--;
 			c->pos++;
 		}
 	}
@@ -107,8 +106,7 @@ void			get_ind(t_champ *c, char *str)
 
 	if (str[0] == LABEL_CHAR)
 	{
-
-
+		ft_add_miss(c, str + 1, 4);
 		c->pos = c->pos + IND_SIZE;
 	}
 	else
@@ -159,7 +157,7 @@ void		op_types_read(int i, char **tab, t_champ *c)
 		//		printf("tab[j] = %s\n", tab[j]);
 		if (!(g_op_tab[i].att[j - 1] & ret))
 		{
-			//			printf("g_op_tab[%d] = %d, j = %d, ret = %d\n", i, g_op_tab[i].att[j-1], j, ret);
+			//printf("g_op_tab[%d] = %d, j = %d, ret = %d\n", i, g_op_tab[i].att[j-1], j, ret);
 			ft_error("Wrong attribute type.");
 		}
 		ocp = (ret == T_IND) ? (ocp | (3 << (8 - j * 2))) :
