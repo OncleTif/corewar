@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/03 12:12:35 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/03 12:52:28 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ char		**ft_get_lbl(char **tab, t_champ *cmp)
 	return (tab);
 }
 
-void		check_mask(int i, char **tmp, t_champ *cmp)
+void		get_inst(int i, char **tmp, t_champ *cmp)
 {
 	cmp->bin[cmp->pos] = (char)g_op_tab[i].opcode;
+	cmp->inst_pos = cmp->pos;
 	cmp->pos++;
 	tmp++;
 }
@@ -75,7 +76,11 @@ void			get_dir(t_champ *c, char *str, int i)
 	}
 	else
 	{
+//		printf("c->inst_pos = %d\n", c->inst_pos);
+//		printf("c->pos = %d\n", c->pos);
+
 		dir.i = ft_atoi(str);
+//		printf("ft_atoi(str) = %d\n", dir.i);
 		while (k >= 0)
 		{
 			c->bin[c->pos] = dir.c[k];
@@ -112,7 +117,10 @@ void			get_ind(t_champ *c, char *str)
 	else
 	{
 		prov = ft_atoi(str);
-		ind.i = (short int)(c->inst_pos - prov);
+//		printf("c->inst_pos = %d\n", c->inst_pos);
+//		printf("c->pos = %d\n", c->pos);
+//		printf("ft_atoi(str) = %d\n", prov);
+		ind.i = (short int)(prov - c->inst_pos);
 		i = 0;
 		while (i < IND_SIZE)
 		{
@@ -135,7 +143,10 @@ void		get_attr(int i, char **tab, t_champ *c)
 		if (ret == T_DIR)
 			get_dir(c, tab[j] + 1, i);
 		else if (ret == T_IND)
+		{
+			write(1, "ENTER\n", 6);
 			get_ind(c, tab[j]);
+		}
 		else if (ret == T_REG)
 			get_reg(c, tab[j] + 1);
 		j++;
@@ -150,7 +161,7 @@ void		op_types_read(int i, char **tab, t_champ *c)
 
 	ocp = 0;
 	j = 1;
-	check_mask(i, tab, c);
+	get_inst(i, tab, c);
 	while (tab[j])
 	{
 		ret = ret_type(tab[j]);
@@ -281,6 +292,6 @@ void		read_s_file(t_champ *c, char *file)
 		if (!check_str(c))
 			ft_error("Error in name or comment");
 	}
-	printf("C_NAME = -->%s<--\n", c->name);
-	printf("C_COMMENT = -->%s<--\n", c->comment);
+//	printf("C_NAME = -->%s<--\n", c->name);
+//	printf("C_COMMENT = -->%s<--\n", c->comment);
 }

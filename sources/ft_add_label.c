@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 16:38:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/03 12:12:37 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/03 12:52:31 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_fill_lbl(t_label *miss, t_label *lbl, t_champ *chp)
 	int			i;
 
 	i = 0;
-	u.i = miss->inst_pos - lbl->pos;
+	u.i = lbl->pos - miss->inst_pos;
 	while (i < miss->att_type)
 	{
 		chp->bin[miss->pos + miss->att_type - i - 1] = u.c[i];
