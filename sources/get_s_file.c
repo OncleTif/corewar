@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/03 18:00:54 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/03 18:21:15 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,13 +124,16 @@ void		get_attr(int i, char **tab, t_champ *c)
 	j = 1;
 	while (tab[j])
 	{
-		ret = ret_type(tab[j]);
-		if (ret == T_DIR)
-			get_dir(c, tab[j] + 1, i);
-		else if (ret == T_IND)
-			get_ind(c, tab[j]);
-		else if (ret == T_REG)
-			get_reg(c, tab[j] + 1);
+		if (!(tab[j][0] == ',' && tab[j][1] == 0))
+		{
+			ret = ret_type(tab[j]);
+			if (ret == T_DIR)
+				get_dir(c, tab[j] + 1, i);
+			else if (ret == T_IND)
+				get_ind(c, tab[j]);
+			else if (ret == T_REG)
+				get_reg(c, tab[j] + 1);
+		}
 		j++;
 	}
 }
@@ -167,7 +170,8 @@ void		find_instr(t_champ *c, char *tmp)
 	int		i;
 	size_t	len;
 
-	tab = ft_strsplit(ft_strreplace_char(tmp, 9, ' '), ' ');
+	tab = ft_strsplit(ft_strreplace_char(ft_strreplace_char(tmp, 9, ' ')
+				, ',', ' '), ' ');
 	if (tab && tab[0])
 	{
 		len = ft_strlen(tab[0]);
@@ -227,11 +231,12 @@ void		get_str(t_champ *c, char *tmp, char *str)
 char		*ft_strtrim_com(char *line)
 {
 	if (ft_strchr(line, '#'))
-		line = ft_strsub(line, 0 , ft_strchr(line, '#') - line);
+		line = ft_strsub(line, 0, ft_strchr(line, '#') - line);
 	if (ft_strchr(line, ';'))
-		line = ft_strsub(line, 0 , ft_strchr(line, ';') - line);
+		line = ft_strsub(line, 0, ft_strchr(line, ';') - line);
 	return (ft_strtrim(line));
 }
+
 void		read_s_file(t_champ *c, char *file)
 {
 	char	*line;
