@@ -6,7 +6,7 @@
 /*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 17:20:34 by ssicard           #+#    #+#             */
-/*   Updated: 2016/04/28 17:29:22 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/03 15:16:20 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	init_structure(t_champ *c)
 {
 	c->file_n = NULL;
 	c->pos = 0;
+	c->inst_pos = 0;
 	c->labels = NULL;
 	c->miss = NULL;
 	c->fd = 0;
-
 }
