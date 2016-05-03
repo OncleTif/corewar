@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 19:23:49 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/03 12:15:05 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@
 # include <unistd.h>
 # define BPLR vm->bplr
 # define BPROC vm->bproc
-
+# define CPU vm->cpu
+# define BCOR vm->bcore
 void print(void);
 
 struct s_cpu
 {
 	//int		ir; //instruction registre
-	int		current_cycle; // cycle en cours
+	int		cur_cycle; // cycle en cours
 	int		cycle2die; // cylcle to die a decrementer
 						//	tout les CYCLE_DELTA OU MAX_CHECKS
 						//
@@ -41,14 +42,14 @@ struct s_cpu
 
 struct s_octet
 {
-	int		plyr; // numero du dernier player a ecrire
+	int		num_plr; // numero du dernier player a ecrire
 	int		pc; // bool, pc sur loctet ou non
 };
 
 struct s_base_core
 {
 	unsigned char	core[MEM_SIZE];
-	t_octet data[MEM_SIZE];
+	t_octet			data[MEM_SIZE];
 };
 
 struct s_vm
