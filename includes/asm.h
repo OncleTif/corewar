@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/03 17:07:38 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/03 19:29:55 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,44 @@ struct						s_instr
 /*
 ** get_s_file.c
 */
-void						read_s_file(t_champ *chp, char *str);
-int							check_str(t_champ *chp);
+char						**ft_get_lbl(char **tab, t_champ *cmp);
+void						get_attr(int i, char **tab, t_champ *c);
+void						op_types_read(int i, char **tab, t_champ *c);
+void						find_instr(t_champ *c, char *tmp);
+void						ft_print_bin(t_champ *chp, int fd);
 /*
-** ft_print_champ.c
+** champ.c
 */
 void						ft_print_champ(t_champ *chp);
 void						ft_print_magic(int fd);
 void						ft_print_name(t_champ *chp, int fd);
 void						ft_print_bin_size(t_champ *chp, int fd);
 void						ft_print_comment(t_champ *chp, int fd);
-void						ft_print_bin(t_champ *chp, int fd);
 /*
 ** structure.c
 */
 void						init_structure(t_champ *chp);
+char						*epur_file_name(char *str);
 /*
-** ft_add_label.c
+** label.c
 */
 void						ft_find_labels(t_champ *chp);
 void						ft_add_label(t_champ *chp, char *lbl);
 void						ft_add_miss(t_champ *chp, char *lbl, int i);
 void						check_lbl(char	*str);
+/*
+** get_type.c
+*/
+void						get_inst(int i, char **tmp, t_champ *cmp);
+int							ret_type(char *str);
+void						get_dir(t_champ *c, char *str, int i);
+void						get_reg(t_champ *c, char *str);
+void						get_ind(t_champ *c, char *str);
+/*
+** read.c
+*/
+int							check_str(t_champ *c);
+void						get_str(t_champ *c, char *tmp, char *str);
+char						*ft_strtrim_com(char *line);
+void						read_s_file(t_champ *c, char *file);
 #endif

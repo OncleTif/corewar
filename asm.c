@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:55:31 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/03 12:12:38 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/03 19:29:58 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		main(int argc, char **argv)
 	if (argc == 2 && argv[1])
 	{
 		read_s_file(&chp, argv[1]);
+		//argv[1] = epur_file_name(argv[1]);
 		chp.file_n = ft_strjoin(argv[1], ".cor");
 		ft_find_labels(&chp);
 		ft_print_champ(&chp);

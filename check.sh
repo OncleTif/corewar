@@ -103,7 +103,7 @@ diff goinfre/champions/championships/2014/kelickel/Varimathras.cor goinfre/champ
 diff goinfre/champions/championships/2014/kmonrose/justin_bee.cor goinfre/champions/championships/2014/kmonrose/justin_bee.s.cor
 diff goinfre/champions/championships/2014/ldesgoui/_honeybadger.cor goinfre/champions/championships/2014/ldesgoui/_honeybadger.s.cor
 diff goinfre/champions/championships/2014/lseguin/skynet.cor goinfre/champions/championships/2014/lseguin/skynet.s.cor
-diff goinfre/champions/championships/2014/lsirigna/live.s goinfre/champions/championships/2014/lsirigna/live.s.cor
+diff goinfre/champions/championships/2014/lsirigna/live.cor goinfre/champions/championships/2014/lsirigna/live.s.cor
 diff goinfre/champions/championships/2014/mbacoux/meowluigi.cor goinfre/champions/championships/2014/mbacoux/meowluigi.s.cor
 diff goinfre/champions/championships/2014/mconraux/dubo.cor goinfre/champions/championships/2014/mconraux/dubo.s.cor
 diff goinfre/champions/championships/2014/rabid-on/jinx.cor goinfre/champions/championships/2014/rabid-on/jinx.s.cor

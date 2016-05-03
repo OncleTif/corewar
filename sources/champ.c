@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:50:09 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/03 15:29:20 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/03 19:23:28 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,6 @@ void	ft_print_comment(t_champ *chp, int fd)
 	zero = "\0\0\0\0";
 	write(fd, &chp->comment, COMMENT_LENGTH);
 	write(fd, zero, 4);
-}
-
-void	ft_print_bin(t_champ *chp, int fd)
-{
-	write(fd, &chp->bin, chp->pos);
 }
 
 void	ft_print_bin_size(t_champ *chp, int fd)
