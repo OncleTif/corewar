@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/03 12:15:05 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/03 15:00:33 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,4 +131,8 @@ void print_prog_name(t_bin plr);
 void print_prog_size(t_bin plr, char *buff);
 void print_comment(t_bin plr);
 
+/*
+cpu.c
+*/
+int		cpu(t_vm *vm);
 #endif

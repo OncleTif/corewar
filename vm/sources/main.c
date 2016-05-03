@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/03 14:19:34 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/03 15:20:39 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,14 @@ void	ft_print(t_vm *vm)
 	{
 		printf("__DANS PROC__\nnum:%d\nnum_plr:%d\npc:%d\nreg0:%d\ncarry:%d\n",
 				tmp2->proc.num, tmp2->proc.num_plr, tmp2->proc.pc, tmp2->proc.reg[0], tmp2->proc.carry);
+		i = 0;
+		printf("__IR__\nIR:");
+		while (i < 14)
+		{
+			printf("%.2x ", (unsigned char)tmp2->proc.ir.ir[i]);
+			i++;
+		}
+		printf("\n");
 		tmp2 = tmp2->next;
 	}
 }
@@ -82,7 +90,7 @@ void	print_corepc(t_base_core *bcore)
 		if (i % 64 == 0)
 			printf("\n");
 		//printf(" %.2d", core->core[i]);
-		printf(" %.2d", bcore->data[i].pc);
+		printf(" %u", bcore->data[i].pc);
 		i++;
 	}
 }
@@ -101,10 +109,12 @@ int		main(int argc, char **argv)
 	}
 	ft_init_arena(&vm);
 	ft_init_lst_proc(&vm);
-//	ft_print(&vm);
-	print_corepc(&vm.bcore);
+	cpu(&vm);
+
+	ft_print(&vm);
+//	print_corepc(&vm.bcore);
 	printf("\n\n");
-	print_corenum_plr(&vm.bcore);
+//	print_corenum_plr(&vm.bcore);
 	printf("\n\n");
 	print_core(&vm.bcore);
 	return (0);
