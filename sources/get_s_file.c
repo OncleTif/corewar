@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/03 14:25:16 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/03 14:53:00 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void			get_ind(t_champ *c, char *str)
 
 	if (str[0] == LABEL_CHAR)
 	{
-		ft_add_miss(c, str + 1, 4);
+		ft_add_miss(c, str + 1, 2);
 		c->pos = c->pos + IND_SIZE;
 	}
 	else
@@ -145,7 +145,7 @@ void		get_attr(int i, char **tab, t_champ *c)
 			get_dir(c, tab[j] + 1, i);
 		else if (ret == T_IND)
 		{
-			write(1, "ENTER\n", 6);
+//			write(1, "ENTER\n", 6);
 			get_ind(c, tab[j]);
 		}
 		else if (ret == T_REG)
@@ -290,8 +290,8 @@ void		read_s_file(t_champ *c, char *file)
 			}
 			// suite lecture
 		}
-		if (!check_str(c))
-			ft_error("Error in name or comment");
+//		if (!check_str(c))
+//			ft_error("Error in name or comment");
 	}
 //	printf("C_NAME = -->%s<--\n", c->name);
 //	printf("C_COMMENT = -->%s<--\n", c->comment);
