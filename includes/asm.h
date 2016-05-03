@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/03 16:12:59 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/03 17:07:38 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ struct						s_champ
 	t_list					*labels;
 	t_list					*miss;
 	int						fd;
+	int						line;
 };
 
 struct						s_instr
