@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 17:41:05 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 19:15:45 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/03 14:10:06 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,18 @@ int	copy_plr(t_vm *vm, t_bin *plr, int i)
 	size = r4oi(plr->prog_size);
 	j = 0;
 	plr->pc_tmp = i;
+	BCOR.data[i].pc = 1;
 	while (j < size)
 	{
 		vm->bcore.core[i] = plr->program[j];
+		BCOR.data[i].num_plr = plr->num_plyr;
+		//printf(">%d\t%d\t%d< ", i, BCOR.core[i], BCOR.data[i].pc);
+		//if (i == 3687)
+		//printf(">>>>%d %d %d<<<", i, BCOR.core[i],  BCOR.data[i].pc);
 		i++;
 		j++;
 	}
+	printf("\n\n");
 	return (0);
 }
 

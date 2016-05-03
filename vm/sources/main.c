@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 19:30:22 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/03 14:19:34 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,34 @@ void	ft_print(t_vm *vm)
 		tmp2 = tmp2->next;
 	}
 }
+void	print_corenum_plr(t_base_core *bcore)
+{
+	int i;
 
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		if (i % 64 == 0)
+			printf("\n");
+		//printf(" %.2d", core->core[i]);
+		printf(" %.2d", bcore->data[i].num_plr);
+		i++;
+	}
+}
+void	print_corepc(t_base_core *bcore)
+{
+	int i;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		if (i % 64 == 0)
+			printf("\n");
+		//printf(" %.2d", core->core[i]);
+		printf(" %.2d", bcore->data[i].pc);
+		i++;
+	}
+}
 int		main(int argc, char **argv)
 {
 	t_vm	vm;
@@ -74,7 +101,11 @@ int		main(int argc, char **argv)
 	}
 	ft_init_arena(&vm);
 	ft_init_lst_proc(&vm);
-	ft_print(&vm);
+//	ft_print(&vm);
+	print_corepc(&vm.bcore);
+	printf("\n\n");
+	print_corenum_plr(&vm.bcore);
+	printf("\n\n");
 	print_core(&vm.bcore);
 	return (0);
 }
