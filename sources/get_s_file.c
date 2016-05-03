@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/03 16:06:51 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/03 17:36:34 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ void			get_reg(t_champ *c, char *str)
 
 	reg = ft_atoi(str);
 	if (reg <= 0 || reg > 16)
-		ft_error("Reg does not exist.");
+		ft_error(ft_strjoin(ft_strjoin(ft_strjoin("Reg '", str),
+						"' does not exist line "), ft_itoa(c->line)));
 	c->bin[c->pos] = (char)reg;
 	c->pos++;
 }
@@ -143,11 +144,11 @@ void		op_types_read(int i, char **tab, t_champ *c)
 	ocp = 0;
 	j = 1;
 	get_inst(i, tab, c);
-	while (tab[j])
+	while (tab[j] && tab[j][0] != ';')
 	{
 		ret = ret_type(tab[j]);
 		if (!(g_op_tab[i].att[j - 1] & ret))
-			ft_error("Wrong attribute type.");
+			ft_error(ft_strjoin("Wrong attr type line ", ft_itoa(c->line)));
 		ocp = (ret == T_IND) ? (ocp | (3 << (8 - j * 2))) :
 			(ocp | ((char)ret << (8 - j * 2)));
 		j++;
@@ -167,13 +168,16 @@ void		find_instr(t_champ *c, char *tmp)
 	size_t	len;
 
 	tab = ft_strsplit(ft_strreplace_char(tmp, 9, ' '), ' ');
-	len = ft_strlen(tab[0]);
-	i = 0;
-	tab = ft_get_lbl(tab, c);
-	while (i < 16 && ft_strncmp(g_op_tab[i].name, tab[0], len))
-		i++;
-	if (i < 16)
-		op_types_read(i, tab, c);
+	if (tab && tab[0])
+	{
+		len = ft_strlen(tab[0]);
+		i = 0;
+		tab = ft_get_lbl(tab, c);
+		while (i < 16 && ft_strncmp(g_op_tab[i].name, tab[0], len))
+			i++;
+		if (i < 16)
+			op_types_read(i, tab, c);
+	}
 }
 
 int			check_str(t_champ *c)
@@ -199,29 +203,23 @@ void		get_str(t_champ *c, char *tmp, char *str)
 
 	i = 0;
 	indic = 0;
-	tmp = ft_strchr(tmp, '"');
-	tmp++;
-	while (*tmp)
-	{
-		if (*tmp == '"')
-		{
-			indic = 1;
-			break ;
-		}
+	tmp = ft_strchr(tmp, '"') + 1;
+	while (*tmp && *tmp != '"')
 		str[i++] = *tmp++;
-	}
+	if (*tmp == '"')
+		indic = 1;
 	while (!indic)
 	{
 		get_next_line(c->fd, &line);
 		str[i++] = '\n';
-		while (*line)
+		while (*line && *line != '"')
 		{
-			if (*line == '"')
-				indic = 2;
-			else
-				str[i++] = *line;
+			str[i++] = *line;
 			line++;
 		}
+		if (*line == '"')
+			indic = 2;
+		c->line++;
 	}
 	str[i] = '\0';
 }
@@ -237,15 +235,18 @@ void		read_s_file(t_champ *c, char *file)
 	}
 	else
 	{
-		while (get_next_line(c->fd, &line))
+		while (get_next_line(c->fd, &line) > 0)
 		{
-			tmp = ft_strtrim(line);
-			if (ft_strncmp(".name", tmp, 5) == 0)
-				get_str(c, tmp, c->name);
-			else if (ft_strncmp(".comment", tmp, 8) == 0)
-				get_str(c, tmp, c->comment);
-			else if (line[0])
-				find_instr(c, tmp);
+			if ((tmp = ft_strtrim(ft_strsplit(line, ';')[0])))
+			{
+				if (ft_strncmp(".name", tmp, 5) == 0)
+					get_str(c, tmp, c->name);
+				else if (ft_strncmp(".comment", tmp, 8) == 0)
+					get_str(c, tmp, c->comment);
+				else if (line[0])
+					find_instr(c, tmp);
+			}
+			c->line++;
 		}
 	}
 }
