@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 16:38:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/03 16:07:13 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/03 17:46:18 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ void	check_lbl(char *str)
 	while (str[i])
 	{
 		if (ft_strchr(LABEL_CHARS, str[i]) == NULL)
-			ft_error("Label syntax is wrong.");
+			ft_error(ft_strjoin(ft_strjoin("Label ", str),
+						" syntax is wrong line "));
 		i++;
 	}
 }

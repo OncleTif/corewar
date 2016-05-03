@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/03 17:36:34 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/03 18:00:54 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,6 +224,14 @@ void		get_str(t_champ *c, char *tmp, char *str)
 	str[i] = '\0';
 }
 
+char		*ft_strtrim_com(char *line)
+{
+	if (ft_strchr(line, '#'))
+		line = ft_strsub(line, 0 , ft_strchr(line, '#') - line);
+	if (ft_strchr(line, ';'))
+		line = ft_strsub(line, 0 , ft_strchr(line, ';') - line);
+	return (ft_strtrim(line));
+}
 void		read_s_file(t_champ *c, char *file)
 {
 	char	*line;
@@ -237,7 +245,7 @@ void		read_s_file(t_champ *c, char *file)
 	{
 		while (get_next_line(c->fd, &line) > 0)
 		{
-			if ((tmp = ft_strtrim(ft_strsplit(line, ';')[0])))
+			if ((tmp = ft_strtrim_com(line)))
 			{
 				if (ft_strncmp(".name", tmp, 5) == 0)
 					get_str(c, tmp, c->name);
