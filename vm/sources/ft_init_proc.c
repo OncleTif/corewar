@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:43:10 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/03 14:45:37 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/03 16:17:28 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		ft_init_proc(t_bin	*plr, t_process *proc)
 {
+	proc->cycle_to_wait = -1;
 	proc->num_plr = plr->num_plyr;
 	proc->pc = plr->pc_tmp;
 	proc->reg[0] = proc->num_plr;
