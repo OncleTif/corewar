@@ -6,7 +6,7 @@
 #    By: ssicard <ssicard@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/04/29 16:58:57 by tmanet           ###   ########.fr        #
+#    Updated: 2016/05/03 14:14:01 by ssicard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,6 @@ fclean: clean
 re: fclean all
 
 test: all
-	./asm goinfre/champions/examples/zork.s
-	hexdump -vC goinfre/champions/examples/zork.s.cor
+	./asm goinfre/champions/examples/helltrain.s
+	hexdump -vC goinfre/champions/examples/helltrain.s.cor
 .PHONY: all clean fclean re

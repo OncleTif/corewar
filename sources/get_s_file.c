@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/03 12:52:28 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/03 14:25:16 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,14 +117,15 @@ void			get_ind(t_champ *c, char *str)
 	else
 	{
 		prov = ft_atoi(str);
-//		printf("c->inst_pos = %d\n", c->inst_pos);
-//		printf("c->pos = %d\n", c->pos);
-//		printf("ft_atoi(str) = %d\n", prov);
-		ind.i = (short int)(prov - c->inst_pos);
+		printf("c->inst_pos = %d\n", c->inst_pos);
+		printf("c->pos = %d\n", c->pos);
+		printf("ft_atoi(str) = %d\n", prov);
+
+		ind.i = (short int)(prov);
 		i = 0;
 		while (i < IND_SIZE)
 		{
-			c->bin[c->pos] = ind.c[i];
+			c->bin[c->pos] = ind.c[IND_SIZE - i - 1];
 			i++;
 			c->pos++;
 		}
