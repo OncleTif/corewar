@@ -6,7 +6,7 @@
 #    By: ssicard <ssicard@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/03 14:45:29 by ssicard          ###   ########.fr        #
+#    Updated: 2016/05/03 19:25:20 by ssicard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,11 @@ LIB = libft/libft.a
 
 SRC = asm.c \
 	  sources/get_s_file.c \
-	  sources/ft_print_champ.c \
-	  sources/ft_add_label.c \
+	  sources/champ.c \
+	  sources/label.c \
 	  sources/structure.c \
+	  sources/get_type.c \
+	  sources/read.c \
 
 
 OBJ = $(SRC:.c=.o)

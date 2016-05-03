@@ -6,21 +6,11 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:55:31 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/03 19:11:27 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/03 19:29:58 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
-
-static char *epur_file_name(char *str)
-{
-	size_t len;
-
-	len = ft_strlen(str);
-	if (str[len - 1] == 's' && str[len - 2] == '.')
-		str = ft_strsub(str, 0, len - 2);
-	return (str);
-}
 
 int		main(int argc, char **argv)
 {
