@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 17:41:05 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/03 14:10:06 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/03 14:45:55 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	copy_plr(t_vm *vm, t_bin *plr, int i)
 
 	size = r4oi(plr->prog_size);
 	j = 0;
-	plr->pc_tmp = i;
+	plr->pc_tmp = r4oi(i);
 	BCOR.data[i].pc = 1;
 	while (j < size)
 	{
