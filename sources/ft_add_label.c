@@ -6,12 +6,11 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 16:38:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/03 15:13:31 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/03 16:07:13 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
-#include "../vm/includes/reverse_octet.h"
 
 void	ft_fill_lbl(t_label *miss, t_label *lbl, t_champ *chp)
 {

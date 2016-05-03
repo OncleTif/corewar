@@ -6,12 +6,11 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/03 15:26:19 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/03 16:06:51 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
-#include "../vm/includes/reverse_octet.h"
 
 char		**ft_get_lbl(char **tab, t_champ *cmp)
 {
