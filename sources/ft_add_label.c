@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 16:38:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/02 18:59:10 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/03 08:45:43 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	ft_fill_lbl(t_label *miss, t_label *lbl, t_champ *chp)
 	u.i = miss->inst_pos - lbl->pos;
 	while (i < miss->att_type)
 	{
-		ft_putnbrendl(i);
-		ft_putnbrendl(miss->att_type);
 		chp->bin[miss->pos + miss->att_type - i - 1] = u.c[i];
 		i++;
 	}
@@ -40,15 +38,22 @@ void	ft_find_labels(t_champ *chp)
 	{
 	ft_putendl("find miss");
 		elem = chp->labels;
+	ft_putstr((*(t_label**)elem->content)->name);
+	ft_putendl("*");
 		while (elem && !(ft_strequ((*(t_label**)elem->content)->name, (*(t_label**)elem_miss->content)->name)))
 		{
-	ft_putendl("find miss next");
+	ft_putendl("test");
+	ft_putendl((*(t_label**)elem->content)->name);
 			elem = elem->next;
 		}
-	ft_putendl("found miss");
 		if (!elem)
+		{
+	ft_putendl((*(t_label**)elem_miss->content)->name);
 			ft_error("missing label");
-		ft_fill_lbl((*(t_label**)elem_miss), (*(t_label**)elem_miss), chp);
+
+		}
+	ft_putendl("found miss");
+		ft_fill_lbl((*(t_label**)elem_miss->content), (*(t_label**)elem->content), chp);
 		elem_miss = elem_miss->next;
 	}
 }
@@ -58,10 +63,10 @@ void	ft_add_miss(t_champ *chp, char *lbl, int i)
 	t_label	*label;
 
 	label = (t_label*)ft_memalloc(sizeof(t_label));
-	label->name = lbl;
+	label->name = ft_strreplace_char(lbl, ',', 0);
 	label->pos = chp->pos;
 	label->inst_pos = chp->inst_pos;
-	label->att_type = g_op_tab[i].index;
+	label->att_type = i;
 	ft_lstadd(&chp->miss, ft_lstnew(&label, sizeof(t_label*)));
 }
 
