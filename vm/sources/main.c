@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/03 16:13:53 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/03 21:08:32 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ void	ft_print(t_vm *vm)
 		while (i < 14)
 		{
 			printf("%.2x ", (unsigned char)tmp2->proc.ir.irstr[i]);
+			i++;
+		}
+		i = 0;
+		while (i < 3)
+		{
+			printf("I = %d, TYPE => %x, CODE => %x, ARGS => %x\n", i, tmp2->proc.ir.types_args[i], tmp2->proc.ir.code_args[i], tmp2->proc.ir.args[i]);
 			i++;
 		}
 		printf("\n");
