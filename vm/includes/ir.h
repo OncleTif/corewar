@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:59:35 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/03 17:00:53 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/03 19:11:04 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ struct s_ir
 	int		ocp;
 	int		nb_arg;
 	int		types_args[3]; //t_reg t_dir t_ind decalage bin sur ocp pour definir 001 010 100 ou 00
-	int		*args[3];
+	int		code_args[3];
+	int		args[3];
 };
 
 #endif
