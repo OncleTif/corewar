@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/03 18:20:53 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/03 18:51:18 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,13 @@ int		parse_proc(t_vm *vm)
 	{
 		if (tmp->proc.cycle_to_wait == -1)
 			fetch_ir(tmp, vm->bcore.core, r4oi(tmp->proc.pc));
-//		else if (tmp->proc.cycle_to_wait == 0)
+		// else if (tmp->proc.cycle_to_wait == 0)
 //			run_ir();
 		tmp = tmp->next;
 	}
 	return (0);
 }
+
 // RUN
 int		cpu(t_vm *vm)
 {
@@ -108,11 +109,8 @@ int		cpu(t_vm *vm)
 	while (1)
 	{
 		parse_proc(vm);
-
 		CPU.cur_cycle += 1;
 		break ;
 	}
-
-
 	return (0);
 }
