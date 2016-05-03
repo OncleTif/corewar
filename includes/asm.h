@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/02 18:45:28 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/03 12:12:32 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,5 @@ void	init_structure(t_champ *chp);
 void	ft_find_labels(t_champ *chp);
 void	ft_add_label(t_champ *chp, char *lbl);
 void	ft_add_miss(t_champ *chp, char *lbl, int i);
+void	check_lbl(char	*str);
 #endif

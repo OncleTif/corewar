@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 16:38:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/03 08:45:43 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/03 12:12:37 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,25 @@ void	ft_add_miss(t_champ *chp, char *lbl, int i)
 	ft_lstadd(&chp->miss, ft_lstnew(&label, sizeof(t_label*)));
 }
 
+void		check_lbl(char	*str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (ft_strchr(LABEL_CHARS, str[i]) == NULL)
+			ft_error("Label syntax is wrong.");
+		i++;
+	}
+}
+
 void	ft_add_label(t_champ *chp, char *lbl)
 {
 	t_list	*elem;
 	t_label	*label;
 
+	check_lbl(lbl);
 	elem = chp->labels;
 	while (elem)
 	{
