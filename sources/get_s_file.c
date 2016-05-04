@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/03 19:26:15 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/04 09:33:08 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void		find_instr(t_champ *c, char *tmp)
 
 	tab = ft_strsplit(ft_strreplace_char(ft_strreplace_char(tmp, 9, ' ')
 				, ',', ' '), ' ');
-	if (tab && tab[0])
+	if (tab && tab[0] && tab[0][0])
 	{
 		len = ft_strlen(tab[0]);
 		i = 0;
@@ -102,6 +102,9 @@ void		find_instr(t_champ *c, char *tmp)
 			i++;
 		if (i < 16)
 			op_types_read(i, tab, c);
+		else if (tab[0] && tab[0][0])
+			ft_error(ft_strjoin(ft_strjoin(ft_strjoin("unknown instruction '",
+								tab[0]), "' at line "), ft_itoa(c->line)));
 	}
 }
 
