@@ -15,27 +15,6 @@ int 	stock_code_args(t_ir *pir, unsigned char ocp, int u, int i)
 	return (0);
 }
 
-int 	j_init(int i, t_ir *pir, int *j)
-{
-	int a;
-
-	a = 0;
-	if (pir->args[i] == 0x01)
-	{
-		a = 1;
-	}
-	if (pir->args[i] == 0x02)
-	{
-		a = 4;
-	}
-	if (pir->args[i] == 0x03)
-	{
-		a = 2;
-	}
-	*j += a;
-	return (0);
-}
-
 int 	get_args(t_process *proc, t_vm *vm)
 {
 	int i;

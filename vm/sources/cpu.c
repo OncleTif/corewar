@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cpu.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/04 10:14:19 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/04 11:48:52 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,24 @@ int		stock_types_args(t_process *proc, int i)
 	}
 	return (0);
 }
+int		get_1_arg(t_process *proc, t_vm *vm)
+{
+	if (g_op_tab[proc->ir.opcode - 1].att[0] == T_REG)
+		stock_reg(proc, 0);
+	else if (g_op_tab[proc->ir.opcode - 1].att[0] == T_DIR)
+		stock_dir(proc, vm, 0);
+	else if (g_op_tab[proc->ir.opcode - 1].att[0] == T_IND)
+		stock_ind(proc, vm, 0);
+	else
+	{
+		proc->ir_error = 1;
+	}
+
+
+
+
+
+}
 
 int		decode_ir(t_process *proc, t_vm *vm)
 {
@@ -33,6 +51,12 @@ int		decode_ir(t_process *proc, t_vm *vm)
 		return (0);
 	}
 	proc->ir.opcode = ir[0];
+	proc->ir.index = g_op_tab[proc->ir.opcode - 1].index;
+	proc->pcdelta += 1;
+	//if (ig_op_tab[proc->ir.opcode - 1].att_numr[0] == 12 || ir[0] == 1 || ir[0] == 15 || ir[0] == 9)
+	if (!g_op_tab[proc->ir.opcode - 1].carry)
+		get_1_arg(ir[0], proc, vm );
+
 	stock_types_args(proc, g_op_tab[proc->ir.opcode - 1].att_num);
 	if (!check_ocp(proc->ir.types_args, ir, &proc->ir))
 	{
@@ -52,7 +76,7 @@ int		fetch_ir(t_list_process *tmp, unsigned char *core, int pc)
 	i = 0;
 	while (i < 14)
 	{
-		tmp->proc.ir.irstr[i] = core[(pc + i) % 4096];
+		tmp->proc.ir.irstr[i] = core[(pc + i) % MEM_SIZE];
 		i++;
 	}
 	return(0);

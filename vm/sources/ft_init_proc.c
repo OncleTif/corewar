@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:43:10 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/03 19:14:17 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/04 11:46:39 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ int		ft_init_proc(t_bin	*plr, t_process *proc)
 		proc->ir.types_args[i] = 0;
 		proc->ir.args[i] = 0;
 		i++;
-	}
+	proc->pcout = 0;
 	proc->cycle_to_wait = -1;
 	proc->num_plr = plr->num_plyr;
 	proc->pc = plr->pc_tmp;
+	proc->pcdelta = 0;
 	proc->reg[0] = proc->num_plr;
 	proc->carry = 0;
 	return(0);

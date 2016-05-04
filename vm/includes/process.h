@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:26:12 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/01 19:17:55 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/04 12:05:18 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ struct s_process
 //	t_bin		*plr; // pointeur sur son player, num du plr dedans
 	int		cycle_to_wait;
 	int		pc;
-	int		reg[16];
-	int		carry;
+	int		pcdelta; // avancer de pc + pcdelta
+	int		reg[16]; // LITTLE ENDIAN
+	int		carry; //
+	int		ir_error; //0
 	t_ir	ir;
 };
 
