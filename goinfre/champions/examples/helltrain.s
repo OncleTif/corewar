@@ -86,7 +86,7 @@ wall:
 beegees_gen:
 	live	%4239423
 	fork	%:beegees_gen
-	ld		%0, r16
+	ld 		%0, r16
 
 beegees:
 	live	%3442302
@@ -109,7 +109,7 @@ cc4ld:
 	ld		%251883523, r3
 	ld		%0, r16
 cc4l:
-	live	%4930423	
+	live	%4930423
 	ld		%0, r16
 	zjmp	%:choochoo
 
