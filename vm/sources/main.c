@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/03 21:08:32 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/04 17:47:25 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ void	ft_print(t_vm *vm)
 	{
 		printf("__DANS PROC__\nnum:%d\nnum_plr:%d\npc:%d\nreg0:%d\ncarry:%d\n",
 				tmp2->proc.num, tmp2->proc.num_plr, tmp2->proc.pc, tmp2->proc.reg[0], tmp2->proc.carry);
+		printf("pcdelta:%d carry:%d ir_error:%d \n", tmp2->proc.pcdelta, tmp2->proc.carry,
+			tmp2->proc.ir_error);
+
 		i = 0;
 		printf("__IR__\nIR:");
 		while (i < 14)
@@ -62,6 +65,8 @@ void	ft_print(t_vm *vm)
 			printf("%.2x ", (unsigned char)tmp2->proc.ir.irstr[i]);
 			i++;
 		}
+		printf("opcode:%d ocp:%x index:%d nb_arg:%d\n", tmp2->proc.ir.opcode,tmp2->proc.ir.ocp,
+	 	tmp2->proc.ir.index,tmp2->proc.ir.nb_arg);
 		i = 0;
 		while (i < 3)
 		{

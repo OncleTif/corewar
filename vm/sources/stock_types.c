@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:31:53 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/04 16:01:44 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/04 18:08:56 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ int		stock_reg(t_process *proc, int i)
 {
 	int		reg;
 
-	reg = proc->ir.irstr[proc->pcdelta] - 1;
+	reg = proc->ir.irstr[proc->pcdelta];
 	proc->pcdelta += 1;
-	if (reg < 0 || reg > 15)
+	if (reg < 1 || reg > 16)
 	{
 		proc->ir_error = 1;
 		return (0);
 	}
-	proc->ir.args[i] = proc->reg[reg];
+	proc->ir.args[i] = reg;
 	return (1);
 }
 

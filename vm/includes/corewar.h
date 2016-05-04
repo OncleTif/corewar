@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/04 10:16:35 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/04 17:36:23 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,15 +136,10 @@ cpu.c
 */
 int		cpu(t_vm *vm);
 int		stock_types_args(t_process *proc, int i);
-int		decode_ir(t_process *proc, t_vm *vm);
+int		decode_ir(t_process *proc);
 int		fetch_ir(t_list_process *tmp, unsigned char *core, int pc);
 int		parse_proc(t_vm *vm);
 
-/*
-stock_types.c
-*/
-int		stock_dir(t_ir *pir, int i, int j);
-int		stock_ind(t_process *proc, t_vm *vm, int i, int j);
 
 /*
 ocp.c
@@ -153,6 +148,12 @@ int		check_code(unsigned char ocp, int decal);
 int 	stock_code_args(t_ir *pir, unsigned char ocp, int u, int i);
 int 	j_init(int i, t_ir *pir, int *j);
 int 	get_args(t_process *proc, t_vm *vm);
-int		check_ocp(int *tab, unsigned char *ir, t_ir *pir);
+int		check_ocp(unsigned char *ir, t_ir *pir);
 
+/*
+stock_types.c
+*/
+int		stock_reg(t_process *proc, int i);
+int		stock_dir(t_process *proc, int i);
+int		stock_ind(t_process *proc, int i);
 #endif
