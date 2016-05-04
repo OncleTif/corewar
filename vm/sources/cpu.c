@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/04 18:44:00 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/04 21:00:08 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,28 @@ int		fetch_ir(t_list_process *tmp, unsigned char *core, int pc)
 	}
 	return(0);
 }
+int		check_cycle(t_vm *vm)
+{
+	vm->cpu.nbchecks += 1;
+	if ((vm->cpu.cur_delta >= vm->cpu.cycle2die && vm->alllive >= NBR_LIVE)
+		|| vm->cpu.nbchecks == MAX_CHECKS)
+	{
+		vm->cpu.nbchecks = 0;
+		vm->cpu.cycle2die -= CYCLE_DELTA;
+		vm->cpu.cur_delta = 0;
+	}
+	return (/*BSQ*/);
+}
+
+int		run()
+{
+	// pseudo code
+	cycle_to_wait = -1;
+	pc += pcdelta;
+	execute fonction[opcode];
+	modifie t_octet data[i].num_plr data[i].pc au core[i] modifier  // POUR SDL
+	return (/*BSQ*/);
+}
 
 int		parse_proc(t_vm *vm)
 {
@@ -89,14 +111,11 @@ int		parse_proc(t_vm *vm)
 	{
 		if (tmp->proc.cycle_to_wait == -1)
 		{
+			if (vm->cpu.cur_cycle != 0 && tmp->proc.cycle_to_wait == vm->cpu.cur_cycle)
+				run(/* BSQ */); // init cycle_to_wait = -1; pc += pcdelta;
 			fetch_ir(tmp, vm->bcore.core, tmp->proc.pc);
 			decode_ir(&tmp->proc);
 		}
-		else if (tmp->proc.cycle_to_wait == 0)
-			run();
-
-		// else if (tmp->proc.cycle_to_wait == 0)
-//			run_ir();
 		tmp = tmp->next;
 	}
 	return (0);
@@ -104,16 +123,18 @@ int		parse_proc(t_vm *vm)
 
 	proc->pc += proc->pcdelta;
 	proc->pcdelta = 0;
-// RUN
+
+//Chooo-Chooo
 int		cpu(t_vm *vm)
 {
 	CPU.cur_cycle = 0;
 
-	while (1)
+	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
 	{
-		parse_proc(vm); // 1000 + 30  1030
 		CPU.cur_cycle += 1;
-		break ;
+		CPU.cur_delta += 1;
+		parse_proc(vm);
+		check_cycle(); // modifie cur_delta cycle2die nbchecks dans T_cpu
 	}
 	return (0);
 }

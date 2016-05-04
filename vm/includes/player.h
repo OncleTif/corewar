@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:31:38 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/03 12:21:53 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/04 20:36:49 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ struct      s_bin
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
 	unsigned char		program[CHAMP_MAX_SIZE + 1];
+	int					last_live; // dernier cycle ou le plr a dit vivant
 };
 
 struct s_list_player

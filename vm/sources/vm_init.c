@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 17:02:52 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/03 14:36:09 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/04 19:34:21 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ static void	core_zero(t_base_core *bcore)
 
 void		vm_init(t_vm *vm)
 {
+	vm->dump = -1;
+
+	vm->cycle2die = CYCLE_TO_DIE;
 
 	vm->bplr.i_plr = 0;
 	vm->bplr.tab[0] = 0xffffffff;

@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/04 17:36:23 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/04 20:38:41 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ struct s_cpu
 {
 	//int		ir; //instruction registre
 	int		cur_cycle; // cycle en cours
+	int		cur_delta;
 	int		cycle2die; // cylcle to die a decrementer
 						//	tout les CYCLE_DELTA OU MAX_CHECKS
-						//
+	int		nbchecks; // comparer avec MAX_CHECKS
+
 };
 
 struct s_octet
@@ -61,7 +63,6 @@ struct s_vm
 	t_base_core		bcore;
 	t_base_player	bplr;
 	int				last_live; // numero du dernier player qui a dit LIVE
-
 };
 
 /*
