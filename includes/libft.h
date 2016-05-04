@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 12:32:15 by tmanet            #+#    #+#             */
-/*   Updated: 2016/04/29 18:46:51 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/04 09:47:25 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string.h>
 # include <errno.h>
 # include <limits.h>
+# include "printf.h"
 # define BUFF_SIZE 4
 # define DEBUG 1
 

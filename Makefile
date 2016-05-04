@@ -6,7 +6,7 @@
 #    By: ssicard <ssicard@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/03 19:25:20 by ssicard          ###   ########.fr        #
+#    Updated: 2016/05/04 09:48:39 by tmanet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ clean:
 
 fclean: clean
 	/bin/rm -f $(NAME)
+	make -C libft/ fclean
 
 re: fclean all
 
