@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/05 16:16:38 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/05 16:58:19 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,4 +169,14 @@ void	ft_ld(t_process *proc, t_vm *vm);
 void	ft_lld(t_process *proc, t_vm *vm);
 void	ft_ldi(t_process *proc, t_vm *vm);
 void	ft_lldi(t_process *proc, t_vm *vm);
+
+/*
+ft_basic_functions.c
+*/
+
+void	ft_add(t_vm *vm, t_process *proc);
+void	ft_sub(t_vm *vm, t_process *proc);
+void	ft_or(t_vm *vm, t_process *proc);
+void	ft_xor(t_vm *vm, t_process *proc);
+void	ft_and(t_vm *vm, t_process *proc);
 #endif

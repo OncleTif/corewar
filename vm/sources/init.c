@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/05 09:26:37 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/05 17:03:15 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,19 @@ int		ft_init_proc(t_bin	*plr, t_process *proc)
 	proc->reg[0] = proc->num_plr;
 	proc->carry = 0;
 	return(0);
+}
+
+t_process	*ft_init_pc(int plr, int pc, t_vm *vm)
+{
+	t_process	*proc;
+
+	proc = (t_process*)ft_memalloc(sizeof(t_process));
+
+	proc->cycle_to_wait = -1;
+	proc->num_plr = plr;
+	proc->pc = pc;
+	proc->reg[0] = ft_addr(vm);
+	return (proc);
 }
 
 int		ft_init_lst_proc(t_vm *vm)
