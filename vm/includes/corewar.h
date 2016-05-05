@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:03:13 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/04 20:38:41 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/05 14:38:37 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,4 +157,9 @@ stock_types.c
 int		stock_reg(t_process *proc, int i);
 int		stock_dir(t_process *proc, int i);
 int		stock_ind(t_process *proc, int i);
+
+/*
+get_mem.c
+*/
+int		get_mem(t_vm *vm, int idx, int off);
 #endif
