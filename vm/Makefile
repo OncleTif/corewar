@@ -6,7 +6,7 @@
 #    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/04 10:17:10 by eozdek           ###   ########.fr        #
+#    Updated: 2016/05/05 09:25:30 by ssicard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,11 @@ LIB = ../libft/libft.a
 
 SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/ft_memrev.c sources/ft_print_champion.c \
-		sources/ft_handle.c sources/ft_init_arena.c \
-		sources/ft_init_proc.c sources/main.c \
-		sources/reverse_octet.c sources/vm_init.c \
+		sources/ft_handle.c \
+		sources/main.c \
+		sources/reverse_octet.c \
 		sources/cpu.c sources/ocp.c sources/stock_types.c \
+		sources/init.c
 # sources/testdav.c \
 
 OBJ = $(SRC:.c=.o)
