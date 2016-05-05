@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/05 17:03:15 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/05 18:25:37 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,22 @@ int		ft_init_proc(t_bin	*plr, t_process *proc)
 	proc->reg[0] = proc->num_plr;
 	proc->carry = 0;
 	return(0);
+}
+
+int		ft_addr(t_vm *vm)
+{
+	t_list_process *tmp;
+	int i;
+
+	tmp = vm->bproc->lst_proc;
+	i = tmp->num;
+	while (tmp->next != NULL)
+	{
+		if (tmp->num < i)
+			i = tmp->num;
+		tmp = tmp->next;
+	}
+	return (i);
 }
 
 t_process	*ft_init_pc(int plr, int pc, t_vm *vm)
