@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:26:12 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/05 18:23:17 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/06 14:34:55 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ struct s_process
 	int		carry; //
 	int		ir_error; //0
 	t_ir	ir;
+	t_process	*next;
+	int		live;
 };
-
+/*
 struct s_list_process
 {
 	t_process		proc;
@@ -39,4 +41,5 @@ struct s_base_process
 	int				nb_proc;
 	t_list_process	*lst_proc; // liste des processs
 };
+*/
 #endif

@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 10:24:46 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/06 14:50:39 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ struct s_vm
 	t_base_core		bcore;
 	t_base_player	bplr;
 	int				last_live; // numero du dernier player qui a dit LIVE
+	t_process		*proc;
+	int				nb_proc;
+	int				nbr_live;
 };
 
 /*
