@@ -6,13 +6,13 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 14:25:44 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/05 18:08:55 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/06 09:06:29 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int	get_mem(t_vm *vm, int idx, int off)
+int	get_mem(t_vm *vm, int idx)
 {
 	union u_4o	val;
 	int			i;
@@ -21,7 +21,22 @@ int	get_mem(t_vm *vm, int idx, int off)
 	while (i < 4)
 	{
 		// manque i dans idx_mode ou pas
-		val.c[3 - i] = vm->bcore.core[(idx + (off % IDX_MOD)) % MEM_SIZE];
+		val.c[3 - i] = vm->bcore.core[((idx + i) % IDX_MOD) % MEM_SIZE];
+		i++;
+	}
+	return (val.i);
+}
+
+int	get_memlong(t_vm *vm, int idx)
+{
+	union u_4o	val;
+	int			i;
+
+	i = 0;
+	while (i < 4)
+	{
+		// manque i dans idx_mode ou pas
+		val.c[3 - i] = vm->bcore.core[(idx + i) % MEM_SIZE];
 		i++;
 	}
 	return (val.i);

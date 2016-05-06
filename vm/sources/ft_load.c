@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/05 16:14:53 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/06 09:38:23 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_ld(t_process *proc, t_vm *vm)
 	int	val;
 
 	if (proc->ir.code_args[0] == T_IND)
-		val = get_mem(vm, proc->pc, proc->ir.args[0]);
+		val = get_mem(vm, proc->pc + proc->ir.args[0]);
 	else
 		val = proc->ir.args[0];
 	proc->reg[proc->ir.args[1] - 1] = val;
@@ -29,7 +29,7 @@ void	ft_lld(t_process *proc, t_vm *vm)
 	int	val;
 
 	if (proc->ir.code_args[0] == T_IND)
-		val = get_mem(vm, proc->pc + proc->ir.args[0], 0);
+		val = get_memlong(vm, proc->pc + proc->ir.args[0]);
 	else
 		val = proc->ir.args[0];
 	proc->reg[proc->ir.args[1] - 1] = val;
@@ -43,7 +43,7 @@ void	ft_ldi(t_process *proc, t_vm *vm)
 	int	mod;
 
 	if (proc->ir.code_args[0] == T_IND)
-		off = get_mem(vm, proc->pc, proc->ir.args[0]);
+		off = get_mem(vm, proc->pc + proc->ir.args[0]);
 	else if (proc->ir.code_args[0] == T_REG)
 		off = proc->reg[proc->ir.args[0] - 1];
 	else
@@ -53,7 +53,7 @@ void	ft_ldi(t_process *proc, t_vm *vm)
 	else
 		mod = proc->ir.args[1];
 
-		val = get_mem(vm, proc->pc, off + mod);
+		val = get_mem(vm, proc->pc + off + mod);
 	proc->reg[proc->ir.args[1] - 1] = val;
 	proc->carry = !val;
 }
@@ -65,7 +65,7 @@ void	ft_lldi(t_process *proc, t_vm *vm)
 	int	mod;
 
 	if (proc->ir.code_args[0] == T_IND)
-		off = get_mem(vm, proc->pc + proc->ir.args[0], 0);
+		off = get_memlong(vm, proc->pc + proc->ir.args[0]);
 	else if (proc->ir.code_args[0] == T_REG)
 		off = proc->reg[proc->ir.args[0] - 1];
 	else
@@ -75,7 +75,7 @@ void	ft_lldi(t_process *proc, t_vm *vm)
 	else
 		mod = proc->ir.args[1];
 
-		val = get_mem(vm, proc->pc + off + mod, 0);
+		val = get_memlong(vm, proc->pc + off + mod);
 	proc->reg[proc->ir.args[1] - 1] = val;
 	proc->carry = !val;
 }

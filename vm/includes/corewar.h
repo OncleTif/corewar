@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/05 18:12:07 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/06 09:06:23 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,8 @@ void	ft_sti(t_process *proc, t_vm *vm);
 /*
 get_mem.c
 */
-int		get_mem(t_vm *vm, int idx, int off);
+int		get_mem(t_vm *vm, int idx);
+int		get_memlong(t_vm *vm, int idx);
 /*
 ft_load.c
 */
