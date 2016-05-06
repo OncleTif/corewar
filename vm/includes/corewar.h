@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 09:06:23 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/06 09:43:25 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,8 @@ int		stock_ind(t_process *proc, int i);
 /*
 put_mem.c
 */
-void	put_mem(t_vm *vm, int idx, int off, int val);
+void	put_mem(t_vm *vm, int idx, int val);
+void	put_memlong(t_vm *vm, int idx, int val);
 /*
 ft_store.c
 */

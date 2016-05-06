@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 09:38:23 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/06 09:44:48 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ void	ft_ldi(t_process *proc, t_vm *vm)
 		mod = proc->reg[proc->ir.args[1] - 1];
 	else
 		mod = proc->ir.args[1];
-
-		val = get_mem(vm, proc->pc + off + mod);
+	val = get_mem(vm, proc->pc + off + mod);
 	proc->reg[proc->ir.args[1] - 1] = val;
 	proc->carry = !val;
 }
@@ -74,8 +73,7 @@ void	ft_lldi(t_process *proc, t_vm *vm)
 		mod = proc->reg[proc->ir.args[1] - 1];
 	else
 		mod = proc->ir.args[1];
-
-		val = get_memlong(vm, proc->pc + off + mod);
+	val = get_memlong(vm, proc->pc + off + mod);
 	proc->reg[proc->ir.args[1] - 1] = val;
 	proc->carry = !val;
 }
