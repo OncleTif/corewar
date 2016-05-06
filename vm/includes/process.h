@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:26:12 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/06 14:34:55 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/06 16:09:37 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ struct s_process
 	int		cycle_to_wait;
 	int		pc;
 	int		pcdelta; // avancer de pc + pcdelta
-	int		reg[16]; // LITTLE ENDIAN
+	int		reg[17]; // LITTLE ENDIAN
 	int		carry; //
 	int		ir_error; //0
 	t_ir	ir;

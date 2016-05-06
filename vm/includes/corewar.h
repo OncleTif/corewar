@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 14:50:39 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/06 15:07:42 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ struct s_vm
 	int				dump; //  -dump aff et exit apres nbr cycles
 	int				verbose; //  -v affiche les action
 	t_cpu			cpu;
-	t_base_process	bproc;
+//	t_base_process	bproc;
 	t_base_core		bcore;
 	t_base_player	bplr;
 	int				last_live; // numero du dernier player qui a dit LIVE
@@ -187,11 +187,9 @@ void	ft_lldi(t_process *proc, t_vm *vm);
 ft_aff.c
 */
 void	ft_aff(t_process *proc, t_vm *vm);
-
 /*
 ft_basic_functions.c
 */
-
 void	ft_add(t_vm *vm, t_process *proc);
 void	ft_sub(t_vm *vm, t_process *proc);
 void	ft_or(t_vm *vm, t_process *proc);
