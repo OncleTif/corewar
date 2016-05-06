@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/06 18:00:26 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/06 20:22:24 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,42 @@ void	core_zero(t_vm *vm)
 // 	current_cycle = 0;
 // 	cycle2die = CYCLE_TO_DIE;
 // }
+int			ftab_init(t_vm *vm)
+{
+	//vm->ftab[1] = &ft_live;
+	vm->ftab[2] = &ft_ld;
+	vm->ftab[3] = &ft_st;
+	vm->ftab[4] = &ft_add;
+	vm->ftab[5] = &ft_sub;
+	vm->ftab[6] = &ft_and;
+	vm->ftab[7] = &ft_or;
+	vm->ftab[8] = &ft_xor;
+	vm->ftab[9] = &ft_zjmp;
+	vm->ftab[10] = &ft_ldi;
+	vm->ftab[11] = &ft_sti;
+	vm->ftab[12] = &ft_fork;
+	vm->ftab[13] = &ft_lld;
+	vm->ftab[14] = &ft_lldi;
+	vm->ftab[15] = &ft_lfork;
+	vm->ftab[16] = &ft_aff;
+	return (0);
+}
 
 void		vm_init(t_vm *vm)
 {
 	vm->dump = -1;
-
+	vm->nb_proc = 0;
 	vm->cpu.cycle2die = CYCLE_TO_DIE;
-
+	vm->bplr.lst_plyr = NULL;
 	vm->bplr.i_plr = 0;
-	vm->bplr.tab[0] = 0xffffffff;
-	vm->bplr.tab[1] = 0xfffffffe;
-	vm->bplr.tab[2] = 0xfffffffd;
-	vm->bplr.tab[3] = 0xfffffffc;
+	vm->bplr.tab[0] = -1;
+	vm->bplr.tab[1] = -2;
+	vm->bplr.tab[2] = -3;
+	vm->bplr.tab[3] = -4;
 	vm->proc = NULL;
 
 	// cpu_init(vm->cpu);
+	ftab_init(vm);
 	core_zero(vm);
 	// core_posplyer(vm);
 }
@@ -99,13 +120,18 @@ int		ft_init_lst_proc(t_vm *vm)
 	{
 		tmp = (t_process*)ft_memalloc(sizeof(t_process));
 		ft_init_proc(lst_play->plr, tmp);
+		fflush(stdout);
 		ft_fetch_next(vm, tmp);
 		tmp->num = vm->nb_proc;
 		vm->nb_proc += 1;
+
 		tmp->next = vm->proc;
 		vm->proc = tmp;
+
+
 		lst_play = lst_play->next;
 	}
+		ft_putendl("\n__SORTIE_____\n");
 	return (0);
 }
 

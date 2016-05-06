@@ -6,13 +6,13 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:20:06 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 17:54:51 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/06 18:33:23 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	ft_proc_init(t_vm *vm, t_process *proc)
+void	ft_proc_init(t_process *proc)
 {
 	int i;
 
@@ -26,7 +26,7 @@ void	ft_proc_init(t_vm *vm, t_process *proc)
 void	ft_fetch_next(t_vm *vm, t_process *proc)
 {
 	if (proc->pcdelta)
-		ft_proc_init(vm, proc);
+		ft_proc_init(proc);
 	else if (proc->cycle_to_wait != -1)
 		proc->pc = (proc->pc + 1) % MEM_SIZE;
 	else

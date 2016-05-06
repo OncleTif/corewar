@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 17:21:56 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/06 19:57:35 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,12 @@ struct s_vm
 
 	t_base_player	bplr;
 	int				last_live; // numero du dernier player qui a dit LIVE
-	t_process		*proc;
+
 	int				nb_proc;
+	t_process		*proc;
+
 	int				nbr_live;
+	void	(*ftab[17])(t_vm*, t_process*);
 };
 
 /*
@@ -171,30 +174,43 @@ void	put_memlong(t_vm *vm, int idx, int val);
 /*
 get_mem.c
 */
-int		get_mem(t_vm *vm, int idx);
+int		get_mem(t_vm *vm, int idx, int off);
 int		get_memlong(t_vm *vm, int idx);
 /*
 ft_store.c
 */
-void	ft_st(t_process *proc, t_vm *vm);
-void	ft_sti(t_process *proc, t_vm *vm);
+void	ft_st(t_vm *vm, t_process *proc);
+void	ft_sti(t_vm *vm, t_process *proc);
 /*
 ft_load.c
 */
-void	ft_ld(t_process *proc, t_vm *vm);
-void	ft_lld(t_process *proc, t_vm *vm);
-void	ft_ldi(t_process *proc, t_vm *vm);
-void	ft_lldi(t_process *proc, t_vm *vm);
+void	ft_ld(t_vm *vm, t_process *proc);
+void	ft_lld(t_vm *vm, t_process *proc);
+void	ft_ldi(t_vm *vm, t_process *proc);
+void	ft_lldi(t_vm *vm, t_process *proc);
 /*
 ft_aff.c
 */
 void	ft_aff(t_vm *vm, t_process *proc);
 /*
-ft_basic_functions.c
+ft_b, t_process *procasic_functions.c
 */
 void	ft_add(t_vm *vm, t_process *proc);
 void	ft_sub(t_vm *vm, t_process *proc);
 void	ft_or(t_vm *vm, t_process *proc);
 void	ft_xor(t_vm *vm, t_process *proc);
 void	ft_and(t_vm *vm, t_process *proc);
+
+
+void			ft_zjmp(t_vm *vm, t_process *proc);
+void			ft_fork(t_vm *vm, t_process *proc);
+void			ft_lfork(t_vm *vm, t_process *proc);
+
+/*
+ft_fetch_next.c
+*/
+void	ft_fetch_next(t_vm *vm, t_process *proc);
+
+void ft_print(t_vm *vm);
+
 #endif

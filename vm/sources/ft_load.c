@@ -6,25 +6,26 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 16:30:24 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/06 19:59:22 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	ft_ld(t_process *proc, t_vm *vm)
+void	ft_ld(t_vm *vm, t_process *proc)
 {
 	int	val;
-
+printf("__DANS LD __");
 	if (proc->ir.code_args[0] == T_IND)
-		val = get_mem(vm, proc->pc + proc->ir.args[0]);
+		val = get_mem(vm, proc->pc, proc->ir.args[0]);
 	else
 		val = proc->ir.args[0];
 	proc->reg[proc->ir.args[1]] = val;
 	proc->carry = !val;
+printf("__FIN LD __");
 }
 
-void	ft_lld(t_process *proc, t_vm *vm)
+void	ft_lld(t_vm *vm, t_process *proc)
 {
 	int	val;
 
@@ -36,14 +37,14 @@ void	ft_lld(t_process *proc, t_vm *vm)
 	proc->carry = !val;
 }
 
-void	ft_ldi(t_process *proc, t_vm *vm)
+void	ft_ldi(t_vm *vm, t_process *proc)
 {
 	int	val;
 	int	off;
 	int	mod;
 
 	if (proc->ir.code_args[0] == T_IND)
-		off = get_mem(vm, proc->pc + proc->ir.args[0]);
+		off = get_mem(vm, proc->pc, proc->ir.args[0]);
 	else if (proc->ir.code_args[0] == T_REG)
 		off = proc->reg[proc->ir.args[0]];
 	else
@@ -52,12 +53,12 @@ void	ft_ldi(t_process *proc, t_vm *vm)
 		mod = proc->reg[proc->ir.args[1]];
 	else
 		mod = proc->ir.args[1];
-	val = get_mem(vm, proc->pc + off + mod);
+	val = get_mem(vm, proc->pc, off + mod);
 	proc->reg[proc->ir.args[1]] = val;
 	proc->carry = !val;
 }
 
-void	ft_lldi(t_process *proc, t_vm *vm)
+void	ft_lldi(t_vm *vm, t_process *proc)
 {
 	int	val;
 	int	off;

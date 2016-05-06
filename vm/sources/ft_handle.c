@@ -140,6 +140,9 @@ void	ft_mem_champs(t_base_player *player, char *av)
 	tmp = (t_list_player*)ft_memalloc(sizeof(t_list_player));
 	tmp->plr = (t_bin *)ft_memalloc(sizeof(t_bin));
 	ft_open_champion(av, tmp->plr);
+
+
+
 	if (!player->lst_plyr)
 	{
 		player->lst_plyr = tmp;

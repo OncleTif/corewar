@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/06 17:48:01 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/06 20:30:06 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ int		decode_ir(t_process *proc)
 	ir = proc->ir.irstr;
 	if (ir[0] < 1 || ir[0] > 16)
 	{
+			printf("ERROR0");
 		proc->ir_error = 1;
+			printf(" ir0:%d  pc:%d irerror:%d ", ir[0], proc->pc, proc->ir_error);
 		return (0);
 	}
 	proc->ir.opcode = ir[0];
@@ -53,6 +55,8 @@ int		decode_ir(t_process *proc)
 	//	stock_types_args(proc, g_op_tab[proc->ir.opcode - 1].att_num);
 		if (!check_ocp(ir, &proc->ir))
 		{
+			printf("ERROR1");
+			printf("pc:%d irerror:%d ", proc->pc, proc->ir_error);
 			proc->ir_error = 1;
 			return (0);
 		}
@@ -63,45 +67,26 @@ int		decode_ir(t_process *proc)
 	//printf("\n\n>>OK<<\n\n");
 	return (1);
 }
-/*
 //  FETCH IR
-int		fetch_ir(t_list_process *tmp, unsigned char *core, int pc)
+int		fetch_ir(t_process *tmp, unsigned char *core)
 {
 	int		i;
-
 	i = 0;
 	while (i < 14)
 	{
-		tmp->proc.ir.irstr[i] = core[(pc + i) % MEM_SIZE];
+		tmp->ir.irstr[i] = core[(tmp->pc + i) % MEM_SIZE];
 		i++;
 	}
 	return(0);
 }
-*/
-/*
-int		check_cycle(t_vm *vm)
+
+void	run(t_vm *vm, t_process *proc)
 {
-	vm->cpu.nbchecks += 1;
-	if ((vm->cpu.cur_delta >= vm->cpu.cycle2die && vm->alllive >= NBR_LIVE)
-		|| vm->cpu.nbchecks == MAX_CHECKS)
-	{
-		vm->cpu.nbchecks = 0;
-		vm->cpu.cycle2die -= CYCLE_DELTA;
-		vm->cpu.cur_delta = 0;
-	}
-	return (BSQ);
+	int	opcode;
+	opcode = proc->ir.irstr[0];
+	vm->ftab[proc->ir.irstr[0]](vm, proc);
 }
 
-int		run()
-{
-	// pseudo code
-	cycle_to_wait = -1;
-	pc += pcdelta;
-	execute fonction[opcode];
-	modifie t_octet data[i].num_plr data[i].pc au core[i] modifier  // POUR SDL
-	return (BSQ);
-}
-*/
 int		parse_proc(t_vm *vm)
 {
 	t_process	*tmp;
@@ -111,13 +96,27 @@ int		parse_proc(t_vm *vm)
 	tmp = vm->proc;
 	while (tmp)
 	{
-		if (tmp->cycle_to_wait == vm->cpu.cur_cycle)
+		if (tmp->cycle_to_wait == vm->cpu.cur_cycle) // 1520 = 1520
+		{
+			printf("\n\n__________DANS DECODE_______\n\n");
+			fetch_ir(tmp, vm->core);
 			decode_ir(tmp);
-			//if (vm->cpu.cur_cycle != 0 && tmp->proc.cycle_to_wait == vm->cpu.cur_cycle)
-				//run(/* BSQ */); // init cycle_to_wait = -1; pc += pcdelta;
-//			fetch_ir(tmp, vm->bcore.core, tmp->proc.pc);
+
+			//ft_print(vm);
+			run(vm, tmp);
+			i = 0;
+			while (i < 17)
+			{
+				printf("____reg[%d]: %d\n", i, tmp->reg[i]);
+				i++;
+			}
+
+
+			//ft_print(&vm);
+			printf("\n\n_________FIN DECODE_________\n\n");
+		}
 		if (tmp->cycle_to_wait <= vm->cpu.cur_cycle)
-			ft_fetch_next(t_vm *vm, t_process *proc)
+			ft_fetch_next(vm, tmp);
 		tmp = tmp->next;
 	}
 	return (0);
@@ -130,13 +129,17 @@ int		parse_proc(t_vm *vm)
 int		cpu(t_vm *vm)
 {
 	CPU.cur_cycle = 0;
+	int i;
 
+	i = 0;
 	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
 	{
 		CPU.cur_cycle += 1;
 		CPU.cur_delta += 1;
 		parse_proc(vm);
-		break ;
+//		if (i == 4)
+//		break ;
+//		i++;
 	//	check_cycle(); // modifie cur_delta cycle2die nbchecks dans T_cpu
 	}
 	return (0);
