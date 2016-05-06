@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 09:43:25 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/06 10:24:46 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,15 +164,15 @@ put_mem.c
 void	put_mem(t_vm *vm, int idx, int val);
 void	put_memlong(t_vm *vm, int idx, int val);
 /*
-ft_store.c
-*/
-void	ft_st(t_process *proc, t_vm *vm);
-void	ft_sti(t_process *proc, t_vm *vm);
-/*
 get_mem.c
 */
 int		get_mem(t_vm *vm, int idx);
 int		get_memlong(t_vm *vm, int idx);
+/*
+ft_store.c
+*/
+void	ft_st(t_process *proc, t_vm *vm);
+void	ft_sti(t_process *proc, t_vm *vm);
 /*
 ft_load.c
 */
@@ -180,6 +180,10 @@ void	ft_ld(t_process *proc, t_vm *vm);
 void	ft_lld(t_process *proc, t_vm *vm);
 void	ft_ldi(t_process *proc, t_vm *vm);
 void	ft_lldi(t_process *proc, t_vm *vm);
+/*
+ft_aff.c
+*/
+void	ft_aff(t_process *proc, t_vm *vm);
 
 /*
 ft_basic_functions.c

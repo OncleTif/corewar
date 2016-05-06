@@ -6,7 +6,7 @@
 #    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/05 16:17:00 by tmanet           ###   ########.fr        #
+#    Updated: 2016/05/06 10:29:31 by tmanet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,10 @@ SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/cpu.c sources/ocp.c sources/stock_types.c \
 		sources/init.c \
 		sources/get_mem.c \
-		sources/ft_load.c
+		sources/put_mem.c \
+		sources/ft_load.c \
+		sources/ft_store.c \
+		sources/ft_aff.c
 # sources/testdav.c \
 
 OBJ = $(SRC:.c=.o)
