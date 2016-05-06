@@ -6,22 +6,22 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/06 16:36:25 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/06 17:17:16 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	core_zero(t_base_core *bcore)
+void	core_zero(t_vm *vm)
 {
 	int		i;
 
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		bcore->core[i] = 0;
-		bcore->data[i].num_plr = 0; // ou -1 si un player est le numero 0
-		bcore->data[i].pc = 0;
+		vm->core[i] = 0;
+		vm->data[i].num_plr = 0; // ou -1 si un player est le numero 0
+		vm->data[i].pc = 0;
 	//	printf(">%d\t%d\t%d< ", i, bcore->core[i], bcore->data[i].pc);
 	//	if (i == 3687)
 	//	printf("\nDAVID%d %d %d<<<\n", i, bcore.core[i],  bcore.data[i].pc);
@@ -39,17 +39,17 @@ void		vm_init(t_vm *vm)
 {
 	vm->dump = -1;
 
-	vm->cycle2die = CYCLE_TO_DIE;
+	vm->cpu.cycle2die = CYCLE_TO_DIE;
 
 	vm->bplr.i_plr = 0;
 	vm->bplr.tab[0] = 0xffffffff;
 	vm->bplr.tab[1] = 0xfffffffe;
 	vm->bplr.tab[2] = 0xfffffffd;
 	vm->bplr.tab[3] = 0xfffffffc;
-	vm->bproc.lst_proc = NULL;
+	vm->proc = NULL;
 
 	// cpu_init(vm->cpu);
-	core_zero(&vm->bcore);
+	core_zero(vm);
 	// core_posplyer(vm);
 }
 
@@ -76,7 +76,7 @@ int		ft_init_proc(t_bin	*plr, t_process *proc)
 	return(0);
 }
 
-t_process	*ft_init_pc(int plr, int pc, t_vm *vm)
+t_process	*ft_init_pc(int plr, int pc)//, t_vm *vm)
 {
 	t_process	*proc;
 
@@ -91,18 +91,18 @@ t_process	*ft_init_pc(int plr, int pc, t_vm *vm)
 
 int		ft_init_lst_proc(t_vm *vm)
 {
-	t_list_process	*tmp;
+	t_process	*tmp;
 	t_list_player	*lst_play;
 
 	lst_play = vm->bplr.lst_plyr;
 	while (lst_play)
 	{
-		tmp = (t_list_process*)ft_memalloc(sizeof(t_list_process));
-		ft_init_proc(lst_play->plr->num_plyr, &tmp->proc); // ?? adresse du t_procecuss dans PC ??
-		tmp->proc.num = BPROC.nb_proc;
-		BPROC.nb_proc += 1;
-		tmp->next = BPROC.lst_proc;
-		BPROC.lst_proc = tmp;
+		tmp = (t_process*)ft_memalloc(sizeof(t_process));
+		ft_init_proc(lst_play->plr, tmp);
+		tmp->num = vm->nb_proc;
+		vm->nb_proc += 1;
+		tmp->next = vm->proc;
+		vm->proc = tmp;
 		lst_play = lst_play->next;
 	}
 	return (0);
@@ -116,14 +116,14 @@ int	copy_plr(t_vm *vm, t_bin *plr, int i)
 	size = r4oi(plr->prog_size);
 	j = 0;
 	plr->pc_tmp = i;
-	BCOR.data[i].pc = 1;
+	vm->data[i].pc = 1;
 	while (j < size)
 	{
-		vm->bcore.core[i] = plr->program[j];
-		BCOR.data[i].num_plr = plr->num_plyr;
-		//printf(">%d\t%d\t%d< ", i, BCOR.core[i], BCOR.data[i].pc);
+		vm->core[i] = plr->program[j];
+		vm->data[i].num_plr = plr->num_plyr;
+		//printf(">%d\t%d\t%d< ", i, vm->core[i], vm->data[i].pc);
 		//if (i == 3687)
-		//printf(">>>>%d %d %d<<<", i, BCOR.core[i],  BCOR.data[i].pc);
+		//printf(">>>>%d %d %d<<<", i, vm->core[i],  vm->data[i].pc);
 		i++;
 		j++;
 	}

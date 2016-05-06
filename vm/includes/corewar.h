@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 15:07:42 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/06 16:53:17 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # define BPLR vm->bplr
-# define BPROC vm->bproc
+//# define BPROC vm->bproc
 # define CPU vm->cpu
-# define BCOR vm->bcore
+//# define BCOR vm->bcore
 void print(void);
 
 struct s_cpu
@@ -47,20 +47,22 @@ struct s_octet
 	int		num_plr; // numero du dernier player a ecrire
 	int		pc; // bool, pc sur loctet ou non
 };
-
+/*
 struct s_base_core
 {
-	unsigned char	core[MEM_SIZE];
-	t_octet			data[MEM_SIZE];
 };
-
+*/
 struct s_vm
 {
 	int				dump; //  -dump aff et exit apres nbr cycles
 	int				verbose; //  -v affiche les action
 	t_cpu			cpu;
 //	t_base_process	bproc;
-	t_base_core		bcore;
+//	t_base_core		bcore;
+
+	unsigned char	core[MEM_SIZE];
+	t_octet			data[MEM_SIZE];
+
 	t_base_player	bplr;
 	int				last_live; // numero du dernier player qui a dit LIVE
 	t_process		*proc;
@@ -141,7 +143,7 @@ cpu.c
 int		cpu(t_vm *vm);
 int		stock_types_args(t_process *proc, int i);
 int		decode_ir(t_process *proc);
-int		fetch_ir(t_list_process *tmp, unsigned char *core, int pc);
+//int		fetch_ir(t_list_process *tmp, unsigned char *core, int pc);
 int		parse_proc(t_vm *vm);
 
 

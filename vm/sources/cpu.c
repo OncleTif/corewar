@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/05 09:13:24 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/06 17:08:08 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		decode_ir(t_process *proc)
 	//printf("\n\n>>OK<<\n\n");
 	return (1);
 }
-
+/*
 //  FETCH IR
 int		fetch_ir(t_list_process *tmp, unsigned char *core, int pc)
 {
@@ -77,6 +77,8 @@ int		fetch_ir(t_list_process *tmp, unsigned char *core, int pc)
 	}
 	return(0);
 }
+*/
+/*
 int		check_cycle(t_vm *vm)
 {
 	vm->cpu.nbchecks += 1;
@@ -87,7 +89,7 @@ int		check_cycle(t_vm *vm)
 		vm->cpu.cycle2die -= CYCLE_DELTA;
 		vm->cpu.cur_delta = 0;
 	}
-	return (/*BSQ*/);
+	return (BSQ);
 }
 
 int		run()
@@ -97,32 +99,32 @@ int		run()
 	pc += pcdelta;
 	execute fonction[opcode];
 	modifie t_octet data[i].num_plr data[i].pc au core[i] modifier  // POUR SDL
-	return (/*BSQ*/);
+	return (BSQ);
 }
-
+*/
 int		parse_proc(t_vm *vm)
 {
-	t_list_process	*tmp;
+	t_process	*tmp;
 	int		i;
 
 	i = 0;
-	tmp = BPROC.lst_proc;
+	tmp = vm->proc;
 	while (tmp)
 	{
-		if (tmp->proc.cycle_to_wait == -1)
+		if (tmp->cycle_to_wait == -1)
 		{
-			if (vm->cpu.cur_cycle != 0 && tmp->proc.cycle_to_wait == vm->cpu.cur_cycle)
-				run(/* BSQ */); // init cycle_to_wait = -1; pc += pcdelta;
-			fetch_ir(tmp, vm->bcore.core, tmp->proc.pc);
-			decode_ir(&tmp->proc);
+			//if (vm->cpu.cur_cycle != 0 && tmp->proc.cycle_to_wait == vm->cpu.cur_cycle)
+				//run(/* BSQ */); // init cycle_to_wait = -1; pc += pcdelta;
+//			fetch_ir(tmp, vm->bcore.core, tmp->proc.pc);
+			decode_ir(tmp);
 		}
 		tmp = tmp->next;
 	}
 	return (0);
 }
 
-	proc->pc += proc->pcdelta;
-	proc->pcdelta = 0;
+	//proc->pc += proc->pcdelta;
+	//proc->pcdelta = 0;
 
 //Chooo-Chooo
 int		cpu(t_vm *vm)
@@ -134,7 +136,7 @@ int		cpu(t_vm *vm)
 		CPU.cur_cycle += 1;
 		CPU.cur_delta += 1;
 		parse_proc(vm);
-		check_cycle(); // modifie cur_delta cycle2die nbchecks dans T_cpu
+	//	check_cycle(); // modifie cur_delta cycle2die nbchecks dans T_cpu
 	}
 	return (0);
 }
