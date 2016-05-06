@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/06 17:17:16 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/06 18:00:26 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int		ft_init_lst_proc(t_vm *vm)
 	{
 		tmp = (t_process*)ft_memalloc(sizeof(t_process));
 		ft_init_proc(lst_play->plr, tmp);
+		ft_fetch_next(vm, tmp);
 		tmp->num = vm->nb_proc;
 		vm->nb_proc += 1;
 		tmp->next = vm->proc;
