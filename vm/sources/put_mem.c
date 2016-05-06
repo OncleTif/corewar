@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 17:49:26 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 17:18:20 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/06 17:19:48 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	put_mem(t_vm *vm, int idx, int val)
 	i = 0;
 	while (i < 4)
 	{
-		vm->bcore.core[((idx + i) % IDX_MOD) % MEM_SIZE] = tmp.c[3 - i];
+		vm->core[((idx + i) % IDX_MOD) % MEM_SIZE] = tmp.c[3 - i];
 		i++;
 	}
 }
@@ -35,7 +35,7 @@ void	put_memlong(t_vm *vm, int idx, int val)
 	i = 0;
 	while (i < 4)
 	{
-		vm->bcore.core[(idx + i) % MEM_SIZE] = tmp.c[3 - i];
+		vm->core[(idx + i) % MEM_SIZE] = tmp.c[3 - i];
 		i++;
 	}
 }

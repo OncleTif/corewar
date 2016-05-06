@@ -6,7 +6,7 @@
 #    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/06 10:29:31 by tmanet           ###   ########.fr        #
+#    Updated: 2016/05/06 17:24:30 by djoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ clean:
 
 fclean: clean
 	/bin/rm -f $(NAME)
+	make -C ../libft/ fclean
 
 re: fclean all
 

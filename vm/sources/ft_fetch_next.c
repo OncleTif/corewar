@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fetch_next.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:20:06 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 17:08:50 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/06 17:47:58 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	ft_fetch_next(t_vm *vm, t_process *proc)
 {
 	if (proc->pcdelta)
 		ft_proc_init(vm, proc);
-	else
+	else if (vm->cpu.cur_cycle)
 		proc->pc = (proc->pc + 1) % MEM_SIZE;
-	if (vm->bcore.core[proc->pc] > 0 && vm->bcore.core[proc->pc] <= 16)
+	if (vm->core[proc->pc] > 0 && vm->core[proc->pc] <= 16)
 	{
 		proc->cycle_to_wait = vm->cpu.cur_cycle +
-			g_op_tab[vm->bcore.core[proc->pc]].cost;
+			g_op_tab[vm->core[proc->pc]].cost;
 	}
 }

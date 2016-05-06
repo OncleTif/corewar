@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/06 17:08:08 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/06 17:48:01 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,13 @@ int		parse_proc(t_vm *vm)
 	tmp = vm->proc;
 	while (tmp)
 	{
-		if (tmp->cycle_to_wait == -1)
-		{
+		if (tmp->cycle_to_wait == vm->cpu.cur_cycle)
+			decode_ir(tmp);
 			//if (vm->cpu.cur_cycle != 0 && tmp->proc.cycle_to_wait == vm->cpu.cur_cycle)
 				//run(/* BSQ */); // init cycle_to_wait = -1; pc += pcdelta;
 //			fetch_ir(tmp, vm->bcore.core, tmp->proc.pc);
-			decode_ir(tmp);
-		}
+		if (tmp->cycle_to_wait <= vm->cpu.cur_cycle)
+			ft_fetch_next(t_vm *vm, t_process *proc)
 		tmp = tmp->next;
 	}
 	return (0);
@@ -136,6 +136,7 @@ int		cpu(t_vm *vm)
 		CPU.cur_cycle += 1;
 		CPU.cur_delta += 1;
 		parse_proc(vm);
+		break ;
 	//	check_cycle(); // modifie cur_delta cycle2die nbchecks dans T_cpu
 	}
 	return (0);

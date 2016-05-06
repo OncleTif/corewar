@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 16:53:17 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/06 17:21:56 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ void	ft_lldi(t_process *proc, t_vm *vm);
 /*
 ft_aff.c
 */
-void	ft_aff(t_process *proc, t_vm *vm);
+void	ft_aff(t_vm *vm, t_process *proc);
 /*
 ft_basic_functions.c
 */

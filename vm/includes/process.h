@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:26:12 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/06 16:09:37 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/06 17:40:37 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ struct s_process
 {
 	int		num;  // numero du processus
 	int		num_plr; // num du plyr ou
-	int		cycle_to_wait;
+	int		cycle_to_wait; // -1 soit cur_cycle + temps d attente
 	int		pc;
 	int		pcdelta; // avancer de pc + pcdelta
 	int		reg[17]; // LITTLE ENDIAN

@@ -28,6 +28,6 @@ void	ft_open_champion(char *line, t_bin *plr)
 	plr->magic = 0;
 	plr->prog_size = 0;
 	if ((fd = open(line, O_RDONLY)) == -1)
-		ft_error("error");
+		ft_error("error open failed");
 	ft_read_champion(fd, plr);
 }
