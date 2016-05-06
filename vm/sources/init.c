@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/05 18:25:37 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/06 16:36:25 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,25 +71,9 @@ int		ft_init_proc(t_bin	*plr, t_process *proc)
 	proc->num_plr = plr->num_plyr;
 	proc->pc = plr->pc_tmp;
 	proc->pcdelta = 0;
-	proc->reg[0] = proc->num_plr;
+	proc->reg[1] = proc->num_plr;
 	proc->carry = 0;
 	return(0);
-}
-
-int		ft_addr(t_vm *vm)
-{
-	t_list_process *tmp;
-	int i;
-
-	tmp = vm->bproc->lst_proc;
-	i = tmp->num;
-	while (tmp->next != NULL)
-	{
-		if (tmp->num < i)
-			i = tmp->num;
-		tmp = tmp->next;
-	}
-	return (i);
 }
 
 t_process	*ft_init_pc(int plr, int pc, t_vm *vm)
@@ -101,7 +85,7 @@ t_process	*ft_init_pc(int plr, int pc, t_vm *vm)
 	proc->cycle_to_wait = -1;
 	proc->num_plr = plr;
 	proc->pc = pc;
-	proc->reg[0] = ft_addr(vm);
+	proc->reg[1] = plr;
 	return (proc);
 }
 
@@ -114,7 +98,7 @@ int		ft_init_lst_proc(t_vm *vm)
 	while (lst_play)
 	{
 		tmp = (t_list_process*)ft_memalloc(sizeof(t_list_process));
-		ft_init_proc(lst_play->plr, &tmp->proc);
+		ft_init_proc(lst_play->plr->num_plyr, &tmp->proc); // ?? adresse du t_procecuss dans PC ??
 		tmp->proc.num = BPROC.nb_proc;
 		BPROC.nb_proc += 1;
 		tmp->next = BPROC.lst_proc;
