@@ -26,19 +26,19 @@ void	print_core(t_vm *vm)
 		i++;
 	}
 }
-void	ft_print(t_vm *vm)
+
+void	print_t_vm(t_vm *vm)
+{
+	printf("__dans VM __\ndump:%d\nverbose:%d\n", vm->dump, vm->verbose);
+}
+
+void	print_t_plr(t_list_player *lplr)
 {
 	t_list_player *tmp;
-	t_process *tmp2;
-	char *buff = NULL;
-	int i;
-
-	i = 0;
-	printf("__dans VM __\ndump:%d\nverbose:%d\n", vm->dump, vm->verbose);
-	printf("__dans bplr__\nnb_plyr:%d\n", vm->bplr.nb_plyr);
-	printf("numplr1:%d\nnumplr2:%d\nnumplr3:%d\nnumplr4:%d\n", BPLR.tab[0], BPLR.tab[1],
-			BPLR.tab[2], BPLR.tab[3]);
-	tmp = BPLR.lst_plyr;
+	tmp = lplr;
+	char *buff;
+	
+	buff= NULL;
 	while (tmp)
 	{
 		printf("__dans BIN __\nnumplr:%u\n", tmp->plr->num_plyr);
@@ -48,9 +48,43 @@ void	ft_print(t_vm *vm)
 		print_comment(*tmp->plr);
 		print_prog(*tmp->plr);
 		tmp = tmp->next;
-		i++;
 	}
-	tmp2 = vm->proc;
+}
+
+void	print_t_bplr(t_base_player *bplr)
+{
+	printf("\n__dans bplr__\nnb_plyr:%d\n", bplr->nb_plyr);
+	printf("numplr1:%d\nnumplr2:%d\nnumplr3:%d\nnumplr4:%d\n", bplr->tab[0], bplr->tab[1],
+			bplr->tab[2], bplr->tab[3]);	
+}
+
+void	print_t_ir(t_ir *tir)
+{
+	int	i;
+	
+	i = 0;
+		printf("\n__IR__\nirstr:");
+		while (i < 14)
+		{
+			printf("%.2x ", (unsigned char)ir->irstr[i]);
+			i++;
+		}
+		printf("opcode:%d ocp:%x index:%d nb_arg:%d\n", tir->opcode, tir->ocp,
+	 	tir->index, tir->nb_arg);
+		i = 0;
+		while (i < 3)
+		{
+			printf("I = %d, TYPE => %x, CODE => %x, ARGS => %x\n", i, tir->types_args[i], tir->code_args[i], tir->args[i]);
+			i++;
+		}
+		printf("\n");	
+}
+
+void	print_t_proc(t_proc *proc)
+{
+	t_process *tmp2;
+	
+	tmp2 = proc;
 	while (tmp2)
 	{
 		printf("__DANS PROC__\nnum:%d\nnum_plr:%d\npc:%d\nreg0:%d\ncarry:%d\n cycle_to_wait:%d \n",
@@ -58,26 +92,20 @@ void	ft_print(t_vm *vm)
 				tmp2->cycle_to_wait);
 		printf("pcdelta:%d carry:%d ir_error:%d \n", tmp2->pcdelta, tmp2->carry,
 			tmp2->ir_error);
-
-		i = 0;
-		printf("__IR__\nIR:");
-		while (i < 14)
-		{
-			printf("%.2x ", (unsigned char)tmp2->ir.irstr[i]);
-			i++;
-		}
-		printf("opcode:%d ocp:%x index:%d nb_arg:%d\n", tmp2->ir.opcode,tmp2->ir.ocp,
-	 	tmp2->ir.index,tmp2->ir.nb_arg);
-		i = 0;
-		while (i < 3)
-		{
-			printf("I = %d, TYPE => %x, CODE => %x, ARGS => %x\n", i, tmp2->ir.types_args[i], tmp2->ir.code_args[i], tmp2->ir.args[i]);
-			i++;
-		}
-		printf("\n");
+		print_t_ir(&tmp->ir);
 		tmp2 = tmp2->next;
 	}
 }
+
+void	ft_print(t_vm *vm)
+{
+	//print_t_cpu(vm->cpu);
+	print_t_vm(vm);
+	print_t_bplr(vm->bplr);
+	print_t_plr(vm->bplr->lst_plyr);	
+	print_t_proc(vm->proc);
+}
+
 void	print_corenum_plr(t_octet *core)
 {
 	int i;
