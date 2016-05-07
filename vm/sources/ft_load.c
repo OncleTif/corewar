@@ -15,14 +15,13 @@
 void	ft_ld(t_vm *vm, t_process *proc)
 {
 	int	val;
-printf("__DANS LD __");
+
 	if (proc->ir.code_args[0] == T_IND)
 		val = get_mem(vm, proc->pc, proc->ir.args[0]);
 	else
 		val = proc->ir.args[0];
 	proc->reg[proc->ir.args[1]] = val;
 	proc->carry = !val;
-printf("__FIN LD __");
 }
 
 void	ft_lld(t_vm *vm, t_process *proc)
