@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/09 11:25:26 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/09 16:43:48 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ struct						s_champ
 	t_list					*labels;
 	t_list					*miss;
 	int						fd;
+	int						fd_out;
 	int						line;
+	int						com;
 };
 
 struct						s_instr
@@ -59,15 +61,15 @@ char						**ft_get_lbl(char **tab, t_champ *cmp);
 void						get_attr(int i, char **tab, t_champ *c);
 void						op_types_read(int i, char **tab, t_champ *c);
 void						find_instr(t_champ *c, char *tmp);
-void						ft_print_bin(t_champ *chp, int fd);
+void						ft_print_bin(t_champ *chp);
 /*
 ** champ.c
 */
 void						ft_print_champ(t_champ *chp);
-void						ft_print_magic(int fd);
-void						ft_print_name(t_champ *chp, int fd);
-void						ft_print_bin_size(t_champ *chp, int fd);
-void						ft_print_comment(t_champ *chp, int fd);
+void						ft_print_magic(t_champ *c);
+void						ft_print_name(t_champ *chp);
+void						ft_print_bin_size(t_champ *chp);
+void						ft_print_comment(t_champ *chp);
 /*
 ** structure.c
 */
@@ -99,4 +101,6 @@ void						read_s_file(t_champ *c, char *file);
 ** ft_check_champ.c
 */
 void						ft_check_champ(t_champ *chp);
+void						ft_write_bin(t_champ *c, int pos, char ocp);
+int							check_flags(t_champ *c, char **av);
 #endif

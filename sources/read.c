@@ -6,7 +6,7 @@
 /*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 19:18:32 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/09 14:03:59 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/09 16:47:04 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,7 @@ void		read_s_file(t_champ *c, char *file)
 	char	*tmp;
 
 	if ((c->fd = open(file, O_RDONLY)) == -1)
-	{
 		ft_error("Open failed.");
-	}
 	else
 	{
 		while (get_next_line(c->fd, &line) > 0)
@@ -96,7 +94,10 @@ void		read_s_file(t_champ *c, char *file)
 				if (ft_strncmp(".name", tmp, 5) == 0)
 					get_str(c, ft_strchr(tmp, '"') + 1, c->name);
 				else if (ft_strncmp(".comment", tmp, 8) == 0)
+				{
 					get_str(c, ft_strchr(tmp, '"') + 1, c->comment);
+					c->com = 1;
+				}
 				else if (line[0])
 					find_instr(c, tmp);
 			}

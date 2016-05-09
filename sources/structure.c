@@ -6,7 +6,7 @@
 /*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 17:20:34 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/03 19:29:48 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/09 16:48:04 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	init_structure(t_champ *c)
 	c->labels = NULL;
 	c->miss = NULL;
 	c->fd = 0;
+	c->fd_out = 0;
 	c->line = 1;
+	c->com = 0;
 }
 
 char	*epur_file_name(char *str)

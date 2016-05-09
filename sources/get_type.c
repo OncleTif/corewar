@@ -6,7 +6,7 @@
 /*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 19:14:41 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/03 19:27:36 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/09 16:41:44 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void			get_inst(int i, char **tmp, t_champ *cmp)
 {
-	cmp->bin[cmp->pos] = (char)g_op_tab[i].opcode;
-	cmp->inst_pos = cmp->pos;
-	cmp->pos++;
+	ft_write_bin(cmp, cmp->pos, (char)g_op_tab[i].opcode);
+	cmp->inst_pos = cmp->pos - 1;
 	tmp++;
 }
 
@@ -47,9 +46,8 @@ void			get_dir(t_champ *c, char *str, int i)
 		dir.i = ft_atoi(str);
 		while (k >= 0)
 		{
-			c->bin[c->pos] = dir.c[k];
+			ft_write_bin(c, c->pos, dir.c[k]);
 			k--;
-			c->pos++;
 		}
 	}
 }
@@ -62,8 +60,7 @@ void			get_reg(t_champ *c, char *str)
 	if (reg <= 0 || reg > 16)
 		ft_error(ft_strjoin(ft_strjoin(ft_strjoin("Reg '", str),
 						"' does not exist line "), ft_itoa(c->line)));
-	c->bin[c->pos] = (char)reg;
-	c->pos++;
+	ft_write_bin(c, c->pos, (char)reg);
 }
 
 void			get_ind(t_champ *c, char *str)
@@ -84,9 +81,8 @@ void			get_ind(t_champ *c, char *str)
 		i = 0;
 		while (i < IND_SIZE)
 		{
-			c->bin[c->pos] = ind.c[IND_SIZE - i - 1];
+			ft_write_bin(c, c->pos, ind.c[IND_SIZE - i - 1]);
 			i++;
-			c->pos++;
 		}
 	}
 }

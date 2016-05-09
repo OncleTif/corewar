@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/04 09:33:08 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/09 16:39:32 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,7 @@ void		op_types_read(int i, char **tab, t_champ *c)
 		j++;
 	}
 	if (g_op_tab[i].carry)
-	{
-		c->bin[c->pos] = ocp;
-		c->pos++;
-	}
+		ft_write_bin(c, c->pos, ocp);
 	get_attr(i, tab, c);
 }
 
@@ -108,7 +105,7 @@ void		find_instr(t_champ *c, char *tmp)
 	}
 }
 
-void		ft_print_bin(t_champ *chp, int fd)
+void		ft_print_bin(t_champ *chp)
 {
-	write(fd, &chp->bin, chp->pos);
+	write(chp->fd_out, &chp->bin, chp->pos);
 }
