@@ -6,7 +6,7 @@
 /*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 19:18:32 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/09 12:13:04 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/09 14:03:59 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,13 @@ int			check_str(t_champ *c)
 int			define_str(t_champ *chp, char c, int i, char *str)
 {
 	if ((int)str == (int)&chp->name && i >= PROG_NAME_LENGTH)
-		ft_error(ft_strjoin("name too long in file ", chp->file_n));
+		ft_error(
+				ft_strjoin("Champion name too long (Max length 128) in file ",
+					chp->file_n));
 	else if ((int)str == (int)&chp->comment && i >= COMMENT_LENGTH)
-		ft_error(ft_strjoin("comment too long in file ", chp->file_n));
+		ft_error(ft_strjoin(
+					"Champion comment too long (Max length 2048) in file ",
+					chp->file_n));
 	str[i] = c;
 	return (i + 1);
 }
