@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 19:59:22 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/09 09:45:05 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_ldi(t_vm *vm, t_process *proc)
 	int	mod;
 
 	if (proc->ir.code_args[0] == T_IND)
-		off = get_mem(vm, proc->pc, proc->ir.args[0]);
+		off = get_mem_idx(vm, proc->pc, proc->ir.args[0]);
 	else if (proc->ir.code_args[0] == T_REG)
 		off = proc->reg[proc->ir.args[0]];
 	else
@@ -64,7 +64,7 @@ void	ft_lldi(t_vm *vm, t_process *proc)
 	int	mod;
 
 	if (proc->ir.code_args[0] == T_IND)
-		off = get_memlong(vm, proc->pc + proc->ir.args[0]);
+		off = get_memlong_idx(vm, proc->pc + proc->ir.args[0]);
 	else if (proc->ir.code_args[0] == T_REG)
 		off = proc->reg[proc->ir.args[0]];
 	else
