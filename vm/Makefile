@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: djoly <djoly@student.42.fr>                +#+  +:+       +#+         #
+#    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/09 14:10:29 by tmanet           ###   ########.fr        #
+#    Updated: 2016/05/09 16:35:53 by eozdek           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/ft_basic_functions.c \
 		sources/ft_aff.c\
 		sources/ft_fetch_next.c \
+		sources/init_2.c \
 # sources/testdav.c \
 
 OBJ = $(SRC:.c=.o)
