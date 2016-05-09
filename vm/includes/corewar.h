@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/09 12:38:46 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/09 16:48:08 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,118 +90,131 @@ struct s_base_core
 */
 
 /*
-	ft_init_proc.c
+	init
 */
-int		ft_init_lst_proc(t_vm *vm);
+
+t_process	*	ft_add_link(t_process *proc, int plr, int pc);
+void			ft_init_pc(int plr, int pc, t_vm *vm);
+int				ft_init_lst_proc(t_vm *vm);
+int				copy_plr(t_vm *vm, t_bin *plr, int i);
+int				ft_init_arena(t_vm *vm);
+
+/*
+init_2
+*/
+int				ft_init_proc(t_bin	*plr, t_process *proc);
+void			vm_init(t_vm *vm);
+int				ftab_init(t_vm *vm);
+void			core_zero(t_vm *vm);
 
 /*
 	ft_init_arena
 */
-int		ft_init_arena(t_vm *vm);
+int				ft_init_arena(t_vm *vm);
 
 /*
 	ft_check_champion.c
 */
 
-void	ft_open_champion(char *line, t_bin *plr);
+void			ft_open_champion(char *line, t_bin *plr);
 
 /*
 	ft_stock_champion.c
 */
 
-void	ft_stock_program(int fd, t_bin *plr);
-void	ft_stock_comment(int fd, t_bin *plr);
-void	ft_stock_prog_size(int fd, char *buff, t_bin *plr);
-void	ft_stock_name(int fd, t_bin *plr);
-void	ft_stock_magic(int fd, char *buff, t_bin *plr);
+void			ft_stock_program(int fd, t_bin *plr);
+void			ft_stock_comment(int fd, t_bin *plr);
+void			ft_stock_prog_size(int fd, char *buff, t_bin *plr);
+void			ft_stock_name(int fd, t_bin *plr);
+void			ft_stock_magic(int fd, char *buff, t_bin *plr);
 
 /*
 	ft_handle.c
 */
 
-void	ft_handle_args(int ac, char **av, t_vm *vm);
-int		ft_check_args(char *av);
-void	ft_handle_bonus(char **av, int *i, t_vm *vm);
-void	ft_mem_champs(t_base_player *player, char *av);
+void			ft_handle_args(int ac, char **av, t_vm *vm);
+int				ft_check_args(char *av);
+void			ft_handle_bonus(char **av, int *i, t_vm *vm);
+void			ft_mem_champs(t_base_player *player, char *av);
 
 /*
 	ft_memrev.c
 */
 
-void	memrev(char  *buf, size_t count);
+void			memrev(char  *buf, size_t count);
 
 /*
 ft_print_champion.c
 */
 
-void print_prog(t_bin plr);
-void print_magic(t_bin plr, char *buff);
-void print_prog_name(t_bin plr);
-void print_prog_size(t_bin plr, char *buff);
-void print_comment(t_bin plr);
+void			print_prog(t_bin plr);
+void			print_magic(t_bin plr, char *buff);
+void			print_prog_name(t_bin plr);
+void			print_prog_size(t_bin plr, char *buff);
+void			print_comment(t_bin plr);
 
 /*
 cpu.c
 */
-int		cpu(t_vm *vm);
-int		stock_types_args(t_process *proc, int i);
-int		decode_ir(t_process *proc);
+int				cpu(t_vm *vm);
+int				stock_types_args(t_process *proc, int i);
+int				decode_ir(t_process *proc);
 //int		fetch_ir(t_list_process *tmp, unsigned char *core, int pc);
-int		parse_proc(t_vm *vm);
+int				parse_proc(t_vm *vm);
 
 
 /*
 ocp.c
 */
-int		check_code(unsigned char ocp, int decal);
-int 	stock_code_args(t_ir *pir, unsigned char ocp, int u, int i);
-int 	j_init(int i, t_ir *pir, int *j);
-int 	get_args(t_process *proc, t_vm *vm);
-int		check_ocp(unsigned char *ir, t_ir *pir);
+int				check_code(unsigned char ocp, int decal);
+int				stock_code_args(t_ir *pir, unsigned char ocp, int u, int i);
+int				j_init(int i, t_ir *pir, int *j);
+int				get_args(t_process *proc, t_vm *vm);
+int				check_ocp(unsigned char *ir, t_ir *pir);
 
 /*
 stock_types.c
 */
-int		stock_reg(t_process *proc, int i);
-int		stock_dir(t_process *proc, int i);
-int		stock_ind(t_process *proc, int i);
+int				stock_reg(t_process *proc, int i);
+int				stock_dir(t_process *proc, int i);
+int				stock_ind(t_process *proc, int i);
 
 /*
 put_mem.c
 */
-void	put_mem(t_vm *vm, int idx, int val);
-void	put_memlong(t_vm *vm, int idx, int val);
+void			put_mem(t_vm *vm, int idx, int val);
+void			put_memlong(t_vm *vm, int idx, int val);
 /*
 get_mem.c
 */
-int		get_mem(t_vm *vm, int idx, int off);
-int		get_mem_idx(t_vm *vm, int idx, int off);
-int		get_memlong(t_vm *vm, int idx);
-int		get_memlong_idx(t_vm *vm, int idx);
+int				get_mem(t_vm *vm, int idx, int off);
+int				get_mem_idx(t_vm *vm, int idx, int off);
+int				get_memlong(t_vm *vm, int idx);
+int				get_memlong_idx(t_vm *vm, int idx);
 /*
 ft_store.c
 */
-void	ft_st(t_vm *vm, t_process *proc);
-void	ft_sti(t_vm *vm, t_process *proc);
+void			ft_st(t_vm *vm, t_process *proc);
+void			ft_sti(t_vm *vm, t_process *proc);
 /*
 ft_load.c
 */
-void	ft_ld(t_vm *vm, t_process *proc);
-void	ft_lld(t_vm *vm, t_process *proc);
-void	ft_ldi(t_vm *vm, t_process *proc);
-void	ft_lldi(t_vm *vm, t_process *proc);
+void			ft_ld(t_vm *vm, t_process *proc);
+void			ft_lld(t_vm *vm, t_process *proc);
+void			ft_ldi(t_vm *vm, t_process *proc);
+void			ft_lldi(t_vm *vm, t_process *proc);
 /*
 ft_aff.c
 */
-void	ft_aff(t_vm *vm, t_process *proc);
+void			ft_aff(t_vm *vm, t_process *proc);
 /*
 ft_b, t_process *procasic_functions.c
 */
-void	ft_add(t_vm *vm, t_process *proc);
-void	ft_sub(t_vm *vm, t_process *proc);
-void	ft_or(t_vm *vm, t_process *proc);
-void	ft_xor(t_vm *vm, t_process *proc);
-void	ft_and(t_vm *vm, t_process *proc);
+void			ft_add(t_vm *vm, t_process *proc);
+void			ft_sub(t_vm *vm, t_process *proc);
+void			ft_or(t_vm *vm, t_process *proc);
+void			ft_xor(t_vm *vm, t_process *proc);
+void			ft_and(t_vm *vm, t_process *proc);
 
 
 void			ft_zjmp(t_vm *vm, t_process *proc);
@@ -209,13 +222,13 @@ void			ft_fork(t_vm *vm, t_process *proc);
 void			ft_lfork(t_vm *vm, t_process *proc);
 
 
-void	ft_live(t_vm *vm, t_process *proc);
+void			ft_live(t_vm *vm, t_process *proc);
 
 /*
 ft_fetch_next.c
 */
-void	ft_fetch_next(t_vm *vm, t_process *proc);
+void			ft_fetch_next(t_vm *vm, t_process *proc);
 
-void ft_print(t_vm *vm);
+void			ft_print(t_vm *vm);
 
 #endif
