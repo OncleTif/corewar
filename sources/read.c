@@ -6,7 +6,7 @@
 /*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 19:18:32 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/09 10:28:30 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/09 10:41:14 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void		get_str(t_champ *c, char *tmp, char *str)
 		indic = 1;
 	while (!indic)
 	{
-		get_next_line(c->fd, &line);
+		if (get_next_line(c->fd, &line) < 1)
+			ft_error("error while reading a name or comment, missing '\"'");
 		str[i++] = '\n';
 		while (*line && *line != '"')
 		{
