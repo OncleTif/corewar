@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/09 12:39:10 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/09 16:06:45 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,17 +97,28 @@ int		ft_init_proc(t_bin	*plr, t_process *proc)
 	return(0);
 }
 
-t_process	*ft_init_pc(int plr, int pc)//, t_vm *vm)
+/*
+ajout au debut de t_proc
+*/
+t_process	*ft_add_link(t_process *proc, int plr, int pc)
 {
-	t_process	*proc;
+	t_process *tmp;
 
-	proc = (t_process*)ft_memalloc(sizeof(t_process));
+	tmp = (t_process*)ft_memalloc(sizeof(t_process));
+	if (tmp)
+	{
+		proc->cycle_to_wait = -1;
+		proc->num_plr = plr;
+		proc->pc = pc;
+		proc->reg[1] = plr;
+		tmp->next = proc;
+	}
+	return (tmp);
+}
 
-	proc->cycle_to_wait = -1;
-	proc->num_plr = plr;
-	proc->pc = pc;
-	proc->reg[1] = plr;
-	return (proc);
+void	ft_init_pc(int plr, int pc, t_vm *vm)
+{
+	vm->proc = ft_add_link(vm->proc, plr, pc);
 }
 
 int		ft_init_lst_proc(t_vm *vm)
