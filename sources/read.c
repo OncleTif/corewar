@@ -6,7 +6,7 @@
 /*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 19:18:32 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/09 10:49:58 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/09 12:13:04 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ int			check_str(t_champ *c)
 	return (1);
 }
 
+int			define_str(t_champ *chp, char c, int i, char *str)
+{
+	if ((int)str == (int)&chp->name && i >= PROG_NAME_LENGTH)
+		ft_error(ft_strjoin("name too long in file ", chp->file_n));
+	else if ((int)str == (int)&chp->comment && i >= COMMENT_LENGTH)
+		ft_error(ft_strjoin("comment too long in file ", chp->file_n));
+	str[i] = c;
+	return (i + 1);
+}
+
 void		get_str(t_champ *c, char *tmp, char *str)
 {
 	char	*line;
@@ -35,7 +45,7 @@ void		get_str(t_champ *c, char *tmp, char *str)
 	i = 0;
 	indic = 0;
 	while (*tmp && *tmp != '"')
-		str[i++] = *tmp++;
+		i = define_str(c, *tmp++, i, str);
 	if (*tmp == '"')
 		indic = 1;
 	while (!indic)
@@ -45,7 +55,7 @@ void		get_str(t_champ *c, char *tmp, char *str)
 		str[i++] = '\n';
 		while (*line && *line != '"')
 		{
-			str[i++] = *line;
+			i = define_str(c, *line, i, str);
 			line++;
 		}
 		if (*line == '"')
