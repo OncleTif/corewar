@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/09 09:44:52 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/09 12:38:46 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,6 +207,9 @@ void	ft_and(t_vm *vm, t_process *proc);
 void			ft_zjmp(t_vm *vm, t_process *proc);
 void			ft_fork(t_vm *vm, t_process *proc);
 void			ft_lfork(t_vm *vm, t_process *proc);
+
+
+void	ft_live(t_vm *vm, t_process *proc);
 
 /*
 ft_fetch_next.c

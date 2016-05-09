@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/06 20:22:24 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/09 12:39:10 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	core_zero(t_vm *vm)
 // }
 int			ftab_init(t_vm *vm)
 {
-	//vm->ftab[1] = &ft_live;
+	vm->ftab[1] = &ft_live;
 	vm->ftab[2] = &ft_ld;
 	vm->ftab[3] = &ft_st;
 	vm->ftab[4] = &ft_add;
