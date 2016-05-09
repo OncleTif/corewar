@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 20:08:32 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/03 19:29:55 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/09 11:25:26 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,8 @@ int							check_str(t_champ *c);
 void						get_str(t_champ *c, char *tmp, char *str);
 char						*ft_strtrim_com(char *line);
 void						read_s_file(t_champ *c, char *file);
+/*
+** ft_check_champ.c
+*/
+void						ft_check_champ(t_champ *chp);
 #endif

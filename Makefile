@@ -6,7 +6,7 @@
 #    By: ssicard <ssicard@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/04 09:48:39 by tmanet           ###   ########.fr        #
+#    Updated: 2016/05/09 11:26:24 by tmanet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC = asm.c \
 	  sources/structure.c \
 	  sources/get_type.c \
 	  sources/read.c \
+	  sources/ft_check_champ.c \
 
 
 OBJ = $(SRC:.c=.o)
