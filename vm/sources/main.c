@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/06 20:20:54 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/09 11:46:10 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_t_plr(t_list_player *lplr)
 	t_list_player *tmp;
 	tmp = lplr;
 	char *buff;
-	
+
 	buff= NULL;
 	while (tmp)
 	{
@@ -55,18 +55,18 @@ void	print_t_bplr(t_base_player *bplr)
 {
 	printf("\n__dans bplr__\nnb_plyr:%d\n", bplr->nb_plyr);
 	printf("numplr1:%d\nnumplr2:%d\nnumplr3:%d\nnumplr4:%d\n", bplr->tab[0], bplr->tab[1],
-			bplr->tab[2], bplr->tab[3]);	
+			bplr->tab[2], bplr->tab[3]);
 }
 
 void	print_t_ir(t_ir *tir)
 {
 	int	i;
-	
+
 	i = 0;
 		printf("\n__IR__\nirstr:");
 		while (i < 14)
 		{
-			printf("%.2x ", (unsigned char)ir->irstr[i]);
+			printf("%.2x ", (unsigned char)tir->irstr[i]);
 			i++;
 		}
 		printf("opcode:%d ocp:%x index:%d nb_arg:%d\n", tir->opcode, tir->ocp,
@@ -77,13 +77,13 @@ void	print_t_ir(t_ir *tir)
 			printf("I = %d, TYPE => %x, CODE => %x, ARGS => %x\n", i, tir->types_args[i], tir->code_args[i], tir->args[i]);
 			i++;
 		}
-		printf("\n");	
+		printf("\n");
 }
 
-void	print_t_proc(t_proc *proc)
+void	print_t_proc(t_process *proc)
 {
 	t_process *tmp2;
-	
+
 	tmp2 = proc;
 	while (tmp2)
 	{
@@ -92,7 +92,7 @@ void	print_t_proc(t_proc *proc)
 				tmp2->cycle_to_wait);
 		printf("pcdelta:%d carry:%d ir_error:%d \n", tmp2->pcdelta, tmp2->carry,
 			tmp2->ir_error);
-		print_t_ir(&tmp->ir);
+		print_t_ir(&tmp2->ir);
 		tmp2 = tmp2->next;
 	}
 }
@@ -101,8 +101,8 @@ void	ft_print(t_vm *vm)
 {
 	//print_t_cpu(vm->cpu);
 	print_t_vm(vm);
-	print_t_bplr(vm->bplr);
-	print_t_plr(vm->bplr->lst_plyr);	
+	print_t_bplr(&vm->bplr);
+	print_t_plr(vm->bplr.lst_plyr);
 	print_t_proc(vm->proc);
 }
 
@@ -137,7 +137,7 @@ void	print_corepc(t_octet *core)
 int		main(int argc, char **argv)
 {
 	t_vm	vm;
-	
+
 	vm_init(&vm);
 	if (argc > 1)
 	{

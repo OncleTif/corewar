@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cpu.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/06 20:30:06 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/09 12:35:09 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int		fetch_ir(t_process *tmp, unsigned char *core)
 void	run(t_vm *vm, t_process *proc)
 {
 	int	opcode;
+
+ft_putnbrendl(proc->ir.irstr[0]);
 	opcode = proc->ir.irstr[0];
 	vm->ftab[proc->ir.irstr[0]](vm, proc);
 }
@@ -94,31 +96,42 @@ int		parse_proc(t_vm *vm)
 
 	i = 0;
 	tmp = vm->proc;
+	ft_putendl("debut cycle");
 	while (tmp)
 	{
+		ft_putnbrendl((int)tmp);
+		ft_putendl("debut proc");
 		if (tmp->cycle_to_wait == vm->cpu.cur_cycle) // 1520 = 1520
 		{
-			printf("\n\n__________DANS DECODE_______\n\n");
+			ft_putchar('a');
+			ft_putendl("\n\n__________DANS DECODE_______\n\n");
 			fetch_ir(tmp, vm->core);
+			ft_putendl("a");
 			decode_ir(tmp);
-
+			ft_putendl("b");
 			//ft_print(vm);
 			run(vm, tmp);
+			ft_putendl("c");
 			i = 0;
 			while (i < 17)
 			{
 				printf("____reg[%d]: %d\n", i, tmp->reg[i]);
 				i++;
 			}
-
+			ft_putendl("d");
 
 			//ft_print(&vm);
-			printf("\n\n_________FIN DECODE_________\n\n");
+			ft_putendl("\n\n_________FIN DECODE_________\n\n");
 		}
 		if (tmp->cycle_to_wait <= vm->cpu.cur_cycle)
+		{
+			ft_putchar('b');
 			ft_fetch_next(vm, tmp);
+		}
+		ft_putendl("fin while");
 		tmp = tmp->next;
 	}
+	ft_putendl("fin cycle");
 	return (0);
 }
 
