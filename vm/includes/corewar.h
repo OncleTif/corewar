@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/09 16:05:55 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/09 16:11:42 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ struct s_base_core
 	ft_init
 */
 int		ft_init_lst_proc(t_vm *vm);
-t_process	*add_link(t_process *proc, int plr, int pc);
-
+void	ft_init_pc(int plr, int pc, t_vm *vm);
+t_process	*ft_add_link(t_process *proc, int plr, int pc);
 /*
 	ft_init_arena
 */
