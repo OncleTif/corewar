@@ -6,7 +6,7 @@
 /*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 19:18:32 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/09 10:41:14 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/09 10:49:58 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void		get_str(t_champ *c, char *tmp, char *str)
 
 	i = 0;
 	indic = 0;
-	tmp = ft_strchr(tmp, '"') + 1;
 	while (*tmp && *tmp != '"')
 		str[i++] = *tmp++;
 	if (*tmp == '"')
@@ -81,9 +80,9 @@ void		read_s_file(t_champ *c, char *file)
 			if ((tmp = ft_strtrim_com(line)))
 			{
 				if (ft_strncmp(".name", tmp, 5) == 0)
-					get_str(c, tmp, c->name);
+					get_str(c, ft_strchr(tmp, '"') + 1, c->name);
 				else if (ft_strncmp(".comment", tmp, 8) == 0)
-					get_str(c, tmp, c->comment);
+					get_str(c, ft_strchr(tmp, '"') + 1, c->comment);
 				else if (line[0])
 					find_instr(c, tmp);
 			}
