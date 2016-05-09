@@ -21,7 +21,7 @@ static void	ft_read_champion(int fd, t_bin *plr)
 	ft_stock_program(fd, plr);
 }
 
-void	ft_open_champion(char *line, t_bin *plr)
+void		ft_open_champion(char *line, t_bin *plr)
 {
 	int		fd;
 

@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:12:54 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/09 16:25:19 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/09 18:25:34 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void			ft_zjmp(t_vm *vm, t_process *proc)
 {
-	vm++;
+	(void)vm;
 	if (proc->carry)
 		proc->pc = (proc->pc + proc->ir.args[0]) % MEM_SIZE;
 }
@@ -23,8 +23,7 @@ void			ft_fork(t_vm *vm, t_process *proc)
 {
 	int			new_pc;
 	int			new_plr;
-	
-	ft_putchar('z');
+
 	//t_process	*new_proc;
 	new_plr = proc->num_plr;
 	new_pc = (proc->pc + (proc->ir.args[0] % IDX_MOD)) % MEM_SIZE;
@@ -38,7 +37,6 @@ void			ft_lfork(t_vm *vm, t_process *proc)
 	int			new_pc;
 	int			new_plr;
 	//t_process	*new_proc;
-	ft_putchar('m');
 
 	new_plr = proc->num_plr;
 	new_pc = (proc->pc + (proc->ir.args[0])) % MEM_SIZE;

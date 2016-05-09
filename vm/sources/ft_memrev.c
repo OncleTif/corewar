@@ -2,7 +2,7 @@
 
 void	memrev(char  *buf, size_t count)
 {
-	char *r;
+	char	*r;
 
 	r = buf + count - 1;
 	while (buf < r)

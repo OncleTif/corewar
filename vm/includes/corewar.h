@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/09 16:48:08 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/09 18:39:39 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # define BPLR vm->bplr
-//# define BPROC vm->bproc
 # define CPU vm->cpu
-//# define BCOR vm->bcore
-void print(void);
 
 struct s_cpu
 {
@@ -47,18 +44,12 @@ struct s_octet
 	int		num_plr; // numero du dernier player a ecrire
 	int		pc; // bool, pc sur loctet ou non
 };
-/*
-struct s_base_core
-{
-};
-*/
+
 struct s_vm
 {
 	int				dump; //  -dump aff et exit apres nbr cycles
 	int				verbose; //  -v affiche les action
 	t_cpu			cpu;
-//	t_base_process	bproc;
-//	t_base_core		bcore;
 
 	unsigned char	core[MEM_SIZE];
 	t_octet			data[MEM_SIZE];
@@ -74,20 +65,14 @@ struct s_vm
 };
 
 /*
-typedef struct s_octet	t_octet;
-struct s_octet
-{
-	char	val;
-	int		plyr; // numero du player
-	int		pc; // bool
-};
-
-typedef struct s_base_core	t_base_core;
-struct s_base_core
-{
-	t_octet	core[MEM_SIZE];
-};
+	ft_manage
 */
+
+int				ft_check_args(char *av);
+int				ft_is_number(char *str);
+int				ft_stock_dump(char **av, int *i, t_vm *vm);
+int				ft_stock_verbose(char **av, int *i, t_vm *vm);
+void			ft_check_other_num(t_base_player bplr);
 
 /*
 	init
@@ -136,6 +121,7 @@ void			ft_handle_args(int ac, char **av, t_vm *vm);
 int				ft_check_args(char *av);
 void			ft_handle_bonus(char **av, int *i, t_vm *vm);
 void			ft_mem_champs(t_base_player *player, char *av);
+int				ft_stock_num_plr(char **av, int *i, t_vm *vm);
 
 /*
 	ft_memrev.c
@@ -175,6 +161,7 @@ int				check_ocp(unsigned char *ir, t_ir *pir);
 /*
 stock_types.c
 */
+
 int				stock_reg(t_process *proc, int i);
 int				stock_dir(t_process *proc, int i);
 int				stock_ind(t_process *proc, int i);
@@ -182,31 +169,41 @@ int				stock_ind(t_process *proc, int i);
 /*
 put_mem.c
 */
+
 void			put_mem(t_vm *vm, int idx, int val);
 void			put_memlong(t_vm *vm, int idx, int val);
+
 /*
 get_mem.c
 */
+
 int				get_mem(t_vm *vm, int idx, int off);
 int				get_mem_idx(t_vm *vm, int idx, int off);
 int				get_memlong(t_vm *vm, int idx);
 int				get_memlong_idx(t_vm *vm, int idx);
+
 /*
 ft_store.c
 */
+
 void			ft_st(t_vm *vm, t_process *proc);
 void			ft_sti(t_vm *vm, t_process *proc);
+
 /*
 ft_load.c
 */
+
 void			ft_ld(t_vm *vm, t_process *proc);
 void			ft_lld(t_vm *vm, t_process *proc);
 void			ft_ldi(t_vm *vm, t_process *proc);
 void			ft_lldi(t_vm *vm, t_process *proc);
+
 /*
 ft_aff.c
 */
+
 void			ft_aff(t_vm *vm, t_process *proc);
+
 /*
 ft_b, t_process *procasic_functions.c
 */
@@ -220,7 +217,6 @@ void			ft_and(t_vm *vm, t_process *proc);
 void			ft_zjmp(t_vm *vm, t_process *proc);
 void			ft_fork(t_vm *vm, t_process *proc);
 void			ft_lfork(t_vm *vm, t_process *proc);
-
 
 void			ft_live(t_vm *vm, t_process *proc);
 

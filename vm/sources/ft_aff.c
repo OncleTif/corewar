@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_aff.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 10:18:34 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 17:21:59 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/09 18:12:47 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_aff(t_vm *vm, t_process *proc)
 {
-	vm++;
+	(void)vm;
 	ft_putchar(proc->reg[proc->ir.args[0]] % 256);
 }

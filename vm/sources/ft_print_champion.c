@@ -2,7 +2,7 @@
 
 void print_magic(t_bin plr, char *buff)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	(void)buff;

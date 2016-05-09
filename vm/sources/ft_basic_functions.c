@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_basic_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:07:14 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/06 19:57:37 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/09 18:21:14 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_add(t_vm *vm, t_process *proc)
 {
 	(void)vm;
-	int res;
+	int	res;
 
 	res = proc->reg[proc->ir.args[0]] + proc->reg[proc->ir.args[1]];
 	proc->reg[proc->ir.args[2]] = res;
@@ -25,7 +25,8 @@ void	ft_add(t_vm *vm, t_process *proc)
 void	ft_sub(t_vm *vm, t_process *proc)
 {
 	(void)vm;
-	int res;
+	int	res;
+
 	res = proc->reg[proc->ir.args[0]] - proc->reg[proc->ir.args[1]];
 	proc->reg[proc->ir.args[2]] = res;
 	proc->carry = !(res);
@@ -33,8 +34,8 @@ void	ft_sub(t_vm *vm, t_process *proc)
 
 void	ft_or(t_vm *vm, t_process *proc)
 {
-	int i[2];
-	int j;
+	int	i[2];
+	int	j;
 
 	j = 0;
 	while (j < 2)
@@ -53,8 +54,8 @@ void	ft_or(t_vm *vm, t_process *proc)
 
 void	ft_xor(t_vm *vm, t_process *proc)
 {
-	int i[2];
-	int j;
+	int	i[2];
+	int	j;
 
 	j = 0;
 	while (j < 2)
@@ -73,8 +74,8 @@ void	ft_xor(t_vm *vm, t_process *proc)
 
 void	ft_and(t_vm *vm, t_process *proc)
 {
-	int i[2];
-	int j;
+	int		i[2];
+	int		j;
 
 	j = 0;
 	while (j < 2)

@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 16:35:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/09 16:35:25 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/09 18:27:51 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void		vm_init(t_vm *vm)
 	vm->bplr.tab[2] = -3;
 	vm->bplr.tab[3] = -4;
 	vm->proc = NULL;
-
 	// cpu_init(vm->cpu);
 	ftab_init(vm);
 	core_zero(vm);

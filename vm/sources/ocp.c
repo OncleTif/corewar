@@ -38,7 +38,7 @@ int 	get_args(t_process *proc, t_vm *vm)
 	return (0);
 }
 */
-int	check_code2(unsigned char *ir, int j)
+int		check_code2(unsigned char *ir, int j)
 {
 	int	i;
 
