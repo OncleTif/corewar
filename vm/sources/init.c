@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/09 16:06:45 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/09 16:25:28 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ t_process	*ft_add_link(t_process *proc, int plr, int pc)
 {
 	t_process *tmp;
 
+	ft_putchar('j');
 	tmp = (t_process*)ft_memalloc(sizeof(t_process));
 	if (tmp)
 	{
