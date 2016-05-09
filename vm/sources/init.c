@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/09 16:40:47 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/09 16:57:51 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ t_process	*ft_add_link(t_process *proc, int plr, int pc)
 	t_process *tmp;
 
 
-	tmp = (t_process*)ft_memalloc(sizeof(t_process));
+	if (!(tmp = (t_process*)ft_memalloc(sizeof(t_process))))
+		ft_error("malloc error in new cell creating");
 	if (tmp)
 	{
 		proc->cycle_to_wait = -1;
