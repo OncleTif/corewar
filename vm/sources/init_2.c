@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 16:35:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/09 18:27:51 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/10 10:38:10 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,10 @@ void	core_zero(t_vm *vm)
 		vm->core[i] = 0;
 		vm->data[i].num_plr = 0; // ou -1 si un player est le numero 0
 		vm->data[i].pc = 0;
-	//	printf(">%d\t%d\t%d< ", i, bcore->core[i], bcore->data[i].pc);
-	//	if (i == 3687)
-	//	printf("\nDAVID%d %d %d<<<\n", i, bcore.core[i],  bcore.data[i].pc);
 		i++;
 	}
 }
-//
-// static void	cpu_init(t_cpu *)
-// {
-// 	current_cycle = 0;
-// 	cycle2die = CYCLE_TO_DIE;
-// }
+
 int			ftab_init(t_vm *vm)
 {
 	vm->ftab[1] = &ft_live;
@@ -54,12 +46,22 @@ int			ftab_init(t_vm *vm)
 	vm->ftab[16] = &ft_aff;
 	return (0);
 }
+void		cpu_init(t_vm *vm)
+{
+	vm->cpu.cycle2die = CYCLE_TO_DIE;
+	vm->cpu.cur_cycle = 0;
+	vm->cpu.cycle_to_check = CYCLE_TO_DIE;
+	vm->cpu.nbchecks = 0;
+
+
+}
 
 void		vm_init(t_vm *vm)
 {
+
+	cpu_init(vm);
 	vm->dump = -1;
 	vm->nb_proc = 0;
-	vm->cpu.cycle2die = CYCLE_TO_DIE;
 	vm->bplr.lst_plyr = NULL;
 	vm->bplr.i_plr = 0;
 	vm->bplr.tab[0] = -1;

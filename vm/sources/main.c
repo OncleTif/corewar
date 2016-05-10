@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/09 11:46:10 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/10 11:45:35 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_core(t_vm *vm)
 	while (i < MEM_SIZE)
 	{
 		if (i % 64 == 0)
-			printf("\n");
+			printf(" \n%#.4x :", i);
 		//printf(" %.2d", core->core[i]);
 		printf(" %.2x", vm->core[i]);
 		i++;
@@ -159,7 +159,8 @@ int		main(int argc, char **argv)
 //	print_corepc(&vm.bcore);
 	printf("\n\n");
 //	print_corenum_plr(&vm.bcore);
-	printf("\n\n");
+
+	printf("\ncylcle:%d\n", vm.cpu.cur_cycle);
 	print_core(&vm);
 	return (0);
 }

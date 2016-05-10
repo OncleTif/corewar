@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:20:06 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/06 18:33:23 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/10 12:32:00 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void	ft_fetch_next(t_vm *vm, t_process *proc)
 	if (vm->core[proc->pc] > 0 && vm->core[proc->pc] <= 16)
 	{
 		proc->cycle_to_wait = vm->cpu.cur_cycle +
-			g_op_tab[vm->core[proc->pc]].cost;
+		g_op_tab[vm->core[proc->pc] - 1].cost;
 	}
 }

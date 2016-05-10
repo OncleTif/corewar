@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/09 18:43:41 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/10 11:11:55 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
-# include "../../libft/libft.h"
 # include "struct_types.h"
+# include "../../libft/libft.h"
 # include "op.h"
 # include "process.h"
 # include "reverse_octet.h"
@@ -32,7 +32,7 @@ struct s_cpu
 {
 	//int		ir; //instruction registre
 	int		cur_cycle; // cycle en cours
-	int		cur_delta;
+	int		cycle_to_check;
 	int		cycle2die; // cylcle to die a decrementer
 						//	tout les CYCLE_DELTA OU MAX_CHECKS
 	int		nbchecks; // comparer avec MAX_CHECKS
@@ -55,7 +55,6 @@ struct s_vm
 	t_octet			data[MEM_SIZE];
 
 	t_base_player	bplr;
-	int				last_live; // numero du dernier player qui a dit LIVE
 
 	int				nb_proc;
 	t_process		*proc;
@@ -226,5 +225,5 @@ ft_fetch_next.c
 void			ft_fetch_next(t_vm *vm, t_process *proc);
 
 void			ft_print(t_vm *vm);
-
+int				check_cycle(t_vm *vm);
 #endif
