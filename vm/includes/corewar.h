@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/10 11:11:55 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/10 14:37:29 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ int				stock_ind(t_process *proc, int i);
 put_mem.c
 */
 
-void			put_mem(t_vm *vm, int idx, int val);
+void			put_mem(t_vm *vm, int idx, int off, int val);
 void			put_memlong(t_vm *vm, int idx, int val);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/10 12:27:53 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/10 14:22:16 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int		decode_ir(t_process *proc)
 	ir = proc->ir.irstr;
 	if (ir[0] < 1 || ir[0] > 16)
 	{
-			printf("ERROR0");
+//			printf("ERROR0");
 		proc->ir_error = 1;
-			printf(" ir0:%d  pc:%d irerror:%d ", ir[0], proc->pc, proc->ir_error);
+//			printf(" ir0:%d  pc:%d irerror:%d ", ir[0], proc->pc, proc->ir_error);
 		return (0);
 	}
 	proc->ir.opcode = ir[0];
@@ -53,8 +53,8 @@ int		decode_ir(t_process *proc)
 	{
 		if (!check_ocp(ir, &proc->ir))
 		{
-			printf("ERROR1");
-			printf("pc:%d irerror:%d ", proc->pc, proc->ir_error);
+//			printf("ERROR1");
+//			printf("pc:%d irerror:%d ", proc->pc, proc->ir_error);
 			proc->ir_error = 1;
 			return (0);
 		}
@@ -80,7 +80,7 @@ void	run(t_vm *vm, t_process *proc)
 {
 	int	opcode;
 
-ft_putnbrendl(proc->ir.irstr[0]);
+//ft_putnbrendl(proc->ir.irstr[0]);
 	opcode = proc->ir.irstr[0];
 	if (opcode > 0 && opcode < 17)
 		vm->ftab[proc->ir.irstr[0]](vm, proc);
@@ -93,41 +93,41 @@ int		parse_proc(t_vm *vm)
 
 	i = 0;
 	tmp = vm->proc;
-	ft_putendl("debut cycle");
+//	ft_putendl("debut cycle");
 	while (tmp)
 	{
-		ft_putnbrendl((int)tmp);
-		ft_putendl("debut proc                        ");
-		ft_putstr("                                         ");
-		ft_putnbrendl((int)tmp->cycle_to_wait);
+//		ft_putnbrendl((int)tmp);
+//		ft_putendl("debut proc                        ");
+//		ft_putstr("                                         ");
+//		ft_putnbrendl((int)tmp->cycle_to_wait);
 
 		if (tmp->cycle_to_wait == vm->cpu.cur_cycle) // 1520 = 1520
 		{
-			ft_putendl("\n\n__________DANS DECODE_______\n\n");
+//			ft_putendl("\n\n__________DANS DECODE_______\n\n");
 			fetch_ir(tmp, vm->core);
-			ft_putnbrendl((int)vm->core[tmp->pc]);
+//			ft_putnbrendl((int)vm->core[tmp->pc]);
 			if (decode_ir(tmp))
 				run(vm, tmp);
 			//ft_print(vm);
 			i = 0;
 			while (i < 17)
 			{
-				printf("____reg[%d]: %d\n", i, tmp->reg[i]);
+//				printf("____reg[%d]: %d\n", i, tmp->reg[i]);
 				i++;
 			}
 
 			//ft_print(&vm);
-			ft_putendl("\n\n_________FIN DECODE_________\n\n");
+//			ft_putendl("\n\n_________FIN DECODE_________\n\n");
 		}
 		if (tmp->cycle_to_wait <= vm->cpu.cur_cycle)
 		{
-			ft_putchar('b');
+//			ft_putchar('b');
 			ft_fetch_next(vm, tmp);
 		}
-		ft_putendl("fin while");
+//		ft_putendl("fin while");
 		tmp = tmp->next;
 	}
-	ft_putendl("fin cycle");
+//ft_putendl("fin cycle");
 	return (0);
 }
 

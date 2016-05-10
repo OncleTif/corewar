@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/09 18:38:14 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/10 14:18:04 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,19 @@ fonction pour gerer les bonus et ARGS
 void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 {
 	if (ft_strcmp("-d", av[*i]) == 0){
-		ft_putstr(">>DANS -D<<");
+//		ft_putstr(">>DANS -D<<");
 		ft_stock_dump(av, i, vm);
 	}
 	if (ft_strcmp("-n", av[*i]) == 0)
 	{
-		ft_putstr(">>DANS -N<<");
+//		ft_putstr(">>DANS -N<<");
 
 
 		ft_stock_num_plr(av, i, vm);
 	}
 	if (ft_strcmp("-v", av[*i]) == 0)
 	{
-		ft_putstr(">>DANS -V<<");
+//		ft_putstr(">>DANS -V<<");
 		ft_stock_verbose(av, i, vm);
 }}
 
@@ -101,26 +101,26 @@ void	ft_handle_args(int ac, char **av, t_vm *vm)
 	i = 1;
 //	player = (t_base_player*)ft_memalloc(sizeof(t_base_player));
 	BPLR.nb_plyr = 0;
-			ft_putstr(">>WTF<<\n");
+//			ft_putstr(">>WTF<<\n");
 	while (i < ac)
 	{
 		if (ft_check_args(av[i]))
 		{
-			ft_putstr(">>WTF<<\n");
+//			ft_putstr(">>WTF<<\n");
 			ft_mem_champs(&(BPLR), av[i]);
 			vm->bplr.nb_plyr += 1;
-			printf("nombre de joueurs : %d\n", vm->bplr.nb_plyr);
+//			printf("nombre de joueurs : %d\n", vm->bplr.nb_plyr);
 			if (BPLR.nb_plyr > 4)
 				ft_error("Wrong number of players");
 		}
 		else
 		{
-			ft_putstr(">>GO IN HANDE BONUS<<\n");
+//			ft_putstr(">>GO IN HANDE BONUS<<\n");
 			ft_handle_bonus(av, &i, vm);
 		}
 		i++;
 	}
 	if (BPLR.nb_plyr <= 0)
 		ft_error("Wrong number of players");
-			ft_putstr(">>FIN<<\n");
+//			ft_putstr(">>FIN<<\n");
 }

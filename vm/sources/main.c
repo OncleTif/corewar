@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/10 11:45:35 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/10 14:20:49 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,20 +147,20 @@ int		main(int argc, char **argv)
 	{
 		ft_error("Not enough arguments");
 	}
-		ft_putendl("\n__DEBUT CYCLE1 __\n");
+		// ft_putendl("\n__DEBUT CYCLE1 __\n");
 	ft_init_arena(&vm);
-		ft_putendl("\n__DEBUT CYCLE2 __\n");
+//		ft_putendl("\n__DEBUT CYCLE2 __\n");
 	ft_init_lst_proc(&vm);
-		ft_putendl("\n__DEBUT CYCLE3 __\n");
+//		ft_putendl("\n__DEBUT CYCLE3 __\n");
 	cpu(&vm);
-		ft_putendl("\n__DEBUT CYCLE4 __\n");
+//		ft_putendl("\n__DEBUT CYCLE4 __\n");
 
-	ft_print(&vm);
+//	ft_print(&vm);
 //	print_corepc(&vm.bcore);
-	printf("\n\n");
+	// printf("\n\n");
 //	print_corenum_plr(&vm.bcore);
 
-	printf("\ncylcle:%d\n", vm.cpu.cur_cycle);
+//	printf("\ncylcle:%d\n", vm.cpu.cur_cycle);
 	print_core(&vm);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_manage.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:10:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/09 18:26:58 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/10 14:23:26 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_check_args(char *av)
 {
 	char *str;
 
-	ft_putstr(av);
+//	ft_putstr(av);
 	str = ft_strstr(av, ".cor");
 	if (!str)
 		return (0);

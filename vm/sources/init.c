@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/09 16:57:51 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/10 14:19:15 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		ft_init_lst_proc(t_vm *vm)
 
 		lst_play = lst_play->next;
 	}
-		ft_putendl("\n__SORTIE_____\n");
+//		ft_putendl("\n__SORTIE_____\n");
 	return (0);
 }
 
