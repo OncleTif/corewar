@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 14:25:44 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/10 14:36:08 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/10 18:43:06 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	get_memlong(t_vm *vm, int idx)
 		val.c[3 - i] = vm->core[(idx + i) % MEM_SIZE];
 		i++;
 	}
+	//printf("________getmemlong=%x_%.2x_%.2x_%.2x_%.2x___", val.i, val.c[0], val.c[1], val.c[2], val.c[3]);
 	return (val.i);
 }
 

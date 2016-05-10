@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 16:35:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/10 10:38:10 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/10 20:37:31 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	core_zero(t_vm *vm)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		vm->core[i] = 0;
+		vm->core[i] = i;//0xff;
 		vm->data[i].num_plr = 0; // ou -1 si un player est le numero 0
 		vm->data[i].pc = 0;
 		i++;
