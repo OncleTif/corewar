@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:19:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/10 14:38:05 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/10 18:11:29 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_st(t_vm *vm, t_process *proc)
 
 void	ft_sti(t_vm *vm, t_process *proc)
 {
-//	int	val;
+	//	int	val;
 	int	off;
 	int	mod;
 

@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:31:53 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/04 18:08:56 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/10 18:07:59 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int		stock_dir(t_process *proc, int i)
 		k--;
 		proc->pcdelta += 1;
 	}
+	if (proc->ir.index && (tmp4.i & 0x8000))
+		tmp4.i = tmp4.i - 0x10000;
 	proc->ir.args[i] = tmp4.i;
 	return (0);
 }
