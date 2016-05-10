@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/10 14:20:49 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/10 15:50:59 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	print_t_ir(t_ir *tir)
 void	print_t_proc(t_process *proc)
 {
 	t_process *tmp2;
+	int			i;
 
 	tmp2 = proc;
 	while (tmp2)
@@ -92,6 +93,12 @@ void	print_t_proc(t_process *proc)
 				tmp2->cycle_to_wait);
 		printf("pcdelta:%d carry:%d ir_error:%d \n", tmp2->pcdelta, tmp2->carry,
 			tmp2->ir_error);
+		i = 1;
+		while (i < 17)
+		{
+			printf("__reg%d=%x\n", i, tmp2->reg[i]);
+			i++;
+		}
 		print_t_ir(&tmp2->ir);
 		tmp2 = tmp2->next;
 	}
@@ -162,5 +169,6 @@ int		main(int argc, char **argv)
 
 //	printf("\ncylcle:%d\n", vm.cpu.cur_cycle);
 	print_core(&vm);
+	print_t_proc(vm.proc);
 	return (0);
 }
