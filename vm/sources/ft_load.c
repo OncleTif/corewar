@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/11 15:23:56 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/11 15:58:28 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	ft_lld(t_vm *vm, t_process *proc)
 
 void	ft_ldi(t_vm *vm, t_process *proc)
 {
-	int	val;
-	int	off;
-	int	mod;
+	int			val;
+	short int	off;
+	short int	mod;
 
 	if (proc->ir.code_args[0] == T_IND)
 		off = get_mem_idx(vm, proc->pc, proc->ir.args[0]);

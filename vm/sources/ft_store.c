@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:19:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/11 15:01:23 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/11 15:57:31 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	ft_st(t_vm *vm, t_process *proc)
 void	ft_sti(t_vm *vm, t_process *proc)
 {
 	//	int	val;
-	int	off;
-	int	mod;
+	short int	off;
+	short int	mod;
 
 	if (proc->ir.code_args[1] == T_IND)
 		off = get_mem_idx(vm, proc->pc, proc->ir.args[1]);
