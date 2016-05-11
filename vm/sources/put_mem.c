@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 17:49:26 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/11 15:08:29 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/11 17:52:39 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	put_mem(t_vm *vm, t_process *proc, int off, int val)
 	i = 0;
 	//k = ((idx + (off + IDX_MOD) % (IDX_MOD * 2)) - IDX_MOD) + MEM_SIZE;
 	k = proc->pc + (off % IDX_MOD ) + MEM_SIZE;
-	ft_putnbrendl(k);
 	while (i < 4)
 	{
 		vm->core[(k + i) % MEM_SIZE] = tmp.c[3 - i];

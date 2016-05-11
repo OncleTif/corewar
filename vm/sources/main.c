@@ -6,19 +6,18 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/11 16:06:06 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/11 18:03:54 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-
 void	print_core(t_vm *vm)
 {
 	int i;
 	int	printed;
 	t_process	*proc;
-
 	i = 0;
+system("clear");
 	while (i < MEM_SIZE)
 	{
 		proc = vm->proc;
@@ -29,7 +28,7 @@ void	print_core(t_vm *vm)
 			printf(" \n%#.4x :", i);
 		//printf(" %.2d", core->core[i]);
 
-		while (proc)
+		while (proc && !printed)
 		{
 			if (proc->pc == i)
 			{
@@ -198,8 +197,8 @@ int		main(int argc, char **argv)
 	ft_init_lst_proc(&vm);
 	cpu(&vm);
 
-	print_t_proc(&vm);
-	print_t_cpu(&vm);
+//	print_t_proc(&vm);
+//	print_t_cpu(&vm);
 	print_core(&vm);
 	return (0);
 }

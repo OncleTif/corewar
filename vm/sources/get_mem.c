@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 14:25:44 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/11 15:52:28 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/11 17:52:53 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int	get_memlong(t_vm *vm, int idx)
 	while (i < 4)
 	{
 		j = (idx + i) % MEM_SIZE;
-		printf("__idx:%d_j:%d___", idx, j);
+//		printf("__idx:%d_j:%d___", idx, j);
 		val.c[3 - i] = vm->core[j];
 		i++;
 	}
-	printf("________getmemlong=%x_%.2x_%.2x_%.2x_%.2x___", val.i, val.c[0], val.c[1], val.c[2], val.c[3]);
+//	printf("________getmemlong=%x_%.2x_%.2x_%.2x_%.2x___", val.i, val.c[0], val.c[1], val.c[2], val.c[3]);
 	return (val.i);
 }
 
