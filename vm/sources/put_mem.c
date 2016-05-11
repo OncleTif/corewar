@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 17:49:26 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/10 18:10:51 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/11 14:56:59 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	put_mem(t_vm *vm, int idx, int off, int val)
 	neg = 1;
 	tmp.i = val;
 	i = 0;
-	if (off < 0)
+	/*if (off < 0)
 	{
 		neg = -1;
 		off = -off;
-	}
-	//k = ((idx + (off + IDX_MOD) % (IDX_MOD * 2)) - IDX_MOD) + MEM_SIZE;
+	}*/
+	//k = ((idx + (off + IDX_MOD) % (IDX_MOD * 3)) - IDX_MOD) + MEM_SIZE;
 	k = idx + (neg * (off % IDX_MOD )) + MEM_SIZE;
 	while (i < 4)
 	{
