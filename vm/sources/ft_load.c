@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/11 09:50:07 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/11 14:05:29 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	ft_ldi(t_vm *vm, t_process *proc)
 void	ft_lldi(t_vm *vm, t_process *proc)
 {
 	int	val;
-	int	off;
-	int	mod;
-	int r;
+	short int	off;
+	short int	mod;
+	short int	r;
 
 	if (proc->ir.code_args[0] == T_IND)
 		off = get_memlong_idx(vm, proc->pc + proc->ir.args[0]);
@@ -74,9 +74,10 @@ void	ft_lldi(t_vm *vm, t_process *proc)
 		mod = proc->reg[proc->ir.args[1]];
 	else
 		mod = proc->ir.args[1];
-	r = get_memlong_idx(vm, proc->pc + off + mod);
-	val = get_memlong(vm, proc->pc + r);
-	printf("\n            LLDI_______________off=%x__mod:%x_______________\n", off, mod);
+	//r = get_memlong_idx(vm, proc->pc + off + mod);
+	//val = get_memlong(vm, proc->pc + r);// off + mod);
+	val = get_memlong(vm, proc->pc + off + mod);
+	printf("\n            LLDI___________r:%d____off=%d__mod:%x_______________\n", r, off, mod);
 	proc->reg[proc->ir.args[2]] = val;
 	proc->carry = !val;
 }
