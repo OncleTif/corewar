@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_mem.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/05 14:25:44 by tmanet            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/05/11 17:52:53 by djoly            ###   ########.fr       */
-=======
-/*   Updated: 2016/05/11 18:05:56 by ssicard          ###   ########.fr       */
->>>>>>> 9c4759765d39de588596cacd83e9254c986f8a4a
+/*   Created: 2016/05/11 18:20:43 by tmanet            #+#    #+#             */
+/*   Updated: 2016/05/11 18:41:37 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +54,8 @@ short int	get_mem_idx(t_vm *vm, short int idx, short int off)
 	int			j;
 
 	j = idx + off % IDX_MOD;
+	if (off < 0)
+		j = j + 3;
 	i = 0;
 	while (i < 2)
 	{
