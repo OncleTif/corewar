@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/10 15:50:59 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/10 19:48:37 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	print_core(t_vm *vm)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		if (i % 64 == 0)
+		if (i == 0)
+			printf("0x0000 :");
+		if (i % 64 == 0 && i != 0)
 			printf(" \n%#.4x :", i);
 		//printf(" %.2d", core->core[i]);
 		printf(" %.2x", vm->core[i]);
@@ -80,18 +82,25 @@ void	print_t_ir(t_ir *tir)
 		printf("\n");
 }
 
-void	print_t_proc(t_process *proc)
+void	print_t_proc(t_vm *vm)
 {
 	t_process *tmp2;
 	int			i;
 
-	tmp2 = proc;
+	tmp2 = vm->proc;
 	while (tmp2)
 	{
 		printf("__DANS PROC__\nnum:%d\nnum_plr:%d\npc:%d\nreg0:%d\ncarry:%d\n cycle_to_wait:%d \n",
 				tmp2->num, tmp2->num_plr, tmp2->pc, tmp2->reg[1], tmp2->carry,
 				tmp2->cycle_to_wait);
-		printf("pcdelta:%d carry:%d ir_error:%d \n", tmp2->pcdelta, tmp2->carry,
+		printf("\n________arene[pc]=");
+		i = 0;
+		while (i < 14)
+		{
+			printf("%.2x", vm->core[tmp2->pc + i]);
+			i++;
+		}
+		printf("\n\npcdelta:%d carry:%d ir_error:%d \n", tmp2->pcdelta, tmp2->carry,
 			tmp2->ir_error);
 		i = 1;
 		while (i < 17)
@@ -103,14 +112,19 @@ void	print_t_proc(t_process *proc)
 		tmp2 = tmp2->next;
 	}
 }
+void	print_t_cpu(t_vm *vm)
+{
+	printf("___CPU___\ncur_cycle:%d\tcycle_to_check:%d\tcycle2die:%d\tnbchecks:%d\n",
+			vm->cpu.cur_cycle, vm->cpu.cycle_to_check, vm->cpu.cycle2die, vm->cpu.nbchecks);
 
+}
 void	ft_print(t_vm *vm)
 {
-	//print_t_cpu(vm->cpu);
+	print_t_cpu(vm);
 	print_t_vm(vm);
 	print_t_bplr(&vm->bplr);
 	print_t_plr(vm->bplr.lst_plyr);
-	print_t_proc(vm->proc);
+	print_t_proc(vm);
 }
 
 void	print_corenum_plr(t_octet *core)
@@ -154,21 +168,12 @@ int		main(int argc, char **argv)
 	{
 		ft_error("Not enough arguments");
 	}
-		// ft_putendl("\n__DEBUT CYCLE1 __\n");
 	ft_init_arena(&vm);
-//		ft_putendl("\n__DEBUT CYCLE2 __\n");
 	ft_init_lst_proc(&vm);
-//		ft_putendl("\n__DEBUT CYCLE3 __\n");
 	cpu(&vm);
-//		ft_putendl("\n__DEBUT CYCLE4 __\n");
 
-//	ft_print(&vm);
-//	print_corepc(&vm.bcore);
-	// printf("\n\n");
-//	print_corenum_plr(&vm.bcore);
-
-//	printf("\ncylcle:%d\n", vm.cpu.cur_cycle);
+	print_t_proc(&vm);
+	print_t_cpu(&vm);
 	print_core(&vm);
-	print_t_proc(vm.proc);
 	return (0);
 }
