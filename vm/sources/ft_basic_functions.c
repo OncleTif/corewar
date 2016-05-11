@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:07:14 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/11 17:22:52 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/11 19:24:15 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ void	ft_xor(t_vm *vm, t_process *proc)
 	j = 0;
 	while (j < 2)
 	{
-		if (proc->ir.args[j] == T_IND)
+		if (proc->ir.code_args[j] == T_IND)
 			i[j] = get_mem(vm, proc->pc, proc->ir.args[j]);
-		else if (proc->ir.args[j] == T_DIR)
+		else if (proc->ir.code_args[j] == T_DIR)
 			i[j] = proc->ir.args[j];
-		else if (proc->ir.args[j] == T_REG)
+		else if (proc->ir.code_args[j] == T_REG)
 			i[j] = proc->reg[proc->ir.args[j]];
 		j++;
 	}

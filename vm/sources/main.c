@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/11 18:03:54 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/11 18:49:16 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	print_core(t_vm *vm)
 	int	printed;
 	t_process	*proc;
 	i = 0;
-system("clear");
 	while (i < MEM_SIZE)
 	{
 		proc = vm->proc;
@@ -197,6 +196,7 @@ int		main(int argc, char **argv)
 	ft_init_lst_proc(&vm);
 	cpu(&vm);
 
+system("clear");
 //	print_t_proc(&vm);
 //	print_t_cpu(&vm);
 	print_core(&vm);
