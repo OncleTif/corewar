@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/11 16:40:26 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/11 20:44:06 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		decode_ir(t_process *proc)
 	{
 		if (!check_ocp(ir, &proc->ir))
 		{
-			proc->pcdelta = check_code(ir[1], 2) + check_code(ir[1], 4) + check_code(ir[1], 6); 
+			proc->pcdelta = check_code(ir[1], 2) + check_code(ir[1], 4) + check_code(ir[1], 6);
 			proc->pc += proc->pcdelta;
 			proc->pcdelta = 0;
 //			printf("ERROR1");
