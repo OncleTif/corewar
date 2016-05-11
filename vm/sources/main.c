@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/10 19:48:37 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/11 16:06:06 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,42 @@
 void	print_core(t_vm *vm)
 {
 	int i;
+	int	printed;
+	t_process	*proc;
 
 	i = 0;
 	while (i < MEM_SIZE)
 	{
+		proc = vm->proc;
+		printed = 0;
 		if (i == 0)
 			printf("0x0000 :");
 		if (i % 64 == 0 && i != 0)
 			printf(" \n%#.4x :", i);
 		//printf(" %.2d", core->core[i]);
-		printf(" %.2x", vm->core[i]);
+
+		while (proc)
+		{
+			if (proc->pc == i)
+			{
+				printf(" \033[36m%.2x\033[00m", vm->core[i]);
+				printed = 1;
+			}
+			proc = proc->next;
+		}
+		if (!printed)
+		{
+			if (vm->data[i].num_plr == -4)
+				printf(" \033[31m%.2x\033[00m", vm->core[i]);
+			else if (vm->data[i].num_plr == -3)
+				printf(" \033[32m%.2x\033[00m", vm->core[i]);
+			else if (vm->data[i].num_plr == -2)
+				printf(" \033[33m%.2x\033[00m", vm->core[i]);
+			else if (vm->data[i].num_plr == -1)
+				printf(" \033[34m%.2x\033[00m", vm->core[i]);
+			else
+				printf(" %.2x", vm->core[i]);
+		}
 		i++;
 	}
 }
@@ -65,21 +91,21 @@ void	print_t_ir(t_ir *tir)
 	int	i;
 
 	i = 0;
-		printf("\n__IR__\nirstr:");
-		while (i < 14)
-		{
-			printf("%.2x ", (unsigned char)tir->irstr[i]);
-			i++;
-		}
-		printf("opcode:%d ocp:%x index:%d nb_arg:%d\n", tir->opcode, tir->ocp,
-	 	tir->index, tir->nb_arg);
-		i = 0;
-		while (i < 3)
-		{
-			printf("I = %d, TYPE => %x, CODE => %x, ARGS => %x\n", i, tir->types_args[i], tir->code_args[i], tir->args[i]);
-			i++;
-		}
-		printf("\n");
+	printf("\n__IR__\nirstr:");
+	while (i < 14)
+	{
+		printf("%.2x ", (unsigned char)tir->irstr[i]);
+		i++;
+	}
+	printf("opcode:%d ocp:%x index:%d nb_arg:%d\n", tir->opcode, tir->ocp,
+			tir->index, tir->nb_arg);
+	i = 0;
+	while (i < 3)
+	{
+		printf("I = %d, TYPE => %x, CODE => %x, ARGS => %x\n", i, tir->types_args[i], tir->code_args[i], tir->args[i]);
+		i++;
+	}
+	printf("\n");
 }
 
 void	print_t_proc(t_vm *vm)
@@ -101,7 +127,7 @@ void	print_t_proc(t_vm *vm)
 			i++;
 		}
 		printf("\n\npcdelta:%d carry:%d ir_error:%d \n", tmp2->pcdelta, tmp2->carry,
-			tmp2->ir_error);
+				tmp2->ir_error);
 		i = 1;
 		while (i < 17)
 		{
