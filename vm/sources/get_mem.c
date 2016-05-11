@@ -6,7 +6,11 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 14:25:44 by tmanet            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/05/11 17:52:53 by djoly            ###   ########.fr       */
+=======
+/*   Updated: 2016/05/11 18:05:56 by ssicard          ###   ########.fr       */
+>>>>>>> 9c4759765d39de588596cacd83e9254c986f8a4a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +20,13 @@ int	get_mem(t_vm *vm, int idx, int off)
 {
 	union u_4o	val;
 	int			i;
+	int			j;
 
 	i = 0;
+		j = idx + off % IDX_MOD;
 	while (i < 4)
 	{
-		val.c[3 - i] = vm->core[(idx + (off + i) % IDX_MOD) % MEM_SIZE];
+		val.c[3 - i] = vm->core[(j + i) % MEM_SIZE];
 		i++;
 	}
 	return (val.i);
@@ -49,11 +55,13 @@ short int	get_mem_idx(t_vm *vm, short int idx, short int off)
 {
 	union u_2o	val;
 	int			i;
+	int			j;
 
+	j = idx + off % IDX_MOD;
 	i = 0;
 	while (i < 2)
 	{
-		val.c[1 - i] = vm->core[(idx + (off + i) % IDX_MOD) % MEM_SIZE];
+		val.c[1 - i] = vm->core[(j + i) % MEM_SIZE];
 		i++;
 	}
 	return (val.i);
