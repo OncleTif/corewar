@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 14:25:44 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/11 13:43:27 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/11 15:52:28 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	get_memlong(t_vm *vm, int idx)
 	return (val.i);
 }
 
-int	get_mem_idx(t_vm *vm, int idx, int off)
+short int	get_mem_idx(t_vm *vm, short int idx, short int off)
 {
 	union u_2o	val;
 	int			i;
