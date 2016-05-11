@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 14:25:44 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/11 15:52:28 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/11 18:02:00 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ int	get_mem(t_vm *vm, int idx, int off)
 {
 	union u_4o	val;
 	int			i;
+	int			j;
 
 	i = 0;
+		j = idx + off % IDX_MOD;
 	while (i < 4)
 	{
-		val.c[3 - i] = vm->core[(idx + (off + i) % IDX_MOD) % MEM_SIZE];
+		val.c[3 - i] = vm->core[(j + i) % MEM_SIZE];
 		i++;
 	}
 	return (val.i);
