@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:19:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/12 11:57:06 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/12 12:04:48 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void	ft_sti(t_vm *vm, t_process *proc)
 	put_mem(vm, proc, off + mod,
 			proc->reg[proc->ir.args[0]]);
 	proc->carry = !proc->reg[proc->ir.args[0]];
-	/*ft_putnbr(proc->ir.args[1]);
+	ft_putnbr(proc->ir.args[1]);
 	ft_putchar('&');
 	ft_putnbr(off);
 	ft_putchar('&');
 	ft_putnbr(mod);
 	ft_putchar('&');
-	ft_putnbrendl(off + mod);*/
+	ft_putnbrendl(off + mod);
 }
 
 //-255
