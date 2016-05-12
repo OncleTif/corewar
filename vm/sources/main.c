@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/12 11:12:50 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/12 11:17:50 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,9 +195,9 @@ int		main(int argc, char **argv)
 	ft_init_lst_proc(&vm);
 	cpu(&vm);
 
-//system("clear");
-//	print_t_proc(&vm);
-//	print_t_cpu(&vm);
+system("clear");
+	print_t_proc(&vm);
+	print_t_cpu(&vm);
 	print_core(&vm);
 	return (0);
 }

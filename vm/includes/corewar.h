@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/12 09:52:50 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/12 11:27:36 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void			ft_check_other_num(t_base_player bplr);
 	init
 */
 
-t_process	*	ft_add_link(t_process *proc, int plr, int pc);
-void			ft_init_pc(int plr, int pc, t_vm *vm);
+t_process	*	ft_add_link(t_process *proc, int plr, int pc, t_process *father);
+void			ft_init_pc(int plr, int pc, t_vm *vm, t_process *proc);
 int				ft_init_lst_proc(t_vm *vm);
 int				copy_plr(t_vm *vm, t_bin *plr, int i);
 int				ft_init_arena(t_vm *vm);
