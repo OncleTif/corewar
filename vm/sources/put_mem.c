@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 17:49:26 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/11 17:52:39 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/12 13:23:55 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	put_mem(t_vm *vm, t_process *proc, int off, int val)
 	while (i < 4)
 	{
 		vm->core[(k + i) % MEM_SIZE] = tmp.c[3 - i];
-		vm->data[(k + i) % MEM_SIZE].num_plr = vm->data[proc->pc].num_plr;
+		vm->data[(k + i) % MEM_SIZE].num_plr = proc->num_plr;
 		i++;
 	}
 }
@@ -40,6 +40,7 @@ void	put_memlong(t_vm *vm, t_process *proc, int val)
 	while (i < 4)
 	{
 		vm->core[(proc->pc + i) % MEM_SIZE] = tmp.c[3 - i];
+		vm->data[(proc->pc + i) % MEM_SIZE].num_plr = proc->num_plr;
 		i++;
 	}
 }
