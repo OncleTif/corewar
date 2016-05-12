@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 18:20:43 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/12 11:09:28 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/12 11:17:37 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ short int	get_mem_idx(t_vm *vm, short int idx, short int off)
 
 	j = idx + off % IDX_MOD;
 	if (off < 0)
-		j = j + 3;
+		j++;
 	i = 0;
 	while (i < 2)
 	{
