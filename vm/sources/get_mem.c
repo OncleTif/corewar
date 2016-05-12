@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_mem.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 18:20:43 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/11 18:41:37 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/12 11:09:28 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ short int	get_mem_idx(t_vm *vm, short int idx, short int off)
 	i = 0;
 	while (i < 2)
 	{
-		val.c[1 - i] = vm->core[(j + i) % MEM_SIZE];
+		val.c[1 - i] = vm->core[(j + 2 + i) % MEM_SIZE];
 		i++;
 	}
 	return (val.i);
@@ -74,7 +74,7 @@ short int	get_memlong_idx(t_vm *vm, short int idx)
 	val.i = 0;
 	while (i < 2)
 	{
-		val.c[1 - i] = vm->core[(idx + i) % MEM_SIZE];
+		val.c[1 - i] = vm->core[(idx + 2 + i) % MEM_SIZE];
 		i++;
 	}
 	//ft_putnbrendl(r2oi(val.i));

@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:19:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/11 17:54:13 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/12 10:26:24 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,3 +49,5 @@ void	ft_sti(t_vm *vm, t_process *proc)
 	ft_putchar('&');
 	ft_putnbrendl(off + mod);*/
 }
+
+//-255
