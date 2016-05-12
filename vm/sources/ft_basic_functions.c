@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:07:14 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/11 19:24:15 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/12 17:16:11 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	ft_and(t_vm *vm, t_process *proc)
 	while (j < 2)
 	{
 		if (proc->ir.code_args[j] == T_IND)
-			i[j] = get_mem(vm, proc->ir.args[j], 0);
+			i[j] = get_mem(vm, proc->pc, proc->ir.args[j]);
 		else if (proc->ir.code_args[j] == T_DIR)
 			i[j] = proc->ir.args[j];
 		else if (proc->ir.code_args[j] == T_REG)
