@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/12 09:22:57 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/12 09:52:50 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ struct s_vm
 
 	unsigned char	core[MEM_SIZE];
 	t_octet			data[MEM_SIZE];
+	//unsigned char	pcs[MEM_SIZE];
 
 	t_base_player	bplr;
 

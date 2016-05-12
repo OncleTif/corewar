@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/12 09:09:47 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/12 09:57:24 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_core(t_vm *vm)
 		if (i % 64 == 0 && i != 0)
 			printf(" \n%#.4x :", i);
 		//printf(" %.2d", core->core[i]);
-
+/*
 		while (proc && !printed)
 		{
 			if (proc->pc == i)
@@ -35,20 +35,19 @@ void	print_core(t_vm *vm)
 				printed = 1;
 			}
 			proc = proc->next;
-		}
-		if (!printed)
-		{
-			if (vm->data[i].num_plr == -4)
-				printf(" \033[31m%.2x\033[00m", vm->core[i]);
-			else if (vm->data[i].num_plr == -3)
-				printf(" \033[32m%.2x\033[00m", vm->core[i]);
-			else if (vm->data[i].num_plr == -2)
-				printf(" \033[33m%.2x\033[00m", vm->core[i]);
-			else if (vm->data[i].num_plr == -1)
-				printf(" \033[34m%.2x\033[00m", vm->core[i]);
-			else
-				printf(" %.2x", vm->core[i]);
-		}
+		}*/
+		if(vm->data[i].pc)
+			printf(" \033[36m%.2x\033[00m", vm->core[i]);
+		else if (vm->data[i].num_plr == -4)
+			printf(" \033[31m%.2x\033[00m", vm->core[i]);
+		else if (vm->data[i].num_plr == -3)
+			printf(" \033[32m%.2x\033[00m", vm->core[i]);
+		else if (vm->data[i].num_plr == -2)
+			printf(" \033[33m%.2x\033[00m", vm->core[i]);
+		else if (vm->data[i].num_plr == -1)
+			printf(" \033[34m%.2x\033[00m", vm->core[i]);
+		else
+			printf(" %.2x", vm->core[i]);
 		i++;
 	}
 }
