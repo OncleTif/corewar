@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 18:20:43 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/12 11:17:37 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/12 12:00:20 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ short int	get_mem_idx(t_vm *vm, short int idx, short int off)
 	i = 0;
 	while (i < 2)
 	{
-		val.c[1 - i] = vm->core[(j + 2 + i) % MEM_SIZE];
+		val.c[i] = vm->core[(j + 2 + i) % MEM_SIZE];
 		i++;
 	}
+	if (idx >= 0)
+		val.i = r2oi(val.i);
 	return (val.i);
 }
 
