@@ -1,5 +1,5 @@
-.name "zork"
-.comment "I'M ALIIIIVE"
+.name "LD"
+.comment "I'M LD"
 
 l2:		ld 1, r2
 		st r2, 50

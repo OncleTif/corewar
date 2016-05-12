@@ -1,4 +1,4 @@
-.name "LLDI"
+.name "LLDI FOIREUX"
 .comment "I'M LLDI"
 
 
