@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/12 09:24:58 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/12 09:44:40 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ t_process	*ft_add_link(t_process *proc, int plr, int pc)
 		ft_error("malloc error in new cell creating");
 	if (tmp)
 	{
-		proc->cycle_to_wait = -1;
-		proc->num_plr = plr;
-		proc->pc = pc;
-		proc->pcdelta = 0; /// DAVID
-		proc->reg[1] = plr;
+		tmp->cycle_to_wait = -1;
+		tmp->num_plr = plr;
+		tmp->pc = pc;
+		tmp->reg[1] = plr;
 		tmp->next = proc;
 	}
 	return (tmp);
@@ -36,9 +35,6 @@ t_process	*ft_add_link(t_process *proc, int plr, int pc)
 
 void	ft_init_pc(int plr, int pc, t_vm *vm)
 {
-	printf("\n\n\t\t__________________plr% d_______ pc %d_________________________\n\n", plr, pc);
-	print_t_proc(vm);
-	printf("\n\n\t\t__________________________________________________\n\n");
 	vm->proc = ft_add_link(vm->proc, plr, pc);
 }
 
