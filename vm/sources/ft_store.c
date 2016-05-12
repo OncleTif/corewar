@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:19:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/12 10:26:24 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/12 11:57:06 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ void	ft_sti(t_vm *vm, t_process *proc)
 	short int	off;
 	short int	mod;
 
-	if (proc->ir.code_args[1] == T_IND)
-		off = get_mem_idx(vm, proc->pc, proc->ir.args[1]);
-	else if (proc->ir.code_args[1] == T_REG)
-		off = proc->reg[proc->ir.args[1]];
-	else
-		off = proc->ir.args[1];
 	if (proc->ir.code_args[2] == T_REG)
 		mod = proc->reg[proc->ir.args[2]];
 	else
 		mod = proc->ir.args[2];
+	if (proc->ir.code_args[1] == T_IND)
+		off = get_mem_idx(vm, proc->pc, proc->ir.args[1] + mod);
+	else if (proc->ir.code_args[1] == T_REG)
+		off = proc->reg[proc->ir.args[1]];
+	else
+		off = proc->ir.args[1];
 	put_mem(vm, proc, off + mod,
 			proc->reg[proc->ir.args[0]]);
 	proc->carry = !proc->reg[proc->ir.args[0]];
