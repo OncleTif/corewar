@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/11 20:44:06 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/12 09:16:47 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		decode_ir(t_process *proc)
 		if (!check_ocp(ir, &proc->ir))
 		{
 			proc->pcdelta = check_code(ir[1], 2) + check_code(ir[1], 4) + check_code(ir[1], 6);
-			proc->pc += proc->pcdelta;
+			proc->pc += proc->pcdelta;  // DATA[i].pc ==1 ??
 			proc->pcdelta = 0;
 //			printf("ERROR1");
 //			printf("pc:%d irerror:%d ", proc->pc, proc->ir_error);
@@ -83,7 +83,6 @@ void	run(t_vm *vm, t_process *proc)
 {
 	int	opcode;
 
-//ft_putnbrendl(proc->ir.irstr[0]);
 	opcode = proc->ir.irstr[0];
 	if (opcode > 0 && opcode < 17)
 		vm->ftab[proc->ir.irstr[0]](vm, proc);
@@ -112,15 +111,6 @@ int		parse_proc(t_vm *vm)
 			if (decode_ir(tmp))
 				run(vm, tmp);
 			//ft_print(vm);
-			i = 0;
-			while (i < 17)
-			{
-//				printf("____reg[%d]: %d\n", i, tmp->reg[i]);
-				i++;
-			}
-
-			//ft_print(&vm);
-//			ft_putendl("\n\n_________FIN DECODE_________\n\n");
 		}
 		if (tmp->cycle_to_wait <= vm->cpu.cur_cycle)
 		{
