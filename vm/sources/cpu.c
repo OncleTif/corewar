@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/13 17:06:08 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 17:45:22 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int		cpu(t_vm *vm)
 		parse_proc(vm);
 		if (check_cycle(vm)) // modifie cur_delta cycle2die nbchecks dans T_cpu
 			break ;
-		if (vm->cpu.cur_cycle % vm->step == 0)
+		if ((vm->step) && (vm->cpu.cur_cycle % vm->step == 0))
 		{
 			print_core(vm);
 			ft_wait();

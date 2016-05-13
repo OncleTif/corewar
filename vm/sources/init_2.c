@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 16:35:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/13 17:05:38 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 17:44:43 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		vm_init(t_vm *vm)
 
 	cpu_init(vm);
 	vm->dump = -1;
-	vm->step = 1;
+	vm->step = 0;
 	vm->nb_proc = 0;
 	vm->bplr.lst_plyr = NULL;
 	vm->bplr.i_plr = 0;
