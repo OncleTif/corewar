@@ -6,14 +6,15 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 16:57:01 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 17:10:07 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
 # include "struct_types.h"
-# include "../../libft/libft.h"
+/*# include "../../libft/libft.h"*/
+# include "../../libft/ft_printf.h"
 # include "op.h"
 # include "process.h"
 # include "reverse_octet.h"
