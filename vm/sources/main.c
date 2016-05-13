@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/13 17:09:23 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/13 17:20:35 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@ void	print_core(t_vm *vm)
 	int i;
 	int	printed;
 	t_process	*proc;
+
 	i = 0;
 	while (i < MEM_SIZE)
 	{
 		proc = vm->proc;
 		printed = 0;
 		if (i == 0)
-			printf("0x0000 :");
+			ft_printf("0x0000 :");
 		if (i % 64 == 0 && i != 0)
-			printf(" \n%#.4x :", i);
+			ft_printf(" \n%#.4x :", i);
 		//printf(" %.2d", core->core[i]);
 /*
 		while (proc && !printed)
@@ -37,19 +38,20 @@ void	print_core(t_vm *vm)
 			proc = proc->next;
 		}*/
 		if(vm->data[i].pc)
-			printf(" \033[36m%.2x\033[00m", vm->core[i]);
+			ft_printf(" \033[36m%.2x\033[00m", vm->core[i]);
 		else if (vm->data[i].num_plr == -4)
-			printf(" \033[31m%.2x\033[00m", vm->core[i]);
+			ft_printf(" \033[31m%.2x\033[00m", vm->core[i]);
 		else if (vm->data[i].num_plr == -3)
-			printf(" \033[32m%.2x\033[00m", vm->core[i]);
+			ft_printf(" \033[32m%.2x\033[00m", vm->core[i]);
 		else if (vm->data[i].num_plr == -2)
-			printf(" \033[33m%.2x\033[00m", vm->core[i]);
+			ft_printf(" \033[33m%.2x\033[00m", vm->core[i]);
 		else if (vm->data[i].num_plr == -1)
-			printf(" \033[34m%.2x\033[00m", vm->core[i]);
+			ft_printf(" \033[34m%.2x\033[00m", vm->core[i]);
 		else
-			printf(" %.2x", vm->core[i]);
+			ft_printf(" %.2x", vm->core[i]);
 		i++;
 	}
+	ft_putchar('\n');
 }
 
 void	print_t_vm(t_vm *vm)
