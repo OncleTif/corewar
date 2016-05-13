@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:19:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 11:28:25 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 15:31:54 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	ft_sti(t_vm *vm, t_process *proc)
 	int	mod;
 	int	sum;
 
-	ft_putendl("pc sti:");
-	ft_putnbrendl(proc->pc);
+	// ft_putendl("pc sti:");
+	// ft_putnbrendl(proc->pc);
 	if (proc->ir.code_args[2] == T_REG)
 		mod = proc->reg[proc->ir.args[2]];
 	else
@@ -42,16 +42,16 @@ void	ft_sti(t_vm *vm, t_process *proc)
 	else
 		off = proc->ir.args[1];
 	sum = mod + off;
-	ft_putstr("                            ");
-	ft_putnbr(proc->ir.args[1]);
-	ft_putstr(" & ");
-	ft_putnbr(off);
-	ft_putstr(" & ");
-	ft_putnbr(mod);
-	ft_putstr(" & ");
-	ft_putnbr((off) + (mod));
-	ft_putstr(" & ");
-	ft_putnbrendl(sum % 512);
+	// ft_putstr("                            ");
+	// ft_putnbr(proc->ir.args[1]);
+	// ft_putstr(" & ");
+	// ft_putnbr(off);
+	// ft_putstr(" & ");
+	// ft_putnbr(mod);
+	// ft_putstr(" & ");
+	// ft_putnbr((off) + (mod));
+	// ft_putstr(" & ");
+	// ft_putnbrendl(sum % 512);
 	put_mem(vm, proc, sum,
 			proc->reg[proc->ir.args[0]]);
 	proc->carry = !proc->reg[proc->ir.args[0]];

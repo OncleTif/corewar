@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 17:49:26 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 11:27:21 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 15:32:44 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	put_mem(t_vm *vm, t_process *proc, int off, int val)
 	i = 0;
 	j = off % IDX_MOD;
 	k = proc->pc + j + MEM_SIZE;
-	ft_putendl("offset du pc :");
-	ft_putnbrendl(j);
-	ft_putendl("index d'ecriture :");
-	ft_putnbrendl(k % MEM_SIZE);
+	// ft_putendl("offset du pc :");
+	// ft_putnbrendl(j);
+	// ft_putendl("index d'ecriture :");
+	// ft_putnbrendl(k % MEM_SIZE);
 	while (i < 4)
 	{
 		vm->core[(k + i) % MEM_SIZE] = tmp.c[3 - i];

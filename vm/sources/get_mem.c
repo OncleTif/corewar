@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 18:20:43 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 12:53:49 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 15:32:12 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,19 @@ int	get_mem_idx(t_vm *vm, short int idx, short int off)
 
 	j = idx + off % IDX_MOD;
 	i = 0;
-	ft_putendl("pc :");
-	ft_putnbrendl(idx);
-	ft_putendl("off :");
-	ft_putnbrendl(off);
-	ft_putnbrendl(j);
+	// ft_putendl("pc :");
+	// ft_putnbrendl(idx);
+	// ft_putendl("off :");
+	// ft_putnbrendl(off);
+	// ft_putnbrendl(j);
 	while (i < 4)
 	{
 		val.c[i] = vm->core[(j  + i) % MEM_SIZE];
 		i++;
 	}
-	ft_putnbrendl(val.i);
+	// ft_putnbrendl(val.i);
 	val.i = r4oi(val.i);
-	ft_putnbrendl(val.i);
+	// ft_putnbrendl(val.i);
 	return (val.i);
 }
 
@@ -85,7 +85,7 @@ int	get_memlong_idx(t_vm *vm, short int idx)
 		val.c[3 - i] = vm->core[(idx + i) % MEM_SIZE];
 		i++;
 	}
-	ft_putnbrendl(idx);
+	// ft_putnbrendl(idx);
 	//ft_putnbrendl(r2oi(val.i));
 	return (val.i);
 }

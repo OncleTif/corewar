@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 15:00:43 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/13 15:31:34 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	ft_lldi(t_vm *vm, t_process *proc)
 	//r = get_memlong_idx(vm, proc->pc + off + mod);
 	//val = get_memlong(vm, proc->pc + r);// off + mod);
 	val = get_memlong(vm, proc->pc + off + mod);
-	printf("lldi: %d + %d = %d, val = %x\n", off, mod, off + mod, val);
+//	printf("lldi: %d + %d = %d, val = %x\n", off, mod, off + mod, val);
 //	printf("\n            LLDI___________r:%d____off=%d__mod:%x_______________\n", r, off, mod);
 	proc->reg[proc->ir.args[2]] = val;
 	proc->carry = !val;

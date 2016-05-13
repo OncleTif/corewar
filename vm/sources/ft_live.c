@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 12:37:24 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/09 18:26:44 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/13 15:46:17 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,16 @@ void	ft_live(t_vm *vm, t_process *proc)
 	while (plr && plr->plr->num_plyr != proc->ir.args[0])
 		plr = plr->next;
 	if (plr)
+	{
 		plr->plr->last_live = vm->cpu.cur_cycle;
+		ft_putstr("un processus dit que le joueur ");
+		ft_putnbr(proc->ir.args[0]);
+		//ft_putnbr((((-1 * proc->ir.args[0]) % 4) + 1));
+		ft_putstr(" (");
+		ft_putstr(plr->plr->prog_name);
+		ft_putstr(") est en vie\n");
+		vm->num_last_plr_live = proc->ir.args[0];
+	}
 	vm->nbr_live++;
 	proc->live++;
 }

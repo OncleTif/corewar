@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 14:46:46 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/13 15:36:59 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ struct s_vm
 
 	int				nb_proc;
 	t_process		*proc;
-
+	int				num_last_plr_live;
 	int				nbr_live;
 	void	(*ftab[17])(t_vm*, t_process*);
 };
