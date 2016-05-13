@@ -6,7 +6,11 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/05/13 17:39:41 by djoly            ###   ########.fr       */
+=======
+/*   Updated: 2016/05/13 17:30:28 by tmanet           ###   ########.fr       */
+>>>>>>> 3705b4c421a9f3ffe83cab9b0e42ef4abbaf4b49
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +20,16 @@ void	print_core(t_vm *vm)
 	int i;
 	int	printed;
 	t_process	*proc;
+
 	i = 0;
 	while (i < MEM_SIZE)
 	{
 		proc = vm->proc;
 		printed = 0;
 		if (i == 0)
-			printf("0x0000 :");
+			ft_printf("0x0000 :");
 		if (i % 64 == 0 && i != 0)
-			printf(" \n%#.4x :", i);
+			ft_printf(" \n%#.4x :", i);
 		//printf(" %.2d", core->core[i]);
 /*
 		while (proc && !printed)
@@ -37,24 +42,25 @@ void	print_core(t_vm *vm)
 			proc = proc->next;
 		}*/
 		if(vm->data[i].pc)
-			printf(" \033[36m%.2x\033[00m", vm->core[i]);
+			ft_printf(" \033[36m%.2x\033[00m", vm->core[i]);
 		else if (vm->data[i].num_plr == -4)
-			printf(" \033[31m%.2x\033[00m", vm->core[i]);
+			ft_printf(" \033[31m%.2x\033[00m", vm->core[i]);
 		else if (vm->data[i].num_plr == -3)
-			printf(" \033[32m%.2x\033[00m", vm->core[i]);
+			ft_printf(" \033[32m%.2x\033[00m", vm->core[i]);
 		else if (vm->data[i].num_plr == -2)
-			printf(" \033[33m%.2x\033[00m", vm->core[i]);
+			ft_printf(" \033[33m%.2x\033[00m", vm->core[i]);
 		else if (vm->data[i].num_plr == -1)
-			printf(" \033[34m%.2x\033[00m", vm->core[i]);
+			ft_printf(" \033[34m%.2x\033[00m", vm->core[i]);
 		else
-			printf(" %.2x", vm->core[i]);
+			ft_printf(" %.2x", vm->core[i]);
 		i++;
 	}
+	ft_putchar('\n');
 }
 
 void	print_t_vm(t_vm *vm)
 {
-	printf("__dans VM __\ndump:%d\nverbose:%d\n", vm->dump, vm->verbose);
+	ft_printf("__dans VM __\ndump:%d\nverbose:%d\n", vm->dump, vm->verbose);
 }
 
 void	print_t_plr(t_list_player *lplr)
@@ -66,7 +72,7 @@ void	print_t_plr(t_list_player *lplr)
 	buff= NULL;
 	while (tmp)
 	{
-		printf("__dans BIN __\nnumplr:%u\n", tmp->plr->num_plyr);
+		ft_printf("__dans BIN __\nnumplr:%u\n", tmp->plr->num_plyr);
 		print_magic(*tmp->plr, buff);
 		print_prog_name(*tmp->plr);
 		print_prog_size(*tmp->plr, buff);
@@ -78,8 +84,8 @@ void	print_t_plr(t_list_player *lplr)
 
 void	print_t_bplr(t_base_player *bplr)
 {
-	printf("\n__dans bplr__\nnb_plyr:%d\n", bplr->nb_plyr);
-	printf("numplr1:%d\nnumplr2:%d\nnumplr3:%d\nnumplr4:%d\n", bplr->tab[0], bplr->tab[1],
+	ft_printf("\n__dans bplr__\nnb_plyr:%d\n", bplr->nb_plyr);
+	ft_printf("numplr1:%d\nnumplr2:%d\nnumplr3:%d\nnumplr4:%d\n", bplr->tab[0], bplr->tab[1],
 			bplr->tab[2], bplr->tab[3]);
 }
 
@@ -88,21 +94,21 @@ void	print_t_ir(t_ir *tir)
 	int	i;
 
 	i = 0;
-	printf("\n__IR__\nirstr:");
+	ft_printf("\n__IR__\nirstr:");
 	while (i < 14)
 	{
-		printf("%.2x ", (unsigned char)tir->irstr[i]);
+		ft_printf("%.2x ", (unsigned char)tir->irstr[i]);
 		i++;
 	}
-	printf("opcode:%d ocp:%x index:%d nb_arg:%d\n", tir->opcode, tir->ocp,
+	ft_printf("opcode:%d ocp:%x index:%d nb_arg:%d\n", tir->opcode, tir->ocp,
 			tir->index, tir->nb_arg);
 	i = 0;
 	while (i < 3)
 	{
-		printf("I = %d, TYPE => %x, CODE => %x, ARGS => %x\n", i, tir->types_args[i], tir->code_args[i], tir->args[i]);
+		ft_printf("I = %d, TYPE => %x, CODE => %x, ARGS => %x\n", i, tir->types_args[i], tir->code_args[i], tir->args[i]);
 		i++;
 	}
-	printf("\n");
+	ft_printf("\n");
 }
 
 void	print_t_proc(t_vm *vm)
@@ -113,22 +119,22 @@ void	print_t_proc(t_vm *vm)
 	tmp2 = vm->proc;
 	while (tmp2)
 	{
-		printf("__DANS PROC__\nnum:%d\nnum_plr:%d\npc:%d\nreg0:%d\ncarry:%d\n cycle_to_wait:%d \n",
+		ft_printf("__DANS PROC__\nnum:%d\nnum_plr:%d\npc:%d\nreg0:%d\ncarry:%d\n cycle_to_wait:%d \n",
 				tmp2->num, tmp2->num_plr, tmp2->pc, tmp2->reg[1], tmp2->carry,
 				tmp2->cycle_to_wait);
-		printf("\n________arene[pc]=");
+		ft_printf("\n________arene[pc]=");
 		i = 0;
 		while (i < 14)
 		{
-			printf("%.2x", vm->core[tmp2->pc + i]);
+			ft_printf("%.2x", vm->core[tmp2->pc + i]);
 			i++;
 		}
-		printf("\n\npcdelta:%d carry:%d ir_error:%d \n", tmp2->pcdelta, tmp2->carry,
+		ft_printf("\n\npcdelta:%d carry:%d ir_error:%d \n", tmp2->pcdelta, tmp2->carry,
 				tmp2->ir_error);
 		i = 1;
 		while (i < 17)
 		{
-			printf("__reg%d=%x\n", i, tmp2->reg[i]);
+			ft_printf("__reg%d=%x\n", i, tmp2->reg[i]);
 			i++;
 		}
 		print_t_ir(&tmp2->ir);
@@ -137,7 +143,7 @@ void	print_t_proc(t_vm *vm)
 }
 void	print_t_cpu(t_vm *vm)
 {
-	printf("___CPU___\ncur_cycle:%d\tcycle_to_check:%d\tcycle2die:%d\tnbchecks:%d\n",
+	ft_printf("___CPU___\ncur_cycle:%d\tcycle_to_check:%d\tcycle2die:%d\tnbchecks:%d\n",
 			vm->cpu.cur_cycle, vm->cpu.cycle_to_check, vm->cpu.cycle2die, vm->cpu.nbchecks);
 
 }
@@ -158,9 +164,9 @@ void	print_corenum_plr(t_octet *core)
 	while (i < MEM_SIZE)
 	{
 		if (i % 64 == 0)
-			printf("\n");
+			ft_printf("\n");
 		//printf(" %.2d", core->core[i]);
-		printf(" %.2d", core[i].num_plr);
+		ft_printf(" %.2d", core[i].num_plr);
 		i++;
 	}
 }

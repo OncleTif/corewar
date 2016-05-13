@@ -5,20 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 17:04:58 by djoly            ###   ########.fr       */
-=======
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 16:57:01 by tmanet           ###   ########.fr       */
->>>>>>> ffd6cb0542a077a4e58ff867f1c59f78ea9ce76b
+/*   Updated: 2016/05/13 17:10:07 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
 # include "struct_types.h"
-# include "../../libft/libft.h"
+/*# include "../../libft/libft.h"*/
+# include "../../libft/ft_printf.h"
 # include "op.h"
 # include "process.h"
 # include "reverse_octet.h"
