@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 10:28:58 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 14:46:46 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,7 @@ get_mem.c
 int				get_mem(t_vm *vm, int idx, int off);
 int		get_mem_idx(t_vm *vm, short int idx, short int off);
 int				get_memlong(t_vm *vm, int idx);
-short int		get_memlong_idx(t_vm *vm, short int idx);
+int		get_memlong_idx(t_vm *vm, short int idx);
 
 /*
 ft_store.c
