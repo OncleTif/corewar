@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/13 17:51:24 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 18:02:54 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ fonction pour gerer les bonus et ARGS
 
 void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 {
+	if (ft_strcmp("-v", av[*i]) == 0){
+//		ft_putstr(">>DANS -D<<");
+		ft_stock_verb(av, i, vm);
+	}
 	if (ft_strcmp("-d", av[*i]) == 0){
 //		ft_putstr(">>DANS -D<<");
 		ft_stock_dump(av, i, vm);

@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 17:50:20 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 18:02:49 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int				ft_check_args(char *av);
 int				ft_is_number(char *str);
 int				ft_stock_dump(char **av, int *i, t_vm *vm);
 int				ft_stock_step(char **av, int *i, t_vm *vm);
+int				ft_stock_verb(char **av, int *i, t_vm *vm);
 int				ft_stock_aff(t_vm *vm);
 int				ft_stock_verbose(char **av, int *i, t_vm *vm);
 void			ft_check_other_num(t_base_player bplr);
