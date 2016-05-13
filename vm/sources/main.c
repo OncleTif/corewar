@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/13 17:09:23 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/13 17:39:41 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,9 +178,28 @@ void	print_corepc(t_octet *core)
 		i++;
 	}
 }
+t_bin	*who_win(t_vm *vm)
+{
+	t_list_player	*lplr;
+	t_bin			*tmp;
+	int				i;
+
+	lplr = vm->bplr.lplr;
+	tmp = lplr->plr;
+	i = 0;
+	while (i < 4)
+	{
+		if (lplr->plr->last_live > tmp->last_live)
+			tmp = lplr->plr;
+		lplr = lplr->next;
+	}
+	return (tmp)
+}
+
 int		main(int argc, char **argv)
 {
 	t_vm	vm;
+	t_bin	*win;
 
 	vm_init(&vm);
 	if (argc > 1)
@@ -197,11 +216,12 @@ int		main(int argc, char **argv)
 
 //system("clear");
 //	print_t_proc(&vm);
-ft_putstr("le joueur ");
-ft_putnbr((-1 * vm.num_last_plr_live));
+	ft_putstr("le joueur ");
+	win = who_win(&vm);
+	ft_putnbr((-1 * win->num_plyr));
 //ft_putnbr((((-1 * vm.num_last_plr_live) % 4) + 1));
-ft_putstr(" (");
-//ft_putstr(plr->plr->prog_name);
+	ft_putstr(" (");
+ft_putstr(win->prog_name);
 ft_putstr(") a gagner\n");
 	print_t_cpu(&vm);
 	print_core(&vm);
