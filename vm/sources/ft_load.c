@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 14:38:44 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 15:00:43 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_lldi(t_vm *vm, t_process *proc)
 	//short int	r;
 
 	if (proc->ir.code_args[0] == T_IND)
-		off = get_memlong_idx(vm, proc->pc + proc->ir.args[0]); // lldi avec un int plus grand que max short int ? zaz
+		off = get_mem_idx(vm, proc->pc, proc->ir.args[0]); // lldi avec un int plus grand que max short int ? zaz
 	else if (proc->ir.code_args[0] == T_REG)
 		off = proc->reg[proc->ir.args[0]];
 	else
