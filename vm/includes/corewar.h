@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 14:46:46 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/13 15:42:19 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,5 +229,10 @@ void			ft_print(t_vm *vm);
 int				check_cycle(t_vm *vm);
 
 void	print_t_proc(t_vm *vm);
+
+/*
+ft_wait
+*/
+int				ft_wait(void);
 
 #endif
