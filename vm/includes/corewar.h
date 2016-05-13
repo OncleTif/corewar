@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/05 18:11:40 by tmanet            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/05/13 15:36:59 by djoly            ###   ########.fr       */
-=======
-/*   Updated: 2016/05/13 15:42:19 by tmanet           ###   ########.fr       */
->>>>>>> 71db5f5afe264f15ccf5bca196b507d611599995
+/*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
+/*   Updated: 2016/05/13 16:57:01 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +48,7 @@ struct s_octet
 struct s_vm
 {
 	int				dump; //  -dump aff et exit apres nbr cycles
+	int				step;
 	int				verbose; //  -v affiche les action
 	t_cpu			cpu;
 
@@ -68,6 +65,9 @@ struct s_vm
 	void	(*ftab[17])(t_vm*, t_process*);
 };
 
+
+void			print_core(t_vm *vm);
+
 /*
 	ft_manage
 */
@@ -75,6 +75,7 @@ struct s_vm
 int				ft_check_args(char *av);
 int				ft_is_number(char *str);
 int				ft_stock_dump(char **av, int *i, t_vm *vm);
+int				ft_stock_step(char **av, int *i, t_vm *vm);
 int				ft_stock_verbose(char **av, int *i, t_vm *vm);
 void			ft_check_other_num(t_base_player bplr);
 

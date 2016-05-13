@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:10:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/10 14:23:26 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/13 16:47:00 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,15 @@ int		ft_is_number(char *str)
 /*
 fonction recupere le dump et stock dans la T_vm
 */
+
+int		ft_stock_step(char **av, int *i, t_vm *vm)
+{
+	(*i)++;
+	if (ft_is_number(av[*i]) == 0)
+		ft_error("ARG is not a number");
+	vm->step = ft_atoi(av[*i]);
+	return (1);
+}
 
 int		ft_stock_dump(char **av, int *i, t_vm *vm)
 {

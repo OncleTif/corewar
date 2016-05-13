@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/13 11:34:25 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 17:06:08 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int		decode_ir(t_process *proc)
 	ir = proc->ir.irstr;
 	if (ir[0] < 1 || ir[0] > 16)
 	{
-//			printf("ERROR0");
+		//			printf("ERROR0");
 		proc->ir_error = 1;
-//			printf(" ir0:%d  pc:%d irerror:%d ", ir[0], proc->pc, proc->ir_error);
+		//			printf(" ir0:%d  pc:%d irerror:%d ", ir[0], proc->pc, proc->ir_error);
 		return (0);
 	}
 	proc->ir.opcode = ir[0];
@@ -94,37 +94,37 @@ int		parse_proc(t_vm *vm)
 
 	i = 0;
 	tmp = vm->proc;
-//	ft_putendl("debut cycle");
+	//	ft_putendl("debut cycle");
 	while (tmp)
 	{
-//		ft_putnbrendl((int)tmp);
-//		ft_putendl("debut proc                        ");
-//		ft_putstr("                                         ");
-//		ft_putnbrendl((int)tmp->cycle_to_wait);
+		//		ft_putnbrendl((int)tmp);
+		//		ft_putendl("debut proc                        ");
+		//		ft_putstr("                                         ");
+		//		ft_putnbrendl((int)tmp->cycle_to_wait);
 
 		if (tmp->cycle_to_wait == vm->cpu.cur_cycle) // 1520 = 1520
 		{
-//			ft_putendl("\n\n__________DANS DECODE_______\n\n");
+			//			ft_putendl("\n\n__________DANS DECODE_______\n\n");
 			fetch_ir(tmp, vm->core);
-//			ft_putnbrendl((int)vm->core[tmp->pc]);
+			//			ft_putnbrendl((int)vm->core[tmp->pc]);
 			if (decode_ir(tmp))
 				run(vm, tmp);
 			//ft_print(vm);
 		}
 		if (tmp->cycle_to_wait <= vm->cpu.cur_cycle)
 		{
-//			ft_putchar('b');
+			//			ft_putchar('b');
 			ft_fetch_next(vm, tmp);
 		}
-//		ft_putendl("fin while");
+		//		ft_putendl("fin while");
 		tmp = tmp->next;
 	}
-//ft_putendl("fin cycle");
+	//ft_putendl("fin cycle");
 	return (0);
 }
 
-	//proc->pc += proc->pcdelta;
-	//proc->pcdelta = 0;
+//proc->pc += proc->pcdelta;
+//proc->pcdelta = 0;
 
 //Chooo-Chooo
 int		cpu(t_vm *vm)
@@ -136,7 +136,12 @@ int		cpu(t_vm *vm)
 		CPU.cur_cycle += 1;
 		parse_proc(vm);
 		if (check_cycle(vm)) // modifie cur_delta cycle2die nbchecks dans T_cpu
-		break ;
+			break ;
+		if (vm->cpu.cur_cycle % vm->step == 0)
+		{
+			print_core(vm);
+			ft_wait();
+		}
 	}
 
 	return (0);
