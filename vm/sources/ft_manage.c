@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:10:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/13 18:02:52 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 18:21:49 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		ft_stock_verb(char **av, int *i, t_vm *vm)
 	(*i)++;
 	if (ft_is_number(av[*i]) == 0)
 		ft_error("ARG is not a number");
-	vm->verbose = vm->verbose | (ft_atoi(av[*i]) & 3);
+	vm->verbose = vm->verbose | (ft_atoi(av[*i]) & 63);
 	return (1);
 }
 

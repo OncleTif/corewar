@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/13 17:53:12 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/13 18:34:31 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,12 +221,12 @@ int		main(int argc, char **argv)
 //	print_t_proc(&vm);
 	ft_putstr("le joueur ");
 	win = who_win(&vm);
-	ft_putnbr((-1 * win->num_plyr));
+	ft_printf("Contestant %d (%s), has won !\n", (-1 * win->num_plyr), win->prog_name);
 //ft_putnbr((((-1 * vm.num_last_plr_live) % 4) + 1));
-	ft_putstr(" (");
-ft_putstr(win->prog_name);
-ft_putstr(") a gagner\n");
+	if (vm.verbose & 32)
+	{
 	print_t_cpu(&vm);
 	print_core(&vm);
+	}
 	return (0);
 }
