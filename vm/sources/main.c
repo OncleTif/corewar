@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/13 17:42:38 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/13 17:53:12 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,12 +188,13 @@ t_bin	*who_win(t_vm *vm)
 
 	lplr = vm->bplr.lst_plyr;
 	tmp = lplr->plr;
-	i = 0;
-	while (i < 4)
+	i = 1;
+	while (i < vm->bplr.nb_plyr)
 	{
 		if (lplr->plr->last_live > tmp->last_live)
 			tmp = lplr->plr;
 		lplr = lplr->next;
+		i++;
 	}
 	return (tmp);
 }
