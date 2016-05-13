@@ -6,7 +6,11 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/05/13 18:03:29 by djoly            ###   ########.fr       */
+=======
+/*   Updated: 2016/05/13 18:09:23 by tmanet           ###   ########.fr       */
+>>>>>>> e9aeebe57aa0b3d2da0f0a4a38d28a64528fc405
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +138,8 @@ int		cpu(t_vm *vm)
 	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
 	{
 		CPU.cur_cycle += 1;
+		if (vm->verbose & 2)
+			ft_printf("It is now cycle %d\n", vm->cpu.cur_cycle);
 		parse_proc(vm);
 		//ft_printf(">>%d<<", vm->cpu.cycle2die);
 		if (check_cycle(vm)) // modifie cur_delta cycle2die nbchecks dans T_cpu

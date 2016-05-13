@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:10:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/13 17:50:59 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 18:02:52 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,15 @@ fonction recupere le dump et stock dans la T_vm
 int		ft_stock_aff(t_vm *vm)
 {
 	vm->aff = 1;
+	return (1);
+}
+
+int		ft_stock_verb(char **av, int *i, t_vm *vm)
+{
+	(*i)++;
+	if (ft_is_number(av[*i]) == 0)
+		ft_error("ARG is not a number");
+	vm->verbose = vm->verbose | (ft_atoi(av[*i]) & 3);
 	return (1);
 }
 
