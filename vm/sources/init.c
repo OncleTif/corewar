@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/12 11:35:40 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/13 17:04:09 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		ft_init_lst_proc(t_vm *vm)
 {
 	t_process	*tmp;
 	t_list_player	*lst_play;
+	t_process	*tmp2;
 
 	lst_play = vm->bplr.lst_plyr;
 	while (lst_play)
@@ -51,11 +52,15 @@ int		ft_init_lst_proc(t_vm *vm)
 		ft_fetch_next(vm, tmp);
 		tmp->num = vm->nb_proc;
 		vm->nb_proc += 1;
-
+		tmp->next = NULL;
+		if (vm->proc == NULL)
+			vm->proc = tmp;
+		else
+			tmp2->next = tmp;
+		tmp2 = tmp;
+		/*
 		tmp->next = vm->proc;
-		vm->proc = tmp;
-
-
+		vm->proc = tmp;*/
 		lst_play = lst_play->next;
 	}
 //		ft_putendl("\n__SORTIE_____\n");
@@ -92,20 +97,20 @@ int		ft_init_arena(t_vm *vm)
 	if (vm->bplr.nb_plyr == 2)
 	{
 		copy_plr(vm, tmp->next->plr, 0);
-		copy_plr(vm, tmp->plr, 2048);
+		copy_plr(vm, tmp->plr, (MEM_SIZE / 2));
 	}
 	else if (vm->bplr.nb_plyr == 3)
 	{
 		copy_plr(vm, tmp->next->next->plr, 0);
-		copy_plr(vm, tmp->next->plr, 1365);
-		copy_plr(vm, tmp->plr, 2730);
+		copy_plr(vm, tmp->next->plr, (MEM_SIZE / 3));
+		copy_plr(vm, tmp->plr, ((MEM_SIZE / 3) * 2));
 	}
 	else if (vm->bplr.nb_plyr == 4)
 	{
 		copy_plr(vm, tmp->next->next->next->plr, 0);
-		copy_plr(vm, tmp->next->next->plr, 1024);
-		copy_plr(vm, tmp->next->plr, 2048);
-		copy_plr(vm, tmp->plr, 3072);
+		copy_plr(vm, tmp->next->next->plr, (MEM_SIZE / 4));
+		copy_plr(vm, tmp->next->plr, (MEM_SIZE / 2));
+		copy_plr(vm, tmp->plr, ((MEM_SIZE / 4) * 3));
 	}
 	return (0);
 }
