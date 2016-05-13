@@ -6,10 +6,10 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/05/13 17:39:41 by djoly            ###   ########.fr       */
-=======
-/*   Updated: 2016/05/13 17:30:28 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 17:41:28 by djoly            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 >>>>>>> 3705b4c421a9f3ffe83cab9b0e42ef4abbaf4b49
 /*                                                                            */
 /* ************************************************************************** */
@@ -190,7 +190,7 @@ t_bin	*who_win(t_vm *vm)
 	t_bin			*tmp;
 	int				i;
 
-	lplr = vm->bplr.lplr;
+	lplr = vm->bplr.lst_plyr;
 	tmp = lplr->plr;
 	i = 0;
 	while (i < 4)
@@ -199,7 +199,7 @@ t_bin	*who_win(t_vm *vm)
 			tmp = lplr->plr;
 		lplr = lplr->next;
 	}
-	return (tmp)
+	return (tmp);
 }
 
 int		main(int argc, char **argv)
