@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 10:18:34 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/09 18:12:47 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/13 17:49:31 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_aff(t_vm *vm, t_process *proc)
 {
-	(void)vm;
-	ft_putchar(proc->reg[proc->ir.args[0]] % 256);
+	if (vm->aff)
+		ft_putchar(proc->reg[proc->ir.args[0]] % 256);
 }
