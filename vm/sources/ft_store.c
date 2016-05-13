@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:19:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/12 18:28:24 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/13 11:26:39 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	ft_st(t_vm *vm, t_process *proc)
 void	ft_sti(t_vm *vm, t_process *proc)
 {
 	//	int	val;
-	short int	off;
-	short int	mod;
-	short int	sum;
+	int	off;
+	int	mod;
+	int	sum;
 
 	ft_putendl("pc sti:");
 	ft_putnbrendl(proc->pc);
@@ -41,28 +41,20 @@ void	ft_sti(t_vm *vm, t_process *proc)
 		off = proc->reg[proc->ir.args[1]];
 	else
 		off = proc->ir.args[1];
-	while (mod < 0 && proc->ir.code_args[1] == T_IND)
-		mod = mod + 1024;
 	sum = mod + off;
-	if (mod >= 512)
-		sum = sum -512;
-	if (off >= 512)
-		sum = sum -512;
-//	if ((mod < 0 && off >= 0) || (mod >= 0 && off < 0 ))
-//		sum = sum - 512;
-	put_mem(vm, proc, sum,
-			proc->reg[proc->ir.args[0]]);
-	proc->carry = !proc->reg[proc->ir.args[0]];
 	ft_putstr("                            ");
 	ft_putnbr(proc->ir.args[1]);
 	ft_putstr(" & ");
-	ft_putnbr(off % 1024 - 512);
+	ft_putnbr(off);
 	ft_putstr(" & ");
-	ft_putnbr(mod % 1024 - 512);
+	ft_putnbr(mod);
 	ft_putstr(" & ");
-	ft_putnbr((off % 1024 - 512) + (mod % 1024 - 512));
+	ft_putnbr((off) + (mod));
 	ft_putstr(" & ");
 	ft_putnbrendl(sum % 512);
+	put_mem(vm, proc, sum,
+			proc->reg[proc->ir.args[0]]);
+	proc->carry = !proc->reg[proc->ir.args[0]];
 }
 
 //-255
