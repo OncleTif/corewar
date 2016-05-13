@@ -2,7 +2,8 @@
 
 int		check_code(unsigned char ocp, int decal)
 {
-	return (((ocp >> decal) & 3) == 0);
+	//return (((ocp >> decal) & 3) == 0);
+	return ((((ocp >> decal) & 3) != 0) * 2);
 }
 /*
 int 	get_args(t_process *proc, t_vm *vm)
