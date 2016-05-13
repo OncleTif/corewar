@@ -6,7 +6,7 @@
 #    By: djoly <djoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/10 11:11:25 by djoly            ###   ########.fr        #
+#    Updated: 2016/05/13 15:42:50 by tmanet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/init_2.c \
 		sources/ft_manage.c \
 		sources/check_cycle.c \
+		sources/ft_wait.c \
 # sources/testdav.c \
 
 OBJ = $(SRC:.c=.o)
