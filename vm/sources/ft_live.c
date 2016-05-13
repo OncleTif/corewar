@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 12:37:24 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 15:46:17 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/13 17:08:38 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_live(t_vm *vm, t_process *proc)
 	{
 		plr->plr->last_live = vm->cpu.cur_cycle;
 		ft_putstr("un processus dit que le joueur ");
-		ft_putnbr(proc->ir.args[0]);
+		ft_putnbr((-1 * proc->ir.args[0]));
 		//ft_putnbr((((-1 * proc->ir.args[0]) % 4) + 1));
 		ft_putstr(" (");
 		ft_putstr(plr->plr->prog_name);
