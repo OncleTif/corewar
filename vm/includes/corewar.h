@@ -243,5 +243,6 @@ void	print_t_proc(t_vm *vm);
 ft_wait
 */
 int				ft_wait(void);
+int			to_kill_or_not_to_kill_proc(t_vm *vm);
 
 #endif
