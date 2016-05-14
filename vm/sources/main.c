@@ -211,10 +211,23 @@ void	print_options(void)
 	ft_printf("\t\t\t\t8 : affiche deplacement du pc\n");
 }
 
+void		print_finish(t_vm *vm)
+{
+	t_bin	*win;
+	
+	win = who_win(vm);
+	ft_printf("Contestant %d (%s), has won !\n", (-1 * win->num_plyr), win->prog_name); // merde si on a fait un -n
+	if (vm->verbose & 32)
+	{
+		print_t_cpu(vm);
+		print_core(vm);
+	}
+}
+
 int		main(int argc, char **argv)
 {
 	t_vm	vm;
-	t_bin	*win;
+
 
 	vm_init(&vm);
 	if (argc > 1)
@@ -233,14 +246,7 @@ int		main(int argc, char **argv)
 
 //system("clear");
 //	print_t_proc(&vm);
-	ft_putstr("le joueur ");
-	win = who_win(&vm);
-	ft_printf("Contestant %d (%s), has won !\n", (-1 * win->num_plyr), win->prog_name);
-//ft_putnbr((((-1 * vm.num_last_plr_live) % 4) + 1));
-	if (vm.verbose & 32)
-	{
-	print_t_cpu(&vm);
-	print_core(&vm);
-	}
+	print_finish(&vm);
+
 	return (0);
 }
