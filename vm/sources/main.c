@@ -199,6 +199,18 @@ t_bin	*who_win(t_vm *vm)
 	return (tmp);
 }
 
+void	print_options(void)
+{
+	ft_printf("____ OPTION _____\n\n-d n\t\tdump la memoire au cycle n\n");
+	ft_printf("-s n\t\tprint la memoire au cycle n et attend touche entre\n");
+	ft_printf("-n n chp.cor\t\tinit le numero du joueur a n n\n");
+	ft_printf("-v n\t\tverbose mode:\n");
+	ft_printf("\t\t\t\t1 : affiche les lives\n");
+	ft_printf("\t\t\t\t2 : affiche les cycles\n");
+	ft_printf("\t\t\t\t4 : affiche la memoire\n");
+	ft_printf("\t\t\t\t8 : affiche deplacement du pc\n");
+}
+
 int		main(int argc, char **argv)
 {
 	t_vm	vm;
@@ -211,7 +223,9 @@ int		main(int argc, char **argv)
 	}
 	else
 	{
-		ft_error("Not enough arguments");
+		//ft_error("Not enough arguments");
+		print_options();
+		return(0);
 	}
 	ft_init_arena(&vm);
 	ft_init_lst_proc(&vm);
