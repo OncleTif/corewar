@@ -33,7 +33,7 @@ int		check_cycle(t_vm *vm)
 	tmp = &vm->cpu;
 	if (tmp->cur_cycle == tmp->cycle_to_check)
 	{
-		to_kill_or_not_to_kill_proc(vm);
+//		to_kill_or_not_to_kill_proc(vm);
 		tmp->nbchecks++;
 		check_live(vm);
 		tmp->cycle_to_check = tmp->cur_cycle + tmp->cycle2die;

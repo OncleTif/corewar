@@ -31,6 +31,7 @@ SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/put_mem.c \
 		sources/ft_load.c \
 		sources/ft_jump.c \
+		sources/ft_kill_proc.c \
 		sources/ft_live.c \
 		sources/ft_store.c \
 		sources/ft_basic_functions.c \

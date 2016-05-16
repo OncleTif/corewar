@@ -30,7 +30,7 @@ void	ft_kill_proc(t_vm *vm, t_process *proc)
 
 int	to_kill_or_not_to_kill_proc(t_vm *vm)
 {
-	t_process	ptr;
+	t_process	*ptr;
 	
 	ptr = vm->proc; 
 	while (ptr)
