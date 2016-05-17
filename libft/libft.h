@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 12:32:15 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/10 11:10:22 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/17 18:13:36 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int					ft_isascii(int c);
 int					ft_isalpha(int c);
 int					ft_isalnum(int c);
 int					ft_isdigit(int c);
+int					ft_isnumber(char *str);
 size_t				ft_strlen(const char *s);
 void				ft_strclr(char *s);
 int					ft_strcmp(const char *s1, const char *s2);
