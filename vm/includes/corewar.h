@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/17 11:33:41 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/17 17:18:05 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,4 +245,5 @@ ft_wait
 int				ft_wait(void);
 int			to_kill_or_not_to_kill_proc(t_vm *vm);
 
+void		ft_print_operations(t_process *proc, int arg[3]);
 #endif

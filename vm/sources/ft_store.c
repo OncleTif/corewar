@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:19:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/17 13:58:37 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/17 17:23:05 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,25 @@ void	ft_st(t_vm *vm, t_process *proc)
 
 void	ft_sti(t_vm *vm, t_process *proc)
 {
-	int	off;
-	int	mod;
 	int	sum;
+	int	arg[3];
 
 	if (proc->ir.code_args[2] == T_REG)
-		mod = proc->reg[proc->ir.args[2]];
+		arg[2] = proc->reg[proc->ir.args[2]];
 	else
-		mod = proc->ir.args[2];
+		arg[2] = proc->ir.args[2];
 	if (proc->ir.code_args[1] == T_IND)
-		off = get_mem_idx(vm, proc->pc, proc->ir.args[1]);
+		arg[1] = get_mem_idx(vm, proc->pc, proc->ir.args[1]);
 	else if (proc->ir.code_args[1] == T_REG)
-		off = proc->reg[proc->ir.args[1]];
+		arg[1] = proc->reg[proc->ir.args[1]];
 	else
-		off = proc->ir.args[1];
-	sum = mod + off;
+		arg[1] = proc->ir.args[1];
+	sum = arg[1] + arg[2];
+	arg[0] = proc->ir.args[0];
 	put_mem(vm, proc, sum, proc->reg[proc->ir.args[0]]);
 	proc->carry = !proc->reg[proc->ir.args[0]];
+	if (vm->verbose & 4)
+		ft_print_operations(proc, arg);
 }
 
 //-255
