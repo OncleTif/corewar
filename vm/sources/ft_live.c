@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 12:37:24 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/17 11:20:35 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/17 17:48:58 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	ft_live(t_vm *vm, t_process *proc)
 {
 	t_list_player	*plr;
 	int				tmp;
+	int				arg[3];
 
+	arg[0] = proc->ir.args[0];
 	plr = vm->bplr.lst_plyr;
 	while (plr && plr->plr->num_plyr != proc->ir.args[0])
 		plr = plr->next;
@@ -35,4 +37,6 @@ void	ft_live(t_vm *vm, t_process *proc)
 	}
 	vm->nbr_live++;
 	proc->live++;
+	if (vm->verbose & 4)
+		ft_print_operations(proc, arg);
 }
