@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/13 18:34:31 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/17 11:19:35 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,9 +214,14 @@ void	print_options(void)
 void		print_finish(t_vm *vm)
 {
 	t_bin	*win;
-	
+	int		tmp;
+
 	win = who_win(vm);
-	ft_printf("Contestant %d (%s), has won !\n", (-1 * win->num_plyr), win->prog_name); // merde si on a fait un -n
+	if (win->num_plyr < 0)
+		tmp = (-1 * win->num_plyr);
+	else
+		tmp = win->num_plyr;
+	ft_printf("Contestant %d (%s), has won !\n", tmp, win->prog_name); // merde si on a fait un -n
 	if (vm->verbose & 32)
 	{
 		print_t_cpu(vm);
