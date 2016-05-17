@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 18:20:43 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 19:00:01 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/17 10:45:10 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	get_mem(t_vm *vm, int idx, int off)
 
 	i = 0;
 	j = idx + off % IDX_MOD;
+	while (j < 0)
+		j = j + MEM_SIZE;
 	while (i < 4)
 	{
 		val.c[3 - i] = vm->core[(j + i) % MEM_SIZE];
@@ -39,6 +41,8 @@ int	get_memlong(t_vm *vm, int idx)
 	while (i < 4)
 	{
 		j = (idx + i) % MEM_SIZE;
+		while (j < 0)
+			j = j + MEM_SIZE;
 		val.c[3 - i] = vm->core[j];
 		i++;
 	}
@@ -53,6 +57,8 @@ int	get_mem_idx(t_vm *vm, short int idx, short int off)
 
 	j = idx + off % IDX_MOD;
 	i = 0;
+	while (j < 0)
+		j = j + MEM_SIZE;
 	// ft_putendl("pc :");
 	// ft_putnbrendl(idx);
 	// ft_putendl("off :");
