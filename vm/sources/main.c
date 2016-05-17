@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/17 11:51:29 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/17 16:41:09 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,7 @@ void	print_options(void)
 	ft_printf("\t\t\t\t1 : affiche les lives\n");
 	ft_printf("\t\t\t\t2 : affiche les cycles\n");
 	ft_printf("\t\t\t\t4 : affiche la memoire\n");
-	ft_printf("\t\t\t\t8 : affiche deplacement du pc\n");
+	ft_printf("\t\t\t\t16 : affiche deplacement du pc\n");
 }
 
 void		print_finish(t_vm *vm)
