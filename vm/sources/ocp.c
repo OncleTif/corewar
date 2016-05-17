@@ -13,8 +13,10 @@ int		check_code(unsigned char ocp, int idx)
 		arg =  (ocp >> decal) & 3;
 		if (arg == DIR_CODE && !idx)
 			ret = ret + 4;
+		else if (arg == REG_CODE)
+			ret = ret + (arg != 0);
 		else
-			ret = ret + arg * 2;
+			ret = ret + (arg != 0) * 2;
 		decal = decal + 2;
 	}
 	return (ret);
