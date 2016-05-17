@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/17 11:25:34 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/17 19:01:34 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,12 @@ void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 
 		ft_stock_num_plr(av, i, vm);
 	}
-	if (ft_strcmp("-v", av[*i]) == 0)
-	{
+//	if (ft_strcmp("-v", av[*i]) == 0)
+//	{
 //		ft_putstr(">>DANS -V<<");
-		ft_stock_verbose(av, i, vm);
-}}
+//		ft_stock_verbose(av, i, vm);
+//}
+}
 
 /*
 INIT numero du plr
@@ -79,13 +80,23 @@ alloue de la memoire pour une nouvelle cellule et met de l'information dedans,
 void	ft_mem_champs(t_base_player *player, char *av)
 {
 	t_list_player	*tmp;
-	t_list_player	*tmp2;
+	//t_list_player	*tmp2;
+	t_list_player	*lplr;
 
 	tmp = (t_list_player*)ft_memalloc(sizeof(t_list_player));
 	tmp->plr = (t_bin *)ft_memalloc(sizeof(t_bin));
 	ft_open_champion(av, tmp->plr);
+	lplr = player->lst_plyr;
+
+	while(lplr && lplr->next)
+		lplr = lplr->next;
+	if(!lplr)
+		player->lst_plyr = tmp;
+	else
+		lplr->next = tmp;
 
 
+/*
 
 	if (!player->lst_plyr)
 	{
@@ -96,7 +107,7 @@ void	ft_mem_champs(t_base_player *player, char *av)
 		tmp2 = player->lst_plyr;
 		player->lst_plyr = tmp;
 		tmp->next = tmp2;
-	}
+	}*/
 	ft_init_num_plr(player, tmp);
 //	player->nb_plyr = player->nb_plyr + 1;
 }

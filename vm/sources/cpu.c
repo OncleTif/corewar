@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/17 17:13:51 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/17 18:57:15 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,11 @@ int		parse_proc(t_vm *vm)
 			//			ft_putchar('b');
 			ft_fetch_next(vm, tmp);
 		}
+
 		//		ft_putendl("fin while");
 		tmp = tmp->next;
 	}
+
 	//ft_putendl("fin cycle");
 	return (0);
 }
@@ -140,6 +142,7 @@ int		cpu(t_vm *vm)
 		if (vm->verbose & 2)
 			ft_printf("It is now cycle %d\n", vm->cpu.cur_cycle);
 		parse_proc(vm);
+		//print_t_proc(vm);
 		//ft_printf(">>%d<<", vm->cpu.cycle2die);
 		if (check_cycle(vm)) // modifie cur_delta cycle2die nbchecks dans T_cpu
 			break ;

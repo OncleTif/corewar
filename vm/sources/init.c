@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/17 17:25:41 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/17 19:04:57 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,35 @@ t_process	*ft_add_link(t_process *beg, int plr, int pc, t_process *father)
 void	ft_init_pc(int plr, int pc, t_vm *vm, t_process *proc)
 {
 	vm->proc = ft_add_link(vm->proc, plr, pc, proc);
+	vm->proc->num = vm->nb_proc++;
 }
 
 int		ft_init_lst_proc(t_vm *vm)
 {
 	t_process	*tmp;
 	t_list_player	*lst_play;
-	t_process	*tmp2;
+	//t_process	*tmp2;
 
 	lst_play = vm->bplr.lst_plyr;
 	while (lst_play)
 	{
-		tmp = (t_process*)ft_memalloc(sizeof(t_process));
+		if (!(tmp = (t_process*)ft_memalloc(sizeof(t_process))))
+			ft_error("error malloc");
 		ft_init_proc(lst_play->plr, tmp);
-		fflush(stdout);
 		ft_fetch_next(vm, tmp);
 		tmp->num = vm->nb_proc;
 		vm->nb_proc += 1;
-		tmp->next = NULL;
+		//tmp->next = NULL;
+
+
+		tmp->next = vm->proc;
+		vm->proc = tmp;
+		/*
 		if (vm->proc == NULL)
 			vm->proc = tmp;
 		else
 			tmp2->next = tmp;
-		tmp2 = tmp;
+		tmp2 = tmp;*/
 		/*
 		tmp->next = vm->proc;
 		vm->proc = tmp;*/
@@ -95,26 +101,24 @@ int		ft_init_arena(t_vm *vm)
 
 	tmp = vm->bplr.lst_plyr;
 	if (vm->bplr.nb_plyr == 1)
-	{
 		copy_plr(vm, tmp->plr, 0);
-	}
 	else if (vm->bplr.nb_plyr == 2)
 	{
-		copy_plr(vm, tmp->next->plr, 0);
-		copy_plr(vm, tmp->plr, (MEM_SIZE / 2));
+		copy_plr(vm, tmp->next->plr, (MEM_SIZE / 2));
+		copy_plr(vm, tmp->plr, 0);
 	}
 	else if (vm->bplr.nb_plyr == 3)
 	{
-		copy_plr(vm, tmp->next->next->plr, 0);
+		copy_plr(vm, tmp->next->next->plr, ((MEM_SIZE / 3) * 2));
 		copy_plr(vm, tmp->next->plr, (MEM_SIZE / 3));
-		copy_plr(vm, tmp->plr, ((MEM_SIZE / 3) * 2));
+		copy_plr(vm, tmp->plr, 0);
 	}
 	else if (vm->bplr.nb_plyr == 4)
 	{
-		copy_plr(vm, tmp->next->next->next->plr, 0);
-		copy_plr(vm, tmp->next->next->plr, (MEM_SIZE / 4));
-		copy_plr(vm, tmp->next->plr, (MEM_SIZE / 2));
-		copy_plr(vm, tmp->plr, ((MEM_SIZE / 4) * 3));
+		copy_plr(vm, tmp->next->next->next->plr, ((MEM_SIZE / 4) * 3));
+		copy_plr(vm, tmp->next->next->plr, (MEM_SIZE / 2));
+		copy_plr(vm, tmp->next->plr, (MEM_SIZE / 4));
+		copy_plr(vm, tmp->plr, 0);
 	}
 	return (0);
 }
