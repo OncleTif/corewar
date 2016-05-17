@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/13 18:02:54 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/17 11:25:34 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ fonction recupere le num du plr et stock dans la T_vm
 int		ft_stock_num_plr(char **av, int *i, t_vm *vm)
 {
 	(*i)++;
-	if (ft_is_number(av[*i]) == 0)
+	if (!av[*i] || ft_is_number(av[*i]) == 0)
 		ft_error("ARG is not a number");
 	BPLR.tmpnum = BPLR.tab[BPLR.nb_plyr];
 	BPLR.tab[BPLR.nb_plyr] = ft_atoi(av[*i]);
