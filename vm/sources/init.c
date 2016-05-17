@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/13 17:04:09 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/17 17:25:41 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,11 @@ int		ft_init_arena(t_vm *vm)
 	t_list_player *tmp;
 
 	tmp = vm->bplr.lst_plyr;
-	if (vm->bplr.nb_plyr == 2)
+	if (vm->bplr.nb_plyr == 1)
+	{
+		copy_plr(vm, tmp->plr, 0);
+	}
+	else if (vm->bplr.nb_plyr == 2)
 	{
 		copy_plr(vm, tmp->next->plr, 0);
 		copy_plr(vm, tmp->plr, (MEM_SIZE / 2));
