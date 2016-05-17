@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:20:06 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/17 11:46:55 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/17 11:54:55 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_proc_init(t_vm *vm, t_process *proc)
 	vm->data[proc->pc].pc--;
 	proc->pc = (proc->pc + proc->pcdelta) % MEM_SIZE;
 	vm->data[proc->pc].pc++;
+	if (vm->verbose & 8)
 		ft_printf(" %#0.4x)\n", proc->pc);
 	proc->pcdelta = 0;
 }

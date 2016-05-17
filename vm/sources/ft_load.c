@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 19:00:50 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/17 12:32:38 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,31 @@ void	ft_ld(t_vm *vm, t_process *proc)
 	proc->carry = !val;
 }
 
+int	lldget_memlong(t_vm *vm, int idx)
+{
+	union u_4o	val;
+	int			i;
+	int			j;
+
+	i = 0;
+	val.i = 0;
+	while (i < 2)
+	{
+		j = (idx + i) % MEM_SIZE;
+		while (j < 0)
+			j = j + MEM_SIZE;
+		val.c[3 - i] = vm->core[j];
+		i++;
+	}
+	return (val.i);
+}
+
 void	ft_lld(t_vm *vm, t_process *proc)
 {
 	int	val;
 
 	if (proc->ir.code_args[0] == T_IND)
-		val = get_memlong(vm, proc->pc + proc->ir.args[0]);
+		val = lldget_memlong(vm, proc->pc + proc->ir.args[0]);
 	else
 		val = proc->ir.args[0];
 	proc->reg[proc->ir.args[1]] = val;
