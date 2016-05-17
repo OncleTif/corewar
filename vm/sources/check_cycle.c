@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:22:45 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/10 11:13:08 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/17 18:04:31 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int		check_cycle(t_vm *vm)
 	tmp = &vm->cpu;
 	if (tmp->cur_cycle == tmp->cycle_to_check)
 	{
-//		to_kill_or_not_to_kill_proc(vm);
+		if (to_kill_or_not_to_kill_proc(vm))
+			return (1);
 		tmp->nbchecks++;
 		check_live(vm);
 		tmp->cycle_to_check = tmp->cur_cycle + tmp->cycle2die;
