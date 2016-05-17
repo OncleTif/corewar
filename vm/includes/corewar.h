@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/13 18:02:49 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/17 11:33:41 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ int				parse_proc(t_vm *vm);
 /*
 ocp.c
 */
-int				check_code(unsigned char ocp, int decal);
+int				check_code(unsigned char ocp, int idx);
 int				stock_code_args(t_ir *pir, unsigned char ocp, int u, int i);
 int				j_init(int i, t_ir *pir, int *j);
 int				get_args(t_process *proc, t_vm *vm);
