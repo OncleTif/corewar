@@ -1,38 +1,52 @@
 #include "../includes/corewar.h"
 
-int		check_code(unsigned char ocp, int decal)
+int		check_code(unsigned char ocp, int idx)
 {
-	//return (((ocp >> decal) & 3) == 0);
-	return ((((ocp >> decal) & 3) != 0) * 2);
+	int	decal;
+	int	ret;
+	int	arg;
+
+	ret = 0;
+	decal = 0;
+	while (decal < 8)
+	{
+		arg =  (ocp >> decal) & 3;
+		if (arg == DIR_CODE && !idx)
+			ret = ret + 4;
+		else
+			ret = ret + arg * 2;
+		decal = decal + 2;
+	}
+	return (ret);
 }
 /*
-int 	get_args(t_process *proc, t_vm *vm)
-{
-	int i;
-	int j;
+   int 	get_args(t_process *proc, t_vm *vm)
+   {
+   int i;
+   int j;
 
-	i = 0;
-	j = 2;
-	while (i < 3)
-	{
-		//j_init(i, ir, &j);
-		if (proc->ir.code_args[i] == 0x02)
-		{
-			stock_dir(&proc->ir, i, j);
-			j += 4;
-		}
-		else if (proc->ir.code_args[i] == 0x03)
-		{
-			stock_ind(proc, vm, i, j);
-			j += 2;
-		}
-		// else if (pir->code_args[i] == 0x04)
-		// {
-		// 	stock_reg();
-		// }
-		i++;
-	}
-	return (0);
+   i = 0;
+   j = 2;
+   while (i < 3)
+   {
+//j_init(i, ir, &j);
+if (proc->ir.code_args[i] == 0x02)
+{
+stock_dir(&proc->ir, i, j);
+j += 4;
+}
+else if (proc->ir.code_args[i] == 0x03)
+{
+stock_ind(proc, vm, i, j);
+j += 2;
+}
+// else if (pir->code_args[i] == 0x04)
+// {
+// 	stock_reg();
+// }
+i++;
+}
+return (0);
 }
 */
 int		check_code2(unsigned char *ir, int j)
