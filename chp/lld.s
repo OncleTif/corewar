@@ -1,6 +1,20 @@
 .name "LLD"
 .comment "I'M LLD"
 
+		lld	2, r1 ; OK
+		st r1, -5
+		st r1, -250
+		sti r1, %-5, %0
+		sti r1, %-250, %0
+		lld	-2, r1 ; ok
+		st r1, -5
+		sti r1, %-250, %0
+		lld	3, r1
+		st r1, -5
+		sti r1, %-250, %0
+		lld	-3, r1
+		st r1, -5
+		sti r1, %-250, %0
 l2:		lld	1365, r1 ; OK
 		st r1, -5
 		sti r1, %-250, %0

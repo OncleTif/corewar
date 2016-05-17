@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/17 12:32:38 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/17 14:30:56 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	lldget_memlong(t_vm *vm, int idx)
 		j = (idx + i) % MEM_SIZE;
 		while (j < 0)
 			j = j + MEM_SIZE;
-		val.c[3 - i] = vm->core[j];
+		val.c[1 - i] = vm->core[j];
 		i++;
 	}
 	return (val.i);
