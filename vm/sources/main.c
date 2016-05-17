@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/17 16:41:09 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/17 17:44:01 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void	print_core(t_vm *vm)
 		}*/
 		if(vm->data[i].pc)
 			ft_printf(" \033[36m%.2x\033[00m", vm->core[i]);
-		else if (vm->data[i].num_plr == -4)
+		else if (vm->data[i].num_plr == (int)vm->bplr.tab[0])
 			ft_printf(" \033[31m%.2x\033[00m", vm->core[i]);
-		else if (vm->data[i].num_plr == -3)
+		else if (vm->data[i].num_plr == (int)vm->bplr.tab[1])
 			ft_printf(" \033[32m%.2x\033[00m", vm->core[i]);
-		else if (vm->data[i].num_plr == -2)
+		else if (vm->data[i].num_plr == (int)vm->bplr.tab[2])
 			ft_printf(" \033[33m%.2x\033[00m", vm->core[i]);
-		else if (vm->data[i].num_plr == -1)
+		else if (vm->data[i].num_plr == (int)vm->bplr.tab[3])
 			ft_printf(" \033[34m%.2x\033[00m", vm->core[i]);
 		else
 			ft_printf(" %.2x", vm->core[i]);
