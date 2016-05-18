@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/18 15:10:21 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/18 17:51:34 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,6 @@ void	print_core(t_vm *vm)
 			ft_printf("0x0000 : ");
 		else if (i % 64 == 0)
 			ft_printf("\n%#.4x : ", i);
-		//printf(" %.2d", core->core[i]);
-/*
-		while (proc && !printed)
-		{
-			if (proc->pc == i)
-			{
-				printf(" \033[36m%.2x\033[00m", vm->core[i]);
-				printed = 1;
-			}
-			proc = proc->next;
-		}*/
 		if (!vm->color)
 			ft_printf("%.2x ", vm->core[i]);
 		else if(vm->data[i].pc)
