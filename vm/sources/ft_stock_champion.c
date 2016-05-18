@@ -21,6 +21,7 @@ void	ft_stock_name(int fd, t_bin *plr)
 	if (!(ret = read(fd, plr->prog_name, PROG_NAME_LENGTH)))
 		ft_error("error READ name");
 	plr->prog_name[ret] = '\0';
+	plr->name = ft_strdup(plr->prog_name);
 	// print_prog_name(*plr);
 }
 
@@ -44,6 +45,7 @@ void	ft_stock_comment(int fd, t_bin *plr)
 	if (!(ret = read(fd, plr->comment, COMMENT_LENGTH)))
 		ft_error("error READ comment");
 	plr->comment[ret] = '\0';
+	plr->com = ft_strdup(plr->comment);
 	// print_comment(*plr);
 }
 

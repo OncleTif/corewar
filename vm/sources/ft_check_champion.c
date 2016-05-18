@@ -5,7 +5,8 @@ static void	ft_read_champion(int fd, t_bin *plr)
 	char	*buff;
 	int		ret;
 
-	buff = ft_memalloc(sizeof(char) * 4 + 1);
+if (!(buff = ft_memalloc(sizeof(char) * 4 + 1)))
+	ft_error("allocation of players failed");
 	ft_stock_magic(fd, buff, plr);
 	ft_stock_name(fd, plr);
 	if (!(ret = read(fd, buff, 4)))

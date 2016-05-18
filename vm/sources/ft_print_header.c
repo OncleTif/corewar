@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 08:57:19 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/18 09:20:43 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/18 09:57:08 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ void	ft_print_header(t_vm *vm)
 	ft_printf("Introducing contestants...\n");
 	while (elem)
 	{
-		/*ft_printf("* %d, weighing %d bytes, "%s" ("%s") !\n", elem->plr->num_plyr,
-		  elem->plr->prog_size, elem->plr->prog_name, elem->plr->comment);*/
-		ft_printf("* %d, weighing %u bytes, "" ("") !\n", elem->plr->num_plyr,
-				elem->plr->prog_size);
+		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
+				-1 * elem->plr->num_plyr, elem->plr->size, elem->plr->name,
+				elem->plr->com);
 		elem = elem->next;
 	}
 }
