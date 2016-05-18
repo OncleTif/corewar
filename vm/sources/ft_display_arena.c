@@ -1,12 +1,16 @@
-#include <SDL2/SDL.h>
-#include <SDL_image.h>
-#include <SDL_ttf.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include "libft.h"
-#define false 0
-#define true 1
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_display_arena.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
+/*   Updated: 2016/05/18 17:41:34 by ssicard          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/corewar.h"
 SDL_Rect solidRect; // Ajout
 SDL_Rect blendedRect;
 SDL_Rect shadedRect;
@@ -166,25 +170,6 @@ void render_line(SDL_Rect rect[4096], SDL_Renderer *renderer)
 	}
 	Render(renderer);
 }
-//
-// void render_column(SDL_Rect rect[4096], SDL_Renderer *renderer)
-// {
-// 	int line;
-// 	int x;
-// 	int y;
-//
-// 	x = 20;
-// 	y = 20;
-// 	line = 0;
-// 	// while (line < 4096)
-// 	// {
-// 		render_line(rect, renderer, x, y);
-// 		// line++;
-// 		// y += 20;
-// 		// SDL_RenderPresent(renderer);
-// 	// }
-// }
-
 
 int main()
 {

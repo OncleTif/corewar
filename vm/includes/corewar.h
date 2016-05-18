@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/18 12:09:08 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/18 17:40:42 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@
 # include <unistd.h>
 # define BPLR vm->bplr
 # define CPU vm->cpu
+#include <SDL2/SDL.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
+#define false 0
+#define true 1
 
 struct s_cpu
 {
