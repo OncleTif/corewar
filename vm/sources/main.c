@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/17 17:44:01 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/18 09:14:52 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,6 +247,7 @@ int		main(int argc, char **argv)
 	}
 	ft_init_arena(&vm);
 	ft_init_lst_proc(&vm);
+	ft_print_header(&vm);
 	cpu(&vm);
 
 //system("clear");

@@ -6,15 +6,15 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/17 19:04:57 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/18 09:31:38 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
 /*
-ajout au debut de t_proc
-*/
+   ajout au debut de t_proc
+   */
 t_process	*ft_add_link(t_process *beg, int plr, int pc, t_process *father)
 {
 	t_process *tmp;
@@ -59,17 +59,17 @@ int		ft_init_lst_proc(t_vm *vm)
 		tmp->next = vm->proc;
 		vm->proc = tmp;
 		/*
-		if (vm->proc == NULL)
-			vm->proc = tmp;
-		else
-			tmp2->next = tmp;
-		tmp2 = tmp;*/
+		   if (vm->proc == NULL)
+		   vm->proc = tmp;
+		   else
+		   tmp2->next = tmp;
+		   tmp2 = tmp;*/
 		/*
-		tmp->next = vm->proc;
-		vm->proc = tmp;*/
+		   tmp->next = vm->proc;
+		   vm->proc = tmp;*/
 		lst_play = lst_play->next;
 	}
-//		ft_putendl("\n__SORTIE_____\n");
+	//		ft_putendl("\n__SORTIE_____\n");
 	return (0);
 }
 
@@ -95,7 +95,7 @@ int		copy_plr(t_vm *vm, t_bin *plr, int i)
 	return (0);
 }
 
-int		ft_init_arena(t_vm *vm)
+int		ft_init_arena2(t_vm *vm)
 {
 	t_list_player *tmp;
 
@@ -119,6 +119,25 @@ int		ft_init_arena(t_vm *vm)
 		copy_plr(vm, tmp->next->next->plr, (MEM_SIZE / 2));
 		copy_plr(vm, tmp->next->plr, (MEM_SIZE / 4));
 		copy_plr(vm, tmp->plr, 0);
+	}
+	return (0);
+}
+
+int		ft_init_arena(t_vm *vm)
+{
+	int				n_plyr;
+	int				pos_delta;
+	t_list_player	*l_plyr;
+
+	n_plyr = 0;
+	pos_delta = MEM_SIZE / vm->bplr.nb_plyr;
+	l_plyr = vm->bplr.lst_plyr;
+
+	while (l_plyr)
+	{
+		copy_plr(vm, l_plyr->plr, n_plyr * pos_delta);
+		n_plyr++;
+		l_plyr = l_plyr->next;
 	}
 	return (0);
 }
