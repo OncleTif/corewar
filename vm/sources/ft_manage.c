@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:10:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/17 18:16:30 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/18 08:41:25 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,22 @@ int		ft_stock_verb(char **av, int *i, t_vm *vm)
 int		ft_stock_step(char **av, int *i, t_vm *vm)
 {
 	(*i)++;
-	if (!av[*i] || ft_is_number(av[*i]) == 0)
+	if (!av[*i] || ft_isnumber(av[*i]) == 0)
 		ft_error("ARG is not a number");
 	vm->step = ft_atoi(av[*i]);
+	if (vm->step < 1)
+		ft_error("step can't be fewer than 1");
 	return (1);
 }
 
 int		ft_stock_dump(char **av, int *i, t_vm *vm)
 {
 	(*i)++;
-	if (!av[*i] || ft_is_number(av[*i]) == 0)
+	if (!av[*i] || ft_isnumber(av[*i]) == 0)
 		ft_error("ARG is not a number");
 	vm->dump = ft_atoi(av[*i]);
+	if (vm->dump < 1)
+		ft_error("dump can't be fewer than 1");
 	return (1);
 }
 /*
