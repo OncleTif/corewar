@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/18 12:02:15 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/18 12:09:08 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void			print_core(t_vm *vm);
 int				ft_check_args(char *av);
 int				ft_is_number(char *str);
 int				ft_stock_dump(char **av, int *i, t_vm *vm);
+int				ft_stock_color(t_vm *vm);
 int				ft_stock_step(char **av, int *i, t_vm *vm);
 int				ft_stock_verb(char **av, int *i, t_vm *vm);
 int				ft_stock_aff(t_vm *vm);

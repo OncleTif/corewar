@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/17 19:01:34 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/18 12:10:01 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 	if (ft_strcmp("-a", av[*i]) == 0){
 //		ft_putstr(">>DANS -D<<");
 		ft_stock_aff(vm);
+	}
+	if (ft_strcmp("--color", av[*i]) == 0){
+//		ft_putstr(">>DANS -D<<");
+		ft_stock_color(vm);
 	}
 	if (ft_strcmp("-s", av[*i]) == 0){
 //		ft_putstr(">>DANS -D<<");
