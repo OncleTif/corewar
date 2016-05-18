@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:12:54 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/18 14:05:24 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/18 17:37:13 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void			ft_zjmp(t_vm *vm, t_process *proc)
 		ft_print_operations(proc, arg);
 		ft_printf(" OK\n");
 	}
+	ft_fetch_next(vm, proc);
 	//proc->pcdelta = ((proc->pc + (proc->ir.args[0] % IDX_MOD)) % MEM_SIZE) - proc->pc;
 	//printf("____pc:%d_____\n", proc->pc);
 }
