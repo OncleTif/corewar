@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 12:37:24 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/17 17:48:58 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/18 11:19:41 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_live(t_vm *vm, t_process *proc)
 	if (plr)
 	{
 		plr->plr->last_live = vm->cpu.cur_cycle;
+		proc->lst_live = vm->cpu.cur_cycle;
 		if (vm->verbose & 1)
 		{
 			if (proc->ir.args[0] < 0)

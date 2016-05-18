@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:26:12 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/06 19:13:54 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/18 11:18:35 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ struct s_process
 	t_ir	ir;
 	t_process	*next;
 	int		live;
+	int		lst_live;
 };
 /*
 struct s_list_process

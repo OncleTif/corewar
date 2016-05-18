@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:29:43 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/17 18:05:01 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/18 11:22:13 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	ft_kill_proc(t_vm *vm, t_process *proc)
 
 	ptr = &vm->proc;
 	//ft_printf("\n\n_________INTER KILL____________\n\n");
+	if (vm->verbose & 8)
+		ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n", proc->num,
+				vm->cpu.cur_cycle - proc->lst_live, vm->cpu.cycle2die);
 	while (*ptr)
 	{
 		if (*ptr == proc)
