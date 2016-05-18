@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/18 12:12:57 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/18 15:10:21 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,7 @@ void		print_finish(t_vm *vm)
 	{
 		//print_t_cpu(vm);
 		print_core(vm);
+//		print_t_proc(vm);
 	}
 }
 

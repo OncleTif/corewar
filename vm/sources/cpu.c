@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/17 18:57:15 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/18 15:18:06 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		decode_ir(t_process *proc)
 	{
 		if (!check_ocp(ir, &proc->ir))
 		{
-			proc->pcdelta = check_code(ir[1], g_op_tab[proc->ir.opcode - 1].index);
+			proc->pcdelta = 2 + check_code(ir[1], g_op_tab[proc->ir.opcode - 1].index);
 			/*proc->pcdelta = check_code(ir[1], 0) + check_code(ir[1], 2) +
 			  check_code(ir[1], 4) + check_code(ir[1], 6);*/
 			//proc->pc += proc->pcdelta;  // DATA[i].pc ==1 ??
