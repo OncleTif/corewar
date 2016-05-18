@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/18 09:36:18 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/18 14:28:51 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_init_pc(int plr, int pc, t_vm *vm, t_process *proc)
 {
 	vm->proc = ft_add_link(vm->proc, plr, pc, proc);
 	vm->proc->num = vm->nb_proc++;
+	ft_fetch_next(vm, vm->proc);
 }
 
 int		ft_init_lst_proc(t_vm *vm)

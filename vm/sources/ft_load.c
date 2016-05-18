@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/17 17:45:35 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/18 13:55:31 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	ft_ld(t_vm *vm, t_process *proc)
 		arg[0] = proc->ir.args[0];
 	proc->reg[arg[1]] = arg[0];
 	if (vm->verbose & 4)
+	{
 		ft_print_operations(proc, arg);
+		ft_putchar('\n');
+	}
 	proc->carry = !arg[0];
 }
 
@@ -59,7 +62,10 @@ void	ft_lld(t_vm *vm, t_process *proc)
 		arg[0] = proc->ir.args[0];
 	proc->reg[arg[1]] = arg[0];
 	if (vm->verbose & 4)
+	{
 		ft_print_operations(proc, arg);
+		ft_putchar('\n');
+	}
 	proc->carry = !arg[0];
 }
 
@@ -82,7 +88,10 @@ void	ft_ldi(t_vm *vm, t_process *proc)
 	val = get_mem(vm, proc->pc, arg[0] + arg[1]);
 	proc->reg[proc->ir.args[2]] = val;
 	if (vm->verbose & 4)
+	{
 		ft_print_operations(proc, arg);
+		ft_putchar('\n');
+	}
 	proc->carry = !val;
 }
 
@@ -105,6 +114,9 @@ void	ft_lldi(t_vm *vm, t_process *proc)
 	val = get_memlong(vm, proc->pc + arg[0] + arg[1]);
 	proc->reg[proc->ir.args[2]] = val;
 	if (vm->verbose & 4)
+	{
 		ft_print_operations(proc, arg);
+		ft_putchar('\n');
+	}
 	proc->carry = !val;
 }

@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:12:54 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/17 17:58:09 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/18 14:05:24 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ void			ft_zjmp(t_vm *vm, t_process *proc)
 		proc->pcdelta = MEM_SIZE;
 	}
 	if (vm->verbose & 4)
+	{
 		ft_print_operations(proc, arg);
-		//proc->pcdelta = ((proc->pc + (proc->ir.args[0] % IDX_MOD)) % MEM_SIZE) - proc->pc;
+		ft_printf(" OK\n");
+	}
+	//proc->pcdelta = ((proc->pc + (proc->ir.args[0] % IDX_MOD)) % MEM_SIZE) - proc->pc;
 	//printf("____pc:%d_____\n", proc->pc);
 }
 
@@ -41,7 +44,10 @@ void			ft_fork(t_vm *vm, t_process *proc)
 	new_pc = (proc->pc + (proc->ir.args[0] % IDX_MOD)) % MEM_SIZE;
 	ft_init_pc(new_plr, new_pc, vm, proc);
 	if (vm->verbose & 4)
+	{
 		ft_print_operations(proc, arg);
+		ft_printf(" (%d)\n", new_pc);
+	}
 	//manque le push front
 
 }
@@ -56,9 +62,12 @@ void			ft_lfork(t_vm *vm, t_process *proc)
 	arg[0] = proc->ir.args[0];
 	new_plr = proc->num_plr;
 	new_pc = (proc->pc + (proc->ir.args[0])) % MEM_SIZE;
-//	new_proc = ft_init_pc(new_plr, new_pc, vm);
+	//	new_proc = ft_init_pc(new_plr, new_pc, vm);
 	ft_init_pc(new_plr, new_pc, vm, proc);
 	if (vm->verbose & 4)
+	{
 		ft_print_operations(proc, arg);
+		ft_printf(" (%d)\n", new_pc);
+	}
 	//manque le push front
 }
