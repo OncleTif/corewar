@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:20:06 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/18 16:14:34 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/18 18:03:19 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	ft_proc_init(t_vm *vm, t_process *proc)
 	int i;
 
 	proc->cycle_to_wait = 0;
-	nxt_pc = (proc->pc + proc->pcdelta) % MEM_SIZE;
-	if (vm->verbose & 16 && proc->pcdelta != MEM_SIZE)
+	nxt_pc = proc->pc + proc->pcdelta;
+	if (vm->verbose & 16 && proc->pcdelta != MEM_SIZE && proc->ir.irstr[0] != 9)
 	{
 		ft_printf("ADV %d (%#0.4x ->", proc->pcdelta, proc->pc);
 		ft_printf(" %#0.4x) ", nxt_pc);
@@ -32,11 +32,11 @@ void	ft_proc_init(t_vm *vm, t_process *proc)
 		ft_putchar('\n');
 	}
 	vm->data[proc->pc].pc--;
-	vm->data[nxt_pc].pc++;
 	ft_bzero(&proc->ir, sizeof(t_ir));
 	//	if (vm->verbose & 16 && proc->pcdelta != MEM_SIZE)
 	//		ft_printf(" %#0.4x)\n", proc->pc);
-	proc->pc = nxt_pc;
+	proc->pc = nxt_pc % MEM_SIZE;
+	vm->data[proc->pc].pc++;
 	proc->pcdelta = 0;
 }
 
