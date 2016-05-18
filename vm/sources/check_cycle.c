@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:22:45 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/17 18:04:31 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/18 11:30:51 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int		check_live(t_vm *vm)
 		tmp->cycle2die -= CYCLE_DELTA;
 		vm->nbr_live = 0;
 		tmp->nbchecks = 0;
+		if (vm->verbose & 2)
+			ft_printf("Cycle to die is now %d\n", tmp->cycle2die);
 	}
 	return (0);
 }
