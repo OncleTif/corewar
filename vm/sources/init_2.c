@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 16:35:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/17 18:30:18 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/18 12:04:41 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void		vm_init(t_vm *vm)
 	vm->dump = -1;
 	vm->step = 0;
 	vm->aff = 0;
+	vm->color = 0;
 	vm->verbose = 0;
 	vm->nb_proc = 1;
 	vm->bplr.lst_plyr = NULL;

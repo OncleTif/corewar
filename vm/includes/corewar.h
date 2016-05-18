@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/18 09:14:01 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/18 12:02:15 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ struct s_vm
 	int				step;
 	int				aff;
 	int				verbose; //  -v affiche les action
+	int				color;
 	t_cpu			cpu;
 
 	unsigned char	core[MEM_SIZE];
