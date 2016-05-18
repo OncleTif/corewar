@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 08:57:19 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/18 10:02:04 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/18 10:37:16 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	ft_print_header(t_vm *vm)
 				elem->plr->com);
 		elem = elem->next;
 	}
-	print_core(vm);
-	ft_wait();
+	if (vm->step)
+	{
+		print_core(vm);
+		ft_wait();
+	}
 }
