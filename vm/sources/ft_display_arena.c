@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display_arena.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/18 17:51:35 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/18 18:25:44 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
+#include <SDL2/SDL.h>
+#include <../../SDL/SDL2_image.framework/Headers/SDL_image.h>
+#include <../../SDL/SDL2_ttf.framework/Headers/SDL_ttf.h>
+#define false 0
+#define true 1
+
 SDL_Rect solidRect; // Ajout
 SDL_Rect blendedRect;
 SDL_Rect shadedRect;
@@ -171,7 +177,7 @@ void render_line(SDL_Rect rect[4096], SDL_Renderer *renderer)
 	Render(renderer);
 }
 
-int main()
+int disp()
 {
 	SDL_Window* window;
 	SDL_Renderer* renderer;
@@ -183,7 +189,7 @@ int main()
 	j = 0;
 	i = 0;
 	init(&window, &renderer);
-	SetupTTF( "./open-sans/OpenSans-Bold.ttf" );
+	SetupTTF( "../../SDL/open-sans/OpenSans-Bold.ttf" );
 	while (i == 0)
 	{
 		CreateTextTextures(renderer, j);
@@ -203,7 +209,7 @@ int main()
 		j++;
 		SDL_RenderPresent(renderer);
 	}
-		TTF_CloseFont( font );
+	TTF_CloseFont( font );
 	quit(window, renderer);
 	return (0);
 }

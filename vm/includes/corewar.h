@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/18 17:50:40 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/18 18:17:41 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@
 # include <unistd.h>
 # define BPLR vm->bplr
 # define CPU vm->cpu
-#include <SDL2/SDL.h>
-#include <SDL_image.h>
-#include <SDL_ttf.h>
-#define false 0
-#define true 1
+// #include <SDL2/SDL.h>
+// #include <SDL_image.h>
+// #include <SDL_ttf.h>
+// #define false 0
+// #define true 1
 
 struct s_cpu
 {
@@ -255,4 +255,17 @@ int			to_kill_or_not_to_kill_proc(t_vm *vm);
 void		ft_print_operations(t_process *proc, int arg[3]);
 
 void		ft_print_header(t_vm *vm);
+
+/*
+ft_display_arena
+*/
+int disp();
+// void render_line(SDL_Rect rect[4096], SDL_Renderer *renderer);
+// void quit(SDL_Window* window, SDL_Renderer* renderer);
+// void init(SDL_Window **window, SDL_Renderer **renderer);
+// int SetupTTF(char *fontName);
+// void Render(SDL_Renderer *renderer);
+// void CreateTextTextures(SDL_Renderer *renderer, int j);
+// SDL_Texture* SurfaceToTexture( SDL_Surface* surf, SDL_Renderer *renderer);
+
 #endif
