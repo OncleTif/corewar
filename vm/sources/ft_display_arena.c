@@ -6,16 +6,11 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/18 18:25:44 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/18 19:22:51 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-#include <SDL2/SDL.h>
-#include <../../SDL/SDL2_image.framework/Headers/SDL_image.h>
-#include <../../SDL/SDL2_ttf.framework/Headers/SDL_ttf.h>
-#define false 0
-#define true 1
 
 SDL_Rect solidRect; // Ajout
 SDL_Rect blendedRect;
@@ -62,6 +57,7 @@ void CreateTextTextures(SDL_Renderer *renderer, int j)
 	textureTab[1] = SurfaceToTexture(texture[1], renderer);
 
 	// une fonction pour les players un tableau de textures
+
 	texture[2] = TTF_RenderText_Blended(font, "Player 1 : ", textColor);
 	textureTab[2] = SurfaceToTexture(texture[2], renderer);
 	texture[3] = TTF_RenderText_Blended(font, "Last live : ", textColor);
@@ -177,22 +173,25 @@ void render_line(SDL_Rect rect[4096], SDL_Renderer *renderer)
 	Render(renderer);
 }
 
-int disp()
+void init_sdl(SDL_Window **window, SDL_Renderer **renderer)
 {
-	SDL_Window* window;
-	SDL_Renderer* renderer;
+	init(window, renderer);
+	SetupTTF( "../../SDL/open-sans/OpenSans-Bold.ttf" );
+}
+
+int disp(SDL_Window* window, SDL_Renderer* renderer, t_vm *vm)
+{
 	SDL_Event event;
 	SDL_Rect rect[4096];
 	int i;
 	int j;
-
-	j = 0;
 	i = 0;
-	init(&window, &renderer);
-	SetupTTF( "../../SDL/open-sans/OpenSans-Bold.ttf" );
-	while (i == 0)
-	{
-		CreateTextTextures(renderer, j);
+	j = 0;
+	(void)window;
+	// while (i == 0)
+	// {
+		CreateTextTextures(renderer, CPU.cur_cycle);
+		// ft_putnbrendl(j);
 		SDL_SetRenderDrawColor(renderer, 127, 127, 127, 255);
 		SDL_RenderClear(renderer);
 		render_line(rect, renderer);
@@ -204,12 +203,11 @@ int disp()
 				break ;
 			}
 		}
-		if (j > 5000)
-			break ;
+		// if (j < )
+		// 	break ;
 		j++;
 		SDL_RenderPresent(renderer);
-	}
-	TTF_CloseFont( font );
-	quit(window, renderer);
+	// }
+	// TTF_CloseFont( font );
 	return (0);
 }
