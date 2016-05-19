@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/18 14:28:51 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/19 10:46:14 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_process	*ft_add_link(t_process *beg, int plr, int pc, t_process *father)
 		tmp->num_plr = plr;
 		tmp->pc = pc;
 		tmp->next = beg;
+		tmp->live = 1;
 	}
 	return (tmp);
 }
