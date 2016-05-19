@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/19 09:27:30 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 12:23:13 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,26 @@ int		get_1_arg(t_process *proc)
 	return (0);
 }
 
+int		ft_pcdelta_badocp(int op)
+{
+	int	i;
+	int	ret;
+
+	i = 0;
+	ret = 2;
+	while (i < g_op_tab[op - 1].att_num)
+	{
+		if (g_op_tab[op - 1].att[i] & T_IND)
+			ret = ret + 2;
+		else if (g_op_tab[op - 1].att[i] & T_DIR)
+			ret = ret + 2 + (2 * !g_op_tab[op - 1].index);
+		else if (g_op_tab[op - 1].att[i] & T_REG)
+			ret++;
+		i++;
+	}
+	return (ret);
+}
+
 int		decode_ir(t_process *proc)
 {
 	unsigned char	*ir;
@@ -53,14 +73,17 @@ int		decode_ir(t_process *proc)
 	{
 		if (!check_ocp(ir, &proc->ir))
 		{
-			proc->pcdelta = 2 + check_code(ir[1], g_op_tab[proc->ir.opcode - 1].index);
+			// Ok    proc->pcdelta = 2 + check_code(ir[1], g_op_tab[proc->ir.opcode - 1].index);
 			/*proc->pcdelta = check_code(ir[1], 0) + check_code(ir[1], 2) +
 			  check_code(ir[1], 4) + check_code(ir[1], 6);*/
 			//proc->pc += proc->pcdelta;  // DATA[i].pc ==1 ??
 			//proc->pcdelta = 0;
+			proc->pcdelta = ft_pcdelta_badocp(ir[0]);
 			proc->ir_error = 1;
+			proc->carry = 0;
 			return (0);
 		}
+		proc->carry = 1;
 		proc->pcdelta += 1;
 	}
 	get_1_arg(proc);
@@ -136,7 +159,7 @@ int		cpu(t_vm *vm)
 {
 	//SDL_Window* window = NULL;
 	//SDL_Renderer* renderer = NULL;
-//	init_sdl(&window, &renderer);
+	//	init_sdl(&window, &renderer);
 	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
 	{
 		CPU.cur_cycle += 1;
@@ -152,8 +175,8 @@ int		cpu(t_vm *vm)
 			print_core(vm);
 			ft_wait();
 		}
-//		disp(window, renderer, vm);
+		//		disp(window, renderer, vm);
 	}
-//	quit(window, renderer);
+	//	quit(window, renderer);
 	return (0);
 }
