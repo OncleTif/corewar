@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:20:06 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/18 18:03:19 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/19 17:03:29 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	ft_proc_init(t_vm *vm, t_process *proc)
 		i = 0;
 		while (i < proc->pcdelta)
 		{
-			ft_printf("%0.2x ", proc->ir.irstr[i]);
+			//ft_printf("%0.2x ", proc->ir.irstr[i]);
+			ft_printf("%0.2x ", vm->core[(proc->pc + i) % MEM_SIZE]);
 			i++;
 		}
 		ft_putchar('\n');
