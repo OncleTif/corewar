@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/19 09:27:00 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 20:04:15 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 # include <unistd.h>
 # define BPLR vm->bplr
 # define CPU vm->cpu
-//#include <SDL2/SDL.h>
-//#include <../../SDL/SDL2_image.framework/Headers/SDL_image.h>
-//#include <../../SDL/SDL2_ttf.framework/Headers/SDL_ttf.h>
+#include <SDL2/SDL.h>
+#include <../../SDL/SDL2_image.framework/Headers/SDL_image.h>
+#include <../../SDL/SDL2_ttf.framework/Headers/SDL_ttf.h>
 #define false 0
 #define true 1
 
@@ -63,7 +63,7 @@ struct s_vm
 	unsigned char	core[MEM_SIZE];
 	t_octet			data[MEM_SIZE];
 	//unsigned char	pcs[MEM_SIZE];
-
+	int				visu;
 	t_base_player	bplr;
 
 	int				nb_proc;
@@ -73,6 +73,11 @@ struct s_vm
 	void	(*ftab[17])(t_vm*, t_process*);
 };
 
+struct s_sdl
+{
+	SDL_Window *window;
+	SDL_Renderer *renderer;
+};
 
 void			print_core(t_vm *vm);
 
@@ -158,7 +163,7 @@ void			print_comment(t_bin plr);
 /*
 cpu.c
 */
-int				cpu(t_vm *vm);
+int				cpu(t_vm *vm, t_sdl *sdl);
 int				stock_types_args(t_process *proc, int i);
 int				decode_ir(t_process *proc);
 //int		fetch_ir(t_list_process *tmp, unsigned char *core, int pc);
@@ -259,9 +264,9 @@ void		ft_print_header(t_vm *vm);
 /*
 ft_display_arena
 */
-//int disp(SDL_Window* window, SDL_Renderer* renderer, t_vm *vm);
-//void init_sdl(SDL_Window **window, SDL_Renderer **renderer);
-//void quit(SDL_Window* window, SDL_Renderer* renderer);
+int disp(SDL_Window* window, SDL_Renderer* renderer, t_vm *vm);
+void init_sdl(SDL_Window **window, SDL_Renderer **renderer);
+void quit(SDL_Window* window, SDL_Renderer* renderer);
 // void render_line(SDL_Rect rect[4096], SDL_Renderer *renderer);
 // void quit(SDL_Window* window, SDL_Renderer* renderer);
 // void init(SDL_Window **window, SDL_Renderer **renderer);
@@ -270,4 +275,8 @@ ft_display_arena
 // void CreateTextTextures(SDL_Renderer *renderer, int j);
 // SDL_Texture* SurfaceToTexture( SDL_Surface* surf, SDL_Renderer *renderer);
 
+/*
+ft_visu
+*/
+void initSdl(t_sdl *sdl);
 #endif

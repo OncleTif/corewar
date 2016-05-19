@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 16:35:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/18 12:04:41 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/19 19:54:30 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void		vm_init(t_vm *vm)
 	vm->bplr.tab[2] = -3;
 	vm->bplr.tab[3] = -4;
 	vm->proc = NULL;
+	vm->visu = 0;
 	// cpu_init(vm->cpu);
 	ftab_init(vm);
 	core_zero(vm);

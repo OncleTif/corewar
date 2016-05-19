@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/18 12:10:01 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/19 19:54:42 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 
 
 		ft_stock_num_plr(av, i, vm);
+	}
+	if (ft_strcmp("-visu", av[*i]) == 0)
+	{
+		vm->visu = 1;
 	}
 //	if (ft_strcmp("-v", av[*i]) == 0)
 //	{

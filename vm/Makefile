@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: djoly <djoly@student.42.fr>                +#+  +:+       +#+         #
+#    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/19 09:29:50 by djoly            ###   ########.fr        #
+#    Updated: 2016/05/19 19:59:44 by eozdek           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,13 @@ HEAD = ../libft/
 
 LIB = ../libft/libft.a
 
-#SDL_TTF = -I ~/SDL/SDL2_ttf.framework/Headers
+SDL_TTF = -I ../../SDL/SDL2_ttf.framework/Headers
 
-#SDL_IMAGE = -I ~/SDL/SDL2_image.framework/Headers
+SDL_IMAGE = -I ../../SDL/SDL2_image.framework/Headers
 
-#SDL2 = -I ~/SDL/SDL2.framework/Headers
+SDL2 = -I ../../SDL/SDL2.framework/Headers
 
-#FRAMEWORK = -F ~/SDL -framework SDL2_ttf -framework SDL2 -framework SDL2_image
+FRAMEWORK = -F ../../SDL -framework SDL2_ttf -framework SDL2 -framework SDL2_image
 
 SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/ft_memrev.c sources/ft_print_champion.c \
@@ -52,6 +52,7 @@ SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/ft_print_operations.c \
 		sources/ft_print_header.c \
 		sources/ft_display_arena.c \
+		sources/ft_visu.c \
 # sources/testdav.c \
 
 OBJ = $(SRC:.c=.o)
@@ -63,8 +64,8 @@ $(LIB):
 	make -C ../libft/
 
 $(NAME): $(LIB) $(OBJ)
-	$(CC) $(FLAGS) -o $@ $(OBJ) $(LIB)
-	#$(CC) $(SDL2) $(SDL_TTF) $(SDL_IMAGE) $(FRAMEWORK) $(FLAGS) -o $@ $(OBJ) $(LIB)
+	# $(CC) $(FLAGS) -o $@ $(OBJ) $(LIB)
+	$(CC) $(SDL2) $(SDL_TTF) $(SDL_IMAGE) $(FRAMEWORK) $(FLAGS) -o $@ $(OBJ) $(LIB)
 
 %.o: %.c
 	$(CC) $(FLAGS) -I $(HEAD) -o $@ -c $<

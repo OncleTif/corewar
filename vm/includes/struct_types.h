@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_types.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 14:44:16 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/06 16:46:31 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 20:02:10 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_process	t_process;
 typedef struct s_bin	t_bin;
 typedef struct s_list_player	t_list_player;
 typedef struct s_base_player	t_base_player;
-
+typedef struct s_sdl t_sdl;
 typedef struct s_ir	t_ir;
 
 #endif

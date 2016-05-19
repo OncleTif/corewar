@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cpu.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/19 18:14:59 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 20:05:11 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,17 +177,18 @@ int		parse_proc(t_vm *vm)
 //proc->pcdelta = 0;
 
 //Chooo-Chooo
-int		cpu(t_vm *vm)
+int		cpu(t_vm *vm, t_sdl *sdl)
 {
-	//SDL_Window* window = NULL;
-	//SDL_Renderer* renderer = NULL;
-	//	init_sdl(&window, &renderer);
+	if (vm->visu == 1)
+		init_sdl(&sdl->window, &sdl->renderer);
 	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
 	{
 		CPU.cur_cycle += 1;
 		if (vm->verbose & 2)
 			ft_printf("It is now cycle %d\n", vm->cpu.cur_cycle);
 		parse_proc(vm);
+		if (vm->visu == 1)
+		disp(sdl->window, sdl->renderer, vm);
 		//print_t_proc(vm);
 		//ft_printf(">>%d<<", vm->cpu.cycle2die);
 		if (check_cycle(vm)) // modifie cur_delta cycle2die nbchecks dans T_cpu
@@ -197,8 +198,7 @@ int		cpu(t_vm *vm)
 			print_core(vm);
 			ft_wait();
 		}
-		//		disp(window, renderer, vm);
 	}
-	//	quit(window, renderer);
+	quit(sdl->window, sdl->renderer);
 	return (0);
 }

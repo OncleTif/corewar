@@ -3,28 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display_arena.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/19 09:27:57 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 20:06:44 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-/*
-SDL_Rect solidRect; // Ajout
+
+SDL_Rect solidRect;
 SDL_Rect blendedRect;
 SDL_Rect shadedRect;
 SDL_Rect textureRect[10];
+SDL_Rect rectPlayer[4][3];
 TTF_Font* font;
 SDL_Color textColor = {255, 255, 255, 255}; // white
 SDL_Color backgroundColor = {0, 0, 0, 255}; // black
+SDL_Color color1 = {2, 200, 22, 255};
+SDL_Color color2 = {13, 13, 242, 255};
+SDL_Color color3 = {228, 215, 42, 255};
+SDL_Color color4 = {255, 0, 45, 255};
 SDL_Texture* solidTexture;
 SDL_Texture* blendedTexture;
 SDL_Texture* shadedTexture;
 SDL_Texture* textureTab[10];
+SDL_Texture* texturePlayer[4][3];
+SDL_Surface* player[4][3];
 
-SDL_Texture* SurfaceToTexture( SDL_Surface* surf, SDL_Renderer *renderer)
+SDL_Texture*	SurfaceToTexture( SDL_Surface* surf, SDL_Renderer *renderer)
 {
 	SDL_Texture* text;
 
@@ -33,73 +40,116 @@ SDL_Texture* SurfaceToTexture( SDL_Surface* surf, SDL_Renderer *renderer)
 	return text;
 }
 
-void CreateTextTextures(SDL_Renderer *renderer, int j)
+void			print_grid(int i, int j, int nb)
 {
-	SDL_Color color = {255, 0, 255, 0};
-	SDL_Surface* texture[10];
-	SDL_Surface* solid = TTF_RenderText_Blended(font, "COREWAR GAME", color);
-	solidTexture = SurfaceToTexture(solid, renderer);
+	SDL_QueryTexture(texturePlayer[i][nb], NULL, NULL, &rectPlayer[i][nb].w, &rectPlayer[i][nb].h);
+	rectPlayer[i][nb].x = solidRect.x;
+	rectPlayer[i][nb].y = solidRect.y + solidRect.h + (50 * (j + 2));
+}
 
-	// *textureRect = (SDL_Surface*)malloc(sizeof(SDL_Surface) * 10);
+void	print_plr(char *str, int nb, int j, SDL_Renderer *renderer)
+{
+	if (j == 0 && nb == 0)
+		player[j][nb] = TTF_RenderText_Blended(font, str, color1);
+	else if (j == 1 && nb == 0)
+		player[j][nb] = TTF_RenderText_Blended(font, str, color2);
+	else if (j == 2 && nb == 0)
+		player[j][nb] = TTF_RenderText_Blended(font, str, color3);
+	else if (j == 3 && nb == 0)
+		player[j][nb] = TTF_RenderText_Blended(font, str, color4);
+	else
+		player[j][nb] = TTF_RenderText_Blended(font, str, textColor);
+	texturePlayer[j][nb] = SurfaceToTexture(player[j][nb], renderer);
+	free(str);
+}
+
+void CreateTextTextures(SDL_Renderer *renderer, t_vm *vm)
+{
+	// SDL_Color color = {255, 0, 255, 0};
+	SDL_Surface* texture[10];
+
+	SDL_Surface* solid = TTF_RenderText_Blended(font, "COREWAR GAME", backgroundColor);
+	solidTexture = SurfaceToTexture(solid, renderer);
+	char *str;
+	int j;
+	int i;
+	t_list_player *cur = vm->bplr.lst_plyr;
+
 	SDL_QueryTexture(solidTexture, NULL, NULL, &solidRect.w, &solidRect.h);
 	solidRect.x = 1350;
 	solidRect.y = 20;
-
-
-	// SDL_Surface* blended = TTF_RenderText_Blended(font, "Cycles/second Limit : ", textColor);
-	// blendedTexture = SurfaceToTexture( blended, renderer);
-	char *str;
-	int i = 0;
-	str = ft_strjoin("Cycle : ", ft_itoa(j));
-	texture[0] = TTF_RenderText_Blended(font, str, textColor);
-	textureTab[0] = SurfaceToTexture(texture[0], renderer);
-	texture[1] = TTF_RenderText_Blended(font, "Processes : ", textColor);
-	textureTab[1] = SurfaceToTexture(texture[1], renderer);
-
-	// une fonction pour les players un tableau de textures
-
-	texture[2] = TTF_RenderText_Blended(font, "Player 1 : ", textColor);
-	textureTab[2] = SurfaceToTexture(texture[2], renderer);
-	texture[3] = TTF_RenderText_Blended(font, "Last live : ", textColor);
-	textureTab[3] = SurfaceToTexture(texture[3], renderer);
-	texture[4] = TTF_RenderText_Blended(font, "Live in current period : ", textColor);
-	textureTab[4] = SurfaceToTexture(texture[4], renderer);
-
-	//fin joueur
-	texture[5] = TTF_RenderText_Blended(font, "CYCLE_TO_DIE : ", textColor);
-	textureTab[5] = SurfaceToTexture(texture[5], renderer);
-	texture[6] = TTF_RenderText_Blended(font, "CYCLE_DELTA : ", textColor);
-	textureTab[6] = SurfaceToTexture(texture[6], renderer);
-	texture[7] = TTF_RenderText_Blended(font, "NBR_LIVE : ", textColor);
-	textureTab[7] = SurfaceToTexture(texture[7], renderer);
-	texture[8] = TTF_RenderText_Blended(font, "MAX_CHECKS : ", textColor);
-	textureTab[8] = SurfaceToTexture(texture[8], renderer);
+	j = 0;
+	while (j < 5)
+	{
+		if (j == 0)
+			str = ft_strjoin("Cycle : ", ft_itoa(CPU.cur_cycle));
+		else if (j == 1)
+			str = ft_strjoin("CYCLE_TO_DIE : ", ft_itoa(CPU.cycle2die));
+		else if (j == 2)
+			str = ft_strjoin("CYCLE_DELTA : ", ft_itoa(CYCLE_DELTA));
+		else if (j == 3)
+			str = ft_strjoin("NBR_LIVE : ", ft_itoa(vm->nbr_live));
+		else if (j == 4)
+			str = ft_strjoin("MAX_CHECKS : ", ft_itoa(MAX_CHECKS));
+		texture[j] = TTF_RenderText_Blended(font, str, textColor);
+		textureTab[j] = SurfaceToTexture(texture[j], renderer);
+		free(str);
+		j++;
+	}
+	j = 0;
+	while (j < vm->bplr.nb_plyr)
+	{
+		str = ft_strjoin("Player ", ft_itoa(j + 1));
+		str = ft_strjoin(str, " : ");
+		str = ft_strjoin(str, cur->plr->name);
+		print_plr(str, 0, j, renderer);
+		str = ft_strjoin("Last live : ", ft_itoa(cur->plr->last_live));
+		print_plr(str, 1, j, renderer);
+		str = ft_strjoin("Live in current period : ", " ");
+		print_plr(str, 2, j, renderer);
+		cur = cur->next;
+		j++;
+	}
 	i = 0;
-
-	while (i < 8)
+	while (i < 5)
 	{
 		SDL_QueryTexture(textureTab[i], NULL, NULL, &textureRect[i].w, &textureRect[i].h);
 		textureRect[i].x = solidRect.x;
 		textureRect[i].y = solidRect.y + solidRect.h + (50 * i);
 		i++;
 	}
-
-	// SDL_Surface* shaded = TTF_RenderText_Shaded(font, "visu", textColor, backgroundColor);
-	// shadedTexture = SurfaceToTexture( shaded, renderer);
-
-	// SDL_QueryTexture(shadedTexture , NULL, NULL, &shadedRect.w, &shadedRect.h);
-	// shadedRect.x = solidRect.x;
-	// shadedRect.y = blendedRect.y + blendedRect.h + 20;
+	i = 0;
+	int k;
+	while (i < vm->bplr.nb_plyr)
+	{
+		k = 0;
+		while (k < 3)
+		{
+			print_grid(i, j, k++);
+			j++;
+		}
+		j++;
+		i++;
+	}
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	SDL_RenderDrawLine(renderer, 100, 400, 1600, 50);
 }
 
-
-void Render(SDL_Renderer *renderer)
+void Render(SDL_Renderer *renderer, t_vm *vm)
 {
 	SDL_RenderCopy(renderer, solidTexture, NULL, &solidRect);
 	int i = 0;
-	while (i < 8)
+	while (i < 5)
 	{
 		SDL_RenderCopy(renderer, textureTab[i], NULL, &textureRect[i]);
+		i++;
+	}
+	i = 0;
+	while (i < vm->bplr.nb_plyr)
+	{
+		SDL_RenderCopy(renderer, texturePlayer[i][0], NULL, &rectPlayer[i][0]);
+		SDL_RenderCopy(renderer, texturePlayer[i][1], NULL, &rectPlayer[i][1]);
+		SDL_RenderCopy(renderer, texturePlayer[i][2], NULL, &rectPlayer[i][2]);
 		i++;
 	}
 }
@@ -107,16 +157,13 @@ void Render(SDL_Renderer *renderer)
 
 int SetupTTF(char *fontName)
 {
-	// SDL2_TTF needs to be initialized just like SDL2
-	if ( TTF_Init() == -1 )
+	if (TTF_Init() == -1)
 	{
 		printf("error");
 		return false;
 	}
-	// Load our fonts, with a huge size
 	font = TTF_OpenFont(fontName, 30);
-	// Error check
-	if ( font == NULL )
+	if (font == NULL)
 	{
 		printf("error");
 		return false;
@@ -144,33 +191,44 @@ void quit(SDL_Window* window, SDL_Renderer* renderer)
 	SDL_Quit();
 }
 
-void render_line(SDL_Rect rect[4096], SDL_Renderer *renderer)
+void render_line(SDL_Rect rect[4096], SDL_Renderer *renderer, t_vm *vm)
 {
-	int column;
 	int x;
 	int y;
-
+	int i;
+	(void)vm;
 	x = 20;
 	y = 20;
-	column = 0;
-	while (column < 4096)
+	i = 0;
+	while (i < MEM_SIZE)
 	{
-		if (column % 64 == 0 && column != 0)
+		if (i % 64 == 0 && i != 0)
 		{
 			x = 20;
 			y += 20;
 		}
-		SDL_SetRenderDrawColor(renderer, 20, 20, 20, 20);
-		rect[column].x = x;
-		rect[column].y = y;
-		rect[column].w = 15;
-		rect[column].h = 15;
+		if(vm->data[i].pc)
+			SDL_SetRenderDrawColor(renderer, 40, 209, 214, 255);
+		else if (vm->data[i].num_plr == (int)vm->bplr.tab[0])
+			SDL_SetRenderDrawColor(renderer, 2, 200, 22, 255);
+		else if (vm->data[i].num_plr == (int)vm->bplr.tab[1])
+			SDL_SetRenderDrawColor(renderer, 13, 13, 242, 255);
+		else if (vm->data[i].num_plr == (int)vm->bplr.tab[2])
+			SDL_SetRenderDrawColor(renderer, 228, 215, 42, 255);
+		else if (vm->data[i].num_plr == (int)vm->bplr.tab[3])
+			SDL_SetRenderDrawColor(renderer, 255, 0, 45, 255);
+		else
+			SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
+		rect[i].x = x;
+		rect[i].y = y;
+		rect[i].w = 15;
+		rect[i].h = 15;
 		x += 20;
-		SDL_RenderFillRect(renderer, &rect[column]);
-		column++;
+		SDL_RenderFillRect(renderer, &rect[i]);
+		i++;
 
 	}
-	Render(renderer);
+	Render(renderer, vm);
 }
 
 void init_sdl(SDL_Window **window, SDL_Renderer **renderer)
@@ -183,32 +241,20 @@ int disp(SDL_Window* window, SDL_Renderer* renderer, t_vm *vm)
 {
 	SDL_Event event;
 	SDL_Rect rect[4096];
-	int i;
-	int j;
-	i = 0;
-	j = 0;
 	(void)window;
-	// while (i == 0)
-	// {
-		CreateTextTextures(renderer, CPU.cur_cycle);
-		// ft_putnbrendl(j);
-		SDL_SetRenderDrawColor(renderer, 127, 127, 127, 255);
-		SDL_RenderClear(renderer);
-		render_line(rect, renderer);
-		while (SDL_PollEvent(&event))
+	CreateTextTextures(renderer, vm);
+	SDL_SetRenderDrawColor(renderer, 127, 127, 127, 255);
+	SDL_RenderClear(renderer);
+	render_line(rect, renderer, vm);
+	while (SDL_PollEvent(&event))
+	{
+		if (event.type == SDL_QUIT || event.type == SDLK_ESCAPE)
 		{
-			if (event.type == SDL_QUIT)
-			{
-				i = 1;
-				break ;
-			}
+			TTF_CloseFont( font );
+			quit(window, renderer);
+			exit(0);
 		}
-		// if (j < )
-		// 	break ;
-		j++;
-		SDL_RenderPresent(renderer);
-	// }
-	// TTF_CloseFont( font );
+	}
+	SDL_RenderPresent(renderer);
 	return (0);
 }
-*/

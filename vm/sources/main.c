@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/19 12:28:22 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 20:00:47 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,7 +224,7 @@ void		print_finish(t_vm *vm)
 int		main(int argc, char **argv)
 {
 	t_vm	vm;
-
+	t_sdl 	sdl;
 	// disp();
 	vm_init(&vm);
 	if (argc > 1)
@@ -240,7 +240,8 @@ int		main(int argc, char **argv)
 	ft_init_arena(&vm);
 	ft_init_lst_proc(&vm);
 	ft_print_header(&vm);
-	cpu(&vm);
+	initSdl(&sdl);
+	cpu(&vm, &sdl);
 
 //system("clear");
 //	print_t_proc(&vm);
