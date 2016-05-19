@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/19 16:13:10 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/19 16:55:34 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		ft_pcdelta_badocpi2(unsigned char *ir, int op)
 		if (ocp & IND_CODE && g_op_tab[op - 1].att[i] & T_IND)
 			ret = ret + 2;
 		else if (ocp & DIR_CODE && g_op_tab[op - 1].att[i] & T_DIR)
-			ret = ret + 2 + (2 * !g_op_tab[op - 1].index);
+			ret = ret + 2 + (2 * !(g_op_tab[op - 1].index));
 		else if (ocp & REG_CODE && g_op_tab[op - 1].att[i] & T_REG)
 			ret++;
 		else
@@ -69,11 +69,11 @@ int		ft_pcdelta_badocp(unsigned char *ir, int op)
 	while (i < g_op_tab[op - 1].att_num)
 	{
 		ocp = (ir[1] >> (6 - (2 * i))) & 3;
-		if (ocp & IND_CODE)
+		if (ocp == IND_CODE)
 			ret = ret + 2;
-		else if (ocp & DIR_CODE)
-			ret = ret + 2 + (2 * !g_op_tab[op - 1].index);
-		else if (ocp & REG_CODE)
+		else if (ocp == DIR_CODE)
+			ret = ret + 2 + (2 * (1 - g_op_tab[op - 1].index));
+		else if (ocp == REG_CODE)
 			ret++;
 		i++;
 	}

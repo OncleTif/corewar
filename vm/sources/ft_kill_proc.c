@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:29:43 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/19 13:27:03 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 16:16:09 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_kill_proc(t_vm *vm, t_process *proc)
 	{
 		if (*ptr == proc)
 		{
+			vm->data[proc->pc].pc--;
 			*ptr = proc->next;
 			ft_memdel((void**)&proc);
 			break ; // pourquoi ca segfault sans break: no idea
@@ -46,7 +47,6 @@ int	to_kill_or_not_to_kill_proc(t_vm *vm)
 		ptr = ptr->next;
 		debug++;
 	}
-	ft_printf(">>>NB PROC %d<<", debug);
 	if (vm->proc == NULL)
 		return (1);
 	return (0);
