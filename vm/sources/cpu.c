@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/19 12:23:13 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/19 13:28:32 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,30 @@ int		get_1_arg(t_process *proc)
 	return (0);
 }
 
-int		ft_pcdelta_badocp(int op)
+int		ft_pcdelta_badocp(unsigned char *ir, int op)
 {
 	int	i;
 	int	ret;
+	int	ocp;
+	int	except;
 
 	i = 0;
-	ret = 2;
+	ret = 3;
+	except = 0;
 	while (i < g_op_tab[op - 1].att_num)
 	{
-		if (g_op_tab[op - 1].att[i] & T_IND)
+		ocp = (ir[1] >> (6 - (2 * i))) & 3;
+		if (ocp & IND_CODE && g_op_tab[op - 1].att[i] & T_IND)
 			ret = ret + 2;
-		else if (g_op_tab[op - 1].att[i] & T_DIR)
+		else if (ocp & DIR_CODE && g_op_tab[op - 1].att[i] & T_DIR)
 			ret = ret + 2 + (2 * !g_op_tab[op - 1].index);
-		else if (g_op_tab[op - 1].att[i] & T_REG)
+		else if (ocp & REG_CODE && g_op_tab[op - 1].att[i] & T_REG)
 			ret++;
+		else
+			except = -1;
 		i++;
 	}
-	return (ret);
+	return (ret + except);
 }
 
 int		decode_ir(t_process *proc)
@@ -78,7 +84,7 @@ int		decode_ir(t_process *proc)
 			  check_code(ir[1], 4) + check_code(ir[1], 6);*/
 			//proc->pc += proc->pcdelta;  // DATA[i].pc ==1 ??
 			//proc->pcdelta = 0;
-			proc->pcdelta = ft_pcdelta_badocp(ir[0]);
+			proc->pcdelta = ft_pcdelta_badocp(ir, ir[0]);
 			proc->ir_error = 1;
 			proc->carry = 0;
 			return (0);
