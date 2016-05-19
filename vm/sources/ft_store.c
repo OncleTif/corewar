@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:19:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/18 14:22:49 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/19 12:08:34 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_st(t_vm *vm, t_process *proc)
 		ft_print_operations(proc, arg);
 		ft_putchar('\n');
 	}
-	proc->carry = !proc->reg[proc->ir.args[0]];
+	//proc->carry = 1;// !proc->reg[proc->ir.args[0]];
 }
 
 void	ft_sti(t_vm *vm, t_process *proc)
@@ -54,7 +54,7 @@ void	ft_sti(t_vm *vm, t_process *proc)
 				arg[1], arg[2], sum, ((sum % IDX_MOD) + proc->pc) % MEM_SIZE);
 	}
 	put_mem(vm, proc, sum, proc->reg[proc->ir.args[0]]);
-	proc->carry = !proc->reg[proc->ir.args[0]];
+	//proc->carry = 1;// = proc->reg[proc->ir.args[0]];
 }
 
 //-255

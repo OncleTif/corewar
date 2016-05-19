@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:29:43 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/18 11:22:13 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/19 10:46:33 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	to_kill_or_not_to_kill_proc(t_vm *vm)
 	ptr = vm->proc;
 	while (ptr)
 	{
+	//	ft_putnbrendl(ptr->num);
+	//	ft_putnbrendl(ptr->live);
 		if (ptr->live < 1)
 			ft_kill_proc(vm, ptr);
 		else
