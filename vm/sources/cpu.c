@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/19 13:28:32 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/19 16:13:10 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		get_1_arg(t_process *proc)
 	return (0);
 }
 
-int		ft_pcdelta_badocp(unsigned char *ir, int op)
+int		ft_pcdelta_badocpi2(unsigned char *ir, int op)
 {
 	int	i;
 	int	ret;
@@ -56,6 +56,28 @@ int		ft_pcdelta_badocp(unsigned char *ir, int op)
 		i++;
 	}
 	return (ret + except);
+}
+
+int		ft_pcdelta_badocp(unsigned char *ir, int op)
+{
+	int	i;
+	int	ret;
+	int	ocp;
+
+	i = 0;
+	ret = 2;
+	while (i < g_op_tab[op - 1].att_num)
+	{
+		ocp = (ir[1] >> (6 - (2 * i))) & 3;
+		if (ocp & IND_CODE)
+			ret = ret + 2;
+		else if (ocp & DIR_CODE)
+			ret = ret + 2 + (2 * !g_op_tab[op - 1].index);
+		else if (ocp & REG_CODE)
+			ret++;
+		i++;
+	}
+	return (ret);
 }
 
 int		decode_ir(t_process *proc)
