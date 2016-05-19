@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 12:37:24 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/18 13:52:54 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/19 13:08:00 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ void	ft_live(t_vm *vm, t_process *proc)
 		}
 		plr->plr->last_live = vm->cpu.cur_cycle;
 	}
-	vm->nbr_live++;
-	proc->live++;
+		proc->live++;
+		vm->nbr_live++;
+		//	ft_printf("<<<<<<<<< %d\n", proc->live);
 	if (vm->verbose & 4)
 	{
 		ft_print_operations(proc, arg);
