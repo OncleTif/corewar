@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/18 19:01:03 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/19 09:27:00 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 # include <unistd.h>
 # define BPLR vm->bplr
 # define CPU vm->cpu
-#include <SDL2/SDL.h>
-#include <../../SDL/SDL2_image.framework/Headers/SDL_image.h>
-#include <../../SDL/SDL2_ttf.framework/Headers/SDL_ttf.h>
+//#include <SDL2/SDL.h>
+//#include <../../SDL/SDL2_image.framework/Headers/SDL_image.h>
+//#include <../../SDL/SDL2_ttf.framework/Headers/SDL_ttf.h>
 #define false 0
 #define true 1
 
@@ -259,9 +259,9 @@ void		ft_print_header(t_vm *vm);
 /*
 ft_display_arena
 */
-int disp(SDL_Window* window, SDL_Renderer* renderer, t_vm *vm);
-void init_sdl(SDL_Window **window, SDL_Renderer **renderer);
-void quit(SDL_Window* window, SDL_Renderer* renderer);
+//int disp(SDL_Window* window, SDL_Renderer* renderer, t_vm *vm);
+//void init_sdl(SDL_Window **window, SDL_Renderer **renderer);
+//void quit(SDL_Window* window, SDL_Renderer* renderer);
 // void render_line(SDL_Rect rect[4096], SDL_Renderer *renderer);
 // void quit(SDL_Window* window, SDL_Renderer* renderer);
 // void init(SDL_Window **window, SDL_Renderer **renderer);

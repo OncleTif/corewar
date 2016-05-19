@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
+#    By: djoly <djoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/18 18:20:06 by eozdek           ###   ########.fr        #
+#    Updated: 2016/05/19 09:29:50 by djoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,13 @@ HEAD = ../libft/
 
 LIB = ../libft/libft.a
 
-SDL_TTF = -I ~/SDL/SDL2_ttf.framework/Headers
+#SDL_TTF = -I ~/SDL/SDL2_ttf.framework/Headers
 
-SDL_IMAGE = -I ~/SDL/SDL2_image.framework/Headers
+#SDL_IMAGE = -I ~/SDL/SDL2_image.framework/Headers
 
-SDL2 = -I ~/SDL/SDL2.framework/Headers
+#SDL2 = -I ~/SDL/SDL2.framework/Headers
 
-FRAMEWORK = -F ~/SDL -framework SDL2_ttf -framework SDL2 -framework SDL2_image
+#FRAMEWORK = -F ~/SDL -framework SDL2_ttf -framework SDL2 -framework SDL2_image
 
 SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/ft_memrev.c sources/ft_print_champion.c \
@@ -63,7 +63,8 @@ $(LIB):
 	make -C ../libft/
 
 $(NAME): $(LIB) $(OBJ)
-	$(CC) $(SDL2) $(SDL_TTF) $(SDL_IMAGE) $(FRAMEWORK) $(FLAGS) -o $@ $(OBJ) $(LIB)
+	$(CC) $(FLAGS) -o $@ $(OBJ) $(LIB)
+	#$(CC) $(SDL2) $(SDL_TTF) $(SDL_IMAGE) $(FRAMEWORK) $(FLAGS) -o $@ $(OBJ) $(LIB)
 
 %.o: %.c
 	$(CC) $(FLAGS) -I $(HEAD) -o $@ -c $<

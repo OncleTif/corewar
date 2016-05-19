@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cpu.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/18 19:22:51 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/19 09:27:30 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,9 +134,9 @@ int		parse_proc(t_vm *vm)
 //Chooo-Chooo
 int		cpu(t_vm *vm)
 {
-	SDL_Window* window = NULL;
-	SDL_Renderer* renderer = NULL;
-	init_sdl(&window, &renderer);
+	//SDL_Window* window = NULL;
+	//SDL_Renderer* renderer = NULL;
+//	init_sdl(&window, &renderer);
 	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
 	{
 		CPU.cur_cycle += 1;
@@ -152,8 +152,8 @@ int		cpu(t_vm *vm)
 			print_core(vm);
 			ft_wait();
 		}
-		disp(window, renderer, vm);
+//		disp(window, renderer, vm);
 	}
-	quit(window, renderer);
+//	quit(window, renderer);
 	return (0);
 }

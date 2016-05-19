@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display_arena.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/18 19:22:51 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/19 09:27:57 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-
+/*
 SDL_Rect solidRect; // Ajout
 SDL_Rect blendedRect;
 SDL_Rect shadedRect;
@@ -211,3 +211,4 @@ int disp(SDL_Window* window, SDL_Renderer* renderer, t_vm *vm)
 	// TTF_CloseFont( font );
 	return (0);
 }
+*/
