@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:07:14 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/18 13:59:38 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/19 11:42:35 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	ft_or(t_vm *vm, t_process *proc)
 			arg[j] = proc->ir.args[j];
 		else if (proc->ir.code_args[j] == T_REG)
 			arg[j] = proc->reg[proc->ir.args[j]];
+		proc->ir.code_args[j] = T_IND;
 		j++;
 	}
 	proc->reg[proc->ir.args[2]] = arg[0] | arg[1];
@@ -91,6 +92,7 @@ void	ft_xor(t_vm *vm, t_process *proc)
 			arg[j] = proc->ir.args[j];
 		else if (proc->ir.code_args[j] == T_REG)
 			arg[j] = proc->reg[proc->ir.args[j]];
+		proc->ir.code_args[j] = T_IND;
 		j++;
 	}
 	proc->reg[proc->ir.args[2]] = arg[0] ^ arg[1];
