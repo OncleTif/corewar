@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/19 17:10:21 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 17:57:21 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ void	ft_ld(t_vm *vm, t_process *proc)
 		arg[0] = get_mem(vm, proc->pc, proc->ir.args[0]);
 	else
 		arg[0] = proc->ir.args[0];
+	if (arg[1] > 0 && arg[1] < 17)
+	{
+
+
 	proc->reg[arg[1]] = arg[0];
 	if (vm->verbose & 4)
 	{
@@ -28,6 +32,10 @@ void	ft_ld(t_vm *vm, t_process *proc)
 		ft_putchar('\n');
 	}
 	proc->carry = 1; //!arg[0];
+}
+else
+	proc->carry = 0; //!arg[0];
+
 }
 
 int	lldget_memlong(t_vm *vm, int idx)

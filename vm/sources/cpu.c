@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/19 17:09:47 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 18:14:59 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ int		decode_ir(t_process *proc)
 	ir = proc->ir.irstr;
 	if (ir[0] < 1 || ir[0] > 16)
 	{
-		//			printf("ERROR0");
 		proc->ir_error = 1;
-		//			printf(" ir0:%d  pc:%d irerror:%d ", ir[0], proc->pc, proc->ir_error);
+	if (!g_op_tab[proc->ir.opcode - 1].carry)
+			proc->pcdelta = ft_pcdelta_badocp(ir, ir[0]);
 		return (0);
 	}
 	proc->ir.opcode = ir[0];
@@ -101,17 +101,11 @@ int		decode_ir(t_process *proc)
 	{
 		if (!check_ocp(ir, &proc->ir))
 		{
-			// Ok    proc->pcdelta = 2 + check_code(ir[1], g_op_tab[proc->ir.opcode - 1].index);
-			/*proc->pcdelta = check_code(ir[1], 0) + check_code(ir[1], 2) +
-			  check_code(ir[1], 4) + check_code(ir[1], 6);*/
-			//proc->pc += proc->pcdelta;  // DATA[i].pc ==1 ??
-			//proc->pcdelta = 0;
 			proc->pcdelta = ft_pcdelta_badocp(ir, ir[0]);
 			proc->ir_error = 1;
 			proc->carry = 0;
 			return (0);
 		}
-		//proc->carry = 1;
 		proc->pcdelta += 1;
 	}
 	get_1_arg(proc);

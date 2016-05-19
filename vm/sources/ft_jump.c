@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:12:54 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/19 17:13:23 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 17:26:06 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ void			ft_zjmp(t_vm *vm, t_process *proc)
 	//printf("____pc:%d_____\n", proc->pc);
 	if (proc->carry)
 	{
-		//vm->data[proc->pc].pc--; //degeu ; pb car pc modifier ici
-		//proc->pc;
-		proc->pcdelta = arg[0] % IDX_MOD;
-		//vm->data[proc->pc].pc++; //degeu ; pb car pc modifier ici
-		//proc->pcdelta = MEM_SIZE;
+		proc->pc = ((proc->pc + (arg[0] % IDX_MOD)) % MEM_SIZE);
+ 		proc->pcdelta = MEM_SIZE;
+		//proc->pcdelta = arg[0] % IDX_MOD;
 		if (vm->verbose & 4)
 		{
 			ft_print_operations(proc, arg);
@@ -36,7 +34,6 @@ void			ft_zjmp(t_vm *vm, t_process *proc)
 		ft_print_operations(proc, arg);
 		ft_printf(" FAILED\n");
 	}
-
 	ft_fetch_next(vm, proc);
 	//proc->pcdelta = ((proc->pc + (proc->ir.args[0] % IDX_MOD)) % MEM_SIZE) - proc->pc;
 	//printf("____pc:%d_____\n", proc->pc);
