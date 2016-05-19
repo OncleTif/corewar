@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:12:54 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/19 16:55:48 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 17:13:23 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void			ft_zjmp(t_vm *vm, t_process *proc)
 	else if (vm->verbose & 4)
 	{
 		ft_print_operations(proc, arg);
+		ft_printf(" FAILED\n");
 	}
 
 	ft_fetch_next(vm, proc);

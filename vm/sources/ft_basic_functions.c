@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:07:14 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/19 12:09:06 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 17:07:47 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_add(t_vm *vm, t_process *proc)
 		ft_print_operations(proc, arg);
 		ft_putchar('\n');
 	}
-	//proc->carry = !(res);
+	proc->carry = !(res);
 }
 
 void	ft_sub(t_vm *vm, t_process *proc)
@@ -47,7 +47,7 @@ void	ft_sub(t_vm *vm, t_process *proc)
 		ft_print_operations(proc, arg);
 		ft_putchar('\n');
 	}
-	//proc->carry = !(res);
+	proc->carry = !(res);
 }
 
 void	ft_or(t_vm *vm, t_process *proc)
@@ -74,7 +74,7 @@ void	ft_or(t_vm *vm, t_process *proc)
 		ft_print_operations(proc, arg);
 		ft_putchar('\n');
 	}
-	//proc->carry = !(proc->reg[proc->ir.args[2]]);
+	proc->carry = !(proc->reg[proc->ir.args[2]]);
 }
 
 void	ft_xor(t_vm *vm, t_process *proc)
@@ -101,7 +101,7 @@ void	ft_xor(t_vm *vm, t_process *proc)
 		ft_print_operations(proc, arg);
 		ft_putchar('\n');
 	}
-	//proc->carry = !(proc->reg[proc->ir.args[2]]);
+	proc->carry = !(proc->reg[proc->ir.args[2]]);
 }
 
 void	ft_and(t_vm *vm, t_process *proc)
@@ -129,5 +129,5 @@ void	ft_and(t_vm *vm, t_process *proc)
 		ft_print_operations(proc, arg);
 		ft_putchar('\n');
 	}
-	//proc->carry = !(proc->reg[proc->ir.args[2]]);
+	proc->carry = !(proc->reg[proc->ir.args[2]]);
 }

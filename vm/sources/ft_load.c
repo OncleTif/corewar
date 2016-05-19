@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/19 12:08:26 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 17:10:21 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_ld(t_vm *vm, t_process *proc)
 		ft_print_operations(proc, arg);
 		ft_putchar('\n');
 	}
-	//proc->carry = 1; //!arg[0];
+	proc->carry = 1; //!arg[0];
 }
 
 int	lldget_memlong(t_vm *vm, int idx)
@@ -66,7 +66,7 @@ void	ft_lld(t_vm *vm, t_process *proc)
 		ft_print_operations(proc, arg);
 		ft_putchar('\n');
 	}
-	//proc->carry = !arg[0];
+	proc->carry = 1;//!arg[0];
 }
 
 void	ft_ldi(t_vm *vm, t_process *proc)
@@ -92,7 +92,7 @@ void	ft_ldi(t_vm *vm, t_process *proc)
 		ft_print_operations(proc, arg);
 		ft_putchar('\n');
 	}
-	//proc->carry = !val;
+	proc->carry = 1;//!val;
 }
 
 void	ft_lldi(t_vm *vm, t_process *proc)
@@ -118,5 +118,5 @@ void	ft_lldi(t_vm *vm, t_process *proc)
 		ft_print_operations(proc, arg);
 		ft_putchar('\n');
 	}
-	//proc->carry = !val;
+	proc->carry = 1;//!val;
 }

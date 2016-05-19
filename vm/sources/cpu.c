@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/19 16:55:34 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/19 17:09:47 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int		decode_ir(t_process *proc)
 			proc->carry = 0;
 			return (0);
 		}
-		proc->carry = 1;
+		//proc->carry = 1;
 		proc->pcdelta += 1;
 	}
 	get_1_arg(proc);
