@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/19 20:06:44 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/19 20:34:36 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void CreateTextTextures(SDL_Renderer *renderer, t_vm *vm)
 		textureRect[i].y = solidRect.y + solidRect.h + (50 * i);
 		i++;
 	}
+	j = i;
 	i = 0;
 	int k;
 	while (i < vm->bplr.nb_plyr)
