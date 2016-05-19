@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:22:45 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/19 13:11:27 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 13:28:02 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,23 @@ int		check_live(t_vm *vm)
 
 	while (ptr)
 	{
-			//ft_printf(">>>>>>>> %d\n", ptr->live);
-	if (ptr->live >= NBR_LIVE || tmp->nbchecks == MAX_CHECKS)
-	{
-		//ft_printf(">>%d<<", vm->nbr_live);
-		tmp->cycle2die -= CYCLE_DELTA;
-		vm->nbr_live = 0;
-		tmp->nbchecks = 0;
-		if (vm->verbose & 2)
-			ft_printf("Cycle to die is now %d\n", tmp->cycle2die);
-		break;
+		if (ptr->live >= NBR_LIVE || tmp->nbchecks == MAX_CHECKS)
+		{
+			tmp->cycle2die -= CYCLE_DELTA;
+			vm->nbr_live = 0;
+			tmp->nbchecks = 0;
+			if (vm->verbose & 2)
+				ft_printf("Cycle to die is now %d\n", tmp->cycle2die);
+			break;
+		}
+		ptr->live = 0;
+		ptr = ptr->next;
 	}
-	ptr->live = 0;
-	ptr = ptr->next;
+	ptr = vm->proc;
+	while (ptr)
+	{
+		ptr->live = 0;
+		ptr = ptr->next;
 	}
 	return (0);
 }

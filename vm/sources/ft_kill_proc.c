@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:29:43 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/19 13:07:43 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/19 13:27:03 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 void	ft_kill_proc(t_vm *vm, t_process *proc)
 {
 	t_process	**ptr;
-	//ft_printf("\n\n_________BEG KILL____________\n\n");
 
 	ptr = &vm->proc;
-	//ft_printf("\n\n_________INTER KILL____________\n\n");
 	if (vm->verbose & 8)
 		ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n", proc->num,
 				vm->cpu.cur_cycle - proc->lst_live, vm->cpu.cycle2die);
@@ -32,27 +30,24 @@ void	ft_kill_proc(t_vm *vm, t_process *proc)
 		}
 		ptr = &((*ptr)->next);
 	}
-	//ft_printf("\n\n_________END KILL____________\n\n");
 }
 
 int	to_kill_or_not_to_kill_proc(t_vm *vm)
 {
 	t_process	*ptr;
-	//ft_printf("\n\n_________BEG____________\n\n");
+	int			debug;
+
 	ptr = vm->proc;
+	debug = 0;
 	while (ptr)
 	{
-	//	ft_putnbrendl(ptr->num);
-	//	ft_putnbrendl(ptr->live);
 		if (ptr->live < 1)
 			ft_kill_proc(vm, ptr);
-//		else
-//			ptr->live = 0;
 		ptr = ptr->next;
+		debug++;
 	}
+	ft_printf(">>>NB PROC %d<<", debug);
 	if (vm->proc == NULL)
 		return (1);
-	// QUOI SI TOUS LES PROC SONT MORT ?
-	//FIN
 	return (0);
 }
