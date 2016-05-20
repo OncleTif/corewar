@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display_arena.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/20 14:24:20 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/20 15:31:41 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,22 @@ int		SetupTTF(t_sdl *sdl)
 		ft_printf("error");
 		return false;
 	}
+	printf("sdl->fontname %p\n", sdl->fontname);
 	sdl->font = TTF_OpenFont(sdl->fontname, 30);
-	if (sdl->font == NULL)
-	{
-		ft_printf("error");
-		return false;
-	}
+	// if (sdl->font == NULL)
+	// {
+	// 	ft_printf("error");
+	// 	return false;
+	// }
 	return true;
 }
 
 void	init(SDL_Window **window, SDL_Renderer **renderer)
 {
-	SDL_Init(SDL_INIT_VIDEO);
 	int x;
 	int y;
 
+	SDL_Init(SDL_INIT_VIDEO);
 	x = SDL_WINDOWPOS_CENTERED;
 	y = SDL_WINDOWPOS_CENTERED;
 	*window = SDL_CreateWindow("SDL Window", x, y, 1800, 1500, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
