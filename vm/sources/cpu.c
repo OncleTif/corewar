@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 14:17:48 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 15:38:46 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,14 @@ int		decode_ir(t_process *proc)
 	unsigned char	*ir;
 
 	ir = proc->ir.irstr;
-	if (ir[0] < 1 || ir[0] > 16)
+	if (proc->ir.opcode < 1 || proc->ir.opcode > 16)
 	{
 		proc->ir_error = 1;
 	if (g_op_tab[proc->ir.opcode - 1].carry)
 			proc->pcdelta = 2;
 		return (0);
 	}
-	proc->ir.opcode = ir[0];
+	//proc->ir.opcode = ir[0];
 	proc->ir.index = g_op_tab[proc->ir.opcode - 1].index;
 	proc->pcdelta += 1;
 	if (!g_op_tab[proc->ir.opcode - 1].carry)
@@ -101,7 +101,7 @@ int		decode_ir(t_process *proc)
 	{
 		if (!check_ocp(ir, &proc->ir))
 		{
-			proc->pcdelta = ft_pcdelta_badocp(ir, ir[0]);
+			proc->pcdelta = ft_pcdelta_badocp(ir, proc->ir.opcode);
 			proc->ir_error = 1;
 			return (0);
 		}
@@ -130,8 +130,8 @@ void	run(t_vm *vm, t_process *proc)
 
 	i = 0;
 	opcode = proc->ir.irstr[0];
-	if (opcode > 0 && opcode < 17)
-		vm->ftab[proc->ir.irstr[0]](vm, proc);
+	if (proc->ir.opcode > 0 && proc->ir.opcode < 17)
+		vm->ftab[proc->ir.opcode](vm, proc);
 }
 
 int		parse_proc(t_vm *vm)
