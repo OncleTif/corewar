@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:10:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/18 13:34:32 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/20 14:23:54 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 
 /*
-   checker si cest un ".cor" return 1, sinon 0
-   */
+** checker si cest un ".cor" return 1, sinon 0
+*/
 
 int		ft_check_args(char *av)
 {
 	char *str;
 
-	//	ft_putstr(av);
 	str = ft_strstr(av, ".cor");
 	if (!str)
 		return (0);
@@ -36,8 +35,8 @@ int		ft_check_args(char *av)
 }
 
 /*
-   fonction check si le dump et num_plr est bien un nombre
-   */
+** fonction check si le dump et num_plr est bien un nombre
+*/
 
 int		ft_is_number(char *str)
 {
@@ -54,8 +53,8 @@ int		ft_is_number(char *str)
 }
 
 /*
-   fonction recupere le dump et stock dans la T_vm
-   */
+** fonction recupere le dump et stock dans la T_vm
+*/
 
 
 int		ft_stock_color(t_vm *vm)
