@@ -6,7 +6,7 @@
 #    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/20 15:51:13 by eozdek           ###   ########.fr        #
+#    Updated: 2016/05/20 16:07:09 by eozdek           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,15 +20,15 @@ HEAD = ../libft/
 
 LIB = ../libft/libft.a
 
-SDL_TTF = -I ../SDL/SDL2_ttf.framework/Headers
+SDL_TTF = -I ~/SDL/SDL2_ttf.framework/Headers
 
-SDL_IMAGE = -I ../SDL/SDL2_image.framework/Headers
+SDL_IMAGE = -I ~/SDL/SDL2_image.framework/Headers
 
-SDL2 = -I ../SDL/SDL2.framework/Headers
+SDL2 = -I ~/SDL/SDL2.framework/Headers
 
-FRAMEWORK = -F ../SDL -framework SDL2_ttf -framework SDL2 -framework SDL2_image
+FRAMEWORK = -F ~/SDL -framework SDL2_ttf -framework SDL2 -framework SDL2_image
 
-FRAMEWORK_RELATIVE_PATH = -rpath @executable_path/../SDL
+FRAMEWORK_RELATIVE_PATH = -rpath @executable_path/~/SDL
 
 SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/ft_memrev.c sources/ft_print_champion.c \
@@ -68,7 +68,7 @@ all: $(NAME)
 $(LIB):
 	make -C ../libft/ fclean
 	make -C ../libft/
-	cp -R ../SDL ../..
+	cp -R ../SDL ~/
 
 $(NAME): $(LIB) $(OBJ)
 	# $(CC) $(FLAGS) -o $@ $(OBJ) $(LIB)
