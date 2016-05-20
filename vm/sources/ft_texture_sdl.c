@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:06:59 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 02:25:52 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/20 03:48:53 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int 			ft_handlePlayerTexture(t_sdl *sdl, t_vm *vm)
 		playerTexture(str, 0, j, sdl);
 		str = ft_strjoin("Last live : ", ft_itoa(cur->plr->last_live));
 		playerTexture(str, 1, j, sdl);
-		str = ft_strjoin("Live in current period : ", " ");
-		playerTexture(str, 2, j, sdl);
+		// str = ft_strjoin("Live in current period : ", " ");
+		// playerTexture(str, 2, j, sdl);
 		cur = cur->next;
 		j++;
 	}
@@ -95,6 +95,5 @@ void	CreateTextTextures(t_sdl *sdl, t_vm *vm)
 	ft_handlePlayerTexture(sdl, vm);
 	ft_QueryBaseTexture(sdl);
 	ft_handleQueryPlayer(sdl, vm);
-	SDL_SetRenderDrawColor(sdl->renderer, 0, 0, 0, 255);
-	SDL_RenderDrawLine(sdl->renderer, 100, 400, 1600, 50);
+
 }

@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:23:40 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 02:26:10 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/20 03:47:21 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void 	ft_handleQueryPlayer(t_sdl *sdl, t_vm *vm)
 	while (i < vm->bplr.nb_plyr)
 	{
 		k = 0;
-		while (k < 3)
+		while (k < 2)
 		{
 			ft_QueryPlayerTexture(i, j, k++, sdl);
 			j++;

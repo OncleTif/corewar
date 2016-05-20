@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/20 02:27:16 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/20 03:47:40 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,13 @@ int disp(t_sdl *sdl, t_vm *vm)
 	SDL_SetRenderDrawColor(sdl->renderer, 127, 127, 127, 255);
 	SDL_RenderClear(sdl->renderer);
 	render_line(sdl, vm);
+	SDL_SetRenderDrawColor(sdl->renderer, 0, 0, 0, 255);
+	SDL_RenderDrawLine(sdl->renderer, 1325, 10, 1325, 1300);
+	SDL_RenderDrawLine(sdl->renderer, 1325, 10, 1750, 10);
+	SDL_RenderDrawLine(sdl->renderer, 1750, 10, 1750, 1300);
+	SDL_RenderDrawLine(sdl->renderer, 1325, 1300, 1750, 1300);
+	// SDL_SetRenderDrawColor(sdl->renderer, 127, 127, 127, 255);
+	// SDL_RenderDrawLine()
 	while (SDL_PollEvent(&sdl->event))
 	{
 		if (sdl->event.type == SDL_QUIT || sdl->event.key.keysym.sym == SDLK_ESCAPE)

@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/20 02:26:34 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/20 03:54:39 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ struct s_sdl
 {
 	SDL_Rect solidRect;
 	SDL_Rect blendedRect;
+	SDL_Rect lastRect;
+	SDL_Rect firstRect;
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 	TTF_Font* font;
@@ -91,9 +93,11 @@ struct s_sdl
 	char *fontname;
 	SDL_Texture* solidTexture;
 	SDL_Texture* blendedTexture;
+	SDL_Texture* lastTexture;
+	SDL_Texture* firstTexture;
 	SDL_Texture* textureTab[10];
-	SDL_Texture* texturePlayer[4][3];
-	SDL_Surface* player[4][3];
+	SDL_Texture* texturePlayer[4][2];
+	SDL_Surface* player[4][2];
 	SDL_Event event;
 	SDL_Rect rect[4096];
 };
@@ -268,48 +272,48 @@ void			ft_fetch_next(t_vm *vm, t_process *proc);
 void			ft_print(t_vm *vm);
 int				check_cycle(t_vm *vm);
 
-void	print_t_proc(t_vm *vm);
+void			print_t_proc(t_vm *vm);
 
 /*
 ft_wait
 */
 int				ft_wait(void);
-int			to_kill_or_not_to_kill_proc(t_vm *vm);
+int				to_kill_or_not_to_kill_proc(t_vm *vm);
 
-void		ft_print_operations(t_process *proc, int arg[3]);
+void			ft_print_operations(t_process *proc, int arg[3]);
 
-void		ft_print_header(t_vm *vm);
+void			ft_print_header(t_vm *vm);
 
 /*
 ft_display_arena
 */
-int 	disp(t_sdl *sdl, t_vm *vm);
-void 	init_sdl(t_sdl *sdl);
-void 	quit(t_sdl *sdl);
-int		SetupTTF(t_sdl *sdl);
-void	init(SDL_Window **window, SDL_Renderer **renderer);
+int				disp(t_sdl *sdl, t_vm *vm);
+void			init_sdl(t_sdl *sdl);
+void			quit(t_sdl *sdl);
+int				SetupTTF(t_sdl *sdl);
+void			init(SDL_Window **window, SDL_Renderer **renderer);
 
 /*
 ft_visu
 */
-void		display_winner(t_sdl *sdl, t_vm *vm);
-void		initSdl(t_sdl *sdl);
-SDL_Color 	ft_make_color(Uint8 r, Uint8 g, Uint8 b);
-
+void			display_winner(t_sdl *sdl, t_vm *vm);
+void			initSdl(t_sdl *sdl);
+SDL_Color		ft_make_color(Uint8 r, Uint8 g, Uint8 b);
+void	display_first(t_sdl *sdl, t_vm *vm);
 /*
 ft_query_sdl
 */
-void 		ft_QuerySolidTexture(t_sdl *sdl);
-void 		ft_QueryBaseTexture(t_sdl *sdl);
-void 		ft_handleQueryPlayer(t_sdl *sdl, t_vm *vm);
-void		ft_QueryPlayerTexture(int i, int j, int nb, t_sdl *sdl);
+void 			ft_QuerySolidTexture(t_sdl *sdl);
+void 			ft_QueryBaseTexture(t_sdl *sdl);
+void 			ft_handleQueryPlayer(t_sdl *sdl, t_vm *vm);
+void			ft_QueryPlayerTexture(int i, int j, int nb, t_sdl *sdl);
 
 /*
 ft_render_sdl
 */
-void		Render(t_sdl *sdl, t_vm *vm);
-void 		ft_case_color(t_vm *vm, t_sdl *sdl, int i);
-void		render_line(t_sdl *sdl, t_vm *vm);
+void			ft_render(t_sdl *sdl, t_vm *vm);
+void 			ft_case_color(t_vm *vm, t_sdl *sdl, int i);
+void			render_line(t_sdl *sdl, t_vm *vm);
 
 /*
 ft_texture_sdl
@@ -319,5 +323,10 @@ void			playerTexture(char *str, int nb, int j, t_sdl *sdl);
 void 			ft_handleBaseTexture(t_sdl *sdl, t_vm *vm);
 int 			ft_handlePlayerTexture(t_sdl *sdl, t_vm *m);
 void			CreateTextTextures(t_sdl *sdl, t_vm *vm);
+
+/*
+main
+*/
+t_bin	*who_win(t_vm *vm);
 
 #endif

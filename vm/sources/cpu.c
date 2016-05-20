@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/19 23:31:10 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/20 03:58:21 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,10 @@ int		parse_proc(t_vm *vm)
 int		cpu(t_vm *vm, t_sdl *sdl)
 {
 	if (vm->visu == 1) // option -visu pour la SDL
+	{
 		init_sdl(sdl);
+		// display_first(sdl, vm);
+	}
 	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
 	{
 		CPU.cur_cycle += 1;
@@ -201,7 +204,7 @@ int		cpu(t_vm *vm, t_sdl *sdl)
 	}
 	if (vm->visu == 1)
 	{
-		// display_winner(sdl->window, sdl->renderer, vm);
+		// display_winner(sdl, vm);
 		quit(sdl);
 	}
 	return (0);

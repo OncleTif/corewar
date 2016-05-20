@@ -6,13 +6,13 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:25:56 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 01:56:33 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/20 03:47:48 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	Render(t_sdl *sdl, t_vm *vm)
+void	ft_render(t_sdl *sdl, t_vm *vm)
 {
 	SDL_RenderCopy(sdl->renderer, sdl->solidTexture, NULL, &sdl->solidRect);
 	int i;
@@ -28,7 +28,7 @@ void	Render(t_sdl *sdl, t_vm *vm)
 	{
 		SDL_RenderCopy(sdl->renderer, sdl->texturePlayer[i][0], NULL, &sdl->rectPlayer[i][0]);
 		SDL_RenderCopy(sdl->renderer, sdl->texturePlayer[i][1], NULL, &sdl->rectPlayer[i][1]);
-		SDL_RenderCopy(sdl->renderer, sdl->texturePlayer[i][2], NULL, &sdl->rectPlayer[i][2]);
+		// SDL_RenderCopy(sdl->renderer, sdl->texturePlayer[i][2], NULL, &sdl->rectPlayer[i][2]);
 		i++;
 	}
 }
@@ -74,5 +74,5 @@ void	render_line(t_sdl *sdl, t_vm *vm)
 		SDL_RenderFillRect(sdl->renderer, &sdl->rect[i]);
 		i++;
 	}
-	Render(sdl, vm);
+	ft_render(sdl, vm);
 }
