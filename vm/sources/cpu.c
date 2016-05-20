@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cpu.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/05/20 14:06:44 by eozdek           ###   ########.fr       */
-=======
 /*   Updated: 2016/05/20 14:17:48 by djoly            ###   ########.fr       */
->>>>>>> 4b6a45679848000f3d9ad5ddf770fcb99d0f44eb
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,17 +170,8 @@ int		cpu(t_vm *vm, t_sdl *sdl)
 			ft_printf("It is now cycle %d\n", vm->cpu.cur_cycle);
 		parse_proc(vm);
 		if (vm->visu == 1)
-<<<<<<< HEAD
-		{
-			disp(sdl, vm);
-		}
-		//print_t_proc(vm);
-		//ft_printf(">>%d<<", vm->cpu.cycle2die);
-		if (check_cycle(vm)) // modifie cur_delta cycle2die nbchecks dans T_cpu
-=======
 		disp(sdl, vm);
 		if (check_cycle(vm))
->>>>>>> 4b6a45679848000f3d9ad5ddf770fcb99d0f44eb
 			break ;
 		if ((vm->step) && (vm->cpu.cur_cycle % vm->step == 0))
 		{
