@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 03:58:21 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/20 11:00:52 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int		decode_ir(t_process *proc)
 	if (ir[0] < 1 || ir[0] > 16)
 	{
 		proc->ir_error = 1;
-	if (!g_op_tab[proc->ir.opcode - 1].carry)
+	if (g_op_tab[proc->ir.opcode - 1].carry)
 			proc->pcdelta = ft_pcdelta_badocp(ir, ir[0]);
 		return (0);
 	}
