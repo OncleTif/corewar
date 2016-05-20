@@ -6,55 +6,30 @@
 #    By: ssicard <ssicard@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/09 11:26:24 by tmanet           ###   ########.fr        #
+#    Updated: 2016/05/20 17:30:08 by tmanet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = asm
+COREWAR = corewar
 
-CC = gcc
+ASM = asm
 
-FLAGS = -Wall -Wextra -Werror
+all: $(COREWAR) $(ASM)
 
-HEAD = libft/
+$(COREWAR):
+	make -C corewar_dir/
 
-LIB = libft/libft.a
-
-SRC = asm.c \
-	  sources/get_s_file.c \
-	  sources/champ.c \
-	  sources/label.c \
-	  sources/structure.c \
-	  sources/get_type.c \
-	  sources/read.c \
-	  sources/ft_check_champ.c \
-
-
-OBJ = $(SRC:.c=.o)
-
-all: $(NAME)
-
-$(LIB):
-	make -C libft/ fclean
-	make -C libft/
-
-$(NAME): $(LIB) $(OBJ)
-	$(CC) $(FLAGS) -o $@ $(OBJ) $(LIB)
-
-%.o: %.c
-	$(CC) $(FLAGS) -I $(HEAD) -o $@ -c $<
+$(ASM):
+	make -C asm_dir/
 
 clean:
-	/bin/rm -f $(OBJ)
-	make -C libft/ clean
+	make -C corewar_dir/ clean
+	make -C asm_dir/ clean
 
-fclean: clean
-	/bin/rm -f $(NAME)
-	make -C libft/ fclean
+fclean:
+	make -C corewar_dir/ fclean
+	make -C asm_dir/ fclean
 
 re: fclean all
 
-test: all
-	./asm goinfre/champions/examples/turtle.s
-	hexdump -vC goinfre/champions/examples/turtle.s.cor
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re corewar asm
