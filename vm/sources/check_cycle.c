@@ -6,20 +6,28 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:22:45 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 14:16:13 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 16:08:51 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int		check_live(t_vm *vm)
+static void		parse_ptr(t_process *ptr)
 {
-	t_cpu	*tmp;
+	while (ptr)
+	{
+		ptr->live = 0;
+		ptr = ptr->next;
+	}
+}
+
+int				check_live(t_vm *vm)
+{
+	t_cpu		*tmp;
 	t_process	*ptr;
 
 	tmp = &vm->cpu;
 	ptr = vm->proc;
-
 	while (ptr)
 	{
 		if (ptr->live >= NBR_LIVE || tmp->nbchecks == MAX_CHECKS)
@@ -29,23 +37,19 @@ int		check_live(t_vm *vm)
 			tmp->nbchecks = 0;
 			if (vm->verbose & 2)
 				ft_printf("Cycle to die is now %d\n", tmp->cycle2die);
-			break;
+			break ;
 		}
 		ptr->live = 0;
 		ptr = ptr->next;
 	}
 	ptr = vm->proc;
-	while (ptr)
-	{
-		ptr->live = 0;
-		ptr = ptr->next;
-	}
+	parse_ptr(ptr);
 	return (0);
 }
 
-int		check_cycle(t_vm *vm)
+int				check_cycle(t_vm *vm)
 {
-	t_cpu	*tmp;
+	t_cpu		*tmp;
 
 	tmp = &vm->cpu;
 	if (tmp->cur_cycle == tmp->cycle_to_check)
