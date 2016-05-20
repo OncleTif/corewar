@@ -6,7 +6,7 @@
 #    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/20 09:50:11 by tmanet           ###   ########.fr        #
+#    Updated: 2016/05/20 15:51:13 by eozdek           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ all: $(NAME)
 $(LIB):
 	make -C ../libft/ fclean
 	make -C ../libft/
+	cp -R ../SDL ../..
 
 $(NAME): $(LIB) $(OBJ)
 	# $(CC) $(FLAGS) -o $@ $(OBJ) $(LIB)
