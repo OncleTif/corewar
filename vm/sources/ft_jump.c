@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:12:54 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/20 11:22:17 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 12:24:59 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void			ft_zjmp(t_vm *vm, t_process *proc)
 		ft_print_operations(proc, arg);
 		ft_printf(" FAILED\n");
 	}
-	ft_fetch_next(vm, proc);
+	//ft_fetch_next(vm, proc);
 	//proc->pcdelta = ((proc->pc + (proc->ir.args[0] % IDX_MOD)) % MEM_SIZE) - proc->pc;
 	//printf("____pc:%d_____\n", proc->pc);
 }

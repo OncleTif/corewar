@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 12:37:24 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/20 10:54:06 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/20 12:31:42 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_live(t_vm *vm, t_process *proc)
 	if (plr)
 	{
 		plr->plr->last_live = vm->cpu.cur_cycle;
-		proc->lst_live = vm->cpu.cur_cycle;
 		if (vm->verbose & 1)
 		{
 			if (proc->ir.args[0] < 0)
@@ -41,6 +40,7 @@ void	ft_live(t_vm *vm, t_process *proc)
 		}
 		plr->plr->last_live = vm->cpu.cur_cycle;
 	}
+	proc->lst_live = vm->cpu.cur_cycle;
 	proc->live++;
 	vm->nbr_live++;
 	//	ft_printf("<<<<<<<<< %d\n", proc->live);
