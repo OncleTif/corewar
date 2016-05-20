@@ -6,15 +6,15 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 15:38:46 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/20 16:13:23 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int		get_1_arg(t_process *proc)
+int					get_1_arg(t_process *proc)
 {
-	int		j;
+	int				j;
 
 	j = 0;
 	while (j < g_op_tab[proc->ir.opcode - 1].att_num)
@@ -32,12 +32,12 @@ int		get_1_arg(t_process *proc)
 	return (0);
 }
 
-int		ft_pcdelta_badocpi2(unsigned char *ir, int op)
+int					ft_pcdelta_badocpi2(unsigned char *ir, int op)
 {
-	int	i;
-	int	ret;
-	int	ocp;
-	int	except;
+	int				i;
+	int				ret;
+	int				ocp;
+	int				except;
 
 	i = 0;
 	ret = 3;
@@ -58,11 +58,11 @@ int		ft_pcdelta_badocpi2(unsigned char *ir, int op)
 	return (ret + except);
 }
 
-int		ft_pcdelta_badocp(unsigned char *ir, int op)
+int					ft_pcdelta_badocp(unsigned char *ir, int op)
 {
-	int	i;
-	int	ret;
-	int	ocp;
+	int				i;
+	int				ret;
+	int				ocp;
 
 	i = 0;
 	ret = 2;
@@ -80,7 +80,7 @@ int		ft_pcdelta_badocp(unsigned char *ir, int op)
 	return (ret);
 }
 
-int		decode_ir(t_process *proc)
+int					decode_ir(t_process *proc)
 {
 	unsigned char	*ir;
 
@@ -88,11 +88,10 @@ int		decode_ir(t_process *proc)
 	if (proc->ir.opcode < 1 || proc->ir.opcode > 16)
 	{
 		proc->ir_error = 1;
-	if (g_op_tab[proc->ir.opcode - 1].carry)
+		if (g_op_tab[proc->ir.opcode - 1].carry)
 			proc->pcdelta = 2;
 		return (0);
 	}
-	//proc->ir.opcode = ir[0];
 	proc->ir.index = g_op_tab[proc->ir.opcode - 1].index;
 	proc->pcdelta += 1;
 	if (!g_op_tab[proc->ir.opcode - 1].carry)
@@ -111,22 +110,23 @@ int		decode_ir(t_process *proc)
 	return (1);
 }
 
-int		fetch_ir(t_process *tmp, unsigned char *core)
+int					fetch_ir(t_process *tmp, unsigned char *core)
 {
-	int		i;
+	int				i;
+
 	i = 0;
 	while (i < 14)
 	{
 		tmp->ir.irstr[i] = core[(tmp->pc + i) % MEM_SIZE];
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
-void	run(t_vm *vm, t_process *proc)
+void				run(t_vm *vm, t_process *proc)
 {
-	int	opcode;
-	int	i;
+	int				opcode;
+	int				i;
 
 	i = 0;
 	opcode = proc->ir.irstr[0];
@@ -134,10 +134,10 @@ void	run(t_vm *vm, t_process *proc)
 		vm->ftab[proc->ir.opcode](vm, proc);
 }
 
-int		parse_proc(t_vm *vm)
+int					parse_proc(t_vm *vm)
 {
-	t_process	*tmp;
-	int		i;
+	t_process		*tmp;
+	int				i;
 
 	i = 0;
 	tmp = vm->proc;
@@ -156,13 +156,10 @@ int		parse_proc(t_vm *vm)
 	return (0);
 }
 
-int		cpu(t_vm *vm, t_sdl *sdl)
+int					cpu(t_vm *vm, t_sdl *sdl)
 {
-	if (vm->visu == 1) // option -visu pour la SDL
-	{
+	if (vm->visu == 1)
 		init_sdl(sdl);
-		// display_first(sdl, vm);
-	}
 	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
 	{
 		CPU.cur_cycle += 1;
@@ -170,7 +167,7 @@ int		cpu(t_vm *vm, t_sdl *sdl)
 			ft_printf("It is now cycle %d\n", vm->cpu.cur_cycle);
 		parse_proc(vm);
 		if (vm->visu == 1)
-		disp(sdl, vm);
+			disp(sdl, vm);
 		if (check_cycle(vm))
 			break ;
 		if ((vm->step) && (vm->cpu.cur_cycle % vm->step == 0))
@@ -180,9 +177,6 @@ int		cpu(t_vm *vm, t_sdl *sdl)
 		}
 	}
 	if (vm->visu == 1)
-	{
-		// display_winner(sdl, vm);
 		quit(sdl);
-	}
 	return (0);
 }

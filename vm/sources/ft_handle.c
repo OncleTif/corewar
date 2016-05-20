@@ -6,14 +6,14 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 14:21:53 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 16:17:48 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
 /*
-fonction recupere le num du plr et stock dans la T_vm
+** fonction recupere le num du plr et stock dans la T_vm
 */
 
 int		ft_stock_num_plr(char **av, int *i, t_vm *vm)
@@ -29,7 +29,7 @@ int		ft_stock_num_plr(char **av, int *i, t_vm *vm)
 }
 
 /*
-fonction pour gerer les bonus et ARGS
+** fonction pour gerer les bonus et ARGS
 */
 
 void	ft_handle_bonus(char **av, int *i, t_vm *vm)
@@ -60,7 +60,7 @@ void	ft_init_num_plr(t_base_player *player, t_list_player *tmp)
 }
 
 /*
-** alloue de la memoire pour une nouvelle cellule et met de l'information dedans,
+** allou de la memoire pour une nouvelle cellule et met de l'information dedans,
 */
 
 void	ft_mem_champs(t_base_player *player, char *av)
@@ -72,10 +72,9 @@ void	ft_mem_champs(t_base_player *player, char *av)
 	tmp->plr = (t_bin *)ft_memalloc(sizeof(t_bin));
 	ft_open_champion(av, tmp->plr);
 	lplr = player->lst_plyr;
-
-	while(lplr && lplr->next)
+	while (lplr && lplr->next)
 		lplr = lplr->next;
-	if(!lplr)
+	if (!lplr)
 		player->lst_plyr = tmp;
 	else
 		lplr->next = tmp;
@@ -83,7 +82,8 @@ void	ft_mem_champs(t_base_player *player, char *av)
 }
 
 /*
-** gerer chaque arguments, voir si cest un ".cor" (rentre dans les verifs des champions), sinon dans ceux des bonus
+** gerer chaque arguments, voir si cest un ".cor"
+** (rentre dans les verifs des champions), sinon dans ceux des bonus
 */
 
 void	ft_handle_args(int ac, char **av, t_vm *vm)
