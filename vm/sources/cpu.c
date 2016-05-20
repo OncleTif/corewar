@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 11:22:47 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 13:48:07 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ int		ft_pcdelta_badocp(unsigned char *ir, int op)
 	int	ret;
 	int	ocp;
 
+	//if (op < 1 || op > 16)
+	//	return (2);
+
+
 	i = 0;
 	ret = 2;
 	while (i < g_op_tab[op - 1].att_num)
@@ -89,7 +93,7 @@ int		decode_ir(t_process *proc)
 	{
 		proc->ir_error = 1;
 	if (g_op_tab[proc->ir.opcode - 1].carry)
-			proc->pcdelta = ft_pcdelta_badocp(ir, ir[0]);
+			proc->pcdelta = 2;// ft_pcdelta_badocp(ir, ir[0]);
 		return (0);
 	}
 	proc->ir.opcode = ir[0];
