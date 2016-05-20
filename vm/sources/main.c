@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 14:13:10 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 14:50:53 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,7 +243,7 @@ int		main(int argc, char **argv)
 	ft_init_arena(&vm);
 	ft_init_lst_proc(&vm);
 	ft_print_header(&vm);
-	//initSdl(&sdl);
+	initSdl(&sdl);
 	cpu(&vm, &sdl);
 //system("clear");
 //	print_t_proc(&vm);
