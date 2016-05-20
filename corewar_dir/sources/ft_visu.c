@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 03:17:11 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 14:50:05 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/20 18:28:22 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void initSdl(t_sdl *sdl)
 {
 	sdl->window = NULL;
 	sdl->renderer = NULL;
-	sdl->fontname = ft_strdup("../../SDL/open-sans/OpenSans-Bold.ttf");
+	sdl->fontname = ft_strdup("SDL/open-sans/OpenSans-Bold.ttf");
 }
 
 SDL_Color ft_make_color(Uint8 r, Uint8 g, Uint8 b)
