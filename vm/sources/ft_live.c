@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 12:37:24 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/19 13:08:00 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 10:54:06 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ void	ft_live(t_vm *vm, t_process *proc)
 
 	arg[0] = proc->ir.args[0];
 	plr = vm->bplr.lst_plyr;
+	if (vm->verbose & 4)
+	{
+		ft_print_operations(proc, arg);
+		ft_putchar('\n');
+	}
 	while (plr && plr->plr->num_plyr != proc->ir.args[0])
 		plr = plr->next;
 	if (plr)
@@ -36,12 +41,7 @@ void	ft_live(t_vm *vm, t_process *proc)
 		}
 		plr->plr->last_live = vm->cpu.cur_cycle;
 	}
-		proc->live++;
-		vm->nbr_live++;
-		//	ft_printf("<<<<<<<<< %d\n", proc->live);
-	if (vm->verbose & 4)
-	{
-		ft_print_operations(proc, arg);
-		ft_putchar('\n');
-	}
+	proc->live++;
+	vm->nbr_live++;
+	//	ft_printf("<<<<<<<<< %d\n", proc->live);
 }
