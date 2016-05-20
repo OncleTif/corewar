@@ -103,7 +103,7 @@ int		decode_ir(t_process *proc)
 		{
 			proc->pcdelta = ft_pcdelta_badocp(ir, ir[0]);
 			proc->ir_error = 1;
-			proc->carry = 0;
+			//proc->carry = 0;
 			return (0);
 		}
 		proc->pcdelta += 1;
