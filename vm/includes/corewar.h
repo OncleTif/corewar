@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/19 20:04:15 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/20 02:26:34 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@
 #include <../../SDL/SDL2_ttf.framework/Headers/SDL_ttf.h>
 #define false 0
 #define true 1
+#define textColor (SDL_Color){255, 255, 255, 255}
+#define backgroundColor (SDL_Color){0, 0, 0, 255} // black
+#define color1 (SDL_Color){2, 200, 22, 255}
+#define color2 (SDL_Color){13, 13, 242, 255}
+#define color3 (SDL_Color){228, 215, 42, 255}
+#define color4 (SDL_Color){255, 0, 45, 255}
 
 struct s_cpu
 {
@@ -75,8 +81,21 @@ struct s_vm
 
 struct s_sdl
 {
+	SDL_Rect solidRect;
+	SDL_Rect blendedRect;
 	SDL_Window *window;
 	SDL_Renderer *renderer;
+	TTF_Font* font;
+	SDL_Rect textureRect[10];
+	SDL_Rect rectPlayer[4][3];
+	char *fontname;
+	SDL_Texture* solidTexture;
+	SDL_Texture* blendedTexture;
+	SDL_Texture* textureTab[10];
+	SDL_Texture* texturePlayer[4][3];
+	SDL_Surface* player[4][3];
+	SDL_Event event;
+	SDL_Rect rect[4096];
 };
 
 void			print_core(t_vm *vm);
@@ -264,19 +283,41 @@ void		ft_print_header(t_vm *vm);
 /*
 ft_display_arena
 */
-int disp(SDL_Window* window, SDL_Renderer* renderer, t_vm *vm);
-void init_sdl(SDL_Window **window, SDL_Renderer **renderer);
-void quit(SDL_Window* window, SDL_Renderer* renderer);
-// void render_line(SDL_Rect rect[4096], SDL_Renderer *renderer);
-// void quit(SDL_Window* window, SDL_Renderer* renderer);
-// void init(SDL_Window **window, SDL_Renderer **renderer);
-// int SetupTTF(char *fontName);
-// void Render(SDL_Renderer *renderer);
-// void CreateTextTextures(SDL_Renderer *renderer, int j);
-// SDL_Texture* SurfaceToTexture( SDL_Surface* surf, SDL_Renderer *renderer);
+int 	disp(t_sdl *sdl, t_vm *vm);
+void 	init_sdl(t_sdl *sdl);
+void 	quit(t_sdl *sdl);
+int		SetupTTF(t_sdl *sdl);
+void	init(SDL_Window **window, SDL_Renderer **renderer);
 
 /*
 ft_visu
 */
-void initSdl(t_sdl *sdl);
+void		display_winner(t_sdl *sdl, t_vm *vm);
+void		initSdl(t_sdl *sdl);
+SDL_Color 	ft_make_color(Uint8 r, Uint8 g, Uint8 b);
+
+/*
+ft_query_sdl
+*/
+void 		ft_QuerySolidTexture(t_sdl *sdl);
+void 		ft_QueryBaseTexture(t_sdl *sdl);
+void 		ft_handleQueryPlayer(t_sdl *sdl, t_vm *vm);
+void		ft_QueryPlayerTexture(int i, int j, int nb, t_sdl *sdl);
+
+/*
+ft_render_sdl
+*/
+void		Render(t_sdl *sdl, t_vm *vm);
+void 		ft_case_color(t_vm *vm, t_sdl *sdl, int i);
+void		render_line(t_sdl *sdl, t_vm *vm);
+
+/*
+ft_texture_sdl
+*/
+SDL_Texture*	SurfaceToTexture(SDL_Surface* surf, SDL_Renderer *renderer);
+void			playerTexture(char *str, int nb, int j, t_sdl *sdl);
+void 			ft_handleBaseTexture(t_sdl *sdl, t_vm *vm);
+int 			ft_handlePlayerTexture(t_sdl *sdl, t_vm *m);
+void			CreateTextTextures(t_sdl *sdl, t_vm *vm);
+
 #endif

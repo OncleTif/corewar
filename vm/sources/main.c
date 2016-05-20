@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/19 20:00:47 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/19 23:42:56 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,10 +242,9 @@ int		main(int argc, char **argv)
 	ft_print_header(&vm);
 	initSdl(&sdl);
 	cpu(&vm, &sdl);
-
 //system("clear");
 //	print_t_proc(&vm);
 	print_finish(&vm);
-
+	// printSDLfinish(&vm);
 	return (0);
 }

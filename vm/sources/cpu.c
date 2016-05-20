@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/19 20:05:11 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/19 23:31:10 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,8 +179,8 @@ int		parse_proc(t_vm *vm)
 //Chooo-Chooo
 int		cpu(t_vm *vm, t_sdl *sdl)
 {
-	if (vm->visu == 1)
-		init_sdl(&sdl->window, &sdl->renderer);
+	if (vm->visu == 1) // option -visu pour la SDL
+		init_sdl(sdl);
 	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
 	{
 		CPU.cur_cycle += 1;
@@ -188,7 +188,7 @@ int		cpu(t_vm *vm, t_sdl *sdl)
 			ft_printf("It is now cycle %d\n", vm->cpu.cur_cycle);
 		parse_proc(vm);
 		if (vm->visu == 1)
-		disp(sdl->window, sdl->renderer, vm);
+		disp(sdl, vm);
 		//print_t_proc(vm);
 		//ft_printf(">>%d<<", vm->cpu.cycle2die);
 		if (check_cycle(vm)) // modifie cur_delta cycle2die nbchecks dans T_cpu
@@ -199,6 +199,10 @@ int		cpu(t_vm *vm, t_sdl *sdl)
 			ft_wait();
 		}
 	}
-	quit(sdl->window, sdl->renderer);
+	if (vm->visu == 1)
+	{
+		// display_winner(sdl->window, sdl->renderer, vm);
+		quit(sdl);
+	}
 	return (0);
 }
