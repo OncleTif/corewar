@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 16:35:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/19 19:54:30 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/20 14:27:28 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	core_zero(t_vm *vm)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		vm->core[i] = 0;//i;//0xff;
-		vm->data[i].num_plr = 0; // ou -1 si un player est le numero 0
+		vm->core[i] = 0;
+		vm->data[i].num_plr = 0;
 		vm->data[i].pc = 0;
 		i++;
 	}
@@ -46,19 +46,17 @@ int			ftab_init(t_vm *vm)
 	vm->ftab[16] = &ft_aff;
 	return (0);
 }
+
 void		cpu_init(t_vm *vm)
 {
 	vm->cpu.cycle2die = CYCLE_TO_DIE;
 	vm->cpu.cur_cycle = 0;
 	vm->cpu.cycle_to_check = CYCLE_TO_DIE;
 	vm->cpu.nbchecks = 0;
-
-
 }
 
 void		vm_init(t_vm *vm)
 {
-
 	cpu_init(vm);
 	vm->dump = -1;
 	vm->step = 0;
@@ -74,10 +72,8 @@ void		vm_init(t_vm *vm)
 	vm->bplr.tab[3] = -4;
 	vm->proc = NULL;
 	vm->visu = 0;
-	// cpu_init(vm->cpu);
 	ftab_init(vm);
 	core_zero(vm);
-	// core_posplyer(vm);
 }
 
 int		ft_init_proc(t_bin	*plr, t_process *proc)

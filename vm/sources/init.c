@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/20 11:48:58 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/20 14:27:56 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int		ft_init_lst_proc(t_vm *vm)
 {
 	t_process	*tmp;
 	t_list_player	*lst_play;
-	//t_process	*tmp2;
 
 	lst_play = vm->bplr.lst_plyr;
 	while (lst_play)
@@ -57,23 +56,10 @@ int		ft_init_lst_proc(t_vm *vm)
 		ft_fetch_next(vm, tmp);
 		tmp->num = vm->nb_proc;
 		vm->nb_proc += 1;
-		//tmp->next = NULL;
-
-
 		tmp->next = vm->proc;
 		vm->proc = tmp;
-		/*
-		   if (vm->proc == NULL)
-		   vm->proc = tmp;
-		   else
-		   tmp2->next = tmp;
-		   tmp2 = tmp;*/
-		/*
-		   tmp->next = vm->proc;
-		   vm->proc = tmp;*/
 		lst_play = lst_play->next;
 	}
-	//		ft_putendl("\n__SORTIE_____\n");
 	return (0);
 }
 
@@ -90,9 +76,6 @@ int		copy_plr(t_vm *vm, t_bin *plr, int i)
 	{
 		vm->core[i] = plr->program[j];
 		vm->data[i].num_plr = plr->num_plyr;
-		//printf(">%d\t%d\t%d< ", i, vm->core[i], vm->data[i].pc);
-		//if (i == 3687)
-		//printf(">>>>%d %d %d<<<", i, vm->core[i],  vm->data[i].pc);
 		i++;
 		j++;
 	}

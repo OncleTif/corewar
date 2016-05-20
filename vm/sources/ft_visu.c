@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_visu.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 03:17:11 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 03:53:41 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/20 14:26:36 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,26 +68,10 @@ void	display_winner(t_sdl *sdl, t_vm *vm)
 		tmp = (-1 * win->num_plyr);
 	else
 		tmp = win->num_plyr;
-	// while (i == 1)
-	// {
 		createLastTexture(sdl, vm, tmp, win->prog_name);
 		SDL_SetRenderDrawColor(sdl->renderer, 127, 127, 127, 255);
 		SDL_RenderClear(sdl->renderer);
 		SDL_Delay(5000);
-		// while (SDL_PollEvent(&sdl->event))
-		// {
-		// 	if (sdl->event.type == SDL_QUIT || sdl->event.key.keysym.sym == SDLK_ESCAPE)
-		// 	{
-		// 		quit(sdl);
-		// 		exit(0);
-		// 	}
-		// 	else if (sdl->event.key.keysym.sym == SDLK_SPACE)
-		// 	{
-		// 		i = 0;
-		// 		break ;
-		// 	}
-		// }
-	// }
 	SDL_RenderPresent(sdl->renderer);
 }
 

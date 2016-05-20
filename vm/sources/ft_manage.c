@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:10:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 14:23:54 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 14:24:57 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ int		ft_stock_dump(char **av, int *i, t_vm *vm)
 	return (1);
 }
 /*
-   fonction recupere le verbose et stock dans la T_vm
-   */
+** fonction recupere le verbose et stock dans la T_vm
+*/
 
 int		ft_stock_verbose(char **av, int *i, t_vm *vm)
 {
@@ -113,8 +113,8 @@ int		ft_stock_verbose(char **av, int *i, t_vm *vm)
 }
 
 /*
-   Change les autre num de plr en cas de doublon
-   */
+** Change les autre num de plr en cas de doublon
+*/
 
 void	ft_check_other_num(t_base_player bplr)
 {
