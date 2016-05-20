@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 15:08:00 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 16:44:46 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,6 @@ void	print_corenum_plr(t_octet *core)
 	{
 		if (i % 64 == 0)
 			ft_printf("\n");
-		//printf(" %.2d", core->core[i]);
 		ft_printf(" %.2d", core[i].num_plr);
 		i++;
 	}
@@ -167,7 +166,6 @@ void	print_corepc(t_octet *core)
 	{
 		if (i % 64 == 0)
 			printf("\n");
-		//printf(" %.2d", core->core[i]);
 		printf(" %u", core[i].pc);
 		i++;
 	}
@@ -248,7 +246,7 @@ int		main(int argc, char **argv)
 //system("clear");
 //	print_t_proc(&vm);
 	print_finish(&vm);
-	print_t_plr(vm.bplr.lst_plyr);
+//	print_t_plr(vm.bplr.lst_plyr);
 	// printSDLfinish(&vm);
 	return (0);
 }

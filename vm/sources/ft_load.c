@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/20 14:23:10 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 17:22:00 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,9 @@ void	ft_ldi(t_vm *vm, t_process *proc)
 	if (vm->verbose & 4)
 	{
 		ft_print_operations(proc, arg);
-		ft_putchar('\n');
+		ft_printf("\n       | -> load from %d + %d = %d (with pc and mod %d)\n",
+				arg[0], arg[1], arg[0] + arg[1], ((arg[0] + arg[1] % IDX_MOD) + proc->pc));
+		//ft_putchar('\n');
 	}
 }
 
