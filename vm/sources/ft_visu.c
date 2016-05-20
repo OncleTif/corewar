@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 03:17:11 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 14:26:36 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 14:50:05 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ SDL_Color ft_make_color(Uint8 r, Uint8 g, Uint8 b)
 	SDL_Color c = {r, g, b, 255};
 	return (c);
 }
-
+/*
 void	renderLast(t_sdl *sdl, t_vm *vm)
 {
 	(void)vm;
@@ -95,9 +95,7 @@ void 	createFirstTexture(t_sdl *sdl, t_vm *vm)
 	SDL_RenderClear(sdl->renderer);
 	renderLast(sdl, vm);
 }
-/*
-Affichage d'entree
-*/
+
 void	display_first(t_sdl *sdl, t_vm *vm)
 {
 	createFirstTexture(sdl, vm);
@@ -113,4 +111,4 @@ void	display_first(t_sdl *sdl, t_vm *vm)
 	// }
 	SDL_Delay(4000);
 	SDL_RenderPresent(sdl->renderer);
-}
+}*/
