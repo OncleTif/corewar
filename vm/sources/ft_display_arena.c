@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/20 15:13:18 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 15:31:41 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void init_sdl(t_sdl *sdl)
 int disp(t_sdl *sdl, t_vm *vm)
 {
 	CreateTextTextures(sdl, vm);
-	ft_putchar('b');
 	SDL_SetRenderDrawColor(sdl->renderer, 127, 127, 127, 255);
 	SDL_RenderClear(sdl->renderer);
 	render_line(sdl, vm);
