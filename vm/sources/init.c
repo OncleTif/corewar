@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 09:25:36 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/19 19:52:01 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 10:49:27 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_process	*ft_add_link(t_process *beg, int plr, int pc, t_process *father)
 		tmp->pc = pc;
 		tmp->carry = father->carry;
 		tmp->next = beg;
-		tmp->live = 0;
+		tmp->live = 1;
 	}
 	return (tmp);
 }
