@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/19 23:42:56 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/20 12:25:50 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,8 @@ void	print_options(void)
 	ft_printf("____ OPTION _____\n\n-d n\t\tdump la memoire au cycle n\n");
 	ft_printf("-s n\t\tprint la memoire au cycle n et attend touche entre\n");
 	ft_printf("-n n chp.cor\t\tinit le numero du joueur a n n\n");
+	ft_printf("--visu : lance la version graphique\n");
+	ft_printf("--color : lance le mode couleur\n");
 	ft_printf("-v n\t\tverbose mode:\n");
 	ft_printf("\t\t\t\t1 : affiche les lives\n");
 	ft_printf("\t\t\t\t2 : affiche les cycles\n");
@@ -240,11 +242,11 @@ int		main(int argc, char **argv)
 	ft_init_arena(&vm);
 	ft_init_lst_proc(&vm);
 	ft_print_header(&vm);
-	initSdl(&sdl);
+	//initSdl(&sdl);
 	cpu(&vm, &sdl);
 //system("clear");
 //	print_t_proc(&vm);
-	print_finish(&vm);
+	//print_finish(&vm);
 	// printSDLfinish(&vm);
 	return (0);
 }
