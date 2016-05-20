@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 12:37:24 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/20 12:31:42 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/20 14:22:40 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,4 @@ void	ft_live(t_vm *vm, t_process *proc)
 	proc->lst_live = vm->cpu.cur_cycle;
 	proc->live++;
 	vm->nbr_live++;
-	//	ft_printf("<<<<<<<<< %d\n", proc->live);
 }

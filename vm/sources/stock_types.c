@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:31:53 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/11 16:01:29 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/20 14:32:00 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ int		stock_ind(t_process *proc, int i)
 		proc->pcdelta += 1;
 	}
 	tmp2.i = r2oi(tmp2.i);
-//	if (tmp2.i & 0x8000)
-//		tmp2.i = tmp2.i - 0x10000;
 	proc->ir.args[i] = tmp2.i;
 	return (0);
 }

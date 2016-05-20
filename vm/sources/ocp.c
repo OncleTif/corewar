@@ -21,36 +21,7 @@ int		check_code(unsigned char ocp, int idx)
 	}
 	return (ret);
 }
-/*
-   int 	get_args(t_process *proc, t_vm *vm)
-   {
-   int i;
-   int j;
 
-   i = 0;
-   j = 2;
-   while (i < 3)
-   {
-//j_init(i, ir, &j);
-if (proc->ir.code_args[i] == 0x02)
-{
-stock_dir(&proc->ir, i, j);
-j += 4;
-}
-else if (proc->ir.code_args[i] == 0x03)
-{
-stock_ind(proc, vm, i, j);
-j += 2;
-}
-// else if (pir->code_args[i] == 0x04)
-// {
-// 	stock_reg();
-// }
-i++;
-}
-return (0);
-}
-*/
 int		check_code2(unsigned char *ir, int j)
 {
 	int	i;
@@ -65,7 +36,6 @@ int		check_code2(unsigned char *ir, int j)
 	return(0);
 }
 
-
 int		check_ocp(unsigned char *ir, t_ir *pir)
 {
 	int		ret;
@@ -78,7 +48,7 @@ int		check_ocp(unsigned char *ir, t_ir *pir)
 		if (j < g_op_tab[ir[0] - 1].att_num)
 		{
 			if ((ret = check_code2(ir, j)))
-				pir->code_args[j] = ret;  // STOCK T_REG T_IND TDIR
+				pir->code_args[j] = ret;
 		}
 		else
 			ret = !(ir[1] >> (6 - (2 * j)) & 3);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 12:25:50 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/20 14:13:10 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	print_t_plr(t_list_player *lplr)
 	buff= NULL;
 	while (tmp)
 	{
-		ft_printf("__dans BIN __\nnumplr:%u\n", tmp->plr->num_plyr);
+		ft_printf("__dans BIN __\nnumplr:%u\nnom%s\nlast live:%d\n", tmp->plr->num_plyr,
+		tmp->plr->prog_name, tmp->plr->last_live);
 		print_magic(*tmp->plr, buff);
 		print_prog_name(*tmp->plr);
 		print_prog_size(*tmp->plr, buff);
@@ -179,7 +180,7 @@ t_bin	*who_win(t_vm *vm)
 
 	lplr = vm->bplr.lst_plyr;
 	tmp = lplr->plr;
-	i = 1;
+	i = 0;
 	while (i < vm->bplr.nb_plyr)
 	{
 		if (lplr->plr->last_live > tmp->last_live)
@@ -246,7 +247,8 @@ int		main(int argc, char **argv)
 	cpu(&vm, &sdl);
 //system("clear");
 //	print_t_proc(&vm);
-	//print_finish(&vm);
+	print_finish(&vm);
+	print_t_plr(vm.bplr.lst_plyr);
 	// printSDLfinish(&vm);
 	return (0);
 }

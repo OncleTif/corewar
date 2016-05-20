@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:22:45 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/19 13:28:02 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 14:16:13 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ int		check_cycle(t_vm *vm)
 		tmp->cycle_to_check = tmp->cur_cycle + tmp->cycle2die;
 	}
 	if (tmp->cycle2die <= 0 || vm->dump == tmp->cur_cycle)
-		return (1); // I break
-	return (0);// NO break
+		return (1);
+	return (0);
 }
