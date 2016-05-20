@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display_arena.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/20 15:31:41 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 16:33:21 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		SetupTTF(t_sdl *sdl)
 		ft_printf("error");
 		return false;
 	}
-	printf("sdl->fontname %p\n", sdl->fontname);
 	sdl->font = TTF_OpenFont(sdl->fontname, 30);
 	// if (sdl->font == NULL)
 	// {

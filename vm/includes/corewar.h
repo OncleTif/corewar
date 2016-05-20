@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/20 15:42:29 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/20 16:28:48 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 # define BPLR vm->bplr
 # define CPU vm->cpu
 #include <SDL2/SDL.h>
-#include "../../SDL/SDL2_image.framework/Headers/SDL_image.h"
-#include "../../SDL/SDL2_ttf.framework/Headers/SDL_ttf.h"
+#include "~/SDL/SDL2_image.framework/Headers/SDL_image.h"
+#include "~/SDL/SDL2_ttf.framework/Headers/SDL_ttf.h"
 #define false 0
 #define true 1
 #define textColor (SDL_Color){255, 255, 255, 255}
