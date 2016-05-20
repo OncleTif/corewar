@@ -6,7 +6,7 @@
 #    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/20 09:27:08 by tmanet           ###   ########.fr        #
+#    Updated: 2016/05/20 09:50:11 by tmanet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,8 @@ SDL_IMAGE = -I ../SDL/SDL2_image.framework/Headers
 SDL2 = -I ../SDL/SDL2.framework/Headers
 
 FRAMEWORK = -F ../SDL -framework SDL2_ttf -framework SDL2 -framework SDL2_image
+
+FRAMEWORK_RELATIVE_PATH = -rpath @executable_path/../SDL
 
 SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/ft_memrev.c sources/ft_print_champion.c \
@@ -69,7 +71,9 @@ $(LIB):
 
 $(NAME): $(LIB) $(OBJ)
 	# $(CC) $(FLAGS) -o $@ $(OBJ) $(LIB)
-	$(CC) $(SDL2) $(SDL_TTF) $(SDL_IMAGE) $(FRAMEWORK) $(FLAGS) -o $@ $(OBJ) $(LIB)
+	#@rpath/../SDL
+	#@executable_path/../SDL/
+	$(CC) $(SDL2) $(SDL_TTF) $(SDL_IMAGE) $(FRAMEWORK) $(FLAGS) -o $@ $(OBJ) $(LIB) $(FRAMEWORK_RELATIVE_PATH)
 
 %.o: %.c
 	$(CC) $(FLAGS) -I $(HEAD) -o $@ -c $<
