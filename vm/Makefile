@@ -6,7 +6,7 @@
 #    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/20 09:17:31 by tmanet           ###   ########.fr        #
+#    Updated: 2016/05/20 09:27:08 by tmanet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,11 @@ HEAD = ../libft/
 
 LIB = ../libft/libft.a
 
-SDL_TTF = -I ../../SDL/SDL2_ttf.framework/Headers
+SDL_TTF = -I ../SDL/SDL2_ttf.framework/Headers
 
-SDL_IMAGE = -I ../../SDL/SDL2_image.framework/Headers
+SDL_IMAGE = -I ../SDL/SDL2_image.framework/Headers
 
-SDL2 = -I ../../SDL/SDL2.framework/Headers
+SDL2 = -I ../SDL/SDL2.framework/Headers
 
 FRAMEWORK = -F ../SDL -framework SDL2_ttf -framework SDL2 -framework SDL2_image
 
