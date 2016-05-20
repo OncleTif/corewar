@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/20 09:15:25 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/20 14:16:17 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ struct s_sdl
 {
 	SDL_Rect solidRect;
 	SDL_Rect blendedRect;
-	SDL_Rect lastRect;
-	SDL_Rect firstRect;
+	// SDL_Rect lastRect;
+	// SDL_Rect firstRect;
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 	TTF_Font* font;
@@ -93,8 +93,8 @@ struct s_sdl
 	char *fontname;
 	SDL_Texture* solidTexture;
 	SDL_Texture* blendedTexture;
-	SDL_Texture* lastTexture;
-	SDL_Texture* firstTexture;
+	// SDL_Texture* lastTexture;
+	// SDL_Texture* firstTexture;
 	SDL_Texture* textureTab[10];
 	SDL_Texture* texturePlayer[4][2];
 	SDL_Surface* player[4][2];

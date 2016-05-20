@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:06:59 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 03:48:53 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/20 14:27:43 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void 	ft_handleBaseTexture(t_sdl *sdl, t_vm *vm)
 			str = ft_strjoin("NBR_LIVE : ", ft_itoa(vm->nbr_live));
 		else if (j == 4)
 			str = ft_strjoin("MAX_CHECKS : ", ft_itoa(MAX_CHECKS));
+			// ft_printf("%p\n", sdl->font);
 		texture[j] = TTF_RenderText_Blended(sdl->font, str, textColor);
 		sdl->textureTab[j] = SurfaceToTexture(texture[j], sdl->renderer);
 		free(str);
@@ -95,5 +96,4 @@ void	CreateTextTextures(t_sdl *sdl, t_vm *vm)
 	ft_handlePlayerTexture(sdl, vm);
 	ft_QueryBaseTexture(sdl);
 	ft_handleQueryPlayer(sdl, vm);
-
 }
