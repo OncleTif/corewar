@@ -45,7 +45,7 @@ int		check_ocp(unsigned char *ir, t_ir *pir)
 	ret = 1;
 	while (j < 4 && ret)
 	{
-		if (j < g_op_tab[ir[0] - 1].att_num)
+		if (j < g_op_tab[pir->opcode - 1].att_num)
 		{
 			if ((ret = check_code2(ir, j)))
 				pir->code_args[j] = ret;
