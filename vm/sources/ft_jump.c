@@ -19,7 +19,10 @@ void			ft_zjmp(t_vm *vm, t_process *proc)
 	arg[0] = proc->ir.args[0];
 	if (proc->carry)
 	{
-		proc->pcdelta = arg[0] % IDX_MOD;
+		if (arg[0])
+			proc->pcdelta = arg[0] % IDX_MOD;
+		else
+			proc->pcdelta = IDX_MOD;
 		if (vm->verbose & 4)
 		{
 			ft_print_operations(proc, arg);
