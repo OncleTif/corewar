@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:06:59 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 14:27:43 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/22 01:06:57 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,12 @@ void			playerTexture(char *str, int nb, int j, t_sdl *sdl)
 		sdl->player[j][nb] = TTF_RenderText_Blended(sdl->font, str, color4);
 	else
 		sdl->player[j][nb] = TTF_RenderText_Blended(sdl->font, str, textColor);
-	sdl->texturePlayer[j][nb] = SurfaceToTexture(sdl->player[j][nb], sdl->renderer);
+	sdl->texturePlayer[j][nb] = SDL_CreateTextureFromSurface(sdl->renderer, sdl->player[j][nb]);
 	free(str);
 }
 
-void 	ft_handleBaseTexture(t_sdl *sdl, t_vm *vm)
+void 	ft_handleBaseTexture(t_sdl *sdl, t_vm *vm, SDL_Surface* texture[5])
 {
-	SDL_Surface* texture[10];
 	int j;
 	char *str;
 
@@ -56,9 +55,8 @@ void 	ft_handleBaseTexture(t_sdl *sdl, t_vm *vm)
 			str = ft_strjoin("NBR_LIVE : ", ft_itoa(vm->nbr_live));
 		else if (j == 4)
 			str = ft_strjoin("MAX_CHECKS : ", ft_itoa(MAX_CHECKS));
-			// ft_printf("%p\n", sdl->font);
 		texture[j] = TTF_RenderText_Blended(sdl->font, str, textColor);
-		sdl->textureTab[j] = SurfaceToTexture(texture[j], sdl->renderer);
+		sdl->textureTab[j] = SDL_CreateTextureFromSurface(sdl->renderer, texture[j]);
 		free(str);
 		j++;
 	}
@@ -91,9 +89,25 @@ int 			ft_handlePlayerTexture(t_sdl *sdl, t_vm *vm)
 
 void	CreateTextTextures(t_sdl *sdl, t_vm *vm)
 {
-	ft_QuerySolidTexture(sdl);
-	ft_handleBaseTexture(sdl, vm);
+	SDL_Surface *solid;
+	SDL_Surface *texture[5];
+	int i;
+	int tmp;
+	t_bin *win;
+
+	tmp = 0;
+	solid = NULL;
+	win = NULL;
+	i = 0;
+	ft_QuerySolidTexture(sdl, solid);
+	ft_handleBaseTexture(sdl, vm, texture);
 	ft_handlePlayerTexture(sdl, vm);
 	ft_QueryBaseTexture(sdl);
 	ft_handleQueryPlayer(sdl, vm);
+	win = who_win(vm);
+	if (win->num_plyr < 0)
+		tmp = (-1 * win->num_plyr);
+	else
+		tmp = win->num_plyr;
+	createLastTexture(sdl, vm, tmp, win->prog_name);
 }

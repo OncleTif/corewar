@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cpu.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 15:38:46 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/22 01:24:07 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ int		cpu(t_vm *vm, t_sdl *sdl)
 	if (vm->visu == 1) // option -visu pour la SDL
 	{
 		init_sdl(sdl);
-		// display_first(sdl, vm);
+		// CreateTextTextures(sdl, vm);
 	}
 	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
 	{
@@ -169,8 +169,6 @@ int		cpu(t_vm *vm, t_sdl *sdl)
 		if (vm->verbose & 2)
 			ft_printf("It is now cycle %d\n", vm->cpu.cur_cycle);
 		parse_proc(vm);
-		if (vm->visu == 1)
-		disp(sdl, vm);
 		if (check_cycle(vm))
 			break ;
 		if ((vm->step) && (vm->cpu.cur_cycle % vm->step == 0))
@@ -178,10 +176,15 @@ int		cpu(t_vm *vm, t_sdl *sdl)
 			print_core(vm);
 			ft_wait();
 		}
+		if (vm->visu == 1)
+			disp(sdl, vm);
 	}
 	if (vm->visu == 1)
 	{
-		// display_winner(sdl, vm);
+		ft_putendl("hello");
+		sdl->u = 1;
+		disp(sdl, vm);
+		SDL_Delay(10000);
 		quit(sdl);
 	}
 	return (0);

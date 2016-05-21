@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:25:56 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 03:47:48 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/22 01:14:57 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,28 @@
 
 void	ft_render(t_sdl *sdl, t_vm *vm)
 {
-	SDL_RenderCopy(sdl->renderer, sdl->solidTexture, NULL, &sdl->solidRect);
 	int i;
 
 	i = 0;
+	SDL_RenderCopy(sdl->renderer, sdl->solidTexture, NULL, &sdl->solidRect);
+	if (sdl->u == 1)
+	{
+		SDL_RenderCopy(sdl->renderer, sdl->lastTexture, NULL, &sdl->lastRect);
+	}
 	while (i < 5)
 	{
 		SDL_RenderCopy(sdl->renderer, sdl->textureTab[i], NULL, &sdl->textureRect[i]);
 		i++;
 	}
 	i = 0;
-	while (i < vm->bplr.nb_plyr)
-	{
-		SDL_RenderCopy(sdl->renderer, sdl->texturePlayer[i][0], NULL, &sdl->rectPlayer[i][0]);
-		SDL_RenderCopy(sdl->renderer, sdl->texturePlayer[i][1], NULL, &sdl->rectPlayer[i][1]);
-		// SDL_RenderCopy(sdl->renderer, sdl->texturePlayer[i][2], NULL, &sdl->rectPlayer[i][2]);
-		i++;
-	}
+	if (sdl->tplayer)
+		while (i < vm->bplr.nb_plyr)
+		{
+			SDL_RenderCopy(sdl->renderer, sdl->texturePlayer[i][0], NULL, &sdl->rectPlayer[i][0]);
+			SDL_RenderCopy(sdl->renderer, sdl->texturePlayer[i][1], NULL, &sdl->rectPlayer[i][1]);
+			// SDL_RenderCopy(sdl->renderer, sdl->texturePlayer[i][2], NULL, &sdl->rectPlayer[i][2]);
+			i++;
+		}
 }
 
 void 	ft_case_color(t_vm *vm, t_sdl *sdl, int i)

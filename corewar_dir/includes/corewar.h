@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/20 14:16:17 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/22 01:24:05 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,14 @@ struct s_vm
 
 struct s_sdl
 {
+	int 		tplayer;
+	int			u;
+	int			s;
+	int 		aff;
 	SDL_Rect solidRect;
 	SDL_Rect blendedRect;
-	// SDL_Rect lastRect;
-	// SDL_Rect firstRect;
+	SDL_Rect lastRect;
+	SDL_Rect firstRect;
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 	TTF_Font* font;
@@ -93,8 +97,8 @@ struct s_sdl
 	char *fontname;
 	SDL_Texture* solidTexture;
 	SDL_Texture* blendedTexture;
-	// SDL_Texture* lastTexture;
-	// SDL_Texture* firstTexture;
+	SDL_Texture* lastTexture;
+	SDL_Texture* firstTexture;
 	SDL_Texture* textureTab[10];
 	SDL_Texture* texturePlayer[4][2];
 	SDL_Surface* player[4][2];
@@ -290,7 +294,7 @@ ft_display_arena
 int				disp(t_sdl *sdl, t_vm *vm);
 void			init_sdl(t_sdl *sdl);
 void			quit(t_sdl *sdl);
-int				SetupTTF(t_sdl *sdl);
+int				ft_setup_ttf_david_me_casse_les_couilles_pour_changer_de_nom_cette_fonction_qui_etait_a_la_base_Setup_TTF(t_sdl *sdl);
 void			init(SDL_Window **window, SDL_Renderer **renderer);
 
 /*
@@ -299,11 +303,11 @@ ft_visu
 void			display_winner(t_sdl *sdl, t_vm *vm);
 void			initSdl(t_sdl *sdl);
 SDL_Color		ft_make_color(Uint8 r, Uint8 g, Uint8 b);
-void	display_first(t_sdl *sdl, t_vm *vm);
+void			display_first(t_sdl *sdl, t_vm *vm);
 /*
 ft_query_sdl
 */
-void 			ft_QuerySolidTexture(t_sdl *sdl);
+void 			ft_QuerySolidTexture(t_sdl *sdl, SDL_Surface *solid);
 void 			ft_QueryBaseTexture(t_sdl *sdl);
 void 			ft_handleQueryPlayer(t_sdl *sdl, t_vm *vm);
 void			ft_QueryPlayerTexture(int i, int j, int nb, t_sdl *sdl);
@@ -320,10 +324,11 @@ ft_texture_sdl
 */
 SDL_Texture*	SurfaceToTexture(SDL_Surface* surf, SDL_Renderer *renderer);
 void			playerTexture(char *str, int nb, int j, t_sdl *sdl);
-void 			ft_handleBaseTexture(t_sdl *sdl, t_vm *vm);
+void 			ft_handleBaseTexture(t_sdl *sdl, t_vm *vm, SDL_Surface *texture[5]);
 int 			ft_handlePlayerTexture(t_sdl *sdl, t_vm *m);
 void			CreateTextTextures(t_sdl *sdl, t_vm *vm);
-
+void 			createLastTexture(t_sdl *sdl, t_vm *vm, int tmp, char *win);
+void 			createFirstTexture(t_sdl *sdl, t_vm *vm);
 /*
 main
 */
