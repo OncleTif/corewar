@@ -17,6 +17,8 @@ void	ft_proc_init(t_vm *vm, t_process *proc)
 	int nxt_pc;
 	int i;
 
+	if (proc->pcdelta == IDX_MOD) // cas jump 0
+		proc->pcdelta = 0;
 	proc->cycle_to_wait = 0;
 	nxt_pc = proc->pc + proc->pcdelta;
 	if (vm->verbose & 16 && proc->pcdelta != MEM_SIZE && (proc->ir.opcode != 9 || !proc->carry))
