@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:25:56 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/22 01:14:57 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/22 22:01:12 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	ft_render(t_sdl *sdl, t_vm *vm)
 	if (sdl->tplayer)
 		while (i < vm->bplr.nb_plyr)
 		{
-			SDL_RenderCopy(sdl->renderer, sdl->texturePlayer[i][0], NULL, &sdl->rectPlayer[i][0]);
-			SDL_RenderCopy(sdl->renderer, sdl->texturePlayer[i][1], NULL, &sdl->rectPlayer[i][1]);
+			SDL_RenderCopy(sdl->renderer, sdl->texPlay[i][0], NULL, &sdl->rectPlayer[i][0]);
+			SDL_RenderCopy(sdl->renderer, sdl->texPlay[i][1], NULL, &sdl->rectPlayer[i][1]);
 			// SDL_RenderCopy(sdl->renderer, sdl->texturePlayer[i][2], NULL, &sdl->rectPlayer[i][2]);
 			i++;
 		}

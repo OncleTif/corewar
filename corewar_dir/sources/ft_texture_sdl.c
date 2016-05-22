@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:06:59 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/22 01:06:57 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/22 22:14:59 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void			playerTexture(char *str, int nb, int j, t_sdl *sdl)
 		sdl->player[j][nb] = TTF_RenderText_Blended(sdl->font, str, color4);
 	else
 		sdl->player[j][nb] = TTF_RenderText_Blended(sdl->font, str, textColor);
-	sdl->texturePlayer[j][nb] = SDL_CreateTextureFromSurface(sdl->renderer, sdl->player[j][nb]);
+	sdl->texPlay[j][nb] = SDL_CreateTextureFromSurface(sdl->renderer, sdl->player[j][nb]);
 	free(str);
 }
 

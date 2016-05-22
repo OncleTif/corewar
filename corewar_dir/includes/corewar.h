@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/22 01:24:05 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/22 22:12:10 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ struct s_sdl
 	SDL_Texture* lastTexture;
 	SDL_Texture* firstTexture;
 	SDL_Texture* textureTab[10];
-	SDL_Texture* texturePlayer[4][2];
+	SDL_Texture* texPlay[4][2];
 	SDL_Surface* player[4][2];
 	SDL_Event event;
 	SDL_Rect rect[4096];
@@ -123,18 +123,24 @@ int				ft_stock_verbose(char **av, int *i, t_vm *vm);
 void			ft_check_other_num(t_base_player bplr);
 
 /*
-	init
+ft_init_pc
 */
 
 t_process	*	ft_add_link(t_process *proc, int plr, int pc, t_process *father);
 void			ft_init_pc(int plr, int pc, t_vm *vm, t_process *proc);
+
+/*
+	init_arena
+*/
+
 int				ft_init_lst_proc(t_vm *vm);
 int				copy_plr(t_vm *vm, t_bin *plr, int i);
 int				ft_init_arena(t_vm *vm);
 
 /*
-init_2
+init_vm
 */
+
 int				ft_init_proc(t_bin	*plr, t_process *proc);
 void			vm_init(t_vm *vm);
 int				ftab_init(t_vm *vm);
@@ -190,16 +196,18 @@ void			print_comment(t_bin plr);
 /*
 cpu.c
 */
+
 int				cpu(t_vm *vm, t_sdl *sdl);
 int				stock_types_args(t_process *proc, int i);
 int				decode_ir(t_process *proc);
-//int		fetch_ir(t_list_process *tmp, unsigned char *core, int pc);
+//int			fetch_ir(t_list_process *tmp, unsigned char *core, int pc);
 int				parse_proc(t_vm *vm);
 
 
 /*
 ocp.c
 */
+
 int				check_code(unsigned char ocp, int idx);
 int				stock_code_args(t_ir *pir, unsigned char ocp, int u, int i);
 int				j_init(int i, t_ir *pir, int *j);
@@ -226,9 +234,9 @@ get_mem.c
 */
 
 int				get_mem(t_vm *vm, int idx, int off);
-int		get_mem_idx(t_vm *vm, short int idx, short int off);
+int				get_mem_idx(t_vm *vm, short int idx, short int off);
 int				get_memlong(t_vm *vm, int idx);
-int		get_memlong_idx(t_vm *vm, short int idx);
+int				get_memlong_idx(t_vm *vm, short int idx);
 
 /*
 ft_store.c
@@ -281,16 +289,16 @@ void			print_t_proc(t_vm *vm);
 /*
 ft_wait
 */
+
 int				ft_wait(void);
 int				to_kill_or_not_to_kill_proc(t_vm *vm);
-
 void			ft_print_operations(t_process *proc, int arg[3]);
-
 void			ft_print_header(t_vm *vm);
 
 /*
 ft_display_arena
 */
+
 int				disp(t_sdl *sdl, t_vm *vm);
 void			init_sdl(t_sdl *sdl);
 void			quit(t_sdl *sdl);
@@ -300,13 +308,17 @@ void			init(SDL_Window **window, SDL_Renderer **renderer);
 /*
 ft_visu
 */
+
 void			display_winner(t_sdl *sdl, t_vm *vm);
 void			initSdl(t_sdl *sdl);
 SDL_Color		ft_make_color(Uint8 r, Uint8 g, Uint8 b);
 void			display_first(t_sdl *sdl, t_vm *vm);
+void			ft_pollEvent(t_sdl *sdl);
+
 /*
 ft_query_sdl
 */
+
 void 			ft_QuerySolidTexture(t_sdl *sdl, SDL_Surface *solid);
 void 			ft_QueryBaseTexture(t_sdl *sdl);
 void 			ft_handleQueryPlayer(t_sdl *sdl, t_vm *vm);
@@ -322,16 +334,41 @@ void			render_line(t_sdl *sdl, t_vm *vm);
 /*
 ft_texture_sdl
 */
+
 SDL_Texture*	SurfaceToTexture(SDL_Surface* surf, SDL_Renderer *renderer);
 void			playerTexture(char *str, int nb, int j, t_sdl *sdl);
-void 			ft_handleBaseTexture(t_sdl *sdl, t_vm *vm, SDL_Surface *texture[5]);
+void 			ft_handleBaseTexture(t_sdl *sdl, t_vm *vm, SDL_Surface *tex[5]);
 int 			ft_handlePlayerTexture(t_sdl *sdl, t_vm *m);
 void			CreateTextTextures(t_sdl *sdl, t_vm *vm);
 void 			createLastTexture(t_sdl *sdl, t_vm *vm, int tmp, char *win);
 void 			createFirstTexture(t_sdl *sdl, t_vm *vm);
+
 /*
-main
+ft_print_core
 */
+
+void			print_corepc(t_octet *core);
+void			print_corenum_plr(t_octet *core);
+void			ft_print(t_vm *vm);
+void			print_t_cpu(t_vm *vm);
+void			print_t_proc(t_vm *vm);
+
+/*
+ft_print_arena
+*/
+
+void	print_core(t_vm *vm);
+void	print_t_vm(t_vm *vm);
+void	print_t_plr(t_list_player *lplr);
+void	print_t_bplr(t_base_player *bplr);
+void	print_t_ir(t_ir *tir);
+
+/*
+ft_print_winner
+*/
+
 t_bin	*who_win(t_vm *vm);
+void	print_options(void);
+void	print_finish(t_vm *vm);
 
 #endif

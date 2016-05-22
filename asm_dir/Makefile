@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ssicard <ssicard@42.fr>                    +#+  +:+       +#+         #
+#    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/20 17:37:35 by tmanet           ###   ########.fr        #
+#    Updated: 2016/05/22 23:04:51 by eozdek           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,22 +35,22 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(LIB):
-	make -C ../libft/ fclean
-	make -C ../libft/
+	@make -C ../libft/ fclean
+	@make -C ../libft/
 
 $(NAME): $(LIB) $(OBJ)
-	$(CC) $(FLAGS) -o $@ $(OBJ) $(LIB)
+	@$(CC) $(FLAGS) -o $@ $(OBJ) $(LIB)
 
 %.o: %.c
-	$(CC) $(FLAGS) -I $(HEAD) -o $@ -c $<
+	@$(CC) $(FLAGS) -I $(HEAD) -o $@ -c $<
 
 clean:
 	/bin/rm -f $(OBJ)
-	make -C ../libft/ clean
+	@make -C ../libft/ clean
 
 fclean: clean
 	/bin/rm -f $(NAME)
-	make -C ../libft/ fclean
+	@make -C ../libft/ fclean
 
 re: fclean all
 

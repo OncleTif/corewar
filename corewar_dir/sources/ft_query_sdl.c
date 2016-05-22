@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:23:40 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/22 01:11:16 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/22 19:36:45 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void			ft_QueryPlayerTexture(int i, int j, int nb, t_sdl *sdl)
 {
-	SDL_QueryTexture(sdl->texturePlayer[i][nb], NULL, NULL, &sdl->rectPlayer[i][nb].w, &sdl->rectPlayer[i][nb].h);
+	SDL_QueryTexture(sdl->texPlay[i][nb], NULL, NULL, &sdl->rectPlayer[i][nb].w, &sdl->rectPlayer[i][nb].h);
 	sdl->rectPlayer[i][nb].x = sdl->solidRect.x;
 	sdl->rectPlayer[i][nb].y = sdl->solidRect.y + sdl->solidRect.h + (50 * (j + 2));
 }
@@ -58,7 +58,7 @@ void ft_QueryBaseTexture(t_sdl *sdl)
 void ft_QuerySolidTexture(t_sdl *sdl, SDL_Surface *solid)
 {
 	solid = TTF_RenderText_Blended(sdl->font, "COREWAR GAME", backgroundColor);
-	sdl->solidTexture = SDL_CreateTextureFromSurface(sdl->renderer, solid);
+	sdl->solidTexture = SurfaceToTexture(solid, sdl->renderer);
 	SDL_QueryTexture(sdl->solidTexture, NULL, NULL, &sdl->solidRect.w, &sdl->solidRect.h);
 	sdl->solidRect.x = 1350;
 	sdl->solidRect.y = 20;
