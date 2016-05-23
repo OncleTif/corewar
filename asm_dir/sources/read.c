@@ -6,7 +6,7 @@
 /*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 19:18:32 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/09 16:47:04 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/23 10:50:43 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void		get_str(t_champ *c, char *tmp, char *str)
 		}
 		if (*line == '"')
 			indic = 2;
+		if (*(line + 1))
+			ft_error("Syntax error after a comment or name");
 		c->line++;
 	}
 	str[i] = '\0';
