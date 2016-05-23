@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/22 01:24:07 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/23 11:38:51 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,11 +158,7 @@ int		parse_proc(t_vm *vm)
 
 int		cpu(t_vm *vm, t_sdl *sdl)
 {
-	if (vm->visu == 1) // option -visu pour la SDL
-	{
-		init_sdl(sdl);
-		// CreateTextTextures(sdl, vm);
-	}
+	ft_simple_sdl(sdl, vm, 0);
 	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
 	{
 		CPU.cur_cycle += 1;
@@ -179,13 +175,6 @@ int		cpu(t_vm *vm, t_sdl *sdl)
 		if (vm->visu == 1)
 			disp(sdl, vm);
 	}
-	if (vm->visu == 1)
-	{
-		ft_putendl("hello");
-		sdl->u = 1;
-		disp(sdl, vm);
-		SDL_Delay(10000);
-		quit(sdl);
-	}
+	ft_simple_sdl(sdl, vm, 1);
 	return (0);
 }

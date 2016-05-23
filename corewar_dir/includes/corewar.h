@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/22 01:24:05 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/23 11:40:19 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -333,5 +333,10 @@ void 			createFirstTexture(t_sdl *sdl, t_vm *vm);
 main
 */
 t_bin	*who_win(t_vm *vm);
+
+/*
+ft_simple_sdl
+*/
+void		ft_simple_sdl(t_sdl *sdl, t_vm *vm, int i);
 
 #endif
