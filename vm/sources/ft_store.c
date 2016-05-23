@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:19:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/20 11:21:13 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/23 10:45:36 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	ft_st(t_vm *vm, t_process *proc)
 	int	arg[3];
 
 	arg[0] = proc->ir.args[0];
-	if ((arg[0] > 0 && arg[0] < 17) && ((arg[1] > 0 && arg[1] < 17) || !(proc->ir.code_args[1] == T_REG)))
+	if ((arg[0] > 0 && arg[0] < 17) && ((arg[1] > 0 && arg[1] < 17)
+				|| !(proc->ir.code_args[1] == T_REG)))
 	{
 		arg[1] = proc->ir.args[1];
 		if (proc->ir.code_args[1] == T_IND)
@@ -62,5 +63,3 @@ void	ft_sti(t_vm *vm, t_process *proc)
 	put_mem(vm, proc, sum, proc->reg[proc->ir.args[0]]);
 //	proc->carry = 1;// = proc->reg[proc->ir.args[0]];
 }
-
-//-255

@@ -6,17 +6,17 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 03:17:11 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 14:50:05 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/23 10:44:09 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
 /*
-fichier pour afficher le joureur gagnant
+** fichier pour afficher le joureur gagnant
 */
 
-void initSdl(t_sdl *sdl)
+void	initSdl(t_sdl *sdl)
 {
 	sdl->window = NULL;
 	sdl->renderer = NULL;
