@@ -6,13 +6,13 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:29:43 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/19 16:16:09 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/23 11:05:25 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	ft_kill_proc(t_vm *vm, t_process *proc)
+void			ft_kill_proc(t_vm *vm, t_process *proc)
 {
 	t_process	**ptr;
 
@@ -27,13 +27,13 @@ void	ft_kill_proc(t_vm *vm, t_process *proc)
 			vm->data[proc->pc].pc--;
 			*ptr = proc->next;
 			ft_memdel((void**)&proc);
-			break ; // pourquoi ca segfault sans break: no idea
+			break ;
 		}
 		ptr = &((*ptr)->next);
 	}
 }
 
-int	to_kill_or_not_to_kill_proc(t_vm *vm)
+int				to_kill_or_not_to_kill_proc(t_vm *vm)
 {
 	t_process	*ptr;
 	int			debug;
