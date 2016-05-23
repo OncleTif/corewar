@@ -6,12 +6,11 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:10:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 14:24:57 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/23 10:58:09 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-
 
 /*
 ** checker si cest un ".cor" return 1, sinon 0
@@ -55,7 +54,6 @@ int		ft_is_number(char *str)
 /*
 ** fonction recupere le dump et stock dans la T_vm
 */
-
 
 int		ft_stock_color(t_vm *vm)
 {

@@ -6,17 +6,15 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 12:37:24 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/20 14:22:40 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/23 11:04:22 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	ft_live(t_vm *vm, t_process *proc)
+static void			ft_live2(t_vm *vm, t_process *proc, int arg[3])
 {
 	t_list_player	*plr;
-	int				tmp;
-	int				arg[3];
 
 	arg[0] = proc->ir.args[0];
 	plr = vm->bplr.lst_plyr;
@@ -27,6 +25,16 @@ void	ft_live(t_vm *vm, t_process *proc)
 	}
 	while (plr && plr->plr->num_plyr != proc->ir.args[0])
 		plr = plr->next;
+	return (plr);
+}
+
+void				ft_live(t_vm *vm, t_process *proc)
+{
+	t_list_player	*plr;
+	int				tmp;
+	int				arg[3];
+
+	plr = ft_live2(vm, proc, arg);
 	if (plr)
 	{
 		plr->plr->last_live = vm->cpu.cur_cycle;
@@ -36,7 +44,8 @@ void	ft_live(t_vm *vm, t_process *proc)
 				tmp = (-1 * proc->ir.args[0]);
 			else
 				tmp = proc->ir.args[0];
-			ft_printf("Player %d (%s) is said to be alive\n", tmp, plr->plr->prog_name);
+			ft_printf("Player %d (%s) is said to be alive\n",
+			tmp, plr->plr->prog_name);
 		}
 		plr->plr->last_live = vm->cpu.cur_cycle;
 	}

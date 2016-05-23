@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memrev.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/23 10:56:01 by ssicard           #+#    #+#             */
+/*   Updated: 2016/05/23 10:56:22 by ssicard          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/corewar.h"
 
-void	memrev(char  *buf, size_t count)
+void		memrev(char *buf, size_t count)
 {
 	char	*r;
 
@@ -8,7 +20,7 @@ void	memrev(char  *buf, size_t count)
 	while (buf < r)
 	{
 		*buf ^= *r;
-		*r   ^= *buf;
+		*r ^= *buf;
 		*buf ^= *r;
 		buf++;
 		r--;

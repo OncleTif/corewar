@@ -6,15 +6,15 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/20 14:23:10 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/23 10:59:08 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	ft_ld(t_vm *vm, t_process *proc)
+void			ft_ld(t_vm *vm, t_process *proc)
 {
-	int	arg[3];
+	int			arg[3];
 
 	arg[1] = proc->ir.args[1];
 	if (proc->ir.code_args[0] == T_IND)
@@ -33,7 +33,7 @@ void	ft_ld(t_vm *vm, t_process *proc)
 	}
 }
 
-int	lldget_memlong(t_vm *vm, int idx)
+int				lldget_memlong(t_vm *vm, int idx)
 {
 	union u_4o	val;
 	int			i;
@@ -54,9 +54,9 @@ int	lldget_memlong(t_vm *vm, int idx)
 	return (val.i);
 }
 
-void	ft_lld(t_vm *vm, t_process *proc)
+void			ft_lld(t_vm *vm, t_process *proc)
 {
-	int	arg[3];
+	int			arg[3];
 
 	arg[1] = proc->ir.args[1];
 	if (proc->ir.code_args[0] == T_IND)
@@ -72,10 +72,10 @@ void	ft_lld(t_vm *vm, t_process *proc)
 	proc->carry = !arg[0];
 }
 
-void	ft_ldi(t_vm *vm, t_process *proc)
+void			ft_ldi(t_vm *vm, t_process *proc)
 {
 	int			val;
-	int	arg[3];
+	int			arg[3];
 
 	arg[2] = proc->ir.args[2];
 	if (proc->ir.code_args[0] == T_IND)
@@ -97,10 +97,10 @@ void	ft_ldi(t_vm *vm, t_process *proc)
 	}
 }
 
-void	ft_lldi(t_vm *vm, t_process *proc)
+void			ft_lldi(t_vm *vm, t_process *proc)
 {
-	int	val;
-	int	arg[3];
+	int			val;
+	int			arg[3];
 
 	arg[2] = proc->ir.args[2];
 	if (proc->ir.code_args[0] == T_IND)
