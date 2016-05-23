@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:25:56 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/23 14:18:44 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/23 17:00:33 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_render(t_sdl *sdl, t_vm *vm)
 		}
 	if (sdl->u == 1)
 	{
+		i = 0;
 		while (i < 3)
 		{
 			SDL_RenderCopy(sdl->renderer, sdl->lastT[i], NULL, &sdl->lastRect[i]);

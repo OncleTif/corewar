@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/23 13:56:58 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/23 19:00:13 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ struct s_sdl
 	int			u;
 	int			s;
 	int 		aff;
+	char *fontname;
 	SDL_Rect solidRect;
 	SDL_Rect blendedRect;
 	SDL_Rect lastRect[3];
@@ -94,7 +95,6 @@ struct s_sdl
 	TTF_Font* font;
 	SDL_Rect textureRect[10];
 	SDL_Rect rectPlayer[4][3];
-	char *fontname;
 	SDL_Texture* solidTexture;
 	SDL_Texture* blendedTexture;
 	SDL_Texture* lastT[3];
@@ -279,11 +279,10 @@ void			ft_live(t_vm *vm, t_process *proc);
 /*
 ft_fetch_next.c
 */
-void			ft_fetch_next(t_vm *vm, t_process *proc);
 
+void			ft_fetch_next(t_vm *vm, t_process *proc);
 void			ft_print(t_vm *vm);
 int				check_cycle(t_vm *vm);
-
 void			print_t_proc(t_vm *vm);
 
 /*
@@ -312,9 +311,9 @@ ft_visu
 void			display_winner(t_sdl *sdl, t_vm *vm);
 void			initSdl(t_sdl *sdl);
 SDL_Color		ft_make_color(Uint8 r, Uint8 g, Uint8 b);
+SDL_Color		ft_color_player(int color);
 void			display_first(t_sdl *sdl, t_vm *vm);
 void			ft_pollEvent(t_sdl *sdl);
-
 /*
 ft_query_sdl
 */
@@ -357,19 +356,19 @@ void			print_t_proc(t_vm *vm);
 ft_print_arena
 */
 
-void	print_core(t_vm *vm);
-void	print_t_vm(t_vm *vm);
-void	print_t_plr(t_list_player *lplr);
-void	print_t_bplr(t_base_player *bplr);
-void	print_t_ir(t_ir *tir);
+void			print_core(t_vm *vm);
+void			print_t_vm(t_vm *vm);
+void			print_t_plr(t_list_player *lplr);
+void			print_t_bplr(t_base_player *bplr);
+void			print_t_ir(t_ir *tir);
 
 /*
 ft_print_winner
 */
 
-t_bin	*who_win(t_vm *vm);
-void	print_options(void);
-void	print_finish(t_vm *vm);
+t_bin			*who_win(t_vm *vm);
+void			print_options(void);
+void			print_finish(t_vm *vm);
 
 /*
 ft_simple_sdl

@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/23 14:19:37 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/23 19:06:10 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,37 +57,18 @@ int disp(t_sdl *sdl, t_vm *vm)
 {
 	if (sdl->aff % 23 == 0)
 	{
-		ft_putchar('a');
 		CreateTextTextures(sdl, vm);
-		ft_putchar('b');
 	}
 	SDL_SetRenderDrawColor(sdl->renderer, 127, 127, 127, 255);
 	SDL_RenderClear(sdl->renderer);
 	render_line(sdl, vm);
-
 	SDL_SetRenderDrawColor(sdl->renderer, 0, 0, 0, 255);
 	SDL_RenderDrawLine(sdl->renderer, 1325, 10, 1325, 1300);
 	SDL_RenderDrawLine(sdl->renderer, 1325, 10, 1750, 10);
 	SDL_RenderDrawLine(sdl->renderer, 1750, 10, 1750, 1300);
 	SDL_RenderDrawLine(sdl->renderer, 1325, 1300, 1750, 1300);
 	SDL_RenderPresent(sdl->renderer);
-	while (SDL_PollEvent(&sdl->event))
-	{
-		if (sdl->event.type == SDL_QUIT || sdl->event.key.keysym.sym == SDLK_ESCAPE)
-		{
-			TTF_CloseFont(sdl->font);
-			quit(sdl);
-			exit(0);
-		}
-		else if (sdl->event.key.keysym.sym == SDLK_p)
-		{
-			sdl->tplayer++;
-		}
-		else if (sdl->event.key.keysym.sym == SDLK_o)
-		{
-			sdl->tplayer = 0;
-		}
-	}
+	ft_pollEvent(sdl);
 	sdl->aff++;
 	return (0);
 }
