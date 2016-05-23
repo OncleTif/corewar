@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:19:10 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/20 11:21:13 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/23 18:04:51 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void	ft_sti(t_vm *vm, t_process *proc)
 	int	sum;
 	int	arg[3];
 
+	if (((proc->ir.code_args[2] == T_REG) && (proc->ir.args[2] < 1 || proc->ir.args[2] > 16)) ||
+	((proc->ir.code_args[1] == T_REG) && (proc->ir.args[1] < 1 || proc->ir.args[1] > 16)) )
+		return ;
 	if (proc->ir.code_args[2] == T_REG)
 		arg[2] = proc->reg[proc->ir.args[2]];
 	else
