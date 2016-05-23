@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:12:54 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/20 14:22:19 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/23 17:34:06 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void			ft_zjmp(t_vm *vm, t_process *proc)
 	arg[0] = proc->ir.args[0];
 	if (proc->carry)
 	{
-		proc->pcdelta = arg[0] % IDX_MOD;
+		if ((proc->pcdelta = arg[0] % IDX_MOD) <= 0)
+			proc->pcdelta = proc->pcdelta + MEM_SIZE;
 		if (vm->verbose & 4)
 		{
 			ft_print_operations(proc, arg);
