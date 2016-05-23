@@ -6,16 +6,16 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 14:31:53 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 14:32:00 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/23 10:28:39 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int		stock_dir(t_process *proc, int i)
+int				stock_dir(t_process *proc, int i)
 {
-	union u_4o tmp4;
-	int k;
+	union u_4o	tmp4;
+	int			k;
 
 	tmp4.i = 0;
 	k = 3 - (2 * (proc->ir.index));
@@ -31,9 +31,9 @@ int		stock_dir(t_process *proc, int i)
 	return (0);
 }
 
-int		stock_reg(t_process *proc, int i)
+int				stock_reg(t_process *proc, int i)
 {
-	int		reg;
+	int			reg;
 
 	reg = proc->ir.irstr[proc->pcdelta];
 	proc->pcdelta += 1;
@@ -46,7 +46,7 @@ int		stock_reg(t_process *proc, int i)
 	return (1);
 }
 
-int		stock_ind(t_process *proc, int i)
+int				stock_ind(t_process *proc, int i)
 {
 	int			k;
 	union u_2o	tmp2;

@@ -6,16 +6,17 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 15:08:00 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/23 10:36:35 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-void	print_core(t_vm *vm)
+
+void				print_core(t_vm *vm)
 {
-	int i;
-	int	printed;
-	t_process	*proc;
+	int				i;
+	int				printed;
+	t_process		*proc;
 
 	i = 0;
 	while (i < MEM_SIZE)
@@ -28,7 +29,7 @@ void	print_core(t_vm *vm)
 			ft_printf("\n%#.4x : ", i);
 		if (!vm->color)
 			ft_printf("%.2x ", vm->core[i]);
-		else if(vm->data[i].pc)
+		else if (vm->data[i].pc)
 			ft_printf("\033[36m%.2x\033[00m ", vm->core[i]);
 		else if (vm->data[i].num_plr == (int)vm->bplr.tab[0])
 			ft_printf("\033[31m%.2x\033[00m ", vm->core[i]);
@@ -45,18 +46,18 @@ void	print_core(t_vm *vm)
 	ft_putchar('\n');
 }
 
-void	print_t_vm(t_vm *vm)
+void				print_t_vm(t_vm *vm)
 {
 	ft_printf("__dans VM __\ndump:%d\nverbose:%d\n", vm->dump, vm->verbose);
 }
 
-void	print_t_plr(t_list_player *lplr)
+void				print_t_plr(t_list_player *lplr)
 {
-	t_list_player *tmp;
-	tmp = lplr;
-	char *buff;
+	t_list_player	*tmp;
+	char			*buff;
 
-	buff= NULL;
+	tmp = lplr;
+	buff = NULL;
 	while (tmp)
 	{
 		ft_printf("__dans BIN __\nnumplr:%u\nnom%s\nlast live:%d\n", tmp->plr->num_plyr,
@@ -70,16 +71,16 @@ void	print_t_plr(t_list_player *lplr)
 	}
 }
 
-void	print_t_bplr(t_base_player *bplr)
+void				print_t_bplr(t_base_player *bplr)
 {
 	ft_printf("\n__dans bplr__\nnb_plyr:%d\n", bplr->nb_plyr);
 	ft_printf("numplr1:%d\nnumplr2:%d\nnumplr3:%d\nnumplr4:%d\n", bplr->tab[0], bplr->tab[1],
-			bplr->tab[2], bplr->tab[3]);
+	bplr->tab[2], bplr->tab[3]);
 }
 
-void	print_t_ir(t_ir *tir)
+void				print_t_ir(t_ir *tir)
 {
-	int	i;
+	int				i;
 
 	i = 0;
 	ft_printf("\n__IR__\nirstr:");
@@ -99,10 +100,10 @@ void	print_t_ir(t_ir *tir)
 	ft_printf("\n");
 }
 
-void	print_t_proc(t_vm *vm)
+void				print_t_proc(t_vm *vm)
 {
-	t_process *tmp2;
-	int			i;
+	t_process		*tmp2;
+	int				i;
 
 	tmp2 = vm->proc;
 	while (tmp2)
@@ -129,13 +130,14 @@ void	print_t_proc(t_vm *vm)
 		tmp2 = tmp2->next;
 	}
 }
-void	print_t_cpu(t_vm *vm)
+
+void				print_t_cpu(t_vm *vm)
 {
 	ft_printf("___CPU___\ncur_cycle:%d\tcycle_to_check:%d\tcycle2die:%d\tnbchecks:%d\n",
 			vm->cpu.cur_cycle, vm->cpu.cycle_to_check, vm->cpu.cycle2die, vm->cpu.nbchecks);
-
 }
-void	ft_print(t_vm *vm)
+
+void				ft_print(t_vm *vm)
 {
 	print_t_cpu(vm);
 	print_t_vm(vm);
@@ -144,7 +146,7 @@ void	ft_print(t_vm *vm)
 	print_t_proc(vm);
 }
 
-void	print_corenum_plr(t_octet *core)
+void				print_corenum_plr(t_octet *core)
 {
 	int i;
 
@@ -153,14 +155,14 @@ void	print_corenum_plr(t_octet *core)
 	{
 		if (i % 64 == 0)
 			ft_printf("\n");
-		//printf(" %.2d", core->core[i]);
+// printf(" %.2d", core->core[i]);
 		ft_printf(" %.2d", core[i].num_plr);
 		i++;
 	}
 }
-void	print_corepc(t_octet *core)
+void				print_corepc(t_octet *core)
 {
-	int i;
+	int				i;
 
 	i = 0;
 	while (i < MEM_SIZE)
@@ -172,7 +174,7 @@ void	print_corepc(t_octet *core)
 		i++;
 	}
 }
-t_bin	*who_win(t_vm *vm)
+t_bin				*who_win(t_vm *vm)
 {
 	t_list_player	*lplr;
 	t_bin			*tmp;
@@ -191,7 +193,7 @@ t_bin	*who_win(t_vm *vm)
 	return (tmp);
 }
 
-void	print_options(void)
+void				print_options(void)
 {
 	ft_printf("____ OPTION _____\n\n-d n\t\tdump la memoire au cycle n\n");
 	ft_printf("-s n\t\tprint la memoire au cycle n et attend touche entre\n");
@@ -205,30 +207,26 @@ void	print_options(void)
 	ft_printf("\t\t\t\t16 : affiche deplacement du pc\n");
 }
 
-void		print_finish(t_vm *vm)
+void				print_finish(t_vm *vm)
 {
-	t_bin	*win;
-	int		tmp;
+	t_bin			*win;
+	int				tmp;
 
 	win = who_win(vm);
 	if (win->num_plyr < 0)
 		tmp = (-1 * win->num_plyr);
 	else
 		tmp = win->num_plyr;
-	ft_printf("Contestant %d (%s), has won !\n", tmp, win->prog_name); // merde si on a fait un -n
+	ft_printf("Contestant %d (%s), has won !\n", tmp, win->prog_name);
 	if (vm->verbose & 32 || vm->dump > 0)
-	{
-		//print_t_cpu(vm);
 		print_core(vm);
-//		print_t_proc(vm);
-	}
 }
 
-int		main(int argc, char **argv)
+int					main(int argc, char **argv)
 {
-	t_vm	vm;
-	t_sdl 	sdl;
-	// disp();
+	t_vm			vm;
+	t_sdl			sdl;
+
 	vm_init(&vm);
 	if (argc > 1)
 	{
@@ -236,16 +234,15 @@ int		main(int argc, char **argv)
 	}
 	else
 	{
-		//ft_error("Not enough arguments");
 		print_options();
-		return(0);
+		return (0);
 	}
 	ft_init_arena(&vm);
 	ft_init_lst_proc(&vm);
 	ft_print_header(&vm);
 	initSdl(&sdl);
 	cpu(&vm, &sdl);
-//system("clear");
+//  system("clear");
 //	print_t_proc(&vm);
 	print_finish(&vm);
 	print_t_plr(vm.bplr.lst_plyr);

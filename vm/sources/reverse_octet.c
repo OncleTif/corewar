@@ -6,15 +6,15 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:59:27 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 14:31:51 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/23 10:30:15 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/reverse_octet.h"
 
-char *r2oc(char *val)
+char			*r2oc(char *val)
 {
-	char	tmp;
+	char		tmp;
 
 	tmp = val[0];
 	val[0] = val[1];
@@ -22,9 +22,9 @@ char *r2oc(char *val)
 	return (val);
 }
 
-char *r4oc(char *val)
+char			*r4oc(char *val)
 {
-	char	tmp;
+	char		tmp;
 
 	tmp = val[0];
 	val[0] = val[3];
@@ -35,9 +35,9 @@ char *r4oc(char *val)
 	return (val);
 }
 
-union u_2o *r2o(union u_2o *val)
+union u_2o		*r2o(union u_2o *val)
 {
-	char	tmp;
+	char		tmp;
 
 	tmp = val->c[0];
 	val->c[0] = val->c[1];
@@ -45,9 +45,9 @@ union u_2o *r2o(union u_2o *val)
 	return (val);
 }
 
-union u_4o *r4o(union u_4o *val)
+union u_4o		*r4o(union u_4o *val)
 {
-	char	tmp;
+	char		tmp;
 
 	tmp = val->c[0];
 	val->c[0] = val->c[3];
@@ -58,10 +58,10 @@ union u_4o *r4o(union u_4o *val)
 	return (val);
 }
 
-short int	r2oi(short int val)
+short int		r2oi(short int val)
 {
 	union u_2o	u;
-	char	tmp;
+	char		tmp;
 
 	u.i = val;
 	tmp = u.c[0];
@@ -70,10 +70,10 @@ short int	r2oi(short int val)
 	return (u.i);
 }
 
-int	r4oi(int val)
+int				r4oi(int val)
 {
 	union u_4o	u;
-	char	tmp;
+	char		tmp;
 
 	u.i = val;
 	tmp = u.c[0];

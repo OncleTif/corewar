@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ocp.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/23 10:31:06 by ssicard           #+#    #+#             */
+/*   Updated: 2016/05/23 10:31:12 by ssicard          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/corewar.h"
 
 int		check_code(unsigned char ocp, int idx)
@@ -10,7 +22,7 @@ int		check_code(unsigned char ocp, int idx)
 	decal = 0;
 	while (decal < 8)
 	{
-		arg =  (ocp >> decal) & 3;
+		arg = (ocp >> decal) & 3;
 		if (arg == DIR_CODE && !idx)
 			ret = ret + 4;
 		else if (arg == REG_CODE)
@@ -33,13 +45,13 @@ int		check_code2(unsigned char *ir, int j)
 	{
 		return (i);
 	}
-	return(0);
+	return (0);
 }
 
 int		check_ocp(unsigned char *ir, t_ir *pir)
 {
 	int		ret;
-	int	j;
+	int		j;
 
 	j = 0;
 	ret = 1;
