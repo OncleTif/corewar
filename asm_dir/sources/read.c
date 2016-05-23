@@ -6,7 +6,7 @@
 /*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 19:18:32 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/23 10:50:43 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/23 16:58:00 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void		get_str(t_champ *c, char *tmp, char *str)
 		i = define_str(c, *tmp++, i, str);
 	if (*tmp == '"')
 		indic = 1;
+	if (indic && *(tmp + 1))
+		ft_error("Syntax error after a comment or name");
 	while (!indic)
 	{
 		if (get_next_line(c->fd, &line) < 1)
