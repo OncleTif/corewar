@@ -6,7 +6,7 @@
 #    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/22 23:04:44 by eozdek           ###   ########.fr        #
+#    Updated: 2016/05/23 13:41:55 by eozdek           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,8 @@ SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/ft_texture_sdl.c \
 		sources/ft_query_sdl.c \
 		sources/ft_render_sdl.c \
-		sources/ft_init_pc.c
+		sources/ft_init_pc.c \
+		sources/ft_simple_sdl.c \
 
 # sources/testdav.c \
 

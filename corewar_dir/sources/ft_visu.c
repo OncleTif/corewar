@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 03:17:11 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/22 01:24:12 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/23 14:16:01 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,35 @@ SDL_Color ft_make_color(Uint8 r, Uint8 g, Uint8 b)
 	return (c);
 }
 
-void	renderLast(t_sdl *sdl, t_vm *vm)
-{
-	(void)vm;
-	SDL_RenderCopy(sdl->renderer, sdl->lastTexture, NULL, &sdl->lastRect);
-}
+// void	renderLast(t_sdl *sdl, t_vm *vm)
+// {
+	// (void)vm;
+	// SDL_RenderCopy(sdl->renderer, sdl->lastT, NULL, &sdl->lastRect);
+// }
 
 void 	createLastTexture(t_sdl *sdl, t_vm *vm, int tmp, char *win)
 {
-	SDL_Surface *last;
+	SDL_Surface* last[3];
 	char *str;
-	char *str2;
+	int i;
 
+	i = 0;
 	(void)vm;
-	str = ft_strjoin("Contestant ", ft_itoa(tmp));
-	str = ft_strjoin(str, " ");
-	str2 = ft_strjoin(win, ", has won !");
-	str = ft_strjoin(str, str2);
-	last = TTF_RenderText_Blended(sdl->font, str, color2);
-	sdl->lastTexture = SurfaceToTexture(last, sdl->renderer);
-	SDL_QueryTexture(sdl->lastTexture, NULL, NULL, &sdl->lastRect.w, &sdl->lastRect.h);
-	sdl->lastRect.x = 1325;
-	sdl->lastRect.y = 1000;
+	ft_putendl("\n\n\n\n\n\nhello\n\n\n\n\n\n");
+	while (i < 3)
+	{
+		if (i == 0)
+			str = ft_strjoin("Contestant ", ft_itoa(tmp));
+		else if (i == 1)
+			str = ft_strjoin(win, ",");
+		else if (i == 2)
+			str = ft_strdup("has won !");
+		last[i] = TTF_RenderText_Blended(sdl->font, str, color2);
+		sdl->lastT[i] = SurfaceToTexture(last[i], sdl->renderer);
+		SDL_QueryTexture(sdl->lastT[i], NULL, NULL, &sdl->lastRect[i].w, &sdl->lastRect[i].h);
+		sdl->lastRect[i].x = 1325;
+		sdl->lastRect[i].y = 1000 + (i * 50);
+		i++;
+	}
+	ft_putendl("\n\n\n\n\n\nhello\n\n\n\n\n\n");
 }

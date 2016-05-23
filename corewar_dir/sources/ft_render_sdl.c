@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:25:56 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/22 22:01:12 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/23 14:18:44 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@ void	ft_render(t_sdl *sdl, t_vm *vm)
 
 	i = 0;
 	SDL_RenderCopy(sdl->renderer, sdl->solidTexture, NULL, &sdl->solidRect);
-	if (sdl->u == 1)
-	{
-		SDL_RenderCopy(sdl->renderer, sdl->lastTexture, NULL, &sdl->lastRect);
-	}
 	while (i < 5)
 	{
 		SDL_RenderCopy(sdl->renderer, sdl->textureTab[i], NULL, &sdl->textureRect[i]);
@@ -36,6 +32,15 @@ void	ft_render(t_sdl *sdl, t_vm *vm)
 			// SDL_RenderCopy(sdl->renderer, sdl->texturePlayer[i][2], NULL, &sdl->rectPlayer[i][2]);
 			i++;
 		}
+	if (sdl->u == 1)
+	{
+		while (i < 3)
+		{
+			SDL_RenderCopy(sdl->renderer, sdl->lastT[i], NULL, &sdl->lastRect[i]);
+			i++;
+		}
+		i = 0;
+	}
 }
 
 void 	ft_case_color(t_vm *vm, t_sdl *sdl, int i)

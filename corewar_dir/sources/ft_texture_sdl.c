@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:06:59 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/22 22:14:59 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/23 14:23:16 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,17 @@ void	CreateTextTextures(t_sdl *sdl, t_vm *vm)
 	solid = NULL;
 	win = NULL;
 	i = 0;
+	ft_putchar('c');
 	ft_QuerySolidTexture(sdl, solid);
+	ft_putchar('d');
 	ft_handleBaseTexture(sdl, vm, texture);
+	ft_putchar('e');
 	ft_handlePlayerTexture(sdl, vm);
+	ft_putchar('f');
 	ft_QueryBaseTexture(sdl);
+	ft_putchar('g');
 	ft_handleQueryPlayer(sdl, vm);
+	ft_putchar('h');
 	win = who_win(vm);
 	if (win->num_plyr < 0)
 		tmp = (-1 * win->num_plyr);

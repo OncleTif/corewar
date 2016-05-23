@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/22 01:24:04 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/23 14:19:37 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,11 @@ void init_sdl(t_sdl *sdl)
 int disp(t_sdl *sdl, t_vm *vm)
 {
 	if (sdl->aff % 23 == 0)
+	{
+		ft_putchar('a');
 		CreateTextTextures(sdl, vm);
+		ft_putchar('b');
+	}
 	SDL_SetRenderDrawColor(sdl->renderer, 127, 127, 127, 255);
 	SDL_RenderClear(sdl->renderer);
 	render_line(sdl, vm);

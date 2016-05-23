@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/22 22:12:10 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/23 13:56:58 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ struct s_sdl
 	int 		aff;
 	SDL_Rect solidRect;
 	SDL_Rect blendedRect;
-	SDL_Rect lastRect;
+	SDL_Rect lastRect[3];
 	SDL_Rect firstRect;
 	SDL_Window *window;
 	SDL_Renderer *renderer;
@@ -97,7 +97,7 @@ struct s_sdl
 	char *fontname;
 	SDL_Texture* solidTexture;
 	SDL_Texture* blendedTexture;
-	SDL_Texture* lastTexture;
+	SDL_Texture* lastT[3];
 	SDL_Texture* firstTexture;
 	SDL_Texture* textureTab[10];
 	SDL_Texture* texPlay[4][2];
@@ -371,4 +371,8 @@ t_bin	*who_win(t_vm *vm);
 void	print_options(void);
 void	print_finish(t_vm *vm);
 
+/*
+ft_simple_sdl
+*/
+void		ft_simple_sdl(t_sdl *sdl, t_vm *vm, int i);
 #endif
