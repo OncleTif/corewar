@@ -6,13 +6,13 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:06:59 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/22 01:06:57 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/24 16:55:49 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-SDL_Texture*	SurfaceToTexture(SDL_Surface* surf, SDL_Renderer *renderer)
+SDL_Texture*	surface_to_texture(SDL_Surface* surf, SDL_Renderer *renderer)
 {
 	SDL_Texture* text;
 
@@ -21,7 +21,7 @@ SDL_Texture*	SurfaceToTexture(SDL_Surface* surf, SDL_Renderer *renderer)
 	return text;
 }
 
-void			playerTexture(char *str, int nb, int j, t_sdl *sdl)
+void			player_texture(char *str, int nb, int j, t_sdl *sdl)
 {
 	if (j == 0 && nb == 0)
 		sdl->player[j][nb] = TTF_RenderText_Blended(sdl->font, str, color1);
@@ -33,11 +33,11 @@ void			playerTexture(char *str, int nb, int j, t_sdl *sdl)
 		sdl->player[j][nb] = TTF_RenderText_Blended(sdl->font, str, color4);
 	else
 		sdl->player[j][nb] = TTF_RenderText_Blended(sdl->font, str, textColor);
-	sdl->texturePlayer[j][nb] = SDL_CreateTextureFromSurface(sdl->renderer, sdl->player[j][nb]);
+	sdl->texPlay[j][nb] = SDL_CreateTextureFromSurface(sdl->renderer, sdl->player[j][nb]);
 	free(str);
 }
 
-void 	ft_handleBaseTexture(t_sdl *sdl, t_vm *vm, SDL_Surface* texture[5])
+void 			handle_base_texture(t_sdl *sdl, t_vm *vm, SDL_Surface* texture[5])
 {
 	int j;
 	char *str;
@@ -62,7 +62,7 @@ void 	ft_handleBaseTexture(t_sdl *sdl, t_vm *vm, SDL_Surface* texture[5])
 	}
 }
 
-int 			ft_handlePlayerTexture(t_sdl *sdl, t_vm *vm)
+int 			handle_player_texture(t_sdl *sdl, t_vm *vm)
 {
 	t_list_player *cur = vm->bplr.lst_plyr;
 	char *str;
@@ -76,18 +76,16 @@ int 			ft_handlePlayerTexture(t_sdl *sdl, t_vm *vm)
 		str = ft_strjoin("Player ", ft_itoa(j + 1));
 		str = ft_strjoin(str, " : ");
 		str = ft_strjoin(str, cur->plr->name);
-		playerTexture(str, 0, j, sdl);
+		player_texture(str, 0, j, sdl);
 		str = ft_strjoin("Last live : ", ft_itoa(cur->plr->last_live));
-		playerTexture(str, 1, j, sdl);
-		// str = ft_strjoin("Live in current period : ", " ");
-		// playerTexture(str, 2, j, sdl);
+		player_texture(str, 1, j, sdl);
 		cur = cur->next;
 		j++;
 	}
 	return (j);
 }
 
-void	CreateTextTextures(t_sdl *sdl, t_vm *vm)
+void			create_text_textures(t_sdl *sdl, t_vm *vm)
 {
 	SDL_Surface *solid;
 	SDL_Surface *texture[5];
@@ -99,15 +97,18 @@ void	CreateTextTextures(t_sdl *sdl, t_vm *vm)
 	solid = NULL;
 	win = NULL;
 	i = 0;
-	ft_QuerySolidTexture(sdl, solid);
-	ft_handleBaseTexture(sdl, vm, texture);
-	ft_handlePlayerTexture(sdl, vm);
-	ft_QueryBaseTexture(sdl);
-	ft_handleQueryPlayer(sdl, vm);
-	win = who_win(vm);
-	if (win->num_plyr < 0)
-		tmp = (-1 * win->num_plyr);
-	else
-		tmp = win->num_plyr;
-	createLastTexture(sdl, vm, tmp, win->prog_name);
+	ft_query_solid_texture(sdl, solid);
+	handle_base_texture(sdl, vm, texture);
+	handle_player_texture(sdl, vm);
+	ft_query_base_texture(sdl);
+	ft_handle_query_player(sdl, vm);
+	if (sdl->u == 1)
+	{
+		win = who_win(vm);
+		if (win->num_plyr < 0)
+			tmp = (-1 * win->num_plyr);
+		else
+			tmp = win->num_plyr;
+		create_last_texture(sdl, vm, tmp, win->prog_name);
+	}
 }

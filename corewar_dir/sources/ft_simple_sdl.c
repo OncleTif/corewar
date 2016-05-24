@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 11:37:06 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/23 11:39:49 by eozdek           ###   ########.fr       */
+/*   Created: 2016/05/23 11:18:19 by eozdek            #+#    #+#             */
+/*   Updated: 2016/05/24 18:01:46 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,21 @@
 
 void		ft_simple_sdl(t_sdl *sdl, t_vm *vm, int i)
 {
-	if (i == 0)
+	int j;
+
+	j = 0;
+	if (vm->visu == 1)
 	{
-		if (vm->visu == 1)
-			init_sdl(sdl);
-	}
-	else if (i == 1)
-	{
-		if (vm->visu == 1)
+		if (i == 0)
 		{
-			while (1)
-			{
-				sdl->u = 1;
-				disp(sdl, vm);
-			}
+				init_sdl(sdl);
+		}
+		else if (i == 1)
+		{
+			sdl->u = 1;
+			ft_disp(sdl, vm);
+			SDL_Delay(6000);
+			quit(sdl);
 		}
 	}
 }

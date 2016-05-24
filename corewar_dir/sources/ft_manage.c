@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_manage.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:10:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 14:24:57 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/22 22:04:13 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-
 
 /*
 ** checker si cest un ".cor" return 1, sinon 0
@@ -52,53 +51,6 @@ int		ft_is_number(char *str)
 	return (1);
 }
 
-/*
-** fonction recupere le dump et stock dans la T_vm
-*/
-
-
-int		ft_stock_color(t_vm *vm)
-{
-	vm->color = 1;
-	return (1);
-}
-
-int		ft_stock_aff(t_vm *vm)
-{
-	vm->aff = 1;
-	return (1);
-}
-
-int		ft_stock_verb(char **av, int *i, t_vm *vm)
-{
-	(*i)++;
-	if (!av[*i] || ft_isnumber(av[*i]) == 0)
-		ft_error("ARG is not a number");
-	vm->verbose = vm->verbose | (ft_atoi(av[*i]) & 63);
-	return (1);
-}
-
-int		ft_stock_step(char **av, int *i, t_vm *vm)
-{
-	(*i)++;
-	if (!av[*i] || ft_isnumber(av[*i]) == 0)
-		ft_error("ARG is not a number");
-	vm->step = ft_atoi(av[*i]);
-	if (vm->step < 1)
-		ft_error("step can't be fewer than 1");
-	return (1);
-}
-
-int		ft_stock_dump(char **av, int *i, t_vm *vm)
-{
-	(*i)++;
-	if (!av[*i] || ft_isnumber(av[*i]) == 0)
-		ft_error("ARG is not a number");
-	vm->dump = ft_atoi(av[*i]);
-	if (vm->dump < 1)
-		ft_error("dump can't be fewer than 1");
-	return (1);
-}
 /*
 ** fonction recupere le verbose et stock dans la T_vm
 */
