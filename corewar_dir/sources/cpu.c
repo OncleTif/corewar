@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/24 13:04:17 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/24 15:13:53 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int		decode_ir(t_process *proc)
 	if (proc->ir.opcode < 1 || proc->ir.opcode > 16)
 	{
 		proc->ir_error = 1;
-	if (g_op_tab[proc->ir.opcode - 1].carry)
+		if (g_op_tab[proc->ir.opcode - 1].carry)
 			proc->pcdelta = 2;
 		return (0);
 	}
@@ -148,14 +148,20 @@ int		parse_proc(t_vm *vm)
 			fetch_ir(tmp, vm->core);
 			if (decode_ir(tmp))
 				run(vm, tmp);
+			if(tmp->cycle_to_wait <= vm->cpu.cur_cycle)
+				ft_fetch_next(vm, tmp);
 		}
 		tmp = tmp->next;
 	}
 	tmp = vm->proc;
 	while (tmp)
 	{
-		if(tmp->cycle_to_wait <= vm->cpu.cur_cycle)
-			ft_fetch_next(vm, tmp);
+		if(tmp->cycle_to_wait <= vm->cpu.cur_cycle && vm->core[tmp->pc] > 0 && vm->core[tmp->pc] <= 16)
+		{
+			tmp->cycle_to_wait = vm->cpu.cur_cycle +
+				g_op_tab[vm->core[tmp->pc] - 1].cost;
+			tmp->ir.opcode = vm->core[tmp->pc];
+		}
 		tmp = tmp->next;
 	}
 	return (0);
