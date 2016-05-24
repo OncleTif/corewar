@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/24 15:13:53 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/24 15:29:46 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,23 @@ void	run(t_vm *vm, t_process *proc)
 		vm->ftab[proc->ir.opcode](vm, proc);
 }
 
+void	get_ops(t_vm *vm)
+{
+	t_process	*tmp;
+
+	tmp = vm->proc;
+	while (tmp)
+	{
+		if(tmp->cycle_to_wait <= vm->cpu.cur_cycle && vm->core[tmp->pc] > 0 && vm->core[tmp->pc] <= 16)
+		{
+			tmp->cycle_to_wait = vm->cpu.cur_cycle +
+				g_op_tab[vm->core[tmp->pc] - 1].cost;
+			tmp->ir.opcode = vm->core[tmp->pc];
+		}
+		tmp = tmp->next;
+	}
+}
+
 int		parse_proc(t_vm *vm)
 {
 	t_process	*tmp;
@@ -153,23 +170,14 @@ int		parse_proc(t_vm *vm)
 		}
 		tmp = tmp->next;
 	}
-	tmp = vm->proc;
-	while (tmp)
-	{
-		if(tmp->cycle_to_wait <= vm->cpu.cur_cycle && vm->core[tmp->pc] > 0 && vm->core[tmp->pc] <= 16)
-		{
-			tmp->cycle_to_wait = vm->cpu.cur_cycle +
-				g_op_tab[vm->core[tmp->pc] - 1].cost;
-			tmp->ir.opcode = vm->core[tmp->pc];
-		}
-		tmp = tmp->next;
-	}
+	get_ops(vm);
 	return (0);
 }
 
 int		cpu(t_vm *vm, t_sdl *sdl)
 {
 	ft_simple_sdl(sdl, vm, 0);
+	get_ops(vm);
 	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
 	{
 		CPU.cur_cycle += 1;
