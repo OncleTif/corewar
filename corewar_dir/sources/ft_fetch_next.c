@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:20:06 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/23 17:42:14 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/20 17:02:00 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_proc_init(t_vm *vm, t_process *proc)
 
 	proc->cycle_to_wait = 0;
 	nxt_pc = proc->pc + (proc->pcdelta % MEM_SIZE);
-	if (vm->verbose & 16 && proc->pcdelta != MEM_SIZE && (proc->ir.irstr[0] != 9 || !proc->carry))
+	if (vm->verbose & 16 && proc->pcdelta != MEM_SIZE && (proc->ir.opcode != 9 || !proc->carry))
 	{
 		ft_printf("ADV %d (%#0.4x ->", proc->pcdelta, proc->pc);
 		ft_printf(" %#0.4x) ", nxt_pc);

@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 14:21:53 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/20 18:32:35 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 void	ft_init_num_plr(t_base_player *player, t_list_player *tmp)
 {
 	tmp->plr->num_plyr = player->tab[player->nb_plyr];
+	tmp->plr->nbr_live = 0;
 }
 
 /*
