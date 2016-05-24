@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:22:45 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/24 13:04:53 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/24 14:51:18 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,47 +50,44 @@ int		check_live2(t_vm *vm)
 	t_cpu			*tmp;
 	t_list_player	*ptr;
 	t_process		*ptr2;
-	int				i;
 
-	i = 1;
 	ptr = vm->bplr.lst_plyr;
 	tmp = &vm->cpu;
 	while (ptr)
 	{
-		if ((ptr->plr->nbr_live > NBR_LIVE || tmp->nbchecks > MAX_CHECKS) && i)
+		if ((vm->nbr_live >= NBR_LIVE) || tmp->nbchecks == MAX_CHECKS)
 		{
-			i = 0;
 			tmp->cycle2die -= CYCLE_DELTA;
 			vm->nbr_live = 0;
+			//if (tmp->nbchecks == MAX_CHECKS)
 			tmp->nbchecks = 0;
 
 			ptr = vm->bplr.lst_plyr;
-/*			while (ptr)
+			while (ptr)
 			{
 			ptr->plr->nbr_live = 0;
 			ptr = ptr->next;
 			}
-			*/
+			ptr2 = vm->proc;
+			while (ptr2)
+			{
+				ptr2->live = 0;
+				ptr2 = ptr2->next;
+			}
 			if (vm->verbose & 2)
 				ft_printf("Cycle to die is now %d\n", tmp->cycle2die);
 			break;
 		}
-	ptr->plr->nbr_live = 0;
 		ptr = ptr->next;
 	}
-	/*		ptr = vm->bplr.lst_plyr;
+			ptr = vm->bplr.lst_plyr;
 		while (ptr)
 			{
 			ptr->plr->nbr_live = 0;
 			ptr = ptr->next;
 			}
-*/
-	ptr2 = vm->proc;
-	while (ptr2)
-	{
-		ptr2->live = 0;
-		ptr2 = ptr2->next;
-	}
+
+
 	return (0);
 }
 
