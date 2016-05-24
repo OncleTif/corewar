@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/24 11:19:23 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/24 11:24:46 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ void	ft_ldi(t_vm *vm, t_process *proc)
 		proc->ir.code_args[0] = T_IND;
 		proc->ir.code_args[1] = T_IND;
 		ft_print_operations(proc, arg);
-		ft_putchar('\n');
+		ft_printf("\n       | -> load from %d + %d = %d (with pc and mod %d)\n",
+				arg[0], arg[1], arg[0] + arg[1], (((arg[0] + arg[1]) % IDX_MOD) + proc->pc));
 	}
 }
 
