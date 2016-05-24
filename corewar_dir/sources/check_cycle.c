@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:22:45 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 18:40:28 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/24 12:41:14 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,20 @@ int		check_live2(t_vm *vm)
 	tmp = &vm->cpu;
 	while (ptr)
 	{
-		//ft_putnbrendl(ptr->live);
 		if ((ptr->plr->nbr_live >= NBR_LIVE || tmp->nbchecks == MAX_CHECKS) && i)
 		{
 			i = 0;
 			tmp->cycle2die -= CYCLE_DELTA;
 			vm->nbr_live = 0;
 			tmp->nbchecks = 0;
-			//to_kill_or_not_to_kill_proc(vm);
+
+			ptr = vm->bplr.lst_plyr;
+/*			while (ptr)
+			{
+			ptr->plr->nbr_live = 0;
+			ptr = ptr->next;
+			}
+			*/
 			if (vm->verbose & 2)
 				ft_printf("Cycle to die is now %d\n", tmp->cycle2die);
 			break;
@@ -72,6 +78,13 @@ int		check_live2(t_vm *vm)
 		ptr->plr->nbr_live = 0;
 		ptr = ptr->next;
 	}
+/*			ptr = vm->bplr.lst_plyr;
+			while (ptr)
+			{
+			ptr->plr->nbr_live = 0;
+			ptr = ptr->next;
+			}
+*/
 	ptr2 = vm->proc;
 	while (ptr2)
 	{
@@ -79,9 +92,6 @@ int		check_live2(t_vm *vm)
 		ptr2 = ptr2->next;
 	}
 	return (0);
-
-
-
 }
 
 int		check_cycle(t_vm *vm)
