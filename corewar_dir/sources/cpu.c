@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/24 15:29:46 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/24 15:48:31 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,8 @@ void	get_ops(t_vm *vm)
 	tmp = vm->proc;
 	while (tmp)
 	{
-		if(tmp->cycle_to_wait <= vm->cpu.cur_cycle && vm->core[tmp->pc] > 0 && vm->core[tmp->pc] <= 16)
+		if (tmp->cycle_to_wait <= vm->cpu.cur_cycle &&
+				vm->core[tmp->pc] > 0 && vm->core[tmp->pc] <= 16)
 		{
 			tmp->cycle_to_wait = vm->cpu.cur_cycle +
 				g_op_tab[vm->core[tmp->pc] - 1].cost;
