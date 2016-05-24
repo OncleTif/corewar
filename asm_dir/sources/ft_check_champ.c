@@ -6,11 +6,25 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 11:21:09 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/17 14:49:00 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/24 16:21:12 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
+
+int			check_str(t_champ *c)
+{
+	int		i;
+
+	i = 0;
+	while (c->name[i])
+	{
+		if (ft_strchr(LABEL_CHARS, c->name[i]) == NULL)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 void	ft_check_champ(t_champ *chp)
 {
