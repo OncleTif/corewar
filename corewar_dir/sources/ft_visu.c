@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 03:17:11 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/24 12:53:40 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/24 17:35:37 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void		init_struct_sdl(t_sdl *sdl)
 	sdl->tplayer = 0;
 	sdl->u = 0;
 	sdl->aff = 0;
+	sdl->speed = 0;
+	sdl->pause = -1;
 	sdl->s = 0;
 	sdl->window = NULL;
 	sdl->renderer = NULL;
@@ -82,17 +84,27 @@ void		ft_poll_event(t_sdl *sdl)
 			if (sdl->u == 0)
 				exit(0);
 			else
-			{
 				sdl->u = 0;
-			}
 		}
 		else if (sdl->event.key.keysym.sym == SDLK_p)
-		{
 			sdl->tplayer++;
-		}
 		else if (sdl->event.key.keysym.sym == SDLK_o)
-		{
 			sdl->tplayer = 0;
+		else if (sdl->event.key.keysym.sym == SDLK_KP_PLUS)
+			sdl->speed -= sdl->speed - 5 >= 0 ? 5 : 0;
+		else if (sdl->event.key.keysym.sym == SDLK_KP_MINUS)
+			sdl->speed += sdl->speed + 5 < 60 ? 5 : 0;
+		else if (sdl->event.key.keysym.sym == SDLK_SPACE)
+		{
+			if (sdl->pause == 1)
+			{
+				sdl->pause = 0;
+			}
+			else
+			{
+				sdl->pause = 1;
+			}
+			ft_putnbrendl(sdl->pause);
 		}
 	}
 }

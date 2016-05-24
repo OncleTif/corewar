@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/24 12:43:36 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/24 17:33:19 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,19 +161,25 @@ int		cpu(t_vm *vm, t_sdl *sdl)
 	ft_simple_sdl(sdl, vm, 0);
 	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
 	{
-		CPU.cur_cycle += 1;
-		if (vm->verbose & 2)
-			ft_printf("It is now cycle %d\n", vm->cpu.cur_cycle);
-		parse_proc(vm);
-		if (check_cycle(vm))
-			break ;
-		if ((vm->step) && (vm->cpu.cur_cycle % vm->step == 0))
+		if (sdl->pause != 0)
 		{
-			print_core(vm);
-			ft_wait();
+			CPU.cur_cycle += 1;
+			if (vm->verbose & 2)
+				ft_printf("It is now cycle %d\n", vm->cpu.cur_cycle);
+			parse_proc(vm);
+			if (check_cycle(vm))
+				break ;
+			if ((vm->step) && (vm->cpu.cur_cycle % vm->step == 0))
+			{
+				print_core(vm);
+				ft_wait();
+			}
+			if (vm->visu == 1)
+				ft_disp(sdl, vm);
+			if (sdl->speed != 0)
+				SDL_Delay(sdl->speed);
 		}
-		if (vm->visu == 1)
-			ft_disp(sdl, vm);
+		ft_poll_event(sdl);
 	}
 	ft_simple_sdl(sdl, vm, 1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:06:59 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/24 13:00:22 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/24 16:55:49 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,13 @@ void			create_text_textures(t_sdl *sdl, t_vm *vm)
 	handle_player_texture(sdl, vm);
 	ft_query_base_texture(sdl);
 	ft_handle_query_player(sdl, vm);
-	win = who_win(vm);
-	if (win->num_plyr < 0)
-		tmp = (-1 * win->num_plyr);
-	else
-		tmp = win->num_plyr;
-	create_last_texture(sdl, vm, tmp, win->prog_name);
+	if (sdl->u == 1)
+	{
+		win = who_win(vm);
+		if (win->num_plyr < 0)
+			tmp = (-1 * win->num_plyr);
+		else
+			tmp = win->num_plyr;
+		create_last_texture(sdl, vm, tmp, win->prog_name);
+	}
 }
