@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:22:45 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/24 12:41:14 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/24 13:04:53 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		check_live2(t_vm *vm)
 	tmp = &vm->cpu;
 	while (ptr)
 	{
-		if ((ptr->plr->nbr_live >= NBR_LIVE || tmp->nbchecks == MAX_CHECKS) && i)
+		if ((ptr->plr->nbr_live > NBR_LIVE || tmp->nbchecks > MAX_CHECKS) && i)
 		{
 			i = 0;
 			tmp->cycle2die -= CYCLE_DELTA;
@@ -75,11 +75,11 @@ int		check_live2(t_vm *vm)
 				ft_printf("Cycle to die is now %d\n", tmp->cycle2die);
 			break;
 		}
-		ptr->plr->nbr_live = 0;
+	ptr->plr->nbr_live = 0;
 		ptr = ptr->next;
 	}
-/*			ptr = vm->bplr.lst_plyr;
-			while (ptr)
+	/*		ptr = vm->bplr.lst_plyr;
+		while (ptr)
 			{
 			ptr->plr->nbr_live = 0;
 			ptr = ptr->next;

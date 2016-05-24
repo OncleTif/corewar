@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cpu.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 17:50:47 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/24 13:04:17 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,12 @@ int		parse_proc(t_vm *vm)
 			if (decode_ir(tmp))
 				run(vm, tmp);
 		}
-		if (tmp->cycle_to_wait <= vm->cpu.cur_cycle)
+		tmp = tmp->next;
+	}
+	tmp = vm->proc;
+	while (tmp)
+	{
+		if(tmp->cycle_to_wait <= vm->cpu.cur_cycle)
 			ft_fetch_next(vm, tmp);
 		tmp = tmp->next;
 	}
