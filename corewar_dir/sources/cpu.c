@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/23 19:00:41 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/24 12:43:36 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ int		cpu(t_vm *vm, t_sdl *sdl)
 			ft_wait();
 		}
 		if (vm->visu == 1)
-			disp(sdl, vm);
+			ft_disp(sdl, vm);
 	}
 	ft_simple_sdl(sdl, vm, 1);
 	return (0);

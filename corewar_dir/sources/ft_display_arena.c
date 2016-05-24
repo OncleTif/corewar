@@ -6,13 +6,13 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/23 19:06:10 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/24 12:54:06 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int		ft_setup_ttf_david_me_casse_les_couilles_pour_changer_de_nom_cette_fonction_qui_etait_a_la_base_Setup_TTF(t_sdl *sdl)
+int		ft_setup_ttf(t_sdl *sdl)
 {
 	if (TTF_Init() == -1)
 	{
@@ -36,7 +36,8 @@ void	init(SDL_Window **window, SDL_Renderer **renderer)
 	SDL_Init(SDL_INIT_VIDEO);
 	x = SDL_WINDOWPOS_CENTERED;
 	y = SDL_WINDOWPOS_CENTERED;
-	*window = SDL_CreateWindow("SDL Window", x, y, 1800, 1500, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+	*window = SDL_CreateWindow("SDL Window", x, y, 1800, 1500,
+	SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 	*renderer = SDL_CreateRenderer(*window, -1, SDL_RENDERER_ACCELERATED);
 }
 
@@ -47,17 +48,17 @@ void	quit(t_sdl *sdl)
 	SDL_Quit();
 }
 
-void init_sdl(t_sdl *sdl)
+void	init_sdl(t_sdl *sdl)
 {
 	init(&sdl->window, &sdl->renderer);
-	ft_setup_ttf_david_me_casse_les_couilles_pour_changer_de_nom_cette_fonction_qui_etait_a_la_base_Setup_TTF(sdl);
+	ft_setup_ttf(sdl);
 }
 
-int disp(t_sdl *sdl, t_vm *vm)
+int		ft_disp(t_sdl *sdl, t_vm *vm)
 {
 	if (sdl->aff % 23 == 0)
 	{
-		CreateTextTextures(sdl, vm);
+		create_text_textures(sdl, vm);
 	}
 	SDL_SetRenderDrawColor(sdl->renderer, 127, 127, 127, 255);
 	SDL_RenderClear(sdl->renderer);
@@ -68,7 +69,7 @@ int disp(t_sdl *sdl, t_vm *vm)
 	SDL_RenderDrawLine(sdl->renderer, 1750, 10, 1750, 1300);
 	SDL_RenderDrawLine(sdl->renderer, 1325, 1300, 1750, 1300);
 	SDL_RenderPresent(sdl->renderer);
-	ft_pollEvent(sdl);
+	ft_poll_event(sdl);
 	sdl->aff++;
 	return (0);
 }
