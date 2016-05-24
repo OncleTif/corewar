@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/20 14:23:10 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/24 11:19:23 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	ft_ldi(t_vm *vm, t_process *proc)
 	proc->reg[proc->ir.args[2]] = val;
 	if (vm->verbose & 4)
 	{
+		proc->ir.code_args[0] = T_IND;
+		proc->ir.code_args[1] = T_IND;
 		ft_print_operations(proc, arg);
 		ft_putchar('\n');
 	}
