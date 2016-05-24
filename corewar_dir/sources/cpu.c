@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/24 15:48:31 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/24 16:02:08 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ int		parse_proc(t_vm *vm)
 	tmp = vm->proc;
 	while (tmp)
 	{
-		if (tmp->cycle_to_wait == vm->cpu.cur_cycle)
+		if (tmp->cycle_to_wait <= vm->cpu.cur_cycle)
 		{
 			fetch_ir(tmp, vm->core);
 			if (decode_ir(tmp))
