@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:29:43 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/19 16:16:09 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/24 10:14:51 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_kill_proc(t_vm *vm, t_process *proc)
 	if (vm->verbose & 8)
 		ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n", proc->num,
 				vm->cpu.cur_cycle - proc->lst_live, vm->cpu.cycle2die);
-	while (*ptr)
+/*	while (*ptr)
 	{
 		if (*ptr == proc)
 		{
@@ -30,7 +30,13 @@ void	ft_kill_proc(t_vm *vm, t_process *proc)
 			break ; // pourquoi ca segfault sans break: no idea
 		}
 		ptr = &((*ptr)->next);
-	}
+	}*/
+	while (*ptr && *ptr != proc)
+		ptr = &((*ptr)->next);
+	if (*ptr)
+			*ptr = proc->next;
+			vm->data[proc->pc].pc--;
+			ft_memdel((void**)&proc);
 }
 
 int	to_kill_or_not_to_kill_proc(t_vm *vm)
