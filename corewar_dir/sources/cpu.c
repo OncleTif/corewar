@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/24 18:01:06 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/25 10:32:30 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,13 @@ int		decode_ir(t_process *proc)
 	unsigned char	*ir;
 
 	ir = proc->ir.irstr;
-	if (proc->ir.opcode < 1 || proc->ir.opcode > 16)
+	if (proc->ir.irstr[0] < 1 || proc->ir.irstr[0] > 16)
 	{
 		proc->ir_error = 1;
 		if (g_op_tab[proc->ir.opcode - 1].carry)
 			proc->pcdelta = 2;
+		else
+			proc->pcdelta = 0;
 		return (0);
 	}
 	//proc->ir.opcode = ir[0];
@@ -141,13 +143,16 @@ void	get_ops(t_vm *vm)
 	tmp = vm->proc;
 	while (tmp)
 	{
-		if (tmp->cycle_to_wait <= vm->cpu.cur_cycle &&
+		if (tmp->cycle_to_wait < vm->cpu.cur_cycle &&
 				vm->core[tmp->pc] > 0 && vm->core[tmp->pc] <= 16)
 		{
 			tmp->cycle_to_wait = vm->cpu.cur_cycle +
-				g_op_tab[vm->core[tmp->pc] - 1].cost;
+				g_op_tab[vm->core[tmp->pc] - 1].cost - 1;
 			tmp->ir.opcode = vm->core[tmp->pc];
+//			ft_printf("found a %s at pc %d\n", g_op_tab[vm->core[tmp->pc] - 1].name, tmp->pc);
 		}
+//		else
+//			ft_printf("not found cause cycle to wait is %d and cur cycle is %d\n",tmp->cycle_to_wait, vm->cpu.cur_cycle);
 		tmp = tmp->next;
 	}
 }
@@ -159,26 +164,36 @@ int		parse_proc(t_vm *vm)
 
 	i = 0;
 	tmp = vm->proc;
+	get_ops(vm);
 	while (tmp)
 	{
+		if (tmp->cycle_to_wait < vm->cpu.cur_cycle &&
+				vm->core[tmp->pc] > 0 && vm->core[tmp->pc] <= 16)
+		{
+			tmp->cycle_to_wait = vm->cpu.cur_cycle +
+				g_op_tab[vm->core[tmp->pc] - 1].cost - 1;
+			tmp->ir.opcode = vm->core[tmp->pc];
+//			ft_printf("found a %s at pc %d\n", g_op_tab[vm->core[tmp->pc] - 1].name, tmp->pc);
+		}
 		if (tmp->cycle_to_wait <= vm->cpu.cur_cycle)
 		{
 			fetch_ir(tmp, vm->core);
 			if (decode_ir(tmp))
 				run(vm, tmp);
-			if(tmp->cycle_to_wait <= vm->cpu.cur_cycle)
-				ft_fetch_next(vm, tmp);
+			ft_fetch_next(vm, tmp);
 		}
+//		else
+//			ft_printf("cycle %d, pc : %d, opcode : %d, cycle to wait : %d\n", vm->cpu.cur_cycle, tmp->pc, vm->core[tmp->pc], tmp->cycle_to_wait);
 		tmp = tmp->next;
 	}
-	get_ops(vm);
 	return (0);
 }
 
 int		cpu(t_vm *vm, t_sdl *sdl)
 {
 	ft_simple_sdl(sdl, vm, 0);
-	get_ops(vm);
+//	get_ops(vm);
+//	ft_putendl("after op init");
 	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
 	{
 		CPU.cur_cycle += 1;

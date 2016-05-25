@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 16:20:06 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/24 15:20:48 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/25 10:32:07 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	ft_proc_init(t_vm *vm, t_process *proc)
 	proc->pc = nxt_pc % MEM_SIZE;
 	vm->data[proc->pc].pc++;
 	proc->pcdelta = 0;
+	proc->ir.opcode = 0;
+	//	get_ops(vm);
 }
 
 void	ft_fetch_next(t_vm *vm, t_process *proc)
@@ -53,5 +55,6 @@ void	ft_fetch_next(t_vm *vm, t_process *proc)
 	else
 	{
 		proc->cycle_to_wait = 0;
+		ft_putendl("raz du cycle to wait");
 	}
 }

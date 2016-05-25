@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 17:19:24 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/22 22:10:10 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/25 09:44:20 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_init_lst_proc(t_vm *vm)
 		if (!(tmp = (t_process*)ft_memalloc(sizeof(t_process))))
 			ft_error("error malloc");
 		ft_init_proc(lst_play->plr, tmp);
-		ft_fetch_next(vm, tmp);
+//		ft_fetch_next(vm, tmp);
 		tmp->num = vm->nb_proc;
 		vm->nb_proc += 1;
 		tmp->next = vm->proc;
