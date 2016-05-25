@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 19:14:49 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/22 19:15:25 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/25 18:48:59 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,7 @@ void		print_finish(t_vm *vm)
 		tmp = (-1 * win->num_plyr);
 	else
 		tmp = win->num_plyr;
-	ft_printf("Contestant %d (%s), has won !\n", tmp, win->prog_name); // merde si on a fait un -n
+	ft_printf("Contestant %d (%s), has won !\n", tmp, win->prog_name);
 	if (vm->verbose & 32 || vm->dump > 0)
-	{
-		//print_t_cpu(vm);
 		print_core(vm);
-//		print_t_proc(vm);
-	}
 }
