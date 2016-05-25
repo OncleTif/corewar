@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
+#    By: djoly <djoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/24 17:59:53 by eozdek           ###   ########.fr        #
+#    Updated: 2016/05/25 18:42:11 by djoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/ft_wait.c \
 		sources/ft_print_operations.c \
 		sources/ft_print_header.c \
+		sources/ft_print_core.c \
 		sources/ft_display_arena.c \
 		sources/ft_visu.c \
 		sources/ft_texture_sdl.c \
