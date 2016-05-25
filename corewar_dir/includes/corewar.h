@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/25 19:02:12 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/25 19:26:53 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ struct s_sdl
 	SDL_Texture* lastT[3];
 	SDL_Texture* firstTexture;
 	SDL_Texture* textureTab[10];
-	SDL_Texture* texPlay[4][2];
-	SDL_Surface* player[4][2];
+	SDL_Texture* texPlay[4][3];
+	SDL_Surface* player[4][3];
 	SDL_Event event;
 	SDL_Rect rect[4096];
 };
