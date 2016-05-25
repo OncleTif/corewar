@@ -6,38 +6,11 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/25 19:03:29 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/25 19:08:14 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-
-void	print_t_plr(t_list_player *lplr)
-{
-	t_list_player *tmp;
-	tmp = lplr;
-	char *buff;
-
-	buff= NULL;
-	while (tmp)
-	{
-		ft_printf("__dans BIN __\nnumplr:%u\nnom%s\nlast live:%d\n", tmp->plr->num_plyr,
-		tmp->plr->prog_name, tmp->plr->last_live);
-		print_magic(*tmp->plr, buff);
-		print_prog_name(*tmp->plr);
-		print_prog_size(*tmp->plr, buff);
-		print_comment(*tmp->plr);
-		print_prog(*tmp->plr);
-		tmp = tmp->next;
-	}
-}
-
-void	print_t_bplr(t_base_player *bplr)
-{
-	ft_printf("\n__dans bplr__\nnb_plyr:%d\n", bplr->nb_plyr);
-	ft_printf("numplr1:%d\nnumplr2:%d\nnumplr3:%d\nnumplr4:%d\n", bplr->tab[0], bplr->tab[1],
-			bplr->tab[2], bplr->tab[3]);
-}
 
 void	print_corenum_plr(t_octet *core)
 {

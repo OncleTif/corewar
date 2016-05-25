@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 19:17:03 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/25 18:53:31 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/25 19:09:11 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,27 +77,4 @@ void				print_t_bplr(t_base_player *bplr)
 	ft_printf("\n__dans bplr__\nnb_plyr:%d\n", bplr->nb_plyr);
 	ft_printf("numplr1:%d\nnumplr2:%d\nnumplr3:%d\nnumplr4:%d\n",
 			bplr->tab[0], bplr->tab[1], bplr->tab[2], bplr->tab[3]);
-}
-
-void				print_t_ir(t_ir *tir)
-{
-	int				i;
-
-	i = 0;
-	ft_printf("\n__IR__\nirstr:");
-	while (i < 14)
-	{
-		ft_printf("%.2x ", (unsigned char)tir->irstr[i]);
-		i++;
-	}
-	ft_printf("opcode:%d ocp:%x index:%d nb_arg:%d\n", tir->opcode, tir->ocp,
-			tir->index, tir->nb_arg);
-	i = 0;
-	while (i < 3)
-	{
-		ft_printf("I = %d, TYPE => %x, CODE => %x, ARGS => %x\n", i,
-				tir->types_args[i], tir->code_args[i], tir->args[i]);
-		i++;
-	}
-	ft_printf("\n");
 }
