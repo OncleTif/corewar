@@ -6,7 +6,7 @@
 #    By: djoly <djoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/25 18:42:11 by djoly            ###   ########.fr        #
+#    Updated: 2016/05/25 19:00:12 by tmanet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/ft_render_sdl.c \
 		sources/ft_simple_sdl.c \
 		sources/ft_stock_dump.c \
-# sources/testdav.c \
+		sources/arguments.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -73,9 +73,6 @@ $(LIB):
 	make -C ../libft/
 
 $(NAME): $(LIB) $(OBJ)
-	# $(CC) $(FLAGS) -o $@ $(OBJ) $(LIB)
-	#@rpath/../SDL
-	#@executable_path/../SDL/
 	$(CC) $(SDL2) $(SDL_TTF) $(SDL_IMAGE) $(FRAMEWORK) $(FLAGS) -o $@ $(OBJ) $(LIB) $(FRAMEWORK_RELATIVE_PATH)
 
 %.o: %.c
