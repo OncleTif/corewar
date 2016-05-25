@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/25 11:39:27 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/25 11:49:58 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		decode_ir(t_process *proc)
 	unsigned char	*ir;
 
 	ir = proc->ir.irstr;
-	if (proc->ir.irstr[0] < 1 || proc->ir.irstr[0] > 16)
+	if (proc->ir.opcode < 1 || proc->ir.opcode > 16)
 	{
 		proc->ir_error = 1;
 		if (proc->ir.opcode > 0 && proc->ir.opcode <= 16 && g_op_tab[proc->ir.opcode - 1].carry)
