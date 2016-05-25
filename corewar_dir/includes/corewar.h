@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/25 19:26:53 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/25 20:17:21 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,10 @@ struct s_sdl
 	int			u;
 	int			s;
 	int 		aff;
+	int			mod;
 	int			speed;
 	int			pause;
-	char *fontname;
+	char		*fontname;
 	SDL_Rect solidRect;
 	SDL_Rect blendedRect;
 	SDL_Rect lastRect[3];

@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 03:17:11 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/25 19:22:42 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/25 20:19:12 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void		init_struct_sdl(t_sdl *sdl)
 	sdl->u = 0;
 	sdl->aff = 0;
 	sdl->speed = 5;
+	sdl->mod = 23;
 	sdl->pause = -1;
 	sdl->s = 0;
 	sdl->window = NULL;
@@ -78,9 +79,21 @@ void		ft_poll_event(t_sdl *sdl)
 				sdl->u = 0;
 		}
 		else if (sdl->event.key.keysym.sym == SDLK_KP_PLUS)
+		{
 			sdl->speed -= sdl->speed - 5 >= 0 ? 5 : 0;
+			if (sdl->speed == 0)
+				sdl->mod = 47;
+			else
+				sdl->mod = 23;
+		}
 		else if (sdl->event.key.keysym.sym == SDLK_KP_MINUS)
+		{
 			sdl->speed += sdl->speed + 5 < 60 ? 5 : 0;
+			if (sdl->speed == 0)
+				sdl->mod = 47;
+			else
+				sdl->mod = 23;
+		}
 		else if (sdl->event.key.keysym.sym == SDLK_SPACE)
 		{
 			if (sdl->pause == 1)
