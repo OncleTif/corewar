@@ -33,7 +33,7 @@ void	ft_stock_prog_size(int fd, char *buff, t_bin *plr)
 		ft_error("error READ prog_size");
 	buff[ret] = '\0';
 	plr->prog_size = (*((int *)buff));
-	if (r4oi(plr->prog_size) >= CHAMP_MAX_SIZE)
+	if (r4oi(plr->prog_size) > CHAMP_MAX_SIZE)
 		ft_error("Champs exceeded CHAMP_MAX_SIZE");
 	// print_prog_size(*plr, buff);
 }

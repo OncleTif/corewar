@@ -6,49 +6,24 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:22:45 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/25 14:24:32 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/25 18:07:06 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-/*
-int		check_live(t_vm *vm)
+
+static void		plr_live0(t_list_player *lplr)
 {
-	t_cpu	*tmp;
-	t_process	*ptr;
-
-	tmp = &vm->cpu;
-	ptr = vm->proc;
-
-	while (ptr)
+	while (lplr)
 	{
-		//ft_putnbrendl(ptr->live);
-		if (ptr->live >= NBR_LIVE || tmp->nbchecks == MAX_CHECKS)
-		{
-			tmp->cycle2die -= CYCLE_DELTA;
-			tmp->nbchecks = 0;
-			//to_kill_or_not_to_kill_proc(vm);
-			if (vm->verbose & 2)
-				ft_printf("Cycle to die is now %d\n", tmp->cycle2die);
-			break;
-		}
-		ptr->live = 0;
-		ptr = ptr->next;
+		lplr->plr->nbr_live = 0;
+		lplr = lplr->next;
 	}
-	ptr = vm->proc;
-	while (ptr)
-	{
-		ptr->live = 0;
-		ptr = ptr->next;
-	}
-	vm->nbr_live = 0;
-	return (0);
 }
-*/
-int		check_live2(t_vm *vm)
+
+static int		check_live2(t_vm *vm)
 {
 	t_cpu			*pcpu;
-	t_list_player	*lplr;
 	t_process		*pproc;
 
 	pcpu = &vm->cpu;
@@ -65,17 +40,12 @@ int		check_live2(t_vm *vm)
 		pproc->live = 0;
 		pproc = pproc->next;
 	}
-	lplr = vm->bplr.lst_plyr;
-	while (lplr)
-	{
-		lplr->plr->nbr_live = 0;
-		lplr = lplr->next;
-	}
+	plr_live0(vm->bplr.lst_plyr);
 	vm->nbr_live = 0;
 	return (0);
 }
 
-int		check_cycle(t_vm *vm)
+int				check_cycle(t_vm *vm)
 {
 	t_cpu	*tmp;
 
