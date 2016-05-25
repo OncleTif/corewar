@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 22:02:12 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/25 09:43:45 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/25 18:22:41 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ t_process	*ft_add_link(t_process *beg, int plr, int pc, t_process *father)
 	return (tmp);
 }
 
-void	ft_init_pc(int plr, int pc, t_vm *vm, t_process *proc)
+void		ft_init_pc(int plr, int pc, t_vm *vm, t_process *proc)
 {
 	vm->proc = ft_add_link(vm->proc, plr, pc, proc);
 	vm->proc->num = vm->nb_proc++;
-//	ft_fetch_next(vm, vm->proc);
 }
