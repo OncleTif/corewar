@@ -6,15 +6,11 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/20 18:32:35 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/25 18:36:33 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-
-/*
-fonction recupere le num du plr et stock dans la T_vm
-*/
 
 int		ft_stock_num_plr(char **av, int *i, t_vm *vm)
 {
@@ -27,10 +23,6 @@ int		ft_stock_num_plr(char **av, int *i, t_vm *vm)
 	ft_check_other_num(BPLR);
 	return (0);
 }
-
-/*
-fonction pour gerer les bonus et ARGS
-*/
 
 void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 {
@@ -50,19 +42,11 @@ void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 		vm->visu = 1;
 }
 
-/*
-** INIT numero du plr
-*/
-
 void	ft_init_num_plr(t_base_player *player, t_list_player *tmp)
 {
 	tmp->plr->num_plyr = player->tab[player->nb_plyr];
 	tmp->plr->nbr_live = 0;
 }
-
-/*
-** alloue de la memoire pour une nouvelle cellule et met de l'information dedans,
-*/
 
 void	ft_mem_champs(t_base_player *player, char *av)
 {
@@ -73,19 +57,14 @@ void	ft_mem_champs(t_base_player *player, char *av)
 	tmp->plr = (t_bin *)ft_memalloc(sizeof(t_bin));
 	ft_open_champion(av, tmp->plr);
 	lplr = player->lst_plyr;
-
-	while(lplr && lplr->next)
+	while (lplr && lplr->next)
 		lplr = lplr->next;
-	if(!lplr)
+	if (!lplr)
 		player->lst_plyr = tmp;
 	else
 		lplr->next = tmp;
 	ft_init_num_plr(player, tmp);
 }
-
-/*
-** gerer chaque arguments, voir si cest un ".cor" (rentre dans les verifs des champions), sinon dans ceux des bonus
-*/
 
 void	ft_handle_args(int ac, char **av, t_vm *vm)
 {

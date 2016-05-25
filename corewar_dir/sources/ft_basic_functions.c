@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 16:07:14 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/22 22:04:57 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/25 18:10:42 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,10 @@ void	ft_xor(t_vm *vm, t_process *proc)
 
 void	ft_and(t_vm *vm, t_process *proc)
 {
-	int		j;
+	int	j;
 	int	arg[3];
 
 	arg[2] = proc->ir.args[2];
-
 	j = 0;
 	while (j < 2)
 	{

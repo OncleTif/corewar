@@ -6,17 +6,11 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 22:00:08 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/22 22:00:11 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/25 18:57:11 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-
-
-/*
-** fonction recupere le dump et stock dans la T_vm
-*/
-
 
 int		ft_stock_color(t_vm *vm)
 {

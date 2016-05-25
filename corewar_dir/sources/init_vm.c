@@ -6,13 +6,13 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 19:19:01 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/22 19:19:04 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/25 18:46:58 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	core_zero(t_vm *vm)
+void		core_zero(t_vm *vm)
 {
 	int		i;
 
@@ -76,9 +76,9 @@ void		vm_init(t_vm *vm)
 	core_zero(vm);
 }
 
-int		ft_init_proc(t_bin	*plr, t_process *proc)
+int			ft_init_proc(t_bin *plr, t_process *proc)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	proc->ir.ocp = 0;
@@ -96,5 +96,5 @@ int		ft_init_proc(t_bin	*plr, t_process *proc)
 	proc->pcdelta = 0;
 	proc->reg[1] = proc->num_plr;
 	proc->carry = 0;
-	return(0);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/24 17:55:24 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/25 19:02:12 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -346,6 +346,15 @@ t_bin	*who_win(t_vm *vm);
 /*
 ft_simple_sdl
 */
-void		ft_simple_sdl(t_sdl *sdl, t_vm *vm, int i);
+void			ft_simple_sdl(t_sdl *sdl, t_vm *vm, int i);
+
+
+void			ft_print(t_vm *vm);
+void			print_corenum_plr(t_octet *core);
+void			print_corepc(t_octet *core);
+void			print_t_vm(t_vm *vm);
+void			print_t_bplr(t_base_player *bplr);
+void			print_t_plr(t_list_player *lplr);
+void			print_core(t_vm *vm);
 
 #endif
