@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 03:17:11 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/24 17:35:37 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/25 15:03:15 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void		init_struct_sdl(t_sdl *sdl)
 {
-	sdl->tplayer = 0;
 	sdl->u = 0;
 	sdl->aff = 0;
 	sdl->speed = 0;
@@ -28,21 +27,13 @@ void		init_struct_sdl(t_sdl *sdl)
 SDL_Color	ft_color_player(int color)
 {
 	if (color == 1)
-	{
 		return (color1);
-	}
 	else if (color == 2)
-	{
 		return (color2);
-	}
 	else if (color == 3)
-	{
 		return (color3);
-	}
 	else if (color == 4)
-	{
 		return (color4);
-	}
 	return (color1);
 }
 
@@ -65,7 +56,7 @@ void		create_last_texture(t_sdl *sdl, t_vm *vm, int tmp, char *win)
 		last[i] = TTF_RenderText_Blended(sdl->font, str, ft_color_player(tmp));
 		sdl->lastT[i] = surface_to_texture(last[i], sdl->renderer);
 		SDL_QueryTexture(sdl->lastT[i], NULL, NULL,
-			&sdl->lastRect[i].w, &sdl->lastRect[i].h);
+		&sdl->lastRect[i].w, &sdl->lastRect[i].h);
 		sdl->lastRect[i].x = sdl->solidRect.x - 50;
 		sdl->lastRect[i].y = 1000 + (i * 50);
 		i++;
@@ -86,10 +77,6 @@ void		ft_poll_event(t_sdl *sdl)
 			else
 				sdl->u = 0;
 		}
-		else if (sdl->event.key.keysym.sym == SDLK_p)
-			sdl->tplayer++;
-		else if (sdl->event.key.keysym.sym == SDLK_o)
-			sdl->tplayer = 0;
 		else if (sdl->event.key.keysym.sym == SDLK_KP_PLUS)
 			sdl->speed -= sdl->speed - 5 >= 0 ? 5 : 0;
 		else if (sdl->event.key.keysym.sym == SDLK_KP_MINUS)
@@ -97,13 +84,9 @@ void		ft_poll_event(t_sdl *sdl)
 		else if (sdl->event.key.keysym.sym == SDLK_SPACE)
 		{
 			if (sdl->pause == 1)
-			{
 				sdl->pause = 0;
-			}
 			else
-			{
 				sdl->pause = 1;
-			}
 			ft_putnbrendl(sdl->pause);
 		}
 	}
