@@ -6,13 +6,13 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/25 18:28:35 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/25 18:28:43 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/25 18:55:22 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	memrev(char  *buf, size_t count)
+void		memrev(char *buf, size_t count)
 {
 	char	*r;
 
@@ -20,7 +20,7 @@ void	memrev(char  *buf, size_t count)
 	while (buf < r)
 	{
 		*buf ^= *r;
-		*r   ^= *buf;
+		*r ^= *buf;
 		*buf ^= *r;
 		buf++;
 		r--;

@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 11:18:19 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/24 18:01:46 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/25 18:49:54 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void		ft_simple_sdl(t_sdl *sdl, t_vm *vm, int i)
 	if (vm->visu == 1)
 	{
 		if (i == 0)
-		{
-				init_sdl(sdl);
-		}
+			init_sdl(sdl);
 		else if (i == 1)
 		{
 			sdl->u = 1;
