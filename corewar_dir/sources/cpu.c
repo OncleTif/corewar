@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/25 10:32:30 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/25 11:15:41 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,16 @@ int		decode_ir(t_process *proc)
 	if (proc->ir.irstr[0] < 1 || proc->ir.irstr[0] > 16)
 	{
 		proc->ir_error = 1;
-		if (g_op_tab[proc->ir.opcode - 1].carry)
+		if (proc->ir.opcode > 0 && proc->ir.opcode <= 16 && g_op_tab[proc->ir.opcode - 1].carry)
+		{
 			proc->pcdelta = 2;
-		else
+//		ft_printf("opcode : %d, irstr0 : %d, pcdelta: %d\n",proc->ir.opcode, proc->ir.irstr[0], proc->pcdelta);
+		}
+			else
+			{
 			proc->pcdelta = 0;
+//		ft_printf("opcode : %d, irstr0 : %d, pcdelta: %d\n",proc->ir.opcode, proc->ir.irstr[0], proc->pcdelta);
+			}
 		return (0);
 	}
 	//proc->ir.opcode = ir[0];
