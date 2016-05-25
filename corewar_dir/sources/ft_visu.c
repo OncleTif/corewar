@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 03:17:11 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/25 15:03:15 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/25 19:22:42 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		init_struct_sdl(t_sdl *sdl)
 {
 	sdl->u = 0;
 	sdl->aff = 0;
-	sdl->speed = 0;
+	sdl->speed = 5;
 	sdl->pause = -1;
 	sdl->s = 0;
 	sdl->window = NULL;
