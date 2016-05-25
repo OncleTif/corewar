@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/25 18:57:01 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/25 19:02:12 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -349,12 +349,12 @@ ft_simple_sdl
 void			ft_simple_sdl(t_sdl *sdl, t_vm *vm, int i);
 
 
-void			print_t_cpu(t_vm *vm);
 void			ft_print(t_vm *vm);
 void			print_corenum_plr(t_octet *core);
 void			print_corepc(t_octet *core);
 void			print_t_vm(t_vm *vm);
 void			print_t_bplr(t_base_player *bplr);
 void			print_t_plr(t_list_player *lplr);
+void			print_core(t_vm *vm);
 
 #endif

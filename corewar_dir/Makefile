@@ -6,7 +6,7 @@
 #    By: djoly <djoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/25 19:00:12 by tmanet           ###   ########.fr        #
+#    Updated: 2016/05/25 19:04:59 by djoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/check_cycle.c \
 		sources/ft_wait.c \
 		sources/ft_print_operations.c \
+		sources/ft_print_arena.c \
 		sources/ft_print_header.c \
 		sources/ft_print_core.c \
 		sources/ft_display_arena.c \

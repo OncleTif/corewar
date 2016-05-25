@@ -6,50 +6,11 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/25 18:51:33 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/25 19:03:29 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-
-void	print_core(t_vm *vm)
-{
-	int i;
-	int	printed;
-	t_process	*proc;
-
-	i = 0;
-	while (i < MEM_SIZE)
-	{
-		proc = vm->proc;
-		printed = 0;
-		if (i == 0)
-			ft_printf("0x0000 : ");
-		else if (i % 64 == 0)
-			ft_printf("\n%#.4x : ", i);
-		if (!vm->color)
-			ft_printf("%.2x ", vm->core[i]);
-		else if(vm->data[i].pc)
-			ft_printf("\033[36m%.2x\033[00m ", vm->core[i]);
-		else if (vm->data[i].num_plr == (int)vm->bplr.tab[0])
-			ft_printf("\033[31m%.2x\033[00m ", vm->core[i]);
-		else if (vm->data[i].num_plr == (int)vm->bplr.tab[1])
-			ft_printf("\033[32m%.2x\033[00m ", vm->core[i]);
-		else if (vm->data[i].num_plr == (int)vm->bplr.tab[2])
-			ft_printf("\033[33m%.2x\033[00m ", vm->core[i]);
-		else if (vm->data[i].num_plr == (int)vm->bplr.tab[3])
-			ft_printf("\033[34m%.2x\033[00m ", vm->core[i]);
-		else
-			ft_printf("%.2x ", vm->core[i]);
-		i++;
-	}
-	ft_putchar('\n');
-}
-
-void	print_t_vm(t_vm *vm)
-{
-	ft_printf("__dans VM __\ndump:%d\nverbose:%d\n", vm->dump, vm->verbose);
-}
 
 void	print_t_plr(t_list_player *lplr)
 {
