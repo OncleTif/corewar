@@ -6,12 +6,12 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:22:45 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/25 14:15:45 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/25 14:24:32 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-
+/*
 int		check_live(t_vm *vm)
 {
 	t_cpu	*tmp;
@@ -44,48 +44,34 @@ int		check_live(t_vm *vm)
 	vm->nbr_live = 0;
 	return (0);
 }
-
+*/
 int		check_live2(t_vm *vm)
 {
-	t_cpu			*tmp;
-	t_list_player	*ptr;
-	t_process		*ptr2;
+	t_cpu			*pcpu;
+	t_list_player	*lplr;
+	t_process		*pproc;
 
-	ptr = vm->bplr.lst_plyr;
-	tmp = &vm->cpu;
-	while (ptr)
+	pcpu = &vm->cpu;
+	if ((vm->nbr_live >= NBR_LIVE) || pcpu->nbchecks == MAX_CHECKS)
 	{
-		if ((vm->nbr_live >= NBR_LIVE) || tmp->nbchecks == MAX_CHECKS)
-		{
-			tmp->cycle2die -= CYCLE_DELTA;
-			//if (tmp->nbchecks == MAX_CHECKS)
-			tmp->nbchecks = 0;
-
-			ptr = vm->bplr.lst_plyr;
-			while (ptr)
-			{
-			ptr->plr->nbr_live = 0;
-			ptr = ptr->next;
-			}
-			if (vm->verbose & 2)
-				ft_printf("Cycle to die is now %d\n", tmp->cycle2die);
-			break;
-		}
-		ptr = ptr->next;
+		pcpu->cycle2die -= CYCLE_DELTA;
+		pcpu->nbchecks = 0;
+		if (vm->verbose & 2)
+			ft_printf("Cycle to die is now %d\n", pcpu->cycle2die);
 	}
-			ptr2 = vm->proc;
-			while (ptr2)
-			{
-				ptr2->live = 0;
-				ptr2 = ptr2->next;
-			}
-		ptr = vm->bplr.lst_plyr;
-		while (ptr)
-		{
-			ptr->plr->nbr_live = 0;
-			ptr = ptr->next;
-		}
-		vm->nbr_live = 0;
+	pproc = vm->proc;
+	while (pproc)
+	{
+		pproc->live = 0;
+		pproc = pproc->next;
+	}
+	lplr = vm->bplr.lst_plyr;
+	while (lplr)
+	{
+		lplr->plr->nbr_live = 0;
+		lplr = lplr->next;
+	}
+	vm->nbr_live = 0;
 	return (0);
 }
 
