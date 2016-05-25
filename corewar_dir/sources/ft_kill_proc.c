@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 10:29:43 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/20 18:06:57 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/25 14:15:46 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,13 @@ void	ft_kill_proc(t_vm *vm, t_process *proc)
 int	to_kill_or_not_to_kill_proc(t_vm *vm)
 {
 	t_process	*ptr;
-	int			debug;
 
 	ptr = vm->proc;
-	debug = 0;
 	while (ptr)
 	{
 		if (ptr->live < 1)
 			ft_kill_proc(vm, ptr);
 		ptr = ptr->next;
-		debug++;
 	}
 	if (vm->proc == NULL)
 		return (1);

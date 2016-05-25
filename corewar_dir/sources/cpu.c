@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cpu.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/25 11:49:58 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/25 14:15:41 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,17 +191,22 @@ int		parse_proc(t_vm *vm)
 
 int		cpu(t_vm *vm, t_sdl *sdl)
 {
+	int		i;
+
+	i = 0;
 	ft_simple_sdl(sdl, vm, 0);
 //	get_ops(vm);
-//	ft_putendl("after op init");
-	while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
+	//while ((vm->cpu.cycle2die != 0) && (vm->dump != vm->cpu.cur_cycle))
+	while ((vm->dump != vm->cpu.cur_cycle))
 	{
 		CPU.cur_cycle += 1;
 		if (vm->verbose & 2)
 			ft_printf("It is now cycle %d\n", vm->cpu.cur_cycle);
 		parse_proc(vm);
-		if (check_cycle(vm))
+		if (check_cycle(vm) || i)
 			break ;
+		if (vm->cpu.cycle2die <= 0)
+			i = 1;
 		if ((vm->step) && (vm->cpu.cur_cycle % vm->step == 0))
 		{
 			print_core(vm);
