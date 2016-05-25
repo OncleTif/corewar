@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:26:25 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/20 17:22:00 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/25 18:07:24 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_ld(t_vm *vm, t_process *proc)
 	}
 }
 
-int	lldget_memlong(t_vm *vm, int idx)
+int		lldget_memlong(t_vm *vm, int idx)
 {
 	union u_4o	val;
 	int			i;
@@ -75,7 +75,7 @@ void	ft_lld(t_vm *vm, t_process *proc)
 void	ft_ldi(t_vm *vm, t_process *proc)
 {
 	int			val;
-	int	arg[3];
+	int			arg[3];
 
 	arg[2] = proc->ir.args[2];
 	if (proc->ir.code_args[0] == T_IND)
@@ -96,7 +96,8 @@ void	ft_ldi(t_vm *vm, t_process *proc)
 		proc->ir.code_args[1] = T_IND;
 		ft_print_operations(proc, arg);
 		ft_printf("\n       | -> load from %d + %d = %d (with pc and mod %d)\n",
-				arg[0], arg[1], arg[0] + arg[1], (((arg[0] + arg[1]) % IDX_MOD) + proc->pc));
+				arg[0], arg[1], arg[0] + arg[1],
+				(((arg[0] + arg[1]) % IDX_MOD) + proc->pc));
 	}
 }
 
