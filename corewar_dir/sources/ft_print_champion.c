@@ -1,21 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_champion.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/25 18:39:51 by tmanet            #+#    #+#             */
+/*   Updated: 2016/05/25 18:39:53 by tmanet           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/corewar.h"
 
-void print_magic(t_bin plr, char *buff)
+void	print_magic(t_bin plr, char *buff)
 {
 	int	i;
 
 	i = 0;
 	(void)buff;
-	// putchar('\n');
-	// while (i < 4)
-	// {
-	// 	printf("|%x|", buff[i]);
-	// 	i++;
-	// }
 	printf("\n%x\n", plr.magic);
 }
 
-void print_prog_name(t_bin plr)
+void	print_prog_name(t_bin plr)
 {
 	int i;
 
@@ -28,21 +34,16 @@ void print_prog_name(t_bin plr)
 	putchar('\n');
 }
 
-void print_prog_size(t_bin plr, char *buff)
+void	print_prog_size(t_bin plr, char *buff)
 {
 	int i;
 
 	i = 0;
 	(void)buff;
-	// while (i < 4)
-	// {
-	// 	printf("[%x]", buff[i]);
-	// 	i++;
-	// }
 	printf("\n%x\n", plr.prog_size);
 }
 
-void print_comment(t_bin plr)
+void	print_comment(t_bin plr)
 {
 	int i;
 
@@ -57,7 +58,7 @@ void print_comment(t_bin plr)
 	putchar('\n');
 }
 
-void print_prog(t_bin plr)
+void	print_prog(t_bin plr)
 {
 	int i;
 
