@@ -6,18 +6,24 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:55:31 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/09 16:21:39 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/25 18:23:30 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_champ	chp;
-	int i;
+	int		i;
 
-	init_structure(&chp);
+	if (argc != 1)
+		init_structure(&chp);
+	else
+	{
+		ft_putendl("Bad parameters");
+		return (0);
+	}
 	i = check_flags(&chp, argv);
 	if (argc == 2 + i && argv[1 + i])
 	{
