@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 09:07:57 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/17 12:49:25 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/25 18:28:10 by ssicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void		op_types_read(int i, char **tab, t_champ *c)
 	while (tab[j] && tab[j][0] != ';')
 	{
 		ret = ret_type(tab[j]);
-		//	ft_error(ft_strjoin("Invalid parameter count for instruction line ", ft_itoa(c->line)));
 		if (!(g_op_tab[i].att[j - 1] & ret))
 			ft_error(ft_strjoin("Wrong attr type line ", ft_itoa(c->line)));
 		ocp = (ret == T_IND) ? (ocp | (3 << (8 - j * 2))) :
@@ -80,7 +79,8 @@ void		op_types_read(int i, char **tab, t_champ *c)
 	}
 	if (j - 1 != g_op_tab[i].att_num)
 	{
-		ft_printf("Invalid parameter count for instruction %s line %d", g_op_tab[i].name, c->line);
+		ft_printf("Invalid parameter count for instruction %s line %d",
+				g_op_tab[i].name, c->line);
 		ft_error("");
 	}
 	if (g_op_tab[i].carry)
