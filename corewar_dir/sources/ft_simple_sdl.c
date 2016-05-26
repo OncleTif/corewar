@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 11:18:19 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 18:04:26 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 18:08:46 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		ft_quit_sdl_cpu(t_sdl *sdl, t_vm *vm)
 	}
 }
 
-void	ft_check_bonus(t_vm *vm)
+void		ft_check_bonus(t_vm *vm)
 {
 	if (vm->dump > 0 || vm->step > 0 || vm->verbose > 0 || vm->color > 0)
 		vm->visu = 0;
