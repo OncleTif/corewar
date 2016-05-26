@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:06:59 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/25 19:18:26 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 12:21:38 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ void			player_texture(char *str, int nb, int j, t_sdl *sdl)
 		sdl->player[j][nb] = TTF_RenderText_Blended(sdl->font, str, color4);
 	else
 		sdl->player[j][nb] = TTF_RenderText_Blended(sdl->font, str, textColor);
-	sdl->texPlay[j][nb] = SDL_CreateTextureFromSurface(sdl->renderer, sdl->player[j][nb]);
+	sdl->texPlay[j][nb] = SDL_CreateTextureFromSurface(sdl->renderer,
+	sdl->player[j][nb]);
 	free(str);
 }
 
-void 			handle_base_texture(t_sdl *sdl, t_vm *vm, SDL_Surface* texture[5])
+void 			handle_btexture(t_sdl *sdl, t_vm *vm, SDL_Surface* texture[5])
 {
 	int j;
 	char *str;
@@ -56,7 +57,8 @@ void 			handle_base_texture(t_sdl *sdl, t_vm *vm, SDL_Surface* texture[5])
 		else if (j == 4)
 			str = ft_strjoin("MAX_CHECKS : ", ft_itoa(MAX_CHECKS));
 		texture[j] = TTF_RenderText_Blended(sdl->font, str, textColor);
-		sdl->textureTab[j] = SDL_CreateTextureFromSurface(sdl->renderer, texture[j]);
+		sdl->textureTab[j] = SDL_CreateTextureFromSurface(sdl->renderer,
+		texture[j]);
 		free(str);
 		j++;
 	}
@@ -101,7 +103,7 @@ void			create_text_textures(t_sdl *sdl, t_vm *vm)
 	win = NULL;
 	i = 0;
 	ft_query_solid_texture(sdl, solid);
-	handle_base_texture(sdl, vm, texture);
+	handle_btexture(sdl, vm, texture);
 	handle_player_texture(sdl, vm);
 	ft_query_base_texture(sdl);
 	ft_handle_query_player(sdl, vm);

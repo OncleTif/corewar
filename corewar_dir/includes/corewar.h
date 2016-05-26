@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/25 20:17:21 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 12:21:42 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -334,7 +334,7 @@ ft_texture_sdl
 
 SDL_Texture*	surface_to_texture(SDL_Surface* surf, SDL_Renderer *renderer);
 void			player_texture(char *str, int nb, int j, t_sdl *sdl);
-void 			handle_base_texture(t_sdl *sdl, t_vm *vm, SDL_Surface *tex[5]);
+void 			handle_btexture(t_sdl *sdl, t_vm *vm, SDL_Surface *texture[5]);
 int 			handle_player_texture(t_sdl *sdl, t_vm *m);
 void			create_text_textures(t_sdl *sdl, t_vm *vm);
 void 			create_last_texture(t_sdl *sdl, t_vm *vm, int tmp, char *win);
