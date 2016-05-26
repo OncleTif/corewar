@@ -6,14 +6,13 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/26 15:38:36 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/26 16:00:58 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
 # include "struct_types.h"
-/*# include "../../libft/libft.h"*/
 # include "../../libft/ft_printf.h"
 # include "op.h"
 # include "process.h"
@@ -28,93 +27,82 @@
 # include <unistd.h>
 # define BPLR vm->bplr
 # define CPU vm->cpu
-#include <SDL2/SDL.h>
-#include "../../SDL/SDL2_image.framework/Headers/SDL_image.h"
-#include "../../SDL/SDL2_ttf.framework/Headers/SDL_ttf.h"
-#define false 0
-#define true 1
-#define textColor (SDL_Color){255, 255, 255, 255}
-#define backgroundColor (SDL_Color){0, 0, 0, 255} // black
-#define color1 (SDL_Color){2, 200, 22, 255}
-#define color2 (SDL_Color){13, 13, 242, 255}
-#define color3 (SDL_Color){228, 215, 42, 255}
-#define color4 (SDL_Color){255, 0, 45, 255}
+# include <SDL2/SDL.h>
+# include "../../SDL/SDL2_image.framework/Headers/SDL_image.h"
+# include "../../SDL/SDL2_ttf.framework/Headers/SDL_ttf.h"
+# define FALSE 0
+# define TRUE 1
+# define TEXTCOLOR (SDL_Color){255, 255, 255, 255}
+# define BACKGROUNDCOLOR (SDL_Color){0, 0, 0, 255}
+# define COLOR1 (SDL_Color){2, 200, 22, 255}
+# define COLOR2 (SDL_Color){13, 13, 242, 255}
+# define COLOR3 (SDL_Color){228, 215, 42, 255}
+# define COLOR4 (SDL_Color){255, 0, 45, 255}
 
-struct s_cpu
+struct				s_cpu
 {
-	//int		ir; //instruction registre
-	int		cur_cycle; // cycle en cours
+	int		cur_cycle;
 	int		cycle_to_check;
-	int		cycle2die; // cylcle to die a decrementer
-						//	tout les CYCLE_DELTA OU MAX_CHECKS
-	int		nbchecks; // comparer avec MAX_CHECKS
-
+	int		cycle2die;
+	int		nbchecks;
 };
 
-struct s_octet
+struct				s_octet
 {
-	int		num_plr; // numero du dernier player a ecrire
-	int		pc; // bool, pc sur loctet ou non
+	int		num_plr;
+	int		pc;
 };
 
-struct s_vm
+struct				s_vm
 {
-	int				dump; //  -dump aff et exit apres nbr cycles
+	int				dump;
 	int				step;
 	int				aff;
-	int				verbose; //  -v affiche les action
+	int				verbose;
 	int				color;
 	t_cpu			cpu;
-
 	unsigned char	core[MEM_SIZE];
 	t_octet			data[MEM_SIZE];
-	//unsigned char	pcs[MEM_SIZE];
 	int				visu;
 	t_base_player	bplr;
-
 	int				nb_proc;
 	t_process		*proc;
 	int				num_last_plr_live;
 	int				nbr_live;
-	void	(*ftab[17])(t_vm*, t_process*);
+	void			(*ftab[17])(t_vm*, t_process*);
 };
 
-struct s_sdl
+struct				s_sdl
 {
-	int 		tplayer;
-	int			u;
-	int			s;
-	int 		aff;
-	int			mod;
-	int			speed;
-	int			pause;
-	char		*fontname;
-	SDL_Rect solidRect;
-	SDL_Rect blendedRect;
-	SDL_Rect lastRect[3];
-	SDL_Rect firstRect;
-	SDL_Window *window;
-	SDL_Renderer *renderer;
-	TTF_Font* font;
-	SDL_Rect textureRect[10];
-	SDL_Rect rectPlayer[4][3];
-	SDL_Texture* solidTexture;
-	SDL_Texture* blendedTexture;
-	SDL_Texture* lastT[3];
-	SDL_Texture* firstTexture;
-	SDL_Texture* textureTab[10];
-	SDL_Texture* texPlay[4][3];
-	SDL_Surface* player[4][3];
-	SDL_Event event;
-	SDL_Rect rect[4096];
+	int				tplayer;
+	int				u;
+	int				s;
+	int				aff;
+	int				mod;
+	int				speed;
+	int				pause;
+	char			*fontname;
+	SDL_Rect		solidrect;
+	SDL_Rect		blendedRect;
+	SDL_Rect		lastRect[3];
+	SDL_Rect		firstRect;
+	SDL_Window		*window;
+	SDL_Renderer	*renderer;
+	TTF_Font		*font;
+	SDL_Rect		textureRect[10];
+	SDL_Rect		rectPlayer[4][3];
+	SDL_Texture		*solidTexture;
+	SDL_Texture		*blendedTexture;
+	SDL_Texture		*lastT[3];
+	SDL_Texture		*firstTexture;
+	SDL_Texture		*textureTab[10];
+	SDL_Texture		*texPlay[4][3];
+	SDL_Surface		*player[4][3];
+	SDL_Event		event;
+	SDL_Rect		rect[4096];
 };
 
 void			print_core(t_vm *vm);
-
-/*
-	ft_manage
-*/
-
 int				ft_check_args(char *av);
 int				ft_is_number(char *str);
 int				ft_stock_dump(char **av, int *i, t_vm *vm);
