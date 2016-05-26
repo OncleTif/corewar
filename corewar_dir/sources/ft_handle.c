@@ -6,24 +6,11 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 16:37:05 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/26 16:42:07 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-
-// int		ft_stock_num_plr(char **av, int *i, t_vm *vm)
-// {
-// 	(*i)++;
-// 	if (!av[*i] || ft_is_number(av[*i]) == 0)
-// 		ft_error("ARG is not a number");
-// 	BPLR.tmpnum = BPLR.tab[BPLR.nb_plyr];
-// 	BPLR.tab[BPLR.nb_plyr] = ft_atoi(av[*i]);
-// 	BPLR.tab[BPLR.nb_plyr] = BPLR.tab[BPLR.nb_plyr]
-// 	BPLR.i_plr += 1;
-// 	ft_check_other_num(BPLR);
-// 	return (0);
-// }
 
 int		ft_stock_num_plr(char **av, int *i, t_vm *vm)
 {
@@ -61,12 +48,6 @@ void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 		exit(ft_printf("ERROR ARGV\n"));
 }
 
-// void	ft_init_num_plr(t_base_player *player, t_list_player *tmp)
-// {
-// 	tmp->plr->num_plyr = player->tab[player->nb_plyr];
-// 	tmp->plr->nbr_live = 0;
-// }
-
 void	ft_init_num_plr(t_base_player *player)
 {
 	t_list_player	*lplr;
@@ -74,7 +55,7 @@ void	ft_init_num_plr(t_base_player *player)
 	int				j;
 
 	i = 0;
-	ft_check_other_num(player);					 //
+	ft_check_other_num(player);
 	lplr = player->lst_plyr;
 	while (lplr)
 	{
@@ -110,10 +91,8 @@ void	ft_mem_champs(t_base_player *player, char *av)
 		player->lst_plyr = tmp;
 	else
 		lplr->next = tmp;
-	tmp->plr->index_plyr = player->nb_plyr + 1; //
-	tmp->plr->nbr_live = 0;//
-	//ft_check_other_num(player);					 //
-	//ft_init_num_plr(player, tmp);
+	tmp->plr->index_plyr = player->nb_plyr + 1;
+	tmp->plr->nbr_live = 0;
 }
 
 void	ft_handle_args(int ac, char **av, t_vm *vm)
