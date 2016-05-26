@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/26 12:36:14 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/26 12:47:05 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		ft_disp(t_sdl *sdl, t_vm *vm)
 	SDL_RenderDrawLine(sdl->renderer, 1325, 10, 1750, 10);
 	SDL_RenderDrawLine(sdl->renderer, 1750, 10, 1750, 1300);
 	SDL_RenderDrawLine(sdl->renderer, 1325, 1300, 1750, 1300);
-	render_line(sdl, vm);
+	ft_render_arena(sdl, vm);
 	SDL_RenderPresent(sdl->renderer);
 	SDL_Delay(sdl->speed);
 	ft_poll_event(sdl);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cpu.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/25 18:51:28 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/26 12:46:03 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		cpu(t_vm *vm, t_sdl *sdl)
 	int		i;
 
 	i = 0;
-	ft_simple_sdl(sdl, vm, 0);
+	ft_init_sdl_cpu(sdl, vm);
 	while ((vm->dump != vm->cpu.cur_cycle))
 	{
 		CPU.cur_cycle += 1;
@@ -88,6 +88,6 @@ int		cpu(t_vm *vm, t_sdl *sdl)
 		if (vm->visu == 1)
 			ft_disp(sdl, vm);
 	}
-	ft_simple_sdl(sdl, vm, 1);
+	ft_quit_sdl_cpu(sdl, vm);
 	return (0);
 }

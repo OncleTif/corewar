@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/26 12:21:42 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 12:51:29 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -323,10 +323,10 @@ void			ft_query_player_texture(int i, int j, int nb, t_sdl *sdl);
 /*
 ft_render_sdl
 */
-void			ft_render_seconde(t_sdl *sdl, t_vm *vm);
-void			ft_render(t_sdl *sdl, t_vm *vm);
+void			ft_render__texture_seconde(t_sdl *sdl, t_vm *vm);
+void			ft_render_texture(t_sdl *sdl, t_vm *vm);
 void 			ft_case_color(t_vm *vm, t_sdl *sdl, int i);
-void			render_line(t_sdl *sdl, t_vm *vm);
+void			ft_render_arena(t_sdl *sdl, t_vm *vm);
 
 /*
 ft_texture_sdl
@@ -344,11 +344,6 @@ void 			create_first_texture(t_sdl *sdl, t_vm *vm);
 main
 */
 t_bin	*who_win(t_vm *vm);
-/*
-ft_simple_sdl
-*/
-void			ft_simple_sdl(t_sdl *sdl, t_vm *vm, int i);
-
 
 void			ft_print(t_vm *vm);
 void			print_corenum_plr(t_octet *core);
@@ -358,4 +353,9 @@ void			print_t_bplr(t_base_player *bplr);
 void			print_t_plr(t_list_player *lplr);
 void			print_core(t_vm *vm);
 
+/*
+ft_simple_sdl
+*/
+void		ft_init_sdl_cpu(t_sdl *sdl, t_vm *vm);
+void		ft_quit_sdl_cpu(t_sdl *sdl, t_vm *vm);
 #endif
