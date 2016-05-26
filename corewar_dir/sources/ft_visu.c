@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 03:17:11 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 16:20:53 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 17:50:52 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ void		init_struct_sdl(t_sdl *sdl)
 	sdl->u = 0;
 	sdl->aff = 0;
 	sdl->speed = 5;
-	sdl->mod = 23;
-	sdl->pause = -1;
-	sdl->s = 0;
 	sdl->window = NULL;
 	sdl->renderer = NULL;
 	sdl->fontname = ft_strdup("SDL/Capture-it/Capture_it.ttf");
@@ -82,7 +79,5 @@ void		ft_poll_event(t_sdl *sdl)
 			sdl->speed -= (sdl->speed - 1) >= 0 ? 1 : 0;
 		else if (sdl->event.key.keysym.sym == SDLK_KP_MINUS)
 			sdl->speed += (sdl->speed + 1) < 6 ? 1 : 0;
-		else if (sdl->event.key.keysym.sym == SDLK_SPACE)
-			sdl->pause = (sdl->pause == 1) ? 0 : 1;
 	}
 }

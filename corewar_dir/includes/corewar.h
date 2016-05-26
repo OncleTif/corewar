@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/26 16:55:28 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 18:04:48 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ struct				s_vm
 	int				aff;
 	int				verbose;
 	int				color;
+	int				visu;
 	t_cpu			cpu;
 	unsigned char	core[MEM_SIZE];
 	t_octet			data[MEM_SIZE];
-	int				visu;
 	t_base_player	bplr;
 	int				nb_proc;
 	t_process		*proc;
@@ -74,16 +74,11 @@ struct				s_vm
 
 struct				s_sdl
 {
-	int				tplayer;
 	int				u;
-	int				s;
 	int				aff;
-	int				mod;
 	int				speed;
-	int				pause;
 	char			*fontname;
 	SDL_Rect		solid_rect;
-	SDL_Rect		blended_rect;
 	SDL_Rect		last_rect[3];
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
@@ -340,6 +335,7 @@ void				print_core(t_vm *vm);
 */
 void				ft_init_sdl_cpu(t_sdl *sdl, t_vm *vm);
 void				ft_quit_sdl_cpu(t_sdl *sdl, t_vm *vm);
+void				ft_check_bonus(t_vm *vm);
 
 /*
 ** ft_print_winner

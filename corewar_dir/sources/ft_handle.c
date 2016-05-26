@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 17:22:27 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 17:56:17 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 		vm->visu = 1;
 	else
 		exit(ft_printf("ERROR ARGV"));
+	ft_check_bonus(vm);
 }
 
 void	ft_init_num_plr(t_base_player *player)
