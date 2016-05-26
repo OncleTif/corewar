@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/26 12:15:36 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 12:36:14 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,10 @@
 int		ft_setup_ttf(t_sdl *sdl)
 {
 	if (TTF_Init() == -1)
-	{
-		ft_printf("TTF Init error");
-		return (0);
-	}
+		ft_error("TTF Init error");
 	sdl->font = TTF_OpenFont(sdl->fontname, 27);
 	if (sdl->font == NULL)
-	{
-		ft_printf("TTF font error");
-		return (0);
-	}
+		ft_error("TTF font error");
 	return (1);
 }
 
