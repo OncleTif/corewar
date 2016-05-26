@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 17:55:31 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/25 18:23:30 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/26 11:37:27 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int			main(int argc, char **argv)
 		read_s_file(&chp, argv[1 + i]);
 		ft_find_labels(&chp);
 		ft_check_champ(&chp);
-		//argv[1] = epur_file_name(argv[1]);
+		argv[1] = epur_file_name(argv[1]);
 		chp.file_n = ft_strjoin(argv[1 + i], ".cor");
 		ft_print_champ(&chp);
 	}
