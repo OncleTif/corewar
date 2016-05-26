@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 03:17:11 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 10:45:56 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/26 12:17:42 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,9 @@ void		ft_poll_event(t_sdl *sdl)
 				sdl->u = 0;
 		}
 		else if (sdl->event.key.keysym.sym == SDLK_KP_PLUS)
-		{
-			sdl->speed -= sdl->speed - 5 >= 0 ? 5 : 0;
-			sdl->mod = (sdl->speed == 0) ? 47 : 23;
-		}
+			sdl->speed -= (sdl->speed - 1) >= 0 ? 1 : 0;
 		else if (sdl->event.key.keysym.sym == SDLK_KP_MINUS)
-		{
-			sdl->speed += sdl->speed + 5 < 60 ? 5 : 0;
-			sdl->mod = (sdl->speed == 0) ? 47 : 23;
-		}
+			sdl->speed += (sdl->speed + 1) < 6 ? 1 : 0;
 		else if (sdl->event.key.keysym.sym == SDLK_SPACE)
 			sdl->pause = (sdl->pause == 1) ? 0 : 1;
 	}

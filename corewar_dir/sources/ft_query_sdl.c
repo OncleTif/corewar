@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:23:40 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/25 19:00:51 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 13:07:06 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_query_base_texture(t_sdl *sdl)
 	}
 }
 
-void	ft_query_solid_texture(t_sdl *sdl, SDL_Surface *solid)
+void	ft_query_corewar_texture(t_sdl *sdl, SDL_Surface *solid)
 {
 	solid = TTF_RenderText_Blended(sdl->font, "COREWAR GAME", backgroundColor);
 	sdl->solidTexture = surface_to_texture(solid, sdl->renderer);

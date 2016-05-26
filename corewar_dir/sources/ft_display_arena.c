@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/25 20:24:55 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 12:59:33 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,10 @@
 int		ft_setup_ttf(t_sdl *sdl)
 {
 	if (TTF_Init() == -1)
-	{
-		ft_printf("TTF Init error");
-		return (0);
-	}
+		ft_error("TTF Init error");
 	sdl->font = TTF_OpenFont(sdl->fontname, 27);
 	if (sdl->font == NULL)
-	{
-		ft_printf("TTF font error");
-		return (0);
-	}
+		ft_error("TTF font error");
 	return (1);
 }
 
@@ -48,7 +42,7 @@ void	quit(t_sdl *sdl)
 	SDL_Quit();
 }
 
-void	init_sdl(t_sdl *sdl)
+void	init_sdl_window(t_sdl *sdl)
 {
 	init(&sdl->window, &sdl->renderer);
 	ft_setup_ttf(sdl);
@@ -56,23 +50,19 @@ void	init_sdl(t_sdl *sdl)
 
 int		ft_disp(t_sdl *sdl, t_vm *vm)
 {
-	if (sdl->aff % sdl->mod == 0 || sdl->speed != 0 || sdl->u == 1)
-	{
-		if (sdl->aff % sdl->mod == 0 || sdl->speed > 5 || sdl->u == 1)
-			create_text_textures(sdl, vm);
-		SDL_SetRenderDrawColor(sdl->renderer, 127, 127, 127, 255);
-		SDL_RenderClear(sdl->renderer);
-		SDL_SetRenderDrawColor(sdl->renderer, 0, 0, 0, 255);
-		SDL_RenderDrawLine(sdl->renderer, 1325, 10, 1325, 1300);
-		SDL_RenderDrawLine(sdl->renderer, 1325, 10, 1750, 10);
-		SDL_RenderDrawLine(sdl->renderer, 1750, 10, 1750, 1300);
-		SDL_RenderDrawLine(sdl->renderer, 1325, 1300, 1750, 1300);
-		render_line(sdl, vm);
-		SDL_RenderPresent(sdl->renderer);
-	}
+	if (sdl->aff % 23 == 0 || sdl->u == 1)
+		create_text_textures(sdl, vm);
+	SDL_SetRenderDrawColor(sdl->renderer, 127, 127, 127, 255);
+	SDL_RenderClear(sdl->renderer);
+	SDL_SetRenderDrawColor(sdl->renderer, 0, 0, 0, 255);
+	SDL_RenderDrawLine(sdl->renderer, 1325, 10, 1325, 1300);
+	SDL_RenderDrawLine(sdl->renderer, 1325, 10, 1750, 10);
+	SDL_RenderDrawLine(sdl->renderer, 1750, 10, 1750, 1300);
+	SDL_RenderDrawLine(sdl->renderer, 1325, 1300, 1750, 1300);
+	ft_render_arena(sdl, vm);
+	SDL_RenderPresent(sdl->renderer);
+	SDL_Delay(sdl->speed);
 	ft_poll_event(sdl);
-	if (sdl->speed > 5)
-		SDL_Delay(sdl->speed - 5);
 	sdl->aff++;
 	return (0);
 }

@@ -6,27 +6,28 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 11:18:19 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 09:15:07 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/26 14:49:09 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void		ft_simple_sdl(t_sdl *sdl, t_vm *vm, int i)
+void		ft_init_sdl_cpu(t_sdl *sdl, t_vm *vm)
 {
-	int j;
-
-	j = 0;
 	if (vm->visu == 1)
 	{
-		if (i == 0)
-			init_sdl(sdl);
-		else if (i == 1)
-		{
+		init_sdl_window(sdl);
+	}
+}
+
+void		ft_quit_sdl_cpu(t_sdl *sdl, t_vm *vm)
+{
+	if (vm->visu == 1)
+	{
+		if (vm->dump != vm->cpu.cur_cycle)
 			sdl->u = 1;
-			ft_disp(sdl, vm);
-			SDL_Delay(6000);
-			quit(sdl);
-		}
+		ft_disp(sdl, vm);
+		SDL_Delay(3000);
+		quit(sdl);
 	}
 }

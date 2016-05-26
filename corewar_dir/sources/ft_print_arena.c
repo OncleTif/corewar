@@ -6,11 +6,27 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 19:17:03 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/25 19:09:11 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/26 12:17:28 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
+
+static void			print_color(t_vm *vm, int i)
+{
+	if (vm->data[i].pc)
+		ft_printf("\033[36m%.2x\033[00m ", vm->core[i]);
+	else if (vm->data[i].num_plr == (int)vm->bplr.tab[0])
+		ft_printf("\033[31m%.2x\033[00m ", vm->core[i]);
+	else if (vm->data[i].num_plr == (int)vm->bplr.tab[1])
+		ft_printf("\033[32m%.2x\033[00m ", vm->core[i]);
+	else if (vm->data[i].num_plr == (int)vm->bplr.tab[2])
+		ft_printf("\033[33m%.2x\033[00m ", vm->core[i]);
+	else if (vm->data[i].num_plr == (int)vm->bplr.tab[3])
+		ft_printf("\033[34m%.2x\033[00m ", vm->core[i]);
+	else
+		ft_printf("%.2x ", vm->core[i]);
+}
 
 void				print_core(t_vm *vm)
 {
@@ -29,18 +45,8 @@ void				print_core(t_vm *vm)
 			ft_printf("\n%#.4x : ", i);
 		if (!vm->color)
 			ft_printf("%.2x ", vm->core[i]);
-		else if (vm->data[i].pc)
-			ft_printf("\033[36m%.2x\033[00m ", vm->core[i]);
-		else if (vm->data[i].num_plr == (int)vm->bplr.tab[0])
-			ft_printf("\033[31m%.2x\033[00m ", vm->core[i]);
-		else if (vm->data[i].num_plr == (int)vm->bplr.tab[1])
-			ft_printf("\033[32m%.2x\033[00m ", vm->core[i]);
-		else if (vm->data[i].num_plr == (int)vm->bplr.tab[2])
-			ft_printf("\033[33m%.2x\033[00m ", vm->core[i]);
-		else if (vm->data[i].num_plr == (int)vm->bplr.tab[3])
-			ft_printf("\033[34m%.2x\033[00m ", vm->core[i]);
 		else
-			ft_printf("%.2x ", vm->core[i]);
+			print_color(vm, i);
 		i++;
 	}
 	ft_putchar('\n');
@@ -62,7 +68,7 @@ void				print_t_plr(t_list_player *lplr)
 	{
 		ft_printf("__dans BIN __\nnumplr:%u\nnom%s\nlast live:%d\n",
 				tmp->plr->num_plyr,
-		tmp->plr->prog_name, tmp->plr->last_live);
+				tmp->plr->prog_name, tmp->plr->last_live);
 		print_magic(*tmp->plr, buff);
 		print_prog_name(*tmp->plr);
 		print_prog_size(*tmp->plr, buff);

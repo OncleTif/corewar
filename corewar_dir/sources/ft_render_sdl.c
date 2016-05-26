@@ -6,13 +6,13 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:25:56 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 09:16:46 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/26 12:55:31 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	ft_render_seconde(t_sdl *sdl, t_vm *vm)
+void	ft_render_texture_seconde(t_sdl *sdl, t_vm *vm)
 {
 	int i;
 
@@ -29,7 +29,7 @@ void	ft_render_seconde(t_sdl *sdl, t_vm *vm)
 	}
 }
 
-void	ft_render(t_sdl *sdl, t_vm *vm)
+void	ft_render_texture(t_sdl *sdl, t_vm *vm)
 {
 	int i;
 
@@ -52,7 +52,7 @@ void	ft_render(t_sdl *sdl, t_vm *vm)
 		}
 		i = 0;
 	}
-	ft_render_seconde(sdl, vm);
+	ft_render_texture_seconde(sdl, vm);
 }
 
 void	ft_case_color(t_vm *vm, t_sdl *sdl, int i)
@@ -71,7 +71,7 @@ void	ft_case_color(t_vm *vm, t_sdl *sdl, int i)
 		SDL_SetRenderDrawColor(sdl->renderer, 200, 200, 200, 255);
 }
 
-void	render_line(t_sdl *sdl, t_vm *vm)
+void	ft_render_arena(t_sdl *sdl, t_vm *vm)
 {
 	int x;
 	int y;
@@ -96,5 +96,5 @@ void	render_line(t_sdl *sdl, t_vm *vm)
 		SDL_RenderFillRect(sdl->renderer, &sdl->rect[i]);
 		i++;
 	}
-	ft_render(sdl, vm);
+	ft_render_texture(sdl, vm);
 }
