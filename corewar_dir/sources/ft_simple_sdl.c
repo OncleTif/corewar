@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 11:18:19 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 09:15:07 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/26 12:18:28 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		ft_simple_sdl(t_sdl *sdl, t_vm *vm, int i)
 		{
 			sdl->u = 1;
 			ft_disp(sdl, vm);
-			SDL_Delay(6000);
+			SDL_Delay(3000);
 			quit(sdl);
 		}
 	}
