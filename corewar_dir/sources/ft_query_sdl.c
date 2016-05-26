@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:23:40 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 13:07:06 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 16:24:40 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	ft_query_player_texture(int i, int j, int nb, t_sdl *sdl)
 {
-	SDL_QueryTexture(sdl->texPlay[i][nb], NULL, NULL,
-		&sdl->rectPlayer[i][nb].w, &sdl->rectPlayer[i][nb].h);
+	SDL_QueryTexture(sdl->tex_play[i][nb], NULL, NULL,
+		&sdl->rect_player[i][nb].w, &sdl->rect_player[i][nb].h);
 	if (nb < 2)
-		sdl->rectPlayer[i][nb].x = 1370;
+		sdl->rect_player[i][nb].x = 1370;
 	else
-		sdl->rectPlayer[i][nb].x = 1540;
+		sdl->rect_player[i][nb].x = 1540;
 	if (nb < 2)
 	{
-		sdl->rectPlayer[i][nb].y = 20 +
-		sdl->solidRect.h + (50 * (j + 2));
+		sdl->rect_player[i][nb].y = 20 +
+		sdl->solid_rect.h + (50 * (j + 2));
 	}
 	else
 	{
-		sdl->rectPlayer[i][nb].y = 20 +
-		sdl->solidRect.h + (50 * (j + 2));
+		sdl->rect_player[i][nb].y = 20 +
+		sdl->solid_rect.h + (50 * (j + 2));
 	}
 }
 
@@ -61,21 +61,21 @@ void	ft_query_base_texture(t_sdl *sdl)
 	i = 0;
 	while (i < 5)
 	{
-		SDL_QueryTexture(sdl->textureTab[i], NULL, NULL,
-		&sdl->textureRect[i].w, &sdl->textureRect[i].h);
-		sdl->textureRect[i].x = sdl->solidRect.x - 50;
-		sdl->textureRect[i].y = sdl->solidRect.y + 50 +
-		sdl->solidRect.h + (50 * i);
+		SDL_QueryTexture(sdl->texture_tab[i], NULL, NULL,
+		&sdl->texture_rect[i].w, &sdl->texture_rect[i].h);
+		sdl->texture_rect[i].x = sdl->solid_rect.x - 50;
+		sdl->texture_rect[i].y = sdl->solid_rect.y + 50 +
+		sdl->solid_rect.h + (50 * i);
 		i++;
 	}
 }
 
 void	ft_query_corewar_texture(t_sdl *sdl, SDL_Surface *solid)
 {
-	solid = TTF_RenderText_Blended(sdl->font, "COREWAR GAME", backgroundColor);
-	sdl->solidTexture = surface_to_texture(solid, sdl->renderer);
-	SDL_QueryTexture(sdl->solidTexture, NULL, NULL,
-		&sdl->solidRect.w, &sdl->solidRect.h);
-	sdl->solidRect.x = 1420;
-	sdl->solidRect.y = 20;
+	solid = TTF_RenderText_Blended(sdl->font, "COREWAR GAME", BACKGROUNDCOLOR);
+	sdl->solid_texture = surface_to_texture(solid, sdl->renderer);
+	SDL_QueryTexture(sdl->solid_texture, NULL, NULL,
+		&sdl->solid_rect.w, &sdl->solid_rect.h);
+	sdl->solid_rect.x = 1420;
+	sdl->solid_rect.y = 20;
 }

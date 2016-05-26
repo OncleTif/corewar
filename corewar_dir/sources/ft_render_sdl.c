@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:25:56 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 12:55:31 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 16:26:55 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	ft_render_texture_seconde(t_sdl *sdl, t_vm *vm)
 	i = 0;
 	while (i < vm->bplr.nb_plyr)
 	{
-		SDL_RenderCopy(sdl->renderer, sdl->texPlay[i][0],
-				NULL, &sdl->rectPlayer[i][0]);
-		SDL_RenderCopy(sdl->renderer, sdl->texPlay[i][1],
-				NULL, &sdl->rectPlayer[i][1]);
-		SDL_RenderCopy(sdl->renderer, sdl->texPlay[i][2],
-				NULL, &sdl->rectPlayer[i][2]);
+		SDL_RenderCopy(sdl->renderer, sdl->tex_play[i][0],
+				NULL, &sdl->rect_player[i][0]);
+		SDL_RenderCopy(sdl->renderer, sdl->tex_play[i][1],
+				NULL, &sdl->rect_player[i][1]);
+		SDL_RenderCopy(sdl->renderer, sdl->tex_play[i][2],
+				NULL, &sdl->rect_player[i][2]);
 		i++;
 	}
 }
@@ -34,11 +34,11 @@ void	ft_render_texture(t_sdl *sdl, t_vm *vm)
 	int i;
 
 	i = 0;
-	SDL_RenderCopy(sdl->renderer, sdl->solidTexture, NULL, &sdl->solidRect);
+	SDL_RenderCopy(sdl->renderer, sdl->solid_texture, NULL, &sdl->solid_rect);
 	while (i < 5)
 	{
-		SDL_RenderCopy(sdl->renderer, sdl->textureTab[i],
-				NULL, &sdl->textureRect[i]);
+		SDL_RenderCopy(sdl->renderer, sdl->texture_tab[i],
+				NULL, &sdl->texture_rect[i]);
 		i++;
 	}
 	if (sdl->u == 1)
@@ -46,8 +46,8 @@ void	ft_render_texture(t_sdl *sdl, t_vm *vm)
 		i = 0;
 		while (i < 3)
 		{
-			SDL_RenderCopy(sdl->renderer, sdl->lastT[i],
-					NULL, &sdl->lastRect[i]);
+			SDL_RenderCopy(sdl->renderer, sdl->last_tex[i],
+					NULL, &sdl->last_rect[i]);
 			i++;
 		}
 		i = 0;

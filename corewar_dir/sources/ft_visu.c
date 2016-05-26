@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 03:17:11 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 12:17:42 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 16:20:53 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ void		init_struct_sdl(t_sdl *sdl)
 SDL_Color	ft_color_player(int color)
 {
 	if (color == 1)
-		return (color1);
+		return (COLOR1);
 	else if (color == 2)
-		return (color2);
+		return (COLOR2);
 	else if (color == 3)
-		return (color3);
+		return (COLOR3);
 	else if (color == 4)
-		return (color4);
-	return (color1);
+		return (COLOR4);
+	return (COLOR1);
 }
 
 void		create_last_texture(t_sdl *sdl, t_vm *vm, int tmp, char *win)
@@ -55,11 +55,11 @@ void		create_last_texture(t_sdl *sdl, t_vm *vm, int tmp, char *win)
 		else if (i == 2)
 			str = ft_strdup("has won !");
 		last[i] = TTF_RenderText_Blended(sdl->font, str, ft_color_player(tmp));
-		sdl->lastT[i] = surface_to_texture(last[i], sdl->renderer);
-		SDL_QueryTexture(sdl->lastT[i], NULL, NULL,
-		&sdl->lastRect[i].w, &sdl->lastRect[i].h);
-		sdl->lastRect[i].x = sdl->solidRect.x - 50;
-		sdl->lastRect[i].y = 1000 + (i * 50);
+		sdl->last_tex[i] = surface_to_texture(last[i], sdl->renderer);
+		SDL_QueryTexture(sdl->last_tex[i], NULL, NULL,
+		&sdl->last_rect[i].w, &sdl->last_rect[i].h);
+		sdl->last_rect[i].x = sdl->solid_rect.x - 50;
+		sdl->last_rect[i].y = 1000 + (i * 50);
 		i++;
 	}
 }

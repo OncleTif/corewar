@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/26 16:00:58 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/26 16:19:01 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,21 +82,18 @@ struct				s_sdl
 	int				speed;
 	int				pause;
 	char			*fontname;
-	SDL_Rect		solidrect;
-	SDL_Rect		blendedRect;
-	SDL_Rect		lastRect[3];
-	SDL_Rect		firstRect;
+	SDL_Rect		solid_rect;
+	SDL_Rect		blended_rect;
+	SDL_Rect		last_rect[3];
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
 	TTF_Font		*font;
-	SDL_Rect		textureRect[10];
-	SDL_Rect		rectPlayer[4][3];
-	SDL_Texture		*solidTexture;
-	SDL_Texture		*blendedTexture;
-	SDL_Texture		*lastT[3];
-	SDL_Texture		*firstTexture;
-	SDL_Texture		*textureTab[10];
-	SDL_Texture		*texPlay[4][3];
+	SDL_Rect		texture_rect[10];
+	SDL_Rect		rect_player[4][3];
+	SDL_Texture		*solid_texture;
+	SDL_Texture		*last_tex[3];
+	SDL_Texture		*texture_tab[10];
+	SDL_Texture		*tex_play[4][3];
 	SDL_Surface		*player[4][3];
 	SDL_Event		event;
 	SDL_Rect		rect[4096];
