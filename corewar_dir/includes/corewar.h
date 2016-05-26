@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/26 12:51:29 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 13:00:55 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -296,7 +296,7 @@ ft_display_arena
 */
 
 int				ft_disp(t_sdl *sdl, t_vm *vm);
-void			init_sdl(t_sdl *sdl);
+void			init_sdl_window(t_sdl *sdl);
 void			quit(t_sdl *sdl);
 int				ft_setup_ttf(t_sdl *sdl);
 void			init(SDL_Window **window, SDL_Renderer **renderer);

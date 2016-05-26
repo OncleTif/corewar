@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 11:18:19 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 12:49:50 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 13:00:42 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		ft_init_sdl_cpu(t_sdl *sdl, t_vm *vm)
 {
 	if (vm->visu == 1)
 	{
-		init_sdl(sdl);
+		init_sdl_window(sdl);
 	}
 }
 

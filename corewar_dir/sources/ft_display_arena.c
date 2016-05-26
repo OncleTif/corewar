@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/26 12:47:05 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 12:59:33 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	quit(t_sdl *sdl)
 	SDL_Quit();
 }
 
-void	init_sdl(t_sdl *sdl)
+void	init_sdl_window(t_sdl *sdl)
 {
 	init(&sdl->window, &sdl->renderer);
 	ft_setup_ttf(sdl);
