@@ -6,19 +6,19 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:06:59 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 14:28:43 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/26 15:13:21 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-SDL_Texture*	surface_to_texture(SDL_Surface* surf, SDL_Renderer *renderer)
+SDL_Texture		*surface_to_texture(SDL_Surface *surf, SDL_Renderer *renderer)
 {
-	SDL_Texture* text;
+	SDL_Texture *texture;
 
-	text = SDL_CreateTextureFromSurface(renderer, surf);
+	texture = SDL_CreateTextureFromSurface(renderer, surf);
 	SDL_FreeSurface(surf);
-	return text;
+	return (texture);
 }
 
 void			player_texture(char *str, int nb, int j, t_sdl *sdl)
@@ -38,10 +38,10 @@ void			player_texture(char *str, int nb, int j, t_sdl *sdl)
 	free(str);
 }
 
-void 			handle_btexture(t_sdl *sdl, t_vm *vm, SDL_Surface* texture[5])
+void			handle_btexture(t_sdl *sdl, t_vm *vm, SDL_Surface *texture[5])
 {
-	int j;
-	char *str;
+	int		j;
+	char	*str;
 
 	j = 0;
 	while (j < 5)
@@ -65,14 +65,15 @@ void 			handle_btexture(t_sdl *sdl, t_vm *vm, SDL_Surface* texture[5])
 	}
 }
 
-int 			handle_player_texture(t_sdl *sdl, t_vm *vm)
+int				handle_player_texture(t_sdl *sdl, t_vm *vm)
 {
-	t_list_player *cur = vm->bplr.lst_plyr;
-	char *str;
-	char *str1;
-	int j;
-	int i;
+	t_list_player	*cur;
+	char			*str;
+	char			*str1;
+	int				j;
+	int				i;
 
+	cur = vm->bplr.lst_plyr;
 	j = 0;
 	i = 0;
 	while (j < vm->bplr.nb_plyr)
@@ -93,11 +94,11 @@ int 			handle_player_texture(t_sdl *sdl, t_vm *vm)
 
 void			create_text_textures(t_sdl *sdl, t_vm *vm)
 {
-	SDL_Surface *solid;
-	SDL_Surface *texture[5];
-	int i;
-	int tmp;
-	t_bin *win;
+	SDL_Surface		*solid;
+	SDL_Surface		*texture[5];
+	int				i;
+	int				tmp;
+	t_bin			*win;
 
 	tmp = 0;
 	solid = NULL;

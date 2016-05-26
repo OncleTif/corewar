@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 11:18:19 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 13:00:42 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 14:49:09 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void		ft_quit_sdl_cpu(t_sdl *sdl, t_vm *vm)
 {
 	if (vm->visu == 1)
 	{
-		sdl->u = 1;
+		if (vm->dump != vm->cpu.cur_cycle)
+			sdl->u = 1;
 		ft_disp(sdl, vm);
 		SDL_Delay(3000);
 		quit(sdl);
