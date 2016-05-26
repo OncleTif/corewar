@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:25:56 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/25 19:18:09 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 09:16:46 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	ft_render_seconde(t_sdl *sdl, t_vm *vm)
 	while (i < vm->bplr.nb_plyr)
 	{
 		SDL_RenderCopy(sdl->renderer, sdl->texPlay[i][0],
-			NULL, &sdl->rectPlayer[i][0]);
+				NULL, &sdl->rectPlayer[i][0]);
 		SDL_RenderCopy(sdl->renderer, sdl->texPlay[i][1],
-			NULL, &sdl->rectPlayer[i][1]);
+				NULL, &sdl->rectPlayer[i][1]);
 		SDL_RenderCopy(sdl->renderer, sdl->texPlay[i][2],
-			NULL, &sdl->rectPlayer[i][2]);
+				NULL, &sdl->rectPlayer[i][2]);
 		i++;
 	}
 }
@@ -38,7 +38,7 @@ void	ft_render(t_sdl *sdl, t_vm *vm)
 	while (i < 5)
 	{
 		SDL_RenderCopy(sdl->renderer, sdl->textureTab[i],
-			NULL, &sdl->textureRect[i]);
+				NULL, &sdl->textureRect[i]);
 		i++;
 	}
 	if (sdl->u == 1)
@@ -47,11 +47,11 @@ void	ft_render(t_sdl *sdl, t_vm *vm)
 		while (i < 3)
 		{
 			SDL_RenderCopy(sdl->renderer, sdl->lastT[i],
-				NULL, &sdl->lastRect[i]);
-				i++;
-			}
-			i = 0;
+					NULL, &sdl->lastRect[i]);
+			i++;
 		}
+		i = 0;
+	}
 	ft_render_seconde(sdl, vm);
 }
 
