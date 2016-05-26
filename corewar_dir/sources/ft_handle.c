@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 16:42:07 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/26 17:17:08 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ int		ft_stock_num_plr(char **av, int *i, t_vm *vm)
 		ft_error("ARG is not a number");
 	if ((not0 = ft_atoi(av[*i])) == 0)
 		ft_error("ARG 0 is not a number valid to number player");
+	if (av[(*i) + 1] == NULL)
+		ft_error("ARG not even exist");
+	if (ft_check_args(av[(*i) + 1]) == 0)
+		ft_error("ARG after -n's number is not a player");
 	BPLR.tab[BPLR.nb_plyr] = not0;
 	BPLR.modif[BPLR.nb_plyr] = 1;
 	BPLR.i_plr += 1;
