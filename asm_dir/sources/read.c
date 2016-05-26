@@ -6,7 +6,7 @@
 /*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/25 18:27:05 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/26 11:04:57 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/26 11:24:47 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,68 +25,27 @@ int			define_str(t_champ *chp, char c, int i, char *str)
 	str[i] = c;
 	return (i + 1);
 }
-/*
-void		get_str2(t_champ *c, char *str, int indic, int i)
-{
-	char *line;
 
-	while (!indic)
-	{
-		if (get_next_line(c->fd, &line) < 1)
-			ft_error("error while reading a name or comment, missing '\"'");
-		str[i++] = '\n';
-		while (*line && *line != '"')
-		{
-			i = define_str(c, *line, i, str);
-			line++;
-		}
-		if (*line == '"')
-			indic = 2;
-		if (*(line + 1))
-			ft_error("Syntax error after a comment or name");
-		c->line++;
-	}
-	str[i] = '\0';
-}
-
-void		get_str(t_champ *c, char *tmp, char *str)
-{
-	int		indic;
-	int		i;
-
-	i = 0;
-	indic = 0;
-	if (*str)
-		ft_error("Syntax error after a comment or name");
-	while (*tmp && *tmp != '"')
-		i = define_str(c, *tmp++, i, str);
-	if (*tmp == '"')
-		indic = 1;
-	if (indic && *(tmp + 1))
-		ft_error("Syntax error after a comment or name");
-	get_str2(c, str, indic, i);
-}
-*/
 static int	get_str_next_line(t_champ *c, char *str, int *i)
 {
 	char	*line;
 	int		indic;
 
 	indic = 0;
-		if (get_next_line(c->fd, &line) < 1)
-			ft_error("error while reading a name or comment, missing '\"'");
-		str[*i++] = '\n';
-		while (*line && *line != '"')
-		{
-			*i = define_str(c, *line, *i, str);
-			line++;
-		}
-		if (*line == '"')
-			indic = 1;
-		if (*(line + 1))
-			ft_error("Syntax error after a comment or name");
-		c->line++;
-return (indic);
+	if (get_next_line(c->fd, &line) < 1)
+		ft_error("error while reading a name or comment, missing '\"'");
+	str[(*i)++] = '\n';
+	while (*line && *line != '"')
+	{
+		*i = define_str(c, *line, *i, str);
+		line++;
+	}
+	if (*line == '"')
+		indic = 1;
+	if (*(line + 1))
+		ft_error("Syntax error after a comment or name");
+	c->line++;
+	return (indic);
 }
 
 void		get_str(t_champ *c, char *tmp, char *str)
@@ -106,15 +65,10 @@ void		get_str(t_champ *c, char *tmp, char *str)
 		ft_error("Syntax error after a comment or name");
 	while (!indic)
 	{
-		indic = indic + get_str_next_line(c, str, &i);
+		indic = get_str_next_line(c, str, &i);
 	}
 	str[i] = '\0';
 }
-
-
-
-
-
 
 char		*ft_strtrim_com(char *line)
 {
