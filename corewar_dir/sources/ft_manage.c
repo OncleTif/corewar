@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_manage.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:10:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/22 22:04:13 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 15:12:21 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,52 @@ int		ft_stock_verbose(char **av, int *i, t_vm *vm)
 ** Change les autre num de plr en cas de doublon
 */
 
-void	ft_check_other_num(t_base_player bplr)
+// void	ft_check_other_num(t_base_player bplr)
+// {
+// 	int		i;
+//
+// 	i = 0;
+// 	while (i < 4)
+// 	{
+// 		if ((i != bplr.i_plr) && (bplr.tab[bplr.i_plr] == bplr.tab[i]))
+// 			bplr.tab[i] = bplr.tmpnum;
+// 		i++;
+// 	}
+// }
+
+
+int		is_not(int *num, t_base_player *bplr)
+{
+	int		j;
+
+	j = 0;
+	while (j < 4)
+	{
+		if (bplr->modif[j] == 1 && bplr->tab[j] == (unsigned int)*num)
+		{
+			*num = --(*num);
+			ft_printf("return modif %d\n", *num);
+			return (is_not(num, bplr));
+		}
+		j++;
+	}
+			ft_printf("return OK %d\n", *num);
+	return (*num);
+}
+
+void	ft_check_other_num(t_base_player *bplr)
 {
 	int		i;
+	int		num;
 
+	num = -1;
 	i = 0;
 	while (i < 4)
 	{
-		if ((i != bplr.i_plr) && (bplr.tab[bplr.i_plr] == bplr.tab[i]))
-			bplr.tab[i] = bplr.tmpnum;
+		if (bplr->modif[i] == 0)
+			bplr->tab[i] = is_not(&num, bplr);
+			ft_printf("dans check_other_num %d   %d\n", num, i);
 		i++;
+		num--;
 	}
 }

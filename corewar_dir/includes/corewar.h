@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/26 13:08:02 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 15:38:36 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int				ft_stock_step(char **av, int *i, t_vm *vm);
 int				ft_stock_verb(char **av, int *i, t_vm *vm);
 int				ft_stock_aff(t_vm *vm);
 int				ft_stock_verbose(char **av, int *i, t_vm *vm);
-void			ft_check_other_num(t_base_player bplr);
+void			ft_check_other_num(t_base_player *bplr);
 
 /*
 	init
@@ -229,9 +229,9 @@ get_mem.c
 */
 
 int				get_mem(t_vm *vm, int idx, int off);
-int		get_mem_idx(t_vm *vm, short int idx, short int off);
+int				get_mem_idx(t_vm *vm, short int idx, short int off);
 int				get_memlong(t_vm *vm, int idx);
-int		get_memlong_idx(t_vm *vm, short int idx);
+int				get_memlong_idx(t_vm *vm, short int idx);
 
 /*
 ft_store.c

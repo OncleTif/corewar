@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:40:29 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/26 12:59:33 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 15:38:59 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void	init(SDL_Window **window, SDL_Renderer **renderer)
 	int x;
 	int y;
 
-	SDL_Init(SDL_INIT_VIDEO);
+	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	{
+		ft_error("SDL_Init error");
+	}
 	x = SDL_WINDOWPOS_CENTERED;
 	y = SDL_WINDOWPOS_CENTERED;
 	*window = SDL_CreateWindow("SDL Window", x, y, 1800, 1500,
