@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/26 09:27:19 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/26 12:25:42 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,6 @@ void	print_corenum_plr(t_octet *core)
 		if (i % 64 == 0)
 			ft_printf("\n");
 		ft_printf(" %.2d", core[i].num_plr);
-		i++;
-	}
-}
-
-void	print_corepc(t_octet *core)
-{
-	int i;
-
-	i = 0;
-	while (i < MEM_SIZE)
-	{
-		if (i % 64 == 0)
-			ft_printf("\n");
-		ft_printf(" %u", core[i].pc);
 		i++;
 	}
 }
@@ -84,7 +70,7 @@ void	print_finish(t_vm *vm)
 	else
 		tmp = win->num_plyr;
 	if (vm->dump != vm->cpu.cur_cycle)
-		ft_printf("Contestant %d, \"%s\", has won !\n", tmp, win->prog_name); // merde si on a fait un -n
+		ft_printf("Contestant %d, \"%s\", has won !\n", tmp, win->prog_name);
 	if (vm->dump == vm->cpu.cur_cycle)
 		print_core(vm);
 }
