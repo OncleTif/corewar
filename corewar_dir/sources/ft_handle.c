@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 15:55:02 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/26 16:37:05 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int		ft_stock_num_plr(char **av, int *i, t_vm *vm)
 	BPLR.tab[BPLR.nb_plyr] = not0;
 	BPLR.modif[BPLR.nb_plyr] = 1;
 	BPLR.i_plr += 1;
-	//ft_check_other_num(BPLR);
 	return (0);
 }
 
@@ -45,7 +44,8 @@ void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 {
 	if (ft_strcmp("-v", av[*i]) == 0)
 		ft_stock_verb(av, i, vm);
-	else if (ft_strcmp("-d", av[*i]) == 0)
+	else if ((ft_strcmp("-d", av[*i]) == 0) ||
+			(ft_strcmp("-dump", av[*i]) == 0))
 		ft_stock_dump(av, i, vm);
 	else if (ft_strcmp("-a", av[*i]) == 0)
 		ft_stock_aff(vm);
@@ -72,7 +72,7 @@ void	ft_init_num_plr(t_base_player *player)
 	t_list_player	*lplr;
 	int				i;
 	int				j;
-	
+
 	i = 0;
 	ft_check_other_num(player);					 //
 	lplr = player->lst_plyr;
