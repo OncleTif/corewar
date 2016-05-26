@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/25 18:36:33 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/26 11:27:34 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,20 @@ void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 {
 	if (ft_strcmp("-v", av[*i]) == 0)
 		ft_stock_verb(av, i, vm);
-	if (ft_strcmp("-d", av[*i]) == 0)
+	else if (ft_strcmp("-d", av[*i]) == 0)
 		ft_stock_dump(av, i, vm);
-	if (ft_strcmp("-a", av[*i]) == 0)
+	else if (ft_strcmp("-a", av[*i]) == 0)
 		ft_stock_aff(vm);
-	if (ft_strcmp("--color", av[*i]) == 0)
+	else if (ft_strcmp("--color", av[*i]) == 0)
 		ft_stock_color(vm);
-	if (ft_strcmp("-s", av[*i]) == 0)
+	else if (ft_strcmp("-s", av[*i]) == 0)
 		ft_stock_step(av, i, vm);
-	if (ft_strcmp("-n", av[*i]) == 0)
+	else if (ft_strcmp("-n", av[*i]) == 0)
 		ft_stock_num_plr(av, i, vm);
-	if (ft_strcmp("--visu", av[*i]) == 0)
+	else if (ft_strcmp("--visu", av[*i]) == 0)
 		vm->visu = 1;
+	else
+		exit(ft_printf("ERROR ARGV\n"));
 }
 
 void	ft_init_num_plr(t_base_player *player, t_list_player *tmp)
