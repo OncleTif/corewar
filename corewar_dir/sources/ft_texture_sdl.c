@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:06:59 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 12:21:38 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 13:07:35 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void			create_text_textures(t_sdl *sdl, t_vm *vm)
 	solid = NULL;
 	win = NULL;
 	i = 0;
-	ft_query_solid_texture(sdl, solid);
+	ft_query_corewar_texture(sdl, solid);
 	handle_btexture(sdl, vm, texture);
 	handle_player_texture(sdl, vm);
 	ft_query_base_texture(sdl);

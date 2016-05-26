@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/26 13:00:55 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 13:08:02 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -315,7 +315,7 @@ void			ft_poll_event(t_sdl *sdl);
 ft_query_sdl
 */
 
-void 			ft_query_solid_texture(t_sdl *sdl, SDL_Surface *solid);
+void 			ft_query_corewar_texture(t_sdl *sdl, SDL_Surface *solid);
 void 			ft_query_base_texture(t_sdl *sdl);
 void 			ft_handle_query_player(t_sdl *sdl, t_vm *vm);
 void			ft_query_player_texture(int i, int j, int nb, t_sdl *sdl);
