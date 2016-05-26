@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:10:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 15:12:21 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/26 15:56:01 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,10 @@ int		is_not(int *num, t_base_player *bplr)
 		if (bplr->modif[j] == 1 && bplr->tab[j] == (unsigned int)*num)
 		{
 			*num = --(*num);
-			ft_printf("return modif %d\n", *num);
 			return (is_not(num, bplr));
 		}
 		j++;
 	}
-			ft_printf("return OK %d\n", *num);
 	return (*num);
 }
 
@@ -112,7 +110,6 @@ void	ft_check_other_num(t_base_player *bplr)
 	{
 		if (bplr->modif[i] == 0)
 			bplr->tab[i] = is_not(&num, bplr);
-			ft_printf("dans check_other_num %d   %d\n", num, i);
 		i++;
 		num--;
 	}
