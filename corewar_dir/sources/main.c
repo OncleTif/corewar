@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/25 19:08:14 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/26 09:27:19 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	print_corenum_plr(t_octet *core)
 		i++;
 	}
 }
+
 void	print_corepc(t_octet *core)
 {
 	int i;
@@ -38,6 +39,7 @@ void	print_corepc(t_octet *core)
 		i++;
 	}
 }
+
 t_bin	*who_win(t_vm *vm)
 {
 	t_list_player	*lplr;
@@ -71,7 +73,7 @@ void	print_options(void)
 	ft_printf("\t\t\t\t16 : affiche deplacement du pc\n");
 }
 
-void		print_finish(t_vm *vm)
+void	print_finish(t_vm *vm)
 {
 	t_bin	*win;
 	int		tmp;
@@ -90,7 +92,7 @@ void		print_finish(t_vm *vm)
 int		main(int argc, char **argv)
 {
 	t_vm	vm;
-	t_sdl 	sdl;
+	t_sdl	sdl;
 
 	vm_init(&vm);
 	if (argc > 1)
@@ -100,7 +102,7 @@ int		main(int argc, char **argv)
 	else
 	{
 		print_options();
-		return(0);
+		return (0);
 	}
 	ft_init_arena(&vm);
 	ft_init_lst_proc(&vm);
