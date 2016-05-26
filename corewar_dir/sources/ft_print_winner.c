@@ -6,13 +6,27 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 19:14:49 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/25 18:48:59 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/26 16:52:57 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-t_bin		*who_win(t_vm *vm)
+void	print_corenum_plr(t_octet *core)
+{
+	int i;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		if (i % 64 == 0)
+			ft_printf("\n");
+		ft_printf(" %.2d", core[i].num_plr);
+		i++;
+	}
+}
+
+t_bin	*who_win(t_vm *vm)
 {
 	t_list_player	*lplr;
 	t_bin			*tmp;
@@ -31,7 +45,7 @@ t_bin		*who_win(t_vm *vm)
 	return (tmp);
 }
 
-void		print_options(void)
+void	print_options(void)
 {
 	ft_printf("____ OPTION _____\n\n-d n\t\tdump la memoire au cycle n\n");
 	ft_printf("-s n\t\tprint la memoire au cycle n et attend touche entre\n");
@@ -45,7 +59,7 @@ void		print_options(void)
 	ft_printf("\t\t\t\t16 : affiche deplacement du pc\n");
 }
 
-void		print_finish(t_vm *vm)
+void	print_finish(t_vm *vm)
 {
 	t_bin	*win;
 	int		tmp;
@@ -55,7 +69,8 @@ void		print_finish(t_vm *vm)
 		tmp = (-1 * win->num_plyr);
 	else
 		tmp = win->num_plyr;
-	ft_printf("Contestant %d (%s), has won !\n", tmp, win->prog_name);
-	if (vm->verbose & 32 || vm->dump > 0)
+	if (vm->dump != vm->cpu.cur_cycle)
+		ft_printf("Contestant %d, \"%s\", has won !\n", tmp, win->prog_name);
+	if (vm->dump == vm->cpu.cur_cycle)
 		print_core(vm);
 }

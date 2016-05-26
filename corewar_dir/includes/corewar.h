@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/26 16:48:19 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 16:55:28 by eozdek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -328,9 +328,7 @@ void				create_first_texture(t_sdl *sdl, t_vm *vm);
 /*
 ** main
 */
-t_bin				*who_win(t_vm *vm);
 void				ft_print(t_vm *vm);
-void				print_corenum_plr(t_octet *core);
 void				print_corepc(t_octet *core);
 void				print_t_vm(t_vm *vm);
 void				print_t_bplr(t_base_player *bplr);
@@ -342,4 +340,13 @@ void				print_core(t_vm *vm);
 */
 void				ft_init_sdl_cpu(t_sdl *sdl, t_vm *vm);
 void				ft_quit_sdl_cpu(t_sdl *sdl, t_vm *vm);
+
+/*
+** ft_print_winner
+*/
+t_bin				*who_win(t_vm *vm);
+void				print_corenum_plr(t_octet *core);
+void				print_options(void);
+void				print_finish(t_vm *vm);
+
 #endif
