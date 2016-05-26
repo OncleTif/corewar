@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_vm.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 19:19:01 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/25 18:46:58 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/26 14:20:31 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ void		cpu_init(t_vm *vm)
 
 void		vm_init(t_vm *vm)
 {
+	int		i;
+
+	i = -1;
 	cpu_init(vm);
 	vm->dump = -1;
 	vm->step = 0;
@@ -66,10 +69,14 @@ void		vm_init(t_vm *vm)
 	vm->nb_proc = 1;
 	vm->bplr.lst_plyr = NULL;
 	vm->bplr.i_plr = 0;
-	vm->bplr.tab[0] = -1;
-	vm->bplr.tab[1] = -2;
-	vm->bplr.tab[2] = -3;
-	vm->bplr.tab[3] = -4;
+	while (++i < 4)
+	vm->bplr.modif[i] = 0;
+	i = 0;
+	while (++i < 4)
+	vm->bplr.tab[i] = 0;
+	//vm->bplr.tab[1] = -2;
+	//vm->bplr.tab[2] = -3;
+	//vm->bplr.tab[3] = -4;
 	vm->proc = NULL;
 	vm->visu = 0;
 	ftab_init(vm);

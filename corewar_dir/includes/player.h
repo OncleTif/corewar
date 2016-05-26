@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 13:31:38 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/20 18:30:28 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/26 14:21:44 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ struct s_player
 struct      s_bin
 {
 	int					pc_tmp;
+	int					index_plyr;
 	int					num_plyr; // la VM ou -n attribut un numero au joueur
 	unsigned int		magic;
 	char				prog_name[PROG_NAME_LENGTH + 1];
@@ -50,6 +51,7 @@ struct s_base_player
 {
 	int				tmpnum;	// stock le numero du plr qui a etait modifier
 	int				i_plr;//tmp
+	unsigned int 	modif[4];
 	unsigned int 	tab[4]; // stock les num des champs par defaut
 								// peut etre modif par -n ***
 	int				nb_plyr; //nombre de player

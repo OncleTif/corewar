@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 12:37:24 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/25 18:30:36 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/26 14:40:28 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	ft_live_plr(t_vm *vm, int live)
 {
 	t_list_player	*plr;
-	int				tmp;
 
 	plr = vm->bplr.lst_plyr;
 	while (plr && plr->plr->num_plyr != live)
@@ -26,12 +25,8 @@ static void	ft_live_plr(t_vm *vm, int live)
 		plr->plr->nbr_live++;
 		if (vm->verbose & 1)
 		{
-			if (live < 0)
-				tmp = (-1 * live);
-			else
-				tmp = live;
 			ft_printf("Player %d (%s) is said to be alive\n",
-					tmp, plr->plr->prog_name);
+					plr->plr->index_plyr, plr->plr->prog_name);
 		}
 	}
 }

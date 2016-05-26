@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/28 16:46:44 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/26 09:27:19 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/26 13:07:22 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,17 @@ int		main(int argc, char **argv)
 	ft_init_lst_proc(&vm);
 	ft_print_header(&vm);
 	init_struct_sdl(&sdl);
+
+	t_list_player *tmp;
+	tmp = vm.bplr.lst_plyr;
+	while (tmp)
+	{
+		ft_printf(" num plr %d", tmp->plr->num_plyr);
+		tmp = tmp->next;
+	}
+
+
+
 	cpu(&vm, &sdl);
 	print_finish(&vm);
 	return (0);
