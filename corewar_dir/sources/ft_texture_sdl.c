@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:06:59 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 14:21:58 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/26 14:28:43 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ int 			handle_player_texture(t_sdl *sdl, t_vm *vm)
 	i = 0;
 	while (j < vm->bplr.nb_plyr)
 	{
-		str = ft_strjoin("Player ", ft_itoa(j + 1));
-		str = ft_strjoin(str, " : ");
-		str = ft_strjoin(str, cur->plr->name);
+		str = ft_strjoin_clean(ft_strdup("Player "), ft_itoa(j + 1));
+		str = ft_strjoin_clean(str, ft_strdup(" : "));
+		str = ft_strjoin_clean(str, ft_strdup(cur->plr->name));
 		player_texture(str, 0, j, sdl);
 		str = ft_strdup("Last live : ");
 		player_texture(str, 1, j, sdl);
