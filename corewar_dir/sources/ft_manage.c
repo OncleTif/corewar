@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:10:10 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 15:56:01 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/26 16:43:07 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,24 +63,6 @@ int		ft_stock_verbose(char **av, int *i, t_vm *vm)
 	vm->verbose = ft_atoi(av[*i]);
 	return (1);
 }
-
-/*
-** Change les autre num de plr en cas de doublon
-*/
-
-// void	ft_check_other_num(t_base_player bplr)
-// {
-// 	int		i;
-//
-// 	i = 0;
-// 	while (i < 4)
-// 	{
-// 		if ((i != bplr.i_plr) && (bplr.tab[bplr.i_plr] == bplr.tab[i]))
-// 			bplr.tab[i] = bplr.tmpnum;
-// 		i++;
-// 	}
-// }
-
 
 int		is_not(int *num, t_base_player *bplr)
 {
