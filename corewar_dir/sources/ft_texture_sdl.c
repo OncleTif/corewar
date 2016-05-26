@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 01:06:59 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 13:07:35 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/26 14:21:58 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void 			handle_btexture(t_sdl *sdl, t_vm *vm, SDL_Surface* texture[5])
 	while (j < 5)
 	{
 		if (j == 0)
-			str = ft_strjoin("Cycle : ", ft_itoa(CPU.cur_cycle));
+			str = ft_strjoin_clean(ft_strdup("Cycle : "),
+					ft_itoa(CPU.cur_cycle));
 		else if (j == 1)
 			str = ft_strjoin("CYCLE_TO_DIE : ", ft_itoa(CPU.cycle2die));
 		else if (j == 2)
