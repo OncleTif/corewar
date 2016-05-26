@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 15:14:12 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/26 15:55:02 by djoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,27 @@ void	ft_init_num_plr(t_base_player *player)
 {
 	t_list_player	*lplr;
 	int				i;
-
+	int				j;
+	
 	i = 0;
 	ft_check_other_num(player);					 //
 	lplr = player->lst_plyr;
 	while (lplr)
 	{
 		lplr->plr->num_plyr = player->tab[i++];
-		ft_printf("index_plyr %d num_plyr %d\n", lplr->plr->index_plyr, lplr->plr->num_plyr);
 		lplr = lplr->next;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			if (i != j && player->tab[i] == player->tab[j])
+				ft_error("Error same number player");
+			j++;
+		}
+		i++;
 	}
 }
 
