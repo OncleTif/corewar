@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/25 18:49:49 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/27 10:12:13 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/27 10:46:59 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int		get_1_arg(t_process *proc)
 
 	j = 0;
 	ret = 1;
-	while (j < g_op_tab[proc->ir.opcode - 1].att_num && ret)
+	while (j < g_op_tab[proc->ir.opcode - 1].att_num)
 	{
 		if (proc->ir.code_args[j] == T_REG)
-			ret = stock_reg(proc, j);
+			ret = stock_reg(proc, j) && ret;
 		else if (proc->ir.code_args[j] == T_DIR)
 			stock_dir(proc, j);
 		else if (proc->ir.code_args[j] == T_IND)
