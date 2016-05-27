@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/25 18:49:49 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/25 18:56:08 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/27 10:12:13 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,23 @@
 int		get_1_arg(t_process *proc)
 {
 	int		j;
+	int		ret;
 
 	j = 0;
-	while (j < g_op_tab[proc->ir.opcode - 1].att_num)
+	ret = 1;
+	while (j < g_op_tab[proc->ir.opcode - 1].att_num && ret)
 	{
 		if (proc->ir.code_args[j] == T_REG)
-			stock_reg(proc, j);
+			ret = stock_reg(proc, j);
 		else if (proc->ir.code_args[j] == T_DIR)
 			stock_dir(proc, j);
 		else if (proc->ir.code_args[j] == T_IND)
 			stock_ind(proc, j);
 		else
-			proc->ir_error = 1;
+			ret = 0;
 		j++;
 	}
-	return (0);
+	return (ret);
 }
 
 int		ft_pcdelta_badocp(unsigned char *ir, int op, t_process *proc)
@@ -81,6 +83,5 @@ int		decode_ir(t_process *proc)
 			return (ft_pcdelta_badocp(ir, proc->ir.opcode, proc));
 		proc->pcdelta += 1;
 	}
-	get_1_arg(proc);
-	return (1);
+	return (get_1_arg(proc));
 }
