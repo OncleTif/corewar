@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/26 18:04:48 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/27 11:17:44 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ void				print_comment(t_bin plr);
 ** cpu.c
 */
 int					cpu(t_vm *vm, t_sdl *sdl);
+void				exec_proc(t_vm *vm, t_process *proc);
 int					stock_types_args(t_process *proc, int i);
 int					decode_ir(t_process *proc);
 int					fetch_ir(t_process *tmp, unsigned char *core);

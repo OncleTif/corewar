@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/26 12:46:03 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/27 11:13:13 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,24 @@ void	run(t_vm *vm, t_process *proc)
 		vm->ftab[proc->ir.opcode](vm, proc);
 }
 
+void	exec_proc(t_vm *vm, t_process *tmp)
+{
+	if (tmp->cycle_to_wait < vm->cpu.cur_cycle &&
+			vm->core[tmp->pc] > 0 && vm->core[tmp->pc] <= 16)
+	{
+		tmp->cycle_to_wait = vm->cpu.cur_cycle +
+			g_op_tab[vm->core[tmp->pc] - 1].cost - 1;
+		tmp->ir.opcode = vm->core[tmp->pc];
+	}
+	if (tmp->cycle_to_wait <= vm->cpu.cur_cycle)
+	{
+		fetch_ir(tmp, vm->core);
+		if (decode_ir(tmp))
+			run(vm, tmp);
+		ft_fetch_next(vm, tmp);
+	}
+}
+
 int		parse_proc(t_vm *vm)
 {
 	t_process	*tmp;
@@ -45,20 +63,7 @@ int		parse_proc(t_vm *vm)
 	tmp = vm->proc;
 	while (tmp)
 	{
-		if (tmp->cycle_to_wait < vm->cpu.cur_cycle &&
-				vm->core[tmp->pc] > 0 && vm->core[tmp->pc] <= 16)
-		{
-			tmp->cycle_to_wait = vm->cpu.cur_cycle +
-				g_op_tab[vm->core[tmp->pc] - 1].cost - 1;
-			tmp->ir.opcode = vm->core[tmp->pc];
-		}
-		if (tmp->cycle_to_wait <= vm->cpu.cur_cycle)
-		{
-			fetch_ir(tmp, vm->core);
-			if (decode_ir(tmp))
-				run(vm, tmp);
-			ft_fetch_next(vm, tmp);
-		}
+		exec_proc(vm, tmp);
 		tmp = tmp->next;
 	}
 	return (0);
