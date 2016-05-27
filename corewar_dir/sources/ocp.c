@@ -6,7 +6,7 @@
 /*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/25 18:14:48 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/25 18:15:59 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/27 12:32:28 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ int		check_code(unsigned char ocp, int idx)
 	return (ret);
 }
 
-int		check_code2(unsigned char *ir, int j)
+int		check_code2(unsigned char *ir, int j, int opcode)
 {
 	int	i;
 
 	i = (ir[1] >> (6 - (2 * j))) & 3;
 	if (i == 3)
 		i = 4;
-	if (i & g_op_tab[ir[0] - 1].att[j])
+	if (i & g_op_tab[opcode - 1].att[j])
 	{
 		return (i);
 	}
@@ -59,7 +59,7 @@ int		check_ocp(unsigned char *ir, t_ir *pir)
 	{
 		if (j < g_op_tab[pir->opcode - 1].att_num)
 		{
-			if ((ret = check_code2(ir, j)))
+			if ((ret = check_code2(ir, j, pir->opcode)))
 				pir->code_args[j] = ret;
 		}
 		else

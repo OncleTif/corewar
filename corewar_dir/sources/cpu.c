@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 12:08:15 by djoly             #+#    #+#             */
-/*   Updated: 2016/05/27 11:13:13 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/27 12:38:17 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,9 @@ int		fetch_ir(t_process *tmp, unsigned char *core)
 
 void	run(t_vm *vm, t_process *proc)
 {
-	int	opcode;
 	int	i;
 
 	i = 0;
-	opcode = proc->ir.irstr[0];
 	if (proc->ir.opcode > 0 && proc->ir.opcode < 17)
 		vm->ftab[proc->ir.opcode](vm, proc);
 }
@@ -57,9 +55,7 @@ void	exec_proc(t_vm *vm, t_process *tmp)
 int		parse_proc(t_vm *vm)
 {
 	t_process	*tmp;
-	int			i;
 
-	i = 0;
 	tmp = vm->proc;
 	while (tmp)
 	{
