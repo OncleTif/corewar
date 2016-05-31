@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 19:14:49 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/31 10:13:14 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/31 10:25:34 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ t_bin	*who_win(t_vm *vm)
 
 void	print_options(void)
 {
-	ft_printf("____ OPTION _____\n\n-d n\t\tdump la memoire au cycle n\n");
-	ft_printf("-s n\t\tprint la memoire au cycle n et attend touche entre\n");
-	ft_printf("-n <num> chp.cor\t\tinit le numero du joueur a n n\n");
+	ft_printf("____ OPTIONS _____\n\n-d n\t\t\tdump la memoire au cycle n\n");
+	ft_printf("-s n\t\t\tprint la memoire au cycle n et attend touche entre\n");
+	ft_printf("-n <num> chp.cor\tinit le numero du joueur a n\n");
 	ft_printf("-l <num>\t\tdefini le nomnre de characteres par ligne\n");
-	ft_printf("--visu : lance la version graphique\n");
-	ft_printf("--color : lance le mode couleur\n");
-	ft_printf("-v n\t\tverbose mode:\n");
+	ft_printf("--visu\t\t\tlance la version graphique\n");
+	ft_printf("--color\t\t\tlance le mode couleur\n");
+	ft_printf("-v n\t\t\tverbose mode:\n");
 	ft_printf("\t\t\t\t1 : affiche les lives\n");
 	ft_printf("\t\t\t\t2 : affiche les cycles\n");
 	ft_printf("\t\t\t\t4 : affiche la memoire\n");
