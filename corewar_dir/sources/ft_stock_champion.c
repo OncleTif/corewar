@@ -6,7 +6,7 @@
 /*   By: ssicard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/25 18:58:16 by ssicard           #+#    #+#             */
-/*   Updated: 2016/05/25 18:58:21 by ssicard          ###   ########.fr       */
+/*   Updated: 2016/05/31 09:38:20 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_stock_magic(int fd, char *buff, t_bin *plr)
 	int ret;
 
 	if (!(ret = read(fd, buff, 4)))
-		printf("error READ magic");
+		ft_error("error READ magic");
 	buff[ret] = '\0';
 	memrev(buff, 4);
 	plr->magic = (*((int *)buff));
