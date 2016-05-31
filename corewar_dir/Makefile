@@ -6,7 +6,7 @@
 #    By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/20 16:17:18 by ssicard           #+#    #+#              #
-#    Updated: 2016/05/26 16:56:13 by eozdek           ###   ########.fr        #
+#    Updated: 2016/05/31 10:02:06 by tmanet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ SRC =	sources/ft_check_champion.c sources/ft_stock_champion.c \
 		sources/ft_stock_dump.c \
 		sources/arguments.c \
 		sources/ft_print_winner.c \
+		sources/ft_l_core.c \
 
 OBJ = $(SRC:.c=.o)
 

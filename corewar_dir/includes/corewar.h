@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:56:52 by tmanet            #+#    #+#             */
-/*   Updated: 2016/05/27 11:17:44 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/31 10:00:32 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ struct				s_vm
 	int				verbose;
 	int				color;
 	int				visu;
+	int				l_core;
 	t_cpu			cpu;
 	unsigned char	core[MEM_SIZE];
 	t_octet			data[MEM_SIZE];
@@ -346,4 +347,5 @@ void				print_corenum_plr(t_octet *core);
 void				print_options(void);
 void				print_finish(t_vm *vm);
 
+int					ft_stock_l_core(char **av, int *i, t_vm *vm);
 #endif

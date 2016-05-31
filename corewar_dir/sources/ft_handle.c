@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tmanet <tmanet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/09 18:09:31 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/31 09:20:21 by tmanet           ###   ########.fr       */
+/*   Created: 2016/05/31 09:57:34 by tmanet            #+#    #+#             */
+/*   Updated: 2016/05/31 10:00:45 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ void	ft_handle_bonus(char **av, int *i, t_vm *vm)
 		ft_stock_step(av, i, vm);
 	else if (ft_strcmp("-n", av[*i]) == 0)
 		ft_stock_num_plr(av, i, vm);
+	else if (ft_strcmp("-l", av[*i]) == 0)
+		ft_stock_l_core(av, i, vm);
 	else if (ft_strcmp("--visu", av[*i]) == 0)
 		vm->visu = 1;
 	else
-		exit(ft_printf("ERROR ARGV"));
+		ft_error("ERROR ARGV");
 	ft_check_bonus(vm);
 }
 

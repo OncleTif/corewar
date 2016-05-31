@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 19:14:49 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 16:52:57 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/31 10:13:14 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	print_options(void)
 {
 	ft_printf("____ OPTION _____\n\n-d n\t\tdump la memoire au cycle n\n");
 	ft_printf("-s n\t\tprint la memoire au cycle n et attend touche entre\n");
-	ft_printf("-n n chp.cor\t\tinit le numero du joueur a n n\n");
+	ft_printf("-n <num> chp.cor\t\tinit le numero du joueur a n n\n");
+	ft_printf("-l <num>\t\tdefini le nomnre de characteres par ligne\n");
 	ft_printf("--visu : lance la version graphique\n");
 	ft_printf("--color : lance le mode couleur\n");
 	ft_printf("-v n\t\tverbose mode:\n");

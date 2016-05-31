@@ -6,7 +6,7 @@
 /*   By: djoly <djoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 19:19:01 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 16:45:01 by djoly            ###   ########.fr       */
+/*   Updated: 2016/05/31 10:01:14 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void		vm_init(t_vm *vm)
 	vm->nb_proc = 1;
 	vm->bplr.lst_plyr = NULL;
 	vm->bplr.i_plr = 0;
+	vm->l_core = 32;
 	while (++i < 4)
 		vm->bplr.modif[i] = 0;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 19:17:03 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 12:17:28 by tmanet           ###   ########.fr       */
+/*   Updated: 2016/05/31 09:59:08 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void				print_core(t_vm *vm)
 		printed = 0;
 		if (i == 0)
 			ft_printf("0x0000 : ");
-		else if (i % 64 == 0)
+		else if (i % vm->l_core == 0)
 			ft_printf("\n%#.4x : ", i);
 		if (!vm->color)
 			ft_printf("%.2x ", vm->core[i]);
