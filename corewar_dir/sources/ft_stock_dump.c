@@ -6,7 +6,7 @@
 /*   By: eozdek <eozdek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 22:00:08 by eozdek            #+#    #+#             */
-/*   Updated: 2016/05/26 18:05:04 by eozdek           ###   ########.fr       */
+/*   Updated: 2016/05/31 09:23:05 by tmanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ft_stock_verb(char **av, int *i, t_vm *vm)
 	(*i)++;
 	if (!av[*i] || ft_isnumber(av[*i]) == 0)
 		ft_error("ARG is not a number");
-	vm->verbose = vm->verbose | (ft_atoi(av[*i]) & 63);
+	vm->verbose = vm->verbose | (ft_atoi_strict(av[*i]) & 63);
 	return (1);
 }
 
@@ -38,7 +38,7 @@ int		ft_stock_step(char **av, int *i, t_vm *vm)
 	(*i)++;
 	if (!av[*i] || ft_isnumber(av[*i]) == 0)
 		ft_error("ARG is not a number");
-	vm->step = ft_atoi(av[*i]);
+	vm->step = ft_atoi_strict(av[*i]);
 	if (vm->step < 1)
 		ft_error("step can't be fewer than 1");
 	return (1);
@@ -49,7 +49,7 @@ int		ft_stock_dump(char **av, int *i, t_vm *vm)
 	(*i)++;
 	if (!av[*i] || ft_isnumber(av[*i]) == 0)
 		ft_error("ARG is not a number");
-	vm->dump = ft_atoi(av[*i]);
+	vm->dump = ft_atoi_strict(av[*i]);
 	if (vm->dump < 1)
 		ft_error("dump can't be fewer than 1");
 	return (1);
